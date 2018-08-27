@@ -12,7 +12,8 @@ class TokenType extends Component {
   }
 
   onChange = (e) => {
-
+    const { dispatch } = this.props
+    dispatch(setType(e.target.value))
   }
 
   render () {
@@ -22,9 +23,9 @@ class TokenType extends Component {
       <div>
         <div>Insert the total supply of your token:</div>
         <form>
-          Startable Burnable <input type='radio' name='tokenType' value='Startable Burnable' selected='selected' />
-          Startable <input type='radio' name='tokenType' value='Startable' />
-          Simple <input type='radio' name='tokenType' value='Simple' />
+          Startable Burnable <input type='radio' name='tokenType' value='startable-burnable' checked={addToken.type === 'startable-burnable'} onChange={this.onChange} />
+          Startable <input type='radio' name='tokenType' value='startable' checked={addToken.type === 'startable'} onChange={this.onChange} />
+          Simple <input type='radio' name='tokenType' value='simple' checked={addToken.type === 'simple'} onChange={this.onChange} />
         </form>
 
         <button onClick={nextFunction} >Next</button>
