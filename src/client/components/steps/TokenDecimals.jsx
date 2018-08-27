@@ -5,7 +5,7 @@ const TokenDecimals = ({ nextFunction }) => {
     <div>
       <div>Insert the decimals of your token:</div>
       <input />
-      <button onClick={nextFunction} >Next</button>
+      { nextFunction ? <button onClick={nextFunction} >Next</button> : null }
     </div>
   )
 }

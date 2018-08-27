@@ -5,7 +5,7 @@ const TokenSupply = ({ nextFunction }) => {
     <div>
       <div>Insert the total supply of your token:</div>
       <input />
-      <button onClick={nextFunction} >Next</button>
+      { nextFunction ? <button onClick={nextFunction} >Next</button> : null }
     </div>
   )
 }

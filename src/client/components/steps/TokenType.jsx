@@ -9,7 +9,7 @@ const TokenType = ({ nextFunction }) => {
         Startable <input type='radio' name='tokenType' value='Startable' />
         Simple <input type='radio' name='tokenType' value='Simple' />
       </form>
-      <button onClick={nextFunction} >Deploy the token</button>
+      { nextFunction ? <button onClick={nextFunction} >Next</button> : null }
     </div>
   )
 }

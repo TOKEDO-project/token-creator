@@ -5,7 +5,7 @@ const TokenName = ({nextFunction}) => {
     <div>
       <div>Insert the name of your token:</div>
       <input />
-      <button onClick={nextFunction} >Next</button>
+      { nextFunction ? <button onClick={nextFunction} >Next</button> : null }
     </div>
   )
 }
