@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Localization from '../Localization'
+
 class Home extends React.Component {
   constructor (props) {
     super(props)
@@ -9,7 +11,7 @@ class Home extends React.Component {
   }
 
   render () {
-    return (<div> Home <div><a href='/token/add/wizard'>START NOW!</a></div> </div>)
+    return (<div> {Localization.home} <div><a href='/token/add/wizard'>{Localization.start_now}</a></div> </div>)
   }
 }
 
