@@ -22,11 +22,9 @@ const AppRouter = () => {
         <div className='pure-u-1'>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/token' >
-              <Route exact path='/add/advanced' component={AddTokenAdvanced} />
-              <Route exact path='/add/wizard' component={AddTokenWizard} />
-              <Route exact path='/:token_id' component={TokenDetails} />
-            </Route>
+            <Route exact path='/token/add/advanced' component={AddTokenAdvanced} />
+            <Route exact path='/token/add/wizard' component={AddTokenWizard} />
+            <Route exact path='/token/details/:token_id' component={TokenDetails} />
             <Route exact path='/help' component={HelpPage} />
             <Route exact path='/about' component={AboutPage} />
             <Route render={() => <PageNotFound />} />
