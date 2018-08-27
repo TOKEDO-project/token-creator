@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setDecimals } from '../../redux/addToken'
 
-const TokenDecimals = ({ nextFunction }) => {
-  return (
-    <div>
-      <div>Insert the decimals of your token:</div>
-      <input />
-      { nextFunction ? <button onClick={nextFunction} >Next</button> : null }
-    </div>
-  )
+class TokenDecimals extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      valid: false
+    }
+  }
+
+  onChangeText = (e) => {
+    const value = e.target.value
+    const textLength = value.length
+
+    const { dispatch } = this.props
+    dispatch(setDecimals(value))
+    this.setState({
+      valid: textLength > 3
+    })
+  }
+
+  render () {
+    const { addToken, nextFunction } = this.props
+    const { valid } = this.state
+
+    return (
+      <div>
+        <div>Insert the decimals of your token:</div>
+        <input value={addToken.decimals} onChange={this.onChangeText} />
+        {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
+        {!valid && addToken.decimals.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
+      </div>
+    )
+  }
 }
 
-export default TokenDecimals
+export default connect(s => s)(TokenDecimals)
