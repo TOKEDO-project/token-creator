@@ -1,0 +1,77 @@
+{
+  "name": "token-creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client/App.jsx",
+  "engines": {
+    "node": "9.11.1",
+    "npm": "6.2.0"
+  },
+  "scripts": {
+    "build": "webpack -p --config ./webpack/webpack.prod.js --progress",
+    "start:client": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
+    "start:server": "node ./src/server/index.js",
+    "start:serverdev": "nodemon ./src/server/index.js",
+    "dev": "nf start -j Procfile.dev",
+    "prod": "npm run build && npm run start:server",
+    "lint": "standard",
+    "start": "npm run start:server"
+  },
+  "author": "linosorice",
+  "license": "MIT",
+  "dependencies": {
+    "bignumber.js": "^7.2.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "dotenv-webpack": "^1.5.5",
+    "express": "^4.16.2",
+    "nodemon": "^1.18.3",
+    "purecss": "^1.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
+    "redux-enhancer-react-native-appstate": "^0.3.1",
+    "redux-promise-middleware": "^5.0.0",
+    "redux-thunk": "^2.2.0",
+    "throng": "^4.0.0",
+    "web3": "^1.0.0-beta.35"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "foreman": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-devtools-extension": "^2.13.2",
+    "regenerator-runtime": "^0.12.0",
+    "standard": "^11.0.1",
+    "style-loader": "^0.22.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
+  },
+  "standard": {
+    "ignore": [
+      "webpack/build"
+    ],
+    "parser": "babel-eslint"
+  }
+}

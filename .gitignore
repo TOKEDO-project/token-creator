@@ -1,0 +1,9 @@
+/node_modules
+/build
+npm-debug.log
+.DS_Store
+.env
+.env-prod
+*.swp
+.vscode
+webpack/build

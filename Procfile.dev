@@ -1,0 +1,2 @@
+server: npm run start:serverdev
+client: npm run start:client
