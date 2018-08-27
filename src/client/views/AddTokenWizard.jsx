@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
 import TokenDecimals from '../components/steps/TokenDecimals'
@@ -6,42 +8,32 @@ import TokenSupply from '../components/steps/TokenSupply'
 import TokenType from '../components/steps/TokenType'
 import WalletSelection from '../components/steps/WalletSelection'
 
-class AddTokenWizard extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      step: 1
-    }
-  }
+import { setStep } from '../redux/addToken'
 
+class AddTokenWizard extends Component {
   goToStep2 = () => {
-    this.setState({
-      step: 2
-    })
+    const { dispatch } = this.props
+    dispatch(setStep(2))
   }
 
   goToStep3 = () => {
-    this.setState({
-      step: 3
-    })
+    const { dispatch } = this.props
+    dispatch(setStep(3))
   }
 
   goToStep4 = () => {
-    this.setState({
-      step: 4
-    })
+    const { dispatch } = this.props
+    dispatch(setStep(4))
   }
 
   goToStep5 = () => {
-    this.setState({
-      step: 5
-    })
+    const { dispatch } = this.props
+    dispatch(setStep(5))
   }
 
   deployToken = () => {
-    this.setState({
-      step: 6
-    })
+    const { dispatch } = this.props
+    dispatch(setStep(6))
   }
 
   renderStep (step) {
@@ -62,7 +54,7 @@ class AddTokenWizard extends Component {
   }
 
   render () {
-    const { step } = this.state
+    const { addToken: { step } } = this.props
     return (
       <div>
         <div>Step: {step}</div>
@@ -76,4 +68,4 @@ class AddTokenWizard extends Component {
   }
 }
 
-export default AddTokenWizard
+export default connect(s => s)(AddTokenWizard)
