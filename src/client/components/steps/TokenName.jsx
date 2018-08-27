@@ -27,6 +27,7 @@ class TokenName extends Component {
         <div>Insert the name of your token:</div>
         <input value={text} onChange={this.onChangeText} />
         {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
+        {!valid && text.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
       </div>
     )
   }
