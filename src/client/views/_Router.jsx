@@ -1,6 +1,16 @@
 import React from 'react'
 import PageNotFound from '../components/PageNotFound'
 import Loading from '../components/Loading'
+
+
+import Home from '../views/Home'
+import AddTokenAdvanced from '../views/AddTokenAdvanced'
+import AddTokenWizard from '../views/AddTokenWizard'
+import TokenDetails from '../views/TokenDetails'
+import HelpPage from '../views/HelpPage'
+import AboutPage from '../views/AboutPage'
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +26,7 @@ const AppRouter = ({web3}) => {
           ? <Loading />
           : <div className='pure-u-1'>
             <Switch>
-              <Route exact path='/' component={Main} />
+              <Route exact path='/' component={Home} />
               <Route exact path='/token' >
                 <Route exact path='/add/advanced' component={AddTokenAdvanced} />
                 <Route exact path='/add/wizard' component={AddTokenWizard} />
