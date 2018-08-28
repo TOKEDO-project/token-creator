@@ -60,6 +60,7 @@
     "file-loader": "^2.0.0",
     "foreman": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "react-autocomplete-cli": "0.0.3",
     "redux-devtools-extension": "^2.13.2",
     "regenerator-runtime": "^0.12.0",
     "standard": "^11.0.1",
