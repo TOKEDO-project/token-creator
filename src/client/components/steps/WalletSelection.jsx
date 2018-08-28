@@ -38,7 +38,7 @@ class WalletSelection extends Component {
 
         {addToken.walletType === 'atomax' ? <Atomax name='addToken' to='0xf89baa73f7319bcb8a645f4c7a8e7cdb296acddb' value='0.1' /> : null }
 
-        <button onClick={nextFunction}>Create Token</button>
+
         <ResetAndBack />
       </div>
     )

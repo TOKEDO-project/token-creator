@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 class Metamask extends Component {
   render () {
     const { web3: { metamaskStatus } } = this.props
-    console.log(metamaskStatus)
     return (
       <button onClick={this.onClickMetamask} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
         {metamaskStatus === MetamaskStatus.LOCKED
