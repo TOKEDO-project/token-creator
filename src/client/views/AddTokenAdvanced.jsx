@@ -8,9 +8,10 @@ import TokenSupply from '../components/steps/TokenSupply'
 import TokenType from '../components/steps/TokenType'
 
 import WalletSelection from '../components/steps/WalletSelection'
-
+import TermsAndConditions from '../components/TermsAndConditions'
 
 import { setStep } from '../redux/addToken'
+import { preferences } from '../redux/preferences'
 
 class AddTokenAdvanced extends React.Component {
   constructor (props) {
@@ -50,21 +51,25 @@ class AddTokenAdvanced extends React.Component {
     return validName && validSymbol && validDecimals && validSupply
   }
   render () {
-    const { addToken, nextFunction } = this.props
+    const { addToken, preferences } = this.props
+
+    if (!preferences.terms) {
+      return <TermsAndConditions />
+    }
     return (<div>
       <div>
         <a href='/token/add/wizard'>wizard</a>
       </div>
       <h1>AddTokenAdvanced</h1>
-      {addToken.step === 6 ? <WalletSelection /> :
-      <div>
-        <TokenName setValid={this.setValidName} />
-        <TokenSymbol setValid={this.setValidSymbol} />
-        <TokenDecimals setValid={this.setValidDecimals} />
-        <TokenSupply setValid={this.setValidSupply} />
-        <TokenType />
-        {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
-      </div>
+      {addToken.step === 6 ? <WalletSelection />
+        : <div>
+          <TokenName setValid={this.setValidName} />
+          <TokenSymbol setValid={this.setValidSymbol} />
+          <TokenDecimals setValid={this.setValidDecimals} />
+          <TokenSupply setValid={this.setValidSupply} />
+          <TokenType />
+          {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+        </div>
       }
     </div>)
   }

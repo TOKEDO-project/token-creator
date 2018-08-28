@@ -7,8 +7,9 @@ import TokenDecimals from '../components/steps/TokenDecimals'
 import TokenSupply from '../components/steps/TokenSupply'
 import TokenType from '../components/steps/TokenType'
 import WalletSelection from '../components/steps/WalletSelection'
-
+import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addToken'
+import { preferences } from '../redux/preferences'
 
 class AddTokenWizard extends Component {
   goToStep2 = () => {
@@ -54,12 +55,15 @@ class AddTokenWizard extends Component {
   }
 
   render () {
-    const { addToken: { step } } = this.props
+    const { addToken, preferences } = this.props
+    if (!preferences.terms) {
+      return <TermsAndConditions />
+    }
     return (
       <div>
-        <div>Step: {step}</div>
-        {this.renderStep(step)}
-        {step === 6 ? null : <div><a href='/token/add/advanced'>advanced</a></div> }
+        <div>Step: {addToken.step}</div>
+        {this.renderStep(addToken.step)}
+        {addToken.step === 6 ? null : <div><a href='/token/add/advanced'>advanced</a></div> }
       </div>
     )
   }
