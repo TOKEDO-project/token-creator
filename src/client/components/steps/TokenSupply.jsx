@@ -22,7 +22,13 @@ class TokenSupply extends Component {
   }
 
   validate = (input) => {
-    return input.length > 3
+    const { setValid } = this.props
+    const valid = input.length > 3
+
+    if (setValid) {
+      setValid(valid)
+    }
+    return valid
   }
   componentWillMount () {
     const { addToken } = this.props

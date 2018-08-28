@@ -13,8 +13,8 @@ class TokenSymbol extends Component {
 
   onChangeText = (e) => {
     const value = e.target.value
-
     const { dispatch } = this.props
+
     dispatch(setSymbol(value))
     this.setState({
       valid: this.validate(value)
@@ -22,8 +22,15 @@ class TokenSymbol extends Component {
   }
 
   validate = (input) => {
-    return input.length > 3
+    const { setValid } = this.props
+    const valid = input.length > 3
+
+    if (setValid) {
+      setValid(valid)
+    }
+    return valid
   }
+
   componentWillMount () {
     const { addToken } = this.props
     this.setState({ valid: this.validate(addToken.name) })

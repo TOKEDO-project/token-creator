@@ -7,7 +7,7 @@ class TokenType extends Component {
     super(props)
 
     this.state = {
-      valid: false
+      valid: true
     }
   }
 
@@ -18,6 +18,7 @@ class TokenType extends Component {
 
   render () {
     const { addToken, nextFunction } = this.props
+    const { valid } = this.state
 
     return (
       <div>
@@ -28,7 +29,7 @@ class TokenType extends Component {
           Simple <input type='radio' name='tokenType' value='simple' checked={addToken.type === 'simple'} onChange={this.onChange} />
         </form>
 
-        <button onClick={nextFunction} >Next</button>
+        {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
       </div>
     )
   }
