@@ -1,10 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
 import TokenDecimals from '../components/steps/TokenDecimals'
 import TokenSupply from '../components/steps/TokenSupply'
 import TokenType from '../components/steps/TokenType'
+
+import WalletSelection from '../components/steps/WalletSelection'
+
 
 import { setStep } from '../redux/addToken'
 
@@ -46,20 +50,24 @@ class AddTokenAdvanced extends React.Component {
     return validName && validSymbol && validDecimals && validSupply
   }
   render () {
+    const { addToken, nextFunction } = this.props
     return (<div>
       <div>
         <a href='/token/add/wizard'>wizard</a>
       </div>
       <h1>AddTokenAdvanced</h1>
-      <TokenName setValid={this.setValidName} />
-      <TokenSymbol setValid={this.setValidSymbol} />
-      <TokenDecimals setValid={this.setValidDecimals} />
-      <TokenSupply setValid={this.setValidSupply} />
-      <TokenType />
-
-      {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+      {addToken.step === 6 ? <WalletSelection /> :
+      <div>
+        <TokenName setValid={this.setValidName} />
+        <TokenSymbol setValid={this.setValidSymbol} />
+        <TokenDecimals setValid={this.setValidDecimals} />
+        <TokenSupply setValid={this.setValidSupply} />
+        <TokenType />
+        {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+      </div>
+      }
     </div>)
   }
 }
 
-export default AddTokenAdvanced
+export default connect(s => s)(AddTokenAdvanced)
