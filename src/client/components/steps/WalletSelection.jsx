@@ -31,6 +31,7 @@ class WalletSelection extends Component {
           <div onClick={this.onClickMetamask} className={`pure-u-1-2 item${addToken.walletType === 'metamask' ? ' selected' : ''}`}><p>Metamask</p></div>
           <div onClick={this.onClickAtomax} className={`pure-u-1-2 item${addToken.walletType === 'atomax' ? ' selected' : ''}`}><p>Atomax</p></div>
         </div>
+
         <button onClick={nextFunction}>Create Token</button>
         <ResetAndBack />
       </div>

@@ -13,13 +13,20 @@ class TokenSupply extends Component {
 
   onChangeText = (e) => {
     const value = e.target.value
-    const textLength = value.length
 
     const { dispatch } = this.props
     dispatch(setSupply(value))
     this.setState({
-      valid: textLength > 3
+      valid: this.validate(value)
     })
+  }
+
+  validate = (input) => {
+    return input.length > 3
+  }
+  componentWillMount () {
+    const { addToken } = this.props
+    this.setState({ valid: this.validate(addToken.name) })
   }
 
   render () {
