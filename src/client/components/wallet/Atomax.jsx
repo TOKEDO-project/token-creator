@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AtomaxConnector from 'atomax-connector'
+import QRCode from 'qrcode.react'
 
 class Atomax extends Component {
   constructor (props) {
@@ -32,7 +33,7 @@ class Atomax extends Component {
         {loading
           ? <div>Loading</div>
           : <div>
-            { data }
+            <QRCode value={data} />
             { address && address !== '' ? <div>This is your address: {address}</div> : null }
             { txId && txId !== '' ? <div>This is your transaction id: {txId}</div> : null }
           </div>
