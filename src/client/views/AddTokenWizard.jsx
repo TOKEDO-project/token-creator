@@ -59,10 +59,7 @@ class AddTokenWizard extends Component {
       <div>
         <div>Step: {step}</div>
         {this.renderStep(step)}
-
-        <div>
-          <a href='/token/add/advanced'>advanced</a>
-        </div>
+        {step === 6 ? null : <div><a href='/token/add/advanced'>advanced</a></div> }
       </div>
     )
   }
