@@ -10,7 +10,6 @@ class TokenName extends Component {
       valid: false
     }
   }
-
   onChangeText = (e) => {
     const value = e.target.value
     const textLength = value.length
@@ -22,6 +21,11 @@ class TokenName extends Component {
     })
   }
 
+  componentWillMount () {
+    const { addToken } = this.props
+    this.setState({ valid: addToken.name.length > 3 })
+  }
+
   render () {
     const { addToken, nextFunction } = this.props
     const { valid } = this.state
@@ -29,7 +33,7 @@ class TokenName extends Component {
     return (
       <div>
         <div>Insert the name of your token:</div>
-        <input value={addToken.name} onChange={this.onChangeText} />
+        <input name='tokenName' value={addToken.name} onChange={this.onChangeText} />
         {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
         {!valid && addToken.name.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setWalletType } from '../../redux/addToken'
 
+import ResetAndBack from './ResetAndBack'
 import './WalletSelection.css'
 
 class WalletSelection extends Component {
@@ -12,9 +13,13 @@ class WalletSelection extends Component {
       valid: false
     }
   }
-  onClick = (e) => {
+  onClickMetamask = (e) => {
     const { dispatch } = this.props
-    dispatch(setWalletType(e.target.getAttribute('data-wallet')))
+    dispatch(setWalletType('metamask'))
+  }
+  onClickAtomax = (e) => {
+    const { dispatch } = this.props
+    dispatch(setWalletType('atomax'))
   }
   render () {
     const { addToken, nextFunction } = this.props
@@ -23,10 +28,11 @@ class WalletSelection extends Component {
       <div id='WalletSelection'>
         <div>Select the wallet</div>
         <div className='pure-g'>
-          <div data-wallet='metamask' onClick={this.onClick} className={`pure-u-1-2 item${addToken.walletType === 'metamask' ? ' selected' : ''}`}><p>Metamask</p></div>
-          <div data-wallet='atomax' onClick={this.onClick} className={`pure-u-1-2 item${addToken.walletType === 'atomax' ? ' selected' : ''}`}><p>Atomax</p></div>
+          <div onClick={this.onClickMetamask} className={`pure-u-1-2 item${addToken.walletType === 'metamask' ? ' selected' : ''}`}><p>Metamask</p></div>
+          <div onClick={this.onClickAtomax} className={`pure-u-1-2 item${addToken.walletType === 'atomax' ? ' selected' : ''}`}><p>Atomax</p></div>
         </div>
         <button onClick={nextFunction}>Create Token</button>
+        <ResetAndBack />
       </div>
     )
   }
