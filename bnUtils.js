@@ -69,6 +69,12 @@ const negated = (a) => {
   return aBN.negated().toFixed()
 }
 
+const pow = (a, b) => {
+  const aBN = new BigNumber(a + '')
+  const bBN = new BigNumber(b + '')
+  return aBN.pow(bBN)
+}
+
 module.exports = {
   minus,
   plus,
@@ -81,5 +87,6 @@ module.exports = {
   gte,
   isNaN,
   dp,
-  negated
+  negated,
+  pow
 }
