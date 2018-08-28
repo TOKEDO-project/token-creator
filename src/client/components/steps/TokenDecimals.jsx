@@ -23,7 +23,7 @@ class TokenDecimals extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    const valid = input.length > 3
+    const valid = input >= 0 && input <= 18
 
     if (setValid) {
       setValid(valid)
@@ -33,7 +33,7 @@ class TokenDecimals extends Component {
 
   componentWillMount () {
     const { addToken } = this.props
-    this.setState({ valid: this.validate(addToken.name) })
+    this.setState({ valid: this.validate(addToken.decimals) })
   }
 
   render () {
@@ -45,7 +45,7 @@ class TokenDecimals extends Component {
         <div>Insert the decimals of your token:</div>
         <input value={addToken.decimals} onChange={this.onChangeText} />
         {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
-        {!valid && addToken.decimals.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
+        {!valid && addToken.decimals.length > 0 ? <div>Inserire un intero tra 0 e 18</div> : null}
       </div>
     )
   }

@@ -33,7 +33,7 @@ class TokenSymbol extends Component {
 
   componentWillMount () {
     const { addToken } = this.props
-    this.setState({ valid: this.validate(addToken.name) })
+    this.setState({ valid: this.validate(addToken.symbol) })
   }
 
   render () {
