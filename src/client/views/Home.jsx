@@ -1,5 +1,6 @@
 import React from 'react'
 import { translate } from 'react-i18next'
+import { connect } from 'react-redux'
 
 class Home extends React.Component {
   constructor (props) {
@@ -15,4 +16,4 @@ class Home extends React.Component {
   }
 }
 
-export default translate('translations')(Home)
+export default translate('translations')(connect(s => s)(Home))

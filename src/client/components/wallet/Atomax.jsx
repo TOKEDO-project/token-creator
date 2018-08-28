@@ -4,12 +4,12 @@ import AtomaxConnector from 'atomax-connector'
 class Atomax extends Component {
   constructor (props) {
     super(props)
-    this.state({
+    this.state = {
       loading: true,
       address: '',
       txId: '',
       data: ''
-    })
+    }
   }
 
   async componentDidMount () {
@@ -19,7 +19,8 @@ class Atomax extends Component {
       to,
       value,
       addressCB: address => this.setState({ address }),
-      txIdCB: tx => this.setState({ txId: tx.id })
+      txIdCB: tx => this.setState({ txId: tx.id }),
+      returnOnlyData: true
     })
     this.setState({ qrcode, loading: false })
   }
