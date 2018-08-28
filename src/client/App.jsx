@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
+import { I18nextProvider } from 'react-i18next'
 import { store } from './redux/store'
 
 import Router from './views/_Router'
@@ -12,6 +13,8 @@ import { setWeb3, MetamaskStatus, setMetamaskStatus } from './redux/web3'
 import '../../node_modules/purecss/build/pure-min.css'
 import '../../node_modules/purecss/build/grids-responsive-min.css'
 import './App.css'
+
+import i18n from './i18n'
 
 class App extends React.Component {
   constructor (props) {
@@ -72,5 +75,7 @@ const AppConnected = connect(s => s)(App)
 
 render(
   <Provider store={store}>
-    <AppConnected />
+    <I18nextProvider i18n={ i18n }>
+      <AppConnected />
+    </I18nextProvider>
   </Provider>, document.getElementById('app'))

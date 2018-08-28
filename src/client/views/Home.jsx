@@ -1,6 +1,5 @@
 import React from 'react'
-
-import Localization from '../Localization'
+import { translate } from 'react-i18next'
 
 class Home extends React.Component {
   constructor (props) {
@@ -11,8 +10,9 @@ class Home extends React.Component {
   }
 
   render () {
-    return (<div> {Localization.home} <div><a href='/token/add/wizard'>{Localization.start_now}</a></div> </div>)
+    const { t } = this.props
+    return (<div> {t('Home')} <div><a href='/token/add/wizard'>{t('START NOW!')}</a></div> </div>)
   }
 }
 
-export default Home
+export default translate('translations')(Home)
