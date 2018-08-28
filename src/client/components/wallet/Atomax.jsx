@@ -14,7 +14,7 @@ class Atomax extends Component {
 
   async componentDidMount () {
     const { name, to, value } = this.props
-    const qrcode = await AtomaxConnector({
+    const data = await AtomaxConnector({
       connectorName: name,
       to,
       value,
@@ -22,11 +22,11 @@ class Atomax extends Component {
       txIdCB: tx => this.setState({ txId: tx.id }),
       returnOnlyData: true
     })
-    this.setState({ qrcode, loading: false })
+    this.setState({ data, loading: false })
   }
 
   render () {
-    const { address, txId, data, loading } = this.props
+    const { address, txId, loading, data } = this.state
     return (
       <div>
         {loading
