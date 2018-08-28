@@ -12,7 +12,7 @@ i18n
           'START NOW!': 'START NOW!'
         }
       },
-      el: {
+      it: {
         translations: {
           'Home': 'Home',
           'START NOW!': 'INIZIA ORA!'
