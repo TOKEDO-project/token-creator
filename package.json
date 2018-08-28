@@ -5,7 +5,7 @@
   "main": "client/App.jsx",
   "engines": {
     "node": "9.11.1",
-    "npm": "6.2.0"
+    "npm": "6.4.0"
   },
   "scripts": {
     "build": "webpack -p --config ./webpack/webpack.prod.js --progress",
@@ -20,6 +20,7 @@
   "author": "linosorice",
   "license": "MIT",
   "dependencies": {
+    "atomax-connector": "^1.0.10",
     "bignumber.js": "^7.2.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
