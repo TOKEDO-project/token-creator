@@ -24,7 +24,11 @@ class WalletSelection extends Component {
     dispatch(setWalletType('atomax'))
   }
   render () {
-    const { addToken, nextFunction } = this.props
+    const { addToken, nextFunction, web3 } = this.props
+
+    if (web3.loading) {
+      return <div>Loading...</div>
+    }
 
     return (
       <div id='WalletSelection'>
@@ -36,8 +40,7 @@ class WalletSelection extends Component {
 
         {addToken.walletType === 'metamask' ? <Metamask /> : null }
 
-        {addToken.walletType === 'atomax' ? <Atomax name='addToken' to='0xf89baa73f7319bcb8a645f4c7a8e7cdb296acddb' value='0.1' /> : null }
-
+        {addToken.walletType === 'atomax' ? <Atomax /> : null }
 
         <ResetAndBack />
       </div>
