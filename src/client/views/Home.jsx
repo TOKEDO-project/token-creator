@@ -25,7 +25,7 @@ class Home extends Component {
           {map(tokens, (token, key) => {
             if (token.contractAddress) {
               return <div key={key}>
-                {key} - {token.name}
+                {key}<br />{token.contractAddress}<br />{token.name}
                 <a href={`/token/details/${token.contractAddress}`}>details</a>
               </div>
             }

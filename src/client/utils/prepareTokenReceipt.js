@@ -6,6 +6,7 @@ export default (receipt) => {
     contractAddress: receipt.contractAddress,
     cumulativeGasUsed: receipt.cumulativeGasUsed,
     from: receipt.from,
+    owner: receipt.from,
     gasUsed: receipt.gasUsed,
     status: receipt.status,
     to: receipt.to
