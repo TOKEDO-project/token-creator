@@ -24,15 +24,10 @@ class Atomax extends Component {
   startIntervalAtomax = (web3, dispatch, txId, tokenObj) => {
     if (!web3.loading && web3.eth) {
       this.timer = setInterval(async () => {
-        // const accounts = await web3.eth.getAccounts()
-        // Detect address change
-        // if (accounts[0] !== web3.address) { window.location.reload() }
-        console.log('ID', txId)
         let receipt = await web3.eth.getTransactionReceipt(txId)
-        console.log(receipt)
         if (receipt) {
-          // write Receipt to store
           clearTimeout(this.timer)
+          // write Receipt to store
           const { dispatch } = this.props
           dispatch(saveToken(txId, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
         }
