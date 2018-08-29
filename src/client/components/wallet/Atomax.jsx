@@ -41,7 +41,7 @@ class Atomax extends Component {
   }
 
   async componentDidMount () {
-    const { web3, addToken: { name, symbol, decimals, supply, type }, transaction } = this.props
+    const { web3, addToken: { name, symbol, decimals, supply, type }, transaction, onTransactionHash } = this.props
     let tokenObj = {
       name,
       symbol,
@@ -64,7 +64,8 @@ class Atomax extends Component {
           this.setState({ txId: tx.id })
           const { dispatch } = this.props
           if (tx.id) {
-            dispatch(saveTransaction(tx.id, tokenObj))
+            onTransactionHash(tx.id)
+            // dispatch(saveTransaction(tx.id, tokenObj))
             // Start listening for TX confirmation
             this.startIntervalAtomax(web3, dispatch, tx.id, tokenObj)
           }
