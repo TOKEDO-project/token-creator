@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions'
+import { cloneDeep } from 'lodash'
 
 export const saveToken = createAction('SAVE_TOKEN',
   (txId, token) => {
@@ -6,8 +7,19 @@ export const saveToken = createAction('SAVE_TOKEN',
   }
 )
 
+export const removeToken = createAction('REMOVE_TOKEN',
+  (txId) => {
+    return txId
+  }
+)
+
 export const tokens = handleActions({
   SAVE_TOKEN: (state, { payload }) => {
     return {...state, ...payload}
+  },
+  REMOVE_TOKEN: (state, { payload }) => {
+    const newState = cloneDeep(payload)
+    delete newState[payload]
+    return newState
   }
 }, {})
