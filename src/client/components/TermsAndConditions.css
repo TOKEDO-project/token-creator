@@ -1,0 +1,54 @@
+#tac {
+ padding: 50px 5%;
+}
+
+#tac img.shuttle {
+ width: 72px;
+ object-fit: contain;
+}
+
+#tac div.box {
+ background-color: white;
+ box-shadow: 0 0 5px 5px #E2E2E2;
+ border-radius: 5px;
+ padding: 50px;
+ color: #888888;
+ font-size: 12px;
+ margin: 50px 0;
+ font-weight: 700;
+ letter-spacing: 1px;
+ word-spacing: 2px;
+}
+
+#tac div.box div.text {
+ max-height: 300px;
+ overflow-y: scroll;
+ padding-right: 5px;
+}
+
+#tac div.buttons {
+ margin-bottom: 50px;
+}
+
+#tac div.buttons a {
+ width: calc(50% - 10px);
+}
+
+#tac div.buttons button {
+ width: 100%;
+ height: 60px;
+ border: none;
+ border-radius: 5px;
+ font-weight: 700;
+ letter-spacing: 1px;
+ box-shadow: 0 0 5px 5px #E2E2E2;
+ color: white;
+}
+
+#tac div.buttons button.refuse {
+ background-color: #BBBBBB;
+}
+
+#tac div.buttons button.accept {
+ background: linear-gradient(#FFB950, #FCD462);
+}

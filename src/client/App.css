@@ -15,3 +15,7 @@ a:hover {
 a>span.fa:hover {
  transform: scale(1.25);
 }
+
+button {
+ cursor: pointer;
+}
