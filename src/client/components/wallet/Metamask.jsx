@@ -44,7 +44,7 @@ class Metamask extends Component {
           const contractAddress = receiptPrepared.contractAddress
 
           // write Receipt to store
-          dispatch(saveToken(contractAddress, { ...tokenObj, receipt: receiptPrepared }))
+          dispatch(saveToken(contractAddress, { ...receiptPrepared }))
           this.props.getContractAddress(contractAddress)
         })
         .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber, prepareTokenReceipt(receipt)))

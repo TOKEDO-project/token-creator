@@ -1,5 +1,6 @@
 export default (receipt) => {
   return {
+    transactionHash: receipt.transactionHash,
     blockHash: receipt.blockHash,
     blockNumber: receipt.blockNumber,
     contractAddress: receipt.contractAddress,

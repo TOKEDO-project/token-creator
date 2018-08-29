@@ -34,7 +34,7 @@ class Atomax extends Component {
 
           // write Receipt to store
           const { dispatch } = this.props
-          dispatch(saveToken(contractAddress, { ...tokenObj, receipt: receiptPrepared }))
+          dispatch(saveToken(contractAddress, { ...receiptPrepared }))
           this.props.getContractAddress(contractAddress)
         }
       }, 3000)

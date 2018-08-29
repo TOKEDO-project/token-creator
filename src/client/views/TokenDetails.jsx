@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-class TokenDetails extends React.Component {
+class TokenDetails extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -9,8 +10,13 @@ class TokenDetails extends React.Component {
   }
 
   render () {
-    return (<div>TokenDetails</div>)
+    return (<div>
+      TokenDetails
+      <div>
+      Lista dei token
+      </div>
+    </div>)
   }
 }
 
-export default TokenDetails
+export default connect(s => s)(TokenDetails)

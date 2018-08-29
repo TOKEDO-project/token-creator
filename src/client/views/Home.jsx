@@ -23,10 +23,10 @@ class Home extends Component {
         {t('List of Token')}
         <div>
           {map(tokens, (token, key) => {
-            if (token.receipt && token.receipt.contractAddress) {
+            if (token.contractAddress) {
               return <div key={key}>
                 {key} - {token.name}
-                <a href={`/token/details/${token.receipt.contractAddress}`}>details</a>
+                <a href={`/token/details/${token.contractAddress}`}>details</a>
               </div>
             }
           })}
