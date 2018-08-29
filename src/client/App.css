@@ -1,0 +1,17 @@
+* {
+ box-sizing: border-box;
+ transition: all 0.2s linear;
+}
+
+a {
+ color: inherit;
+ text-decoration: none;
+}
+
+a:hover {
+ text-decoration: underline;
+}
+
+a>span.fa:hover {
+ transform: scale(1.25);
+}

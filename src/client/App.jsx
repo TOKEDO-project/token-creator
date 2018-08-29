@@ -13,6 +13,7 @@ import { setWeb3, MetamaskStatus, setMetamaskStatus } from './redux/web3'
 import '../../node_modules/purecss/build/pure-min.css'
 import '../../node_modules/purecss/build/grids-responsive-min.css'
 import './App.css'
+import './flex.css'
 
 import i18n from './i18n'
 
@@ -62,7 +63,7 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div className='pure-g'>
         <Header />
         <Router />
         <Footer />

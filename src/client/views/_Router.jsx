@@ -17,21 +17,19 @@ import './_Router.css'
 
 const AppRouter = () => {
   return (
-    <div className='main'>
+    <main className='pure-u-1'>
       <Router>
-        <div className='pure-u-1'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/token/add/advanced' component={AddTokenAdvanced} />
-            <Route exact path='/token/add/wizard' component={AddTokenWizard} />
-            <Route exact path='/token/details/:tokenId' component={TokenDetails} />
-            <Route exact path='/help' component={HelpPage} />
-            <Route exact path='/about' component={AboutPage} />
-            <Route render={() => <PageNotFound />} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/token/add/advanced' component={AddTokenAdvanced} />
+          <Route exact path='/token/add/wizard' component={AddTokenWizard} />
+          <Route exact path='/token/details/:tokenId' component={TokenDetails} />
+          <Route exact path='/help' component={HelpPage} />
+          <Route exact path='/about' component={AboutPage} />
+          <Route render={() => <PageNotFound />} />
+        </Switch>
       </Router>
-    </div>
+    </main>
   )
 }
 

@@ -1,7 +1,8 @@
-.main {
-  height: 100vh;
-    display: flex;
-
-    /* Direction of the items, can be row or column */
-    flex-direction: column;
+main {
+  /* Height = Max viewport height - Header Height - Footer Height
+  min-height: calc(100vh - 90px - 64px); */
+  
+  /* Height = Max viewport height - Header Height */
+  min-height: calc(100vh - 90px);
+  background-color: #EEEEEE;
 }

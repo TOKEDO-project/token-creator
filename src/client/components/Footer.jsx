@@ -3,9 +3,9 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <div className='pure-u-1'>
-      Footer <div> <a href='https://github.com/TOKEDO-project/token-creator' target='_blank'>GitHub</a> </div>
-    </div>
+    <footer className='pure-u-1 d-flex flex-h-center flex-v-center'>
+      <a href='https://github.com/TOKEDO-project/token-creator' target='_blank'><span className='fa fa-github' /></a>
+    </footer>
   )
 }
 

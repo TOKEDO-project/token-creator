@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
-
 import { map } from 'lodash'
+import shuttle from '../assets/images/shuttle.svg'
+import './Home.css'
 
 class Home extends Component {
   constructor (props) {
@@ -16,7 +17,17 @@ class Home extends Component {
     const { t, tokens } = this.props
     console.log(tokens)
     if (Object.keys(tokens.receipts).length === 0) {
-      return (<div> {t('Home')} <div><a href='/token/add/wizard'>{t('START NOW!')}</a></div> </div>)
+      return (
+        <div id='home' className='pure-u-1 d-flex flex-column flex-h-center flex-v-center'>
+          <img className='shuttle' src={shuttle} alt='Home' />
+          <span className='message'>Your Token Sale in 5 Minutes</span>
+          <a href='/token/add/wizard'>
+            <button type='button' className='start-now'>
+              {t('START NOW!')}
+            </button>
+          </a>
+        </div>
+      )
     }
     return (
       <div>

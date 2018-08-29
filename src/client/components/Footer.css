@@ -1,0 +1,10 @@
+footer {
+ background-color: #24242A;
+ color: white;
+ padding: 0 25px;
+ height: 64px;
+}
+
+footer span.fa {
+ font-size: 32px;
+}

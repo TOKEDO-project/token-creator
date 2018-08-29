@@ -43,7 +43,7 @@ class WalletSelection extends Component {
     return (
       <div id='WalletSelection'>
         <div>Select the wallet</div>
-        <div className='pure-g'>
+        <div className='pure-u-1'>
           <div onClick={this.onClickMetamask} className={`pure-u-1-2 item${addToken.walletType === 'metamask' ? ' selected' : ''}`}><p>Metamask</p></div>
           <div onClick={this.onClickAtomax} className={`pure-u-1-2 item${addToken.walletType === 'atomax' ? ' selected' : ''}`}><p>Atomax</p></div>
         </div>

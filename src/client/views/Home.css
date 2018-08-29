@@ -1,0 +1,25 @@
+#home {
+ padding: 50px;
+}
+
+#home img.shuttle {
+ width: 72px;
+ object-fit: contain;
+}
+
+#home span.message {
+ font-weight: 700;
+ color: #575757;
+ letter-spacing: 1px;
+ margin: 50px 0;
+}
+
+#home button.start-now {
+ width: 220px;
+ height: 60px;
+ background: linear-gradient(#FFB950, #FCD462);
+ border: none;
+ border-radius: 5px;
+ color: white;
+ font-weight: 700;
+}

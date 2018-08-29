@@ -1,0 +1,34 @@
+header {
+ background-color: #24242A;
+ color: white;
+ padding: 0 25px;
+ height: 90px;
+ position: relative;
+}
+
+header img.logo {
+ width: 200px;
+ object-fit: contain;
+}
+
+header a.title {
+ margin-left: 40px;
+ padding-bottom: 7px;
+ font-size: 20;
+ font-weight: 700;
+ letter-spacing: 2px;
+}
+
+header span.fa {
+ font-size: 32px;
+ cursor: pointer;
+ position: absolute;
+ top: 0;
+ right: 25px;
+ z-index: 1;
+ height: 100%;
+}
+
+header span.fa.menuOpen {
+ color: #515151;
+}
