@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { MetamaskStatus } from '../../redux/web3'
 import { connect } from 'react-redux'
 import prepareAddTokenTransaction from '../../utils/prepareAddTokenTransaction'
+import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
+
+import { saveToken } from '../../redux/tokens'
 
 class Metamask extends Component {
   onClickDeploy = async () => {
@@ -17,11 +20,29 @@ class Metamask extends Component {
         await web3.eth.sendTransaction(trx)
       */
       const gasPrice = await web3.eth.getGasPrice()
+      let tokenObj = {
+        name,
+        symbol,
+        decimals,
+        supply,
+        type
+      }
+
+      console.log('TX: ', tx)
+
       await tx.send({from: web3.address, gasPrice})
         .on('error', error => console.log(error))
-        .on('transactionHash', transactionHash => console.log(transactionHash))
-        .on('receipt', receipt => console.log(receipt.contractAddress)) // contains the new contract address
-        .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber, receipt))
+        .on('transactionHash', transactionHash => {
+          console.log(transactionHash)
+
+          const { dispatch } = this.props
+          dispatch(saveToken(transactionHash, tokenObj))
+        })
+        .on('receipt', receipt => {
+          const { dispatch } = this.props
+          dispatch(saveToken(receipt.transactionHash, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
+        })
+        .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber, prepareTokenReceipt(receipt)))
     } catch (error) {
       console.log(error)
     }

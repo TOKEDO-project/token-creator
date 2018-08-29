@@ -6,17 +6,30 @@ import persistState from 'redux-localstorage'
 
 import { web3 } from './web3'
 import { addToken } from './addToken'
+import { tokens } from './tokens'
 import { preferences } from './preferences'
 
 const reducers = combineReducers({
   web3,
   addToken,
+  tokens,
   preferences
 })
 
 const composeEnhancers = composeWithDevTools({realtime: true, port: 8080})
 
-let enhancers = composeEnhancers(applyMiddleware(thunkMiddleware, promiseMiddleware()), persistState(['addToken', 'preferences']))
+let enhancers = composeEnhancers(
+  applyMiddleware(thunkMiddleware,
+    promiseMiddleware()
+  ),
+  persistState(
+    [
+      'addToken',
+      'tokens',
+      'preferences'
+    ]
+  )
+)
 
 if (process.env.NODE_ENV === 'production') {
   enhancers = applyMiddleware(thunkMiddleware, promiseMiddleware(), persistState())

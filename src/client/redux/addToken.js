@@ -1,5 +1,10 @@
 import { handleActions, createAction } from 'redux-actions'
 
+export const addAddress = createAction('ADD_ADDRESS',
+  (address) => {
+    return address
+  }
+)
 export const setStep = createAction('SET_STEP',
   (step) => {
     return step
@@ -43,6 +48,12 @@ export const setWalletType = createAction('SET_WALLET_TYPE',
 )
 
 export const addToken = handleActions({
+  ADD_ADDRESS: (state, { payload }) => {
+    return {
+      ...state,
+      addresses: [...state.addresses, payload]
+    }
+  },
   SET_STEP: (state, { payload }) => {
     return {
       ...state,
@@ -86,6 +97,7 @@ export const addToken = handleActions({
     }
   }
 }, {
+  addresses: [],
   step: 1,
   name: '',
   symbol: '',
