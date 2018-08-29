@@ -24,16 +24,6 @@ class AddTokenWizard extends Component {
     }
   }
 
-  async componentDidMount () {
-
-  }
-
-  setContractAddress = (contractAddress) => {
-    this.setState({
-      contractAddress
-    })
-  }
-
   goToStep2 = () => {
     const { dispatch } = this.props
     dispatch(setStep(2))
