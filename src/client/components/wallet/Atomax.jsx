@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AtomaxConnector from 'atomax-connector'
 import QRCode from 'qrcode.react'
-import prepareAddTokenTransaction from '../../utils/prepareAddTokenTransaction'
 import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
 
 import { saveTransaction, saveReceipt } from '../../redux/tokens'
@@ -42,7 +41,7 @@ class Atomax extends Component {
   }
 
   async componentDidMount () {
-    const { web3, addToken: { name, symbol, decimals, supply, type } } = this.props
+    const { web3, addToken: { name, symbol, decimals, supply, type }, transaction } = this.props
     let tokenObj = {
       name,
       symbol,
@@ -51,12 +50,11 @@ class Atomax extends Component {
       type
     }
     try {
-      const tx = await prepareAddTokenTransaction({web3, name, symbol, decimals, supply, type})
       const data = await AtomaxConnector({
         connectorName: name,
         to: '0x0000000000000000000000000000000000000000',
         value: '0',
-        data: tx.encodeABI(),
+        data: transaction.encodeABI(),
         returnOnlyData: true,
         addressCB: address => {
           this.setState({ address })
