@@ -30,11 +30,13 @@ export const setWeb3 = (web3) => async (dispatch, getState) => {
     } else {
       // Another web3 provider
       metamaskStatus = MetamaskStatus.NOT_INSTALLED
+      web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/aib8mgqOiU19DKPuRc72'))
     }
     gasPrice = await web3.eth.getGasPrice()
   } else {
     // No web 3 provider
     metamaskStatus = MetamaskStatus.NOT_INSTALLED
+    web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/aib8mgqOiU19DKPuRc72'))
   }
 
   return dispatch({
