@@ -14,6 +14,7 @@ class Atomax extends Component {
       loading: true,
       address: '',
       txId: '',
+      contractAddress: '',
       data: ''
     }
   }
@@ -26,10 +27,15 @@ class Atomax extends Component {
       this.timer = setInterval(async () => {
         let receipt = await web3.eth.getTransactionReceipt(txId)
         if (receipt) {
+          const receiptPrepared = prepareTokenReceipt(receipt)
+          const contractAddress = receiptPrepared.contractAddress
+
           clearTimeout(this.timer)
+
           // write Receipt to store
           const { dispatch } = this.props
-          dispatch(saveToken(prepareTokenReceipt(receipt).contractAddress, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
+          dispatch(saveToken(contractAddress, { ...tokenObj, receipt: receiptPrepared }))
+          this.props.getContractAddress(contractAddress)
         }
       }, 3000)
     }
