@@ -47,6 +47,19 @@ class AddTokenAdvanced extends React.Component {
     dispatch(setStep(6))
   }
 
+  componentDidMount = async () => {
+    console.log('componentDidMount---')
+    const {web3, addToken} = this.props
+    if (addToken.step === 6) {
+      const transaction = await prepareAddTokenTransaction({ web3, addToken })
+      console.log('componentDidMount---', transaction)
+      this.setState({
+        transaction,
+        loading: false
+      })
+    }
+  }
+
   // Set validators
   setValidName = (valid) => {
     this.setState({ validName: valid })

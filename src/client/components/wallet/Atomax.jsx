@@ -33,6 +33,7 @@ class Atomax extends Component {
 
   async componentDidMount () {
     const { transaction, onTransactionHash, connectorName } = this.props
+    console.log('transaction--', transaction)
     try {
       const data = await AtomaxConnector({
         connectorName,

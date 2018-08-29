@@ -54,6 +54,17 @@ class AddTokenWizard extends Component {
     })
   }
 
+  componentDidMount = async () => {
+    const {web3, addToken} = this.props
+    if (addToken.step === 6) {
+      const transaction = await prepareAddTokenTransaction({ web3, addToken })
+      this.setState({
+        transaction,
+        loading: false
+      })
+    }
+  }
+
   onReceipt = (receipt) => {
     const { dispatch } = this.props
     onReceiptToken(dispatch, receipt)

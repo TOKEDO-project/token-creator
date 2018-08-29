@@ -21,7 +21,7 @@ class WalletSelection extends Component {
 
   render () {
     const { addToken, web3, transaction, onTransactionHash, onReceipt, contractAddress, connectorName } = this.props
-
+    console.log('transaction WS', transaction)
     if (web3.loading) {
       return <div>Loading...</div>
     }
