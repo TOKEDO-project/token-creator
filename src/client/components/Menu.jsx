@@ -9,18 +9,18 @@ export class Menu extends Component {
         <div className='item title d-flex flex-row flex-h-between flex-v-center'>
           <span>Menu</span>
         </div>
-        <div className='item active d-flex flex-row flex-h-between flex-v-center'>
+        <a href='/' className='item active d-flex flex-row flex-h-between flex-v-center'>
           <span>Home</span>
-        </div>
-        <div className='item d-flex flex-row flex-h-between flex-v-center'>
+        </a>
+        <a href='/faq' className='item d-flex flex-row flex-h-between flex-v-center'>
           <span>FAQ</span>
-        </div>
-        <div className='item d-flex flex-row flex-h-between flex-v-center'>
+        </a>
+        <a href='/help' className='item d-flex flex-row flex-h-between flex-v-center'>
           <span>Help</span>
-        </div>
-        <div className='item d-flex flex-row flex-h-between flex-v-center'>
+        </a>
+        <a href='/credits' className='item d-flex flex-row flex-h-between flex-v-center'>
           <span>Credits</span>
-        </div>
+        </a>
       </div>
     )
   }
