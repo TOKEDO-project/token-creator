@@ -8,15 +8,8 @@ import TokenAddress from './TokenAddress'
 import ResetAndBack from './ResetAndBack'
 import './WalletSelection.css'
 
+// TODO: this can be stateless
 class WalletSelection extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      valid: false,
-      contractAddress: false
-    }
-  }
   onClickMetamask = (e) => {
     const { dispatch } = this.props
     dispatch(setWalletType('metamask'))
@@ -25,14 +18,9 @@ class WalletSelection extends Component {
     const { dispatch } = this.props
     dispatch(setWalletType('atomax'))
   }
-  setContractAddress = (contractAddress) => {
-    this.setState({
-      contractAddress
-    })
-  }
+
   render () {
-    const { addToken, web3 } = this.props
-    const { contractAddress } = this.state
+    const { addToken, web3, transaction, onTransactionHash, onReceipt, contractAddress } = this.props
 
     if (web3.loading) {
       return <div>Loading...</div>
@@ -48,7 +36,7 @@ class WalletSelection extends Component {
           <div onClick={this.onClickAtomax} className={`pure-u-1-2 item${addToken.walletType === 'atomax' ? ' selected' : ''}`}><p>Atomax</p></div>
         </div>
 
-        {addToken.walletType === 'metamask' ? <Metamask getContractAddress={this.setContractAddress} /> : null }
+        {addToken.walletType === 'metamask' ? <Metamask transaction={transaction} onTransactionHash={onTransactionHash} onReceipt={onReceipt} /> : null }
 
         {addToken.walletType === 'atomax' ? <Atomax getContractAddress={this.setContractAddress} /> : null }
 

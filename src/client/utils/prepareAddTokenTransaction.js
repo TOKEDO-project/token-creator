@@ -6,9 +6,9 @@ import startableBurnableTokenBytecode from '../assets/bytecode/Token-startable-b
 import startableTokenBytecode from '../assets/bytecode/Token-startable.json'
 import bnUtils from '../../../bnUtils'
 
-export default async ({ web3, name, symbol, decimals, supply, type }) => {
+export default async ({ web3, addToken }) => {
   let abi, bytecode
-  switch (type) {
+  switch (addToken.type) {
     case 'startable-burnable':
       abi = startableBurnableTokenAbi
       bytecode = startableBurnableTokenBytecode
@@ -24,10 +24,10 @@ export default async ({ web3, name, symbol, decimals, supply, type }) => {
   }
   const contract = new web3.eth.Contract(abi)
   const args = [
-    name,
-    symbol,
-    parseInt(decimals),
-    bnUtils.times(supply, bnUtils.pow(10, decimals))
+    addToken.name,
+    addToken.symbol,
+    parseInt(addToken.decimals),
+    bnUtils.times(addToken.supply, bnUtils.pow(10, addToken.decimals))
   ]
   const data = '0x' + bytecode.object
   const tx = contract.deploy({

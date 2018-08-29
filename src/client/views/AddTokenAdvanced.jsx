@@ -11,7 +11,10 @@ import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 
 import { setStep } from '../redux/addToken'
-import { preferences } from '../redux/preferences'
+import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
+import { onReceiptToken } from '../utils/onReceipt'
+import Loading from '../components/Loading'
+import { saveTransaction } from '../redux/tokens'
 
 class AddTokenAdvanced extends React.Component {
   constructor (props) {
@@ -22,8 +25,25 @@ class AddTokenAdvanced extends React.Component {
       validName: false,
       validSymbol: false,
       validDecimals: false,
-      validSupply: false
+      validSupply: false,
+      transaction: '',
+      contractAddress: ''
     }
+  }
+
+  async componentDidMount () {
+    const { web3, addToken } = this.props
+    const transaction = await prepareAddTokenTransaction({ web3, addToken })
+    this.setState({
+      transaction,
+      loading: false
+    })
+  }
+
+  setContractAddress = (contractAddress) => {
+    this.setState({
+      contractAddress
+    })
   }
 
   goToWalletSelection = () => {
@@ -50,18 +70,34 @@ class AddTokenAdvanced extends React.Component {
     const { validName, validSymbol, validDecimals, validSupply } = this.state
     return validName && validSymbol && validDecimals && validSupply
   }
-  render () {
-    const { addToken, preferences } = this.props
 
+  onReceipt = (receipt) => {
+    const { dispatch } = this.props
+    onReceiptToken(dispatch, receipt)
+    if (receipt.contractAddress) {
+      this.setState({
+        contractAddress: receipt.contractAddress
+      })
+    }
+  }
+
+  render () {
+    const { addToken: { name, symbol, decimals, supply, type, step }, preferences, loading, dispatch } = this.props
+    const { transaction, contractAddress } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
+
+    if (loading) {
+      return <Loading />
+    }
+
     return (<div>
       <div>
         <a href='/token/add/wizard'>wizard</a>
       </div>
       <h1>AddTokenAdvanced</h1>
-      {addToken.step === 6 ? <WalletSelection />
+      {step === 6 ? <WalletSelection transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
         : <div>
           <TokenName setValid={this.setValidName} />
           <TokenSymbol setValid={this.setValidSymbol} />

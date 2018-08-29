@@ -16,6 +16,7 @@ import './App.css'
 import './flex.css'
 
 import i18n from './i18n'
+import Loading from './components/Loading'
 
 class App extends React.Component {
   constructor (props) {
@@ -65,7 +66,7 @@ class App extends React.Component {
     return (
       <div className='pure-g'>
         <Header />
-        <Router />
+        {web3.loading ? <Loading /> : <Router />}
         <Footer />
       </div>
     )

@@ -9,9 +9,36 @@ import TokenType from '../components/steps/TokenType'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addToken'
-import { preferences } from '../redux/preferences'
+import Loading from '../components/Loading'
+import { saveTransaction } from '../redux/tokens'
+import { onReceiptToken } from '../utils/onReceipt'
+import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 
 class AddTokenWizard extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: true,
+      transaction: '',
+      contractAddress: ''
+    }
+  }
+
+  async componentDidMount () {
+    const { web3, addToken } = this.props
+    const transaction = await prepareAddTokenTransaction({ web3, addToken })
+    this.setState({
+      transaction,
+      loading: false
+    })
+  }
+
+  setContractAddress = (contractAddress) => {
+    this.setState({
+      contractAddress
+    })
+  }
+
   goToStep2 = () => {
     const { dispatch } = this.props
     dispatch(setStep(2))
@@ -37,7 +64,19 @@ class AddTokenWizard extends Component {
     dispatch(setStep(6))
   }
 
+  onReceipt = (receipt) => {
+    const { dispatch } = this.props
+    onReceiptToken(dispatch, receipt)
+    if (receipt.contractAddress) {
+      this.setState({
+        contractAddress: receipt.contractAddress
+      })
+    }
+  }
+
   renderStep (step) {
+    const { addToken: { name, symbol, decimals, supply, type }, dispatch } = this.props
+    const { transaction, contractAddress } = this.state
     switch (step) {
       case 1:
         return <TokenName nextFunction={this.goToStep2} />
@@ -50,14 +89,19 @@ class AddTokenWizard extends Component {
       case 5:
         return <TokenType nextFunction={this.deployToken} />
       case 6:
-        return <WalletSelection />
+        return <WalletSelection transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
+        } onReceipt={this.onReceipt} contractAddress={contractAddress} />
     }
   }
 
   render () {
     const { addToken, preferences } = this.props
+    const {loading} = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
+    }
+    if (loading) {
+      return <Loading />
     }
     return (
       <div>

@@ -8,11 +8,10 @@ import { saveTransaction, saveReceipt } from '../../redux/tokens'
 
 class Metamask extends Component {
   onClickDeploy = async () => {
-    const { web3, addToken: { name, symbol, decimals, supply, type } } = this.props
+    const { web3, transaction, onTransactionHash, onReceipt } = this.props
 
     // TODO: change the name of the button in waiting the transaction
     try {
-      const tx = await prepareAddTokenTransaction({web3, name, symbol, decimals, supply, type})
       /*
         TODO: give the possibility to avoid the nonce override:
         const nonce = await web3.eth.getTransactionCount(wallet.address, 'pending')
@@ -20,34 +19,20 @@ class Metamask extends Component {
         await web3.eth.sendTransaction(trx)
       */
       const gasPrice = await web3.eth.getGasPrice()
-      let tokenObj = {
-        name,
-        symbol,
-        decimals,
-        supply,
-        type
-      }
 
-      console.log('TX: ', tx)
+      console.log('TX: ', transaction)
 
-      await tx.send({from: web3.address, gasPrice})
+      await transaction.send({from: web3.address, gasPrice})
         .on('error', error => console.log(error))
         .on('transactionHash', transactionHash => {
           console.log(transactionHash)
-
-          const { dispatch } = this.props
-          dispatch(saveTransaction(transactionHash, tokenObj))
+          onTransactionHash(transactionHash)
         })
         .on('receipt', receipt => {
-          const { dispatch } = this.props
-          const receiptPrepared = prepareTokenReceipt(receipt)
-          const contractAddress = receiptPrepared.contractAddress
-
-          // write Receipt to store
-          dispatch(saveReceipt(contractAddress, { ...receiptPrepared }))
-          this.props.getContractAddress(contractAddress)
+          console.log('METAMASK:', receipt)
+          onReceipt(receipt)
         })
-        .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber, prepareTokenReceipt(receipt)))
+        .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber))
     } catch (error) {
       console.log(error)
     }

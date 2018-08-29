@@ -19,7 +19,8 @@ export const tokens = handleActions({
   },
   SAVE_RECEIPT: (state, { payload }) => {
     const transactions = cloneDeep(state.transactions)
-    transactions[payload.transactionHash].contractAddress = payload.contractAddress
+    console.log(payload)
+    // transactions[payload.transactionHash].contractAddress = payload.contractAddress
     return { ...state, transactions, receipts: { ...state.receipts, ...payload } }
   }
 }, {
