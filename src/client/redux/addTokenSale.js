@@ -24,7 +24,7 @@ export const setMinContribution = createAction('SET_MIN_CONTRIBUTION',
   }
 )
 
-export const setOwner = createAction('SET_OWNER',
+export const setFundOwner = createAction('SET_OWNER',
   (owner) => {
     return owner
   }

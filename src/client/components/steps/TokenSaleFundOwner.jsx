@@ -10,6 +10,7 @@ class TokenSaleFundOwner extends Component {
       valid: false
     }
   }
+
   onChangeText = (e) => {
     const value = e.target.value
 
@@ -22,13 +23,14 @@ class TokenSaleFundOwner extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    const valid = input.length > 3
+    const valid = input.length > 2
 
     if (setValid) {
       setValid(valid)
     }
     return valid
   }
+
   componentWillMount () {
     const { addTokenSale } = this.props
     this.setState({ valid: this.validate(addTokenSale.fundOwner) })
@@ -40,10 +42,10 @@ class TokenSaleFundOwner extends Component {
 
     return (
       <div>
-        <div>Insert the name of your token:</div>
-        <input name='tokenName' value={addTokenSale.fundOwner} onChange={this.onChangeText} />
+        <div>Insert the owner address:</div>
+        <input name='owner' value={addTokenSale.fundOwner} onChange={this.onChangeText} />
         {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
-        {!valid && addTokenSale.fundOwner.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
+        {!valid && addTokenSale.fundOwner.length > 0 ? <div>Stringa piu lunga di 2 caratteri</div> : null}
       </div>
     )
   }

@@ -9,7 +9,6 @@ import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addTokenSale'
-import { preferences } from '../redux/preferences'
 
 class AddTokenWizard extends Component {
   goToStep2 = () => {
