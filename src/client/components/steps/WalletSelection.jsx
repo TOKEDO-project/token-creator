@@ -4,6 +4,7 @@ import { setWalletType } from '../../redux/addToken'
 import Atomax from '../wallet/Atomax'
 import Metamask from '../wallet/Metamask'
 
+import TokenAddress from './TokenAddress'
 import ResetAndBack from './ResetAndBack'
 import './WalletSelection.css'
 
@@ -37,10 +38,7 @@ class WalletSelection extends Component {
       return <div>Loading...</div>
     }
     if (contractAddress) {
-      return (<div id='ContractAddress'>
-        <h1>Contract created!</h1>
-        {contractAddress}
-      </div>)
+      return <TokenAddress contractAddress={contractAddress} />
     }
     return (
       <div id='WalletSelection'>

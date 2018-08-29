@@ -8,8 +8,8 @@ export const saveToken = createAction('SAVE_TOKEN',
 )
 
 export const removeToken = createAction('REMOVE_TOKEN',
-  (txId) => {
-    return txId
+  (tokenId) => {
+    return tokenId
   }
 )
 
