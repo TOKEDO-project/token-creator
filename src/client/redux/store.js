@@ -6,12 +6,14 @@ import persistState from 'redux-localstorage'
 
 import { web3 } from './web3'
 import { addToken } from './addToken'
+import { addTokenSale } from './addTokenSale'
 import { tokens } from './tokens'
 import { preferences } from './preferences'
 
 const reducers = combineReducers({
   web3,
   addToken,
+  addTokenSale,
   tokens,
   preferences
 })

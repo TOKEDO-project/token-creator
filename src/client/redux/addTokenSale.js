@@ -1,108 +1,83 @@
 import { handleActions, createAction } from 'redux-actions'
 
-export const addAddress = createAction('ADD_ADDRESS',
-  (address) => {
-    return address
-  }
-)
 export const setStep = createAction('SET_STEP',
   (step) => {
     return step
   }
 )
 
-export const setName = createAction('SET_NAME',
-  (name) => {
-    return name
+export const setPrice = createAction('SET_PRICE',
+  (price) => {
+    return price
   }
 )
 
-export const setSymbol = createAction('SET_SYMBOL',
-  (symbol) => {
-    return symbol
+export const setAmount = createAction('SET_AMOUNT',
+  (amount) => {
+    return amount
   }
 )
 
-export const setDecimals = createAction('SET_DECIMALS',
-  (decimals) => {
-    return decimals
+export const setMinContribution = createAction('SET_MIN_CONTRIBUTION',
+  (minContribution) => {
+    return minContribution
   }
 )
 
-export const setSupply = createAction('SET_SUPPLY',
-  (supply) => {
-    return supply
+export const setOwner = createAction('SET_OWNER',
+  (owner) => {
+    return owner
   }
 )
 
-export const setType = createAction('SET_TYPE',
-  (type) => {
-    return type
-  }
-)
-
-export const setWalletType = createAction('SET_WALLET_TYPE',
-  (walletType) => {
-    return walletType
+export const setKYC = createAction('SET_KYC',
+  (kyc) => {
+    return kyc
   }
 )
 
 export const addToken = handleActions({
-  ADD_ADDRESS: (state, { payload }) => {
-    return {
-      ...state,
-      addresses: [...state.addresses, payload]
-    }
-  },
   SET_STEP: (state, { payload }) => {
     return {
       ...state,
       step: payload
     }
   },
-  SET_NAME: (state, { payload }) => {
+  SET_PRICE: (state, { payload }) => {
     return {
       ...state,
-      name: payload
+      price: payload
     }
   },
-  SET_SYMBOL: (state, { payload }) => {
+  SET_AMOUNT: (state, { payload }) => {
     return {
       ...state,
-      symbol: payload
+      amount: payload
     }
   },
-  SET_DECIMALS: (state, { payload }) => {
+  SET_MIN_CONTRIBUTION: (state, { payload }) => {
     return {
       ...state,
-      decimals: payload
+      minContribution: payload
     }
   },
-  SET_SUPPLY: (state, { payload }) => {
+  SET_OWNER: (state, { payload }) => {
     return {
       ...state,
-      supply: payload
+      owner: payload
     }
   },
-  SET_TYPE: (state, { payload }) => {
+  SET_KYC: (state, { payload }) => {
     return {
       ...state,
-      type: payload
-    }
-  },
-  SET_WALLET_TYPE: (state, { payload }) => {
-    return {
-      ...state,
-      walletType: payload
+      kyc: payload
     }
   }
 }, {
-  addresses: [],
   step: 1,
-  name: '',
-  symbol: '',
-  decimals: 18,
-  supply: '',
-  type: 'startable-burnable',
-  walletType: 'metamask'
+  price: '',
+  amount: '',
+  minContribution: '',
+  owner: '',
+  kyc: true
 })
