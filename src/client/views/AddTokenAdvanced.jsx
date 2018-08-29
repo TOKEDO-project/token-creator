@@ -31,23 +31,19 @@ class AddTokenAdvanced extends React.Component {
     }
   }
 
-  async componentDidMount () {
-    const { web3, addToken } = this.props
-    const transaction = await prepareAddTokenTransaction({ web3, addToken })
-    this.setState({
-      transaction,
-      loading: false
-    })
-  }
-
   setContractAddress = (contractAddress) => {
     this.setState({
       contractAddress
     })
   }
 
-  goToWalletSelection = () => {
-    const { dispatch } = this.props
+  goToWalletSelection = async () => {
+    const { web3, addToken, dispatch } = this.props
+    const transaction = await prepareAddTokenTransaction({ web3, addToken })
+    this.setState({
+      transaction,
+      loading: false
+    })
     dispatch(setStep(6))
   }
 
@@ -88,7 +84,7 @@ class AddTokenAdvanced extends React.Component {
       return <TermsAndConditions />
     }
 
-    if (loading) {
+    if (step === 6 && loading) {
       return <Loading />
     }
 

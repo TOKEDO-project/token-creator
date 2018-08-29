@@ -25,12 +25,7 @@ class AddTokenWizard extends Component {
   }
 
   async componentDidMount () {
-    const { web3, addToken } = this.props
-    const transaction = await prepareAddTokenTransaction({ web3, addToken })
-    this.setState({
-      transaction,
-      loading: false
-    })
+
   }
 
   setContractAddress = (contractAddress) => {
@@ -59,9 +54,14 @@ class AddTokenWizard extends Component {
     dispatch(setStep(5))
   }
 
-  deployToken = () => {
-    const { dispatch } = this.props
+  deployToken = async () => {
+    const { web3, addToken, dispatch } = this.props
     dispatch(setStep(6))
+    const transaction = await prepareAddTokenTransaction({ web3, addToken })
+    this.setState({
+      transaction,
+      loading: false
+    })
   }
 
   onReceipt = (receipt) => {
@@ -100,7 +100,7 @@ class AddTokenWizard extends Component {
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
-    if (loading) {
+    if (addToken.step === 6 && loading) {
       return <Loading />
     }
     return (
