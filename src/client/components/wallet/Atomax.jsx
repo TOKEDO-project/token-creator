@@ -21,39 +21,34 @@ class Atomax extends Component {
     clearTimeout(this.timer)
   }
 
-  startIntervalAtomax = (web3, dispatch, txId, tokenObj) => {
+  startIntervalAtomax = (txId) => {
+    const { web3, onReceipt } = this.props
     if (!web3.loading && web3.eth) {
       this.timer = setInterval(async () => {
         let receipt = await web3.eth.getTransactionReceipt(txId)
         if (receipt) {
-          const receiptPrepared = prepareTokenReceipt(receipt)
+          /* const receiptPrepared = prepareTokenReceipt(receipt)
           const contractAddress = receiptPrepared.contractAddress
-
-          clearTimeout(this.timer)
 
           // write Receipt to store
           const { dispatch } = this.props
           dispatch(saveReceipt(contractAddress, { ...receiptPrepared }))
-          this.props.getContractAddress(contractAddress)
+          this.props.getContractAddress(contractAddress) */
+          onReceipt(receipt)
+          clearTimeout(this.timer)
         }
       }, 3000)
     }
   }
 
   async componentDidMount () {
-    const { web3, addToken: { name, symbol, decimals, supply, type }, transaction, onTransactionHash } = this.props
-    let tokenObj = {
-      name,
-      symbol,
-      decimals,
-      supply,
-      type
-    }
+    const { transaction, onTransactionHash, connectorName } = this.props
     try {
       const data = await AtomaxConnector({
-        connectorName: name,
+        connectorName,
         to: '0x0000000000000000000000000000000000000000',
         value: '0',
+        gasLimit: '4000000',
         data: transaction.encodeABI(),
         returnOnlyData: true,
         addressCB: address => {
@@ -62,12 +57,10 @@ class Atomax extends Component {
         txIdCB: tx => {
           console.log('TX', tx)
           this.setState({ txId: tx.id })
-          const { dispatch } = this.props
           if (tx.id) {
             onTransactionHash(tx.id)
-            // dispatch(saveTransaction(tx.id, tokenObj))
             // Start listening for TX confirmation
-            this.startIntervalAtomax(web3, dispatch, tx.id, tokenObj)
+            this.startIntervalAtomax(tx.id)
           }
         }
       })

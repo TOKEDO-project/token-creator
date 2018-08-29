@@ -89,7 +89,7 @@ class AddTokenWizard extends Component {
       case 5:
         return <TokenType nextFunction={this.deployToken} />
       case 6:
-        return <WalletSelection transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
+        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
         } onReceipt={this.onReceipt} contractAddress={contractAddress} />
     }
   }

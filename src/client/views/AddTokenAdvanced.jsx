@@ -93,7 +93,7 @@ class AddTokenAdvanced extends React.Component {
         <a href='/token/add/wizard'>wizard</a>
       </div>
       <h1>AddTokenAdvanced</h1>
-      {step === 6 ? <WalletSelection transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
+      {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
         : <div>
           <TokenName setValid={this.setValidName} />
           <TokenSymbol setValid={this.setValidSymbol} />

@@ -20,7 +20,7 @@ class WalletSelection extends Component {
   }
 
   render () {
-    const { addToken, web3, transaction, onTransactionHash, onReceipt, contractAddress } = this.props
+    const { addToken, web3, transaction, onTransactionHash, onReceipt, contractAddress, connectorName } = this.props
 
     if (web3.loading) {
       return <div>Loading...</div>
@@ -38,7 +38,7 @@ class WalletSelection extends Component {
 
         {addToken.walletType === 'metamask' ? <Metamask transaction={transaction} onTransactionHash={onTransactionHash} onReceipt={onReceipt} /> : null }
 
-        {addToken.walletType === 'atomax' ? <Atomax transaction={transaction} onTransactionHash={onTransactionHash} getContractAddress={this.setContractAddress} /> : null }
+        {addToken.walletType === 'atomax' ? <Atomax connectorName={connectorName} transaction={transaction} onTransactionHash={onTransactionHash} getContractAddress={this.setContractAddress} /> : null }
 
         <ResetAndBack />
       </div>
