@@ -21,7 +21,7 @@ class Atomax extends Component {
     clearTimeout(this.timer)
   }
 
-  startIntervalAtomax = (web3, dispatch, txId) => {
+  startIntervalAtomax = (web3, dispatch, txId, tokenObj) => {
     if (!web3.loading && web3.eth) {
       this.timer = setInterval(async () => {
         // const accounts = await web3.eth.getAccounts()
@@ -31,7 +31,10 @@ class Atomax extends Component {
         let receipt = await web3.eth.getTransactionReceipt(txId)
         console.log(receipt)
         if (receipt) {
+          // write Receipt to store
           clearTimeout(this.timer)
+          const { dispatch } = this.props
+          dispatch(saveToken(txId, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
         }
       }, 3000)
     }
@@ -64,7 +67,7 @@ class Atomax extends Component {
           if (tx.id) {
             dispatch(saveToken(tx.id, tokenObj))
             // Start listening for TX confirmation
-            this.startIntervalAtomax(web3, dispatch, tx.id)
+            this.startIntervalAtomax(web3, dispatch, tx.id, tokenObj)
           }
         }
       })
