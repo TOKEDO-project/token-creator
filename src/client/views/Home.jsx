@@ -15,18 +15,19 @@ class Home extends Component {
   render () {
     const { t, tokens } = this.props
     console.log(tokens)
-    if (Object.keys(tokens).length === 0) {
+    if (Object.keys(tokens.receipts).length === 0) {
       return (<div> {t('Home')} <div><a href='/token/add/wizard'>{t('START NOW!')}</a></div> </div>)
     }
     return (
       <div>
         {t('List of Token')}
         <div>
-          {map(tokens, (token, key) => {
-            if (token.contractAddress) {
+          {map(tokens.receipts, (receipt, key) => {
+            const transaction = tokens.transactions[receipt.transactionHash]
+            if (receipt.contractAddress) {
               return <div key={key}>
-                {key}<br />{token.contractAddress}<br />{token.name}
-                <a href={`/token/details/${token.contractAddress}`}>details</a>
+                {receipt.contractAddress}<br />{transaction.name} - {transaction.symbol} - {transaction.supply} - {transaction.decimals} - {transaction.type}
+                <a href={`/token/details/${receipt.contractAddress}`}>details</a>
               </div>
             }
           })}

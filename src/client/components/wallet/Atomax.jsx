@@ -5,7 +5,7 @@ import QRCode from 'qrcode.react'
 import prepareAddTokenTransaction from '../../utils/prepareAddTokenTransaction'
 import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
 
-import { saveToken } from '../../redux/tokens'
+import { saveTransaction, saveReceipt } from '../../redux/tokens'
 
 class Atomax extends Component {
   constructor (props) {
@@ -34,7 +34,7 @@ class Atomax extends Component {
 
           // write Receipt to store
           const { dispatch } = this.props
-          dispatch(saveToken(contractAddress, { ...receiptPrepared }))
+          dispatch(saveReceipt(contractAddress, { ...receiptPrepared }))
           this.props.getContractAddress(contractAddress)
         }
       }, 3000)
@@ -66,7 +66,7 @@ class Atomax extends Component {
           this.setState({ txId: tx.id })
           const { dispatch } = this.props
           if (tx.id) {
-            dispatch(saveToken(tx.id, tokenObj))
+            dispatch(saveTransaction(tx.id, tokenObj))
             // Start listening for TX confirmation
             this.startIntervalAtomax(web3, dispatch, tx.id, tokenObj)
           }

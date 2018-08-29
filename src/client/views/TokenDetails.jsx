@@ -1,37 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import './TokenDetails.css'
+import PageNotFound from '../components/PageNotFound'
 
-class TokenDetails extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      loading: true
-    }
+const TokenDetails = (props) => {
+  const { match: { params: { tokenId } }, tokens: { transactions, receipts } } = props
+  // Get token receipt
+  const receipt = receipts[tokenId]
+
+  if (!receipt) {
+    return (
+      <PageNotFound />
+    )
   }
-  componentDidMount () {
 
-  }
-
-  render () {
-    const { match: {params: {tokenId}}, tokens } = this.props
-    // Get token receipt
-    const token = tokens[tokenId]
-    // Get token details
-    const tokenDetails = tokens[token.transactionHash]
-    console.log('token', token, 'tokenDetails', tokenDetails)
-
-    return (<div>
+  // Get token details
+  const tokenDetails = transactions[receipt.transactionHash]
+  console.log('receipt', receipt, 'tokenDetails', tokenDetails)
+  return (
+    <div>
       <div id='TokenDetails'>
         <button>back</button>
         <div>Token Address: {tokenId}</div>
-        <div>Token Owner: {token.owner}</div>
+        <div>Token Owner: {receipt.owner}</div>
         {tokenDetails.name} - {tokenDetails.symbol} - {tokenDetails.supply}
-         - {tokenDetails.decimals} - {tokenDetails.type}
+        - {tokenDetails.decimals} - {tokenDetails.type}
       </div>
-    </div>)
-  }
+    </div>
+  )
 }
 
 export default connect(s => s)(TokenDetails)

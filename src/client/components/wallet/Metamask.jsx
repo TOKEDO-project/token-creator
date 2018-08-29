@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import prepareAddTokenTransaction from '../../utils/prepareAddTokenTransaction'
 import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
 
-import { saveToken } from '../../redux/tokens'
+import { saveTransaction, saveReceipt } from '../../redux/tokens'
 
 class Metamask extends Component {
   onClickDeploy = async () => {
@@ -36,7 +36,7 @@ class Metamask extends Component {
           console.log(transactionHash)
 
           const { dispatch } = this.props
-          dispatch(saveToken(transactionHash, tokenObj))
+          dispatch(saveTransaction(transactionHash, tokenObj))
         })
         .on('receipt', receipt => {
           const { dispatch } = this.props
@@ -44,7 +44,7 @@ class Metamask extends Component {
           const contractAddress = receiptPrepared.contractAddress
 
           // write Receipt to store
-          dispatch(saveToken(contractAddress, { ...receiptPrepared }))
+          dispatch(saveReceipt(contractAddress, { ...receiptPrepared }))
           this.props.getContractAddress(contractAddress)
         })
         .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber, prepareTokenReceipt(receipt)))

@@ -1,25 +1,25 @@
 import { handleActions, createAction } from 'redux-actions'
-import { cloneDeep } from 'lodash'
 
-export const saveToken = createAction('SAVE_TOKEN',
+export const saveTransaction = createAction('SAVE_TRANSACTION',
   (txId, token) => {
     return {[txId]: token}
   }
 )
 
-export const removeToken = createAction('REMOVE_TOKEN',
-  (tokenId) => {
-    return tokenId
+export const saveReceipt = createAction('SAVE_RECEIPT',
+  (contractAddress, receipt) => {
+    return { [contractAddress]: receipt }
   }
 )
 
 export const tokens = handleActions({
-  SAVE_TOKEN: (state, { payload }) => {
-    return {...state, ...payload}
+  SAVE_TRANSACTION: (state, { payload }) => {
+    return { ...state, transactions: {...state.transactions, ...payload} }
   },
-  REMOVE_TOKEN: (state, { payload }) => {
-    const newState = cloneDeep(payload)
-    delete newState[payload]
-    return newState
+  SAVE_RECEIPT: (state, { payload }) => {
+    return { ...state, receipts: { ...state.receipts, ...payload } }
   }
-}, {})
+}, {
+  transactions: {},
+  receipts: {}
+})
