@@ -29,7 +29,7 @@ class Atomax extends Component {
           clearTimeout(this.timer)
           // write Receipt to store
           const { dispatch } = this.props
-          dispatch(saveToken(txId, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
+          dispatch(saveToken(prepareTokenReceipt(receipt).contractAddress, { ...tokenObj, receipt: prepareTokenReceipt(receipt) }))
         }
       }, 3000)
     }

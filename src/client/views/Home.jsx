@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
 
-class Home extends React.Component {
+import { map } from 'lodash'
+
+class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -11,8 +13,26 @@ class Home extends React.Component {
   }
 
   render () {
-    const { t } = this.props
-    return (<div> {t('Home')} <div><a href='/token/add/wizard'>{t('START NOW!')}</a></div> </div>)
+    const { t, tokens } = this.props
+    console.log(tokens)
+    if (Object.keys(tokens).length === 0) {
+      return (<div> {t('Home')} <div><a href='/token/add/wizard'>{t('START NOW!')}</a></div> </div>)
+    }
+    return (
+      <div>
+        {t('List of Token')}
+        <div>
+          {map(tokens, (token, key) => {
+            if (token.receipt && token.receipt.contractAddress) {
+              return <div key={key}>
+                {key} - {token.name}
+                <a href={`/token/details/${token.receipt.contractAddress}`}>details</a>
+              </div>
+            }
+          })}
+        </div>
+      </div>
+    )
   }
 }
 
