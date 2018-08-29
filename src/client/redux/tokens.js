@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions'
+import { cloneDeep } from 'lodash'
 
 export const saveTransaction = createAction('SAVE_TRANSACTION',
   (txId, token) => {
@@ -17,7 +18,9 @@ export const tokens = handleActions({
     return { ...state, transactions: {...state.transactions, ...payload} }
   },
   SAVE_RECEIPT: (state, { payload }) => {
-    return { ...state, receipts: { ...state.receipts, ...payload } }
+    const transactions = cloneDeep(state.transactions)
+    transactions[payload.transactionHash].contractAddress = payload.contractAddress
+    return { ...state, transactions, receipts: { ...state.receipts, ...payload } }
   }
 }, {
   transactions: {},
