@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { MetamaskStatus } from '../../redux/web3'
 import { connect } from 'react-redux'
-import prepareAddTokenTransaction from '../../utils/prepareAddTokenTransaction'
-import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
-
-import { saveTransaction, saveReceipt } from '../../redux/tokens'
 
 class Metamask extends Component {
   onClickDeploy = async () => {
