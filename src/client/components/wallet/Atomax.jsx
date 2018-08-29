@@ -17,7 +17,20 @@ class Atomax extends Component {
       data: ''
     }
   }
-
+  componentWillUnmount () {
+    clearTimeout(this.timer)
+  }
+  startIntervalAtomax (web3, dispatch, txId) {
+    if (!web3.loading && web3.eth) {
+      this.timer = setInterval(async () => {
+        // const accounts = await web3.eth.getAccounts()
+        // Detect address change
+        // if (accounts[0] !== web3.address) { window.location.reload() }
+        let receipt = await web3.eth.getTransactionReceipt(txId)
+        console.log(receipt)
+      }, 3000)
+    }
+  }
   async componentDidMount () {
     const { web3, addToken: { name, symbol, decimals, supply, type } } = this.props
     let tokenObj = {
@@ -42,6 +55,8 @@ class Atomax extends Component {
           this.setState({ txId: tx.id })
           const { dispatch } = this.props
           dispatch(saveToken(tx.id, tokenObj))
+          // Start listening for TX confirmation
+          this.startIntervalAtomax(web3, dispatch, tx.id)
         }
       })
       this.setState({ data, loading: false })
