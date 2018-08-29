@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AtomaxConnector from 'atomax-connector'
 import QRCode from 'qrcode.react'
-import prepareTokenReceipt from '../../utils/prepareTokenReceipt'
-
-import { saveTransaction, saveReceipt } from '../../redux/tokens'
 
 class Atomax extends Component {
   constructor (props) {
@@ -27,13 +24,6 @@ class Atomax extends Component {
       this.timer = setInterval(async () => {
         let receipt = await web3.eth.getTransactionReceipt(txId)
         if (receipt) {
-          /* const receiptPrepared = prepareTokenReceipt(receipt)
-          const contractAddress = receiptPrepared.contractAddress
-
-          // write Receipt to store
-          const { dispatch } = this.props
-          dispatch(saveReceipt(contractAddress, { ...receiptPrepared }))
-          this.props.getContractAddress(contractAddress) */
           onReceipt(receipt)
           clearTimeout(this.timer)
         }
