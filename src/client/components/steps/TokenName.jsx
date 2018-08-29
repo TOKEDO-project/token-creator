@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setName } from '../../redux/addToken'
+import icon from '../../assets/images/token-name.svg'
+import './InnerStepSingleInput.css'
 
 class TokenName extends Component {
   constructor (props) {
@@ -39,11 +41,25 @@ class TokenName extends Component {
     const { valid } = this.state
 
     return (
-      <div>
-        <div>Insert the name of your token:</div>
-        <input name='tokenName' value={addToken.name} onChange={this.onChangeText} />
-        {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
-        {!valid && addToken.name.length > 0 ? <div>Stringa piu lunga di 3 caratteri</div> : null}
+      <div className='inner-step'>
+        <div className='top d-flex flex-row flex-h-start flex-v-center'>
+          <div className='left'>
+            <img className='icon' src={icon} alt='Icon' />
+          </div>
+          <div className='right d-flex flex-column flex-h-center'>
+            <span className='title'>Insert the name of your token:</span>
+            <span className='description'>The name of your token. Like 'Ethereum'</span>
+          </div>
+        </div>
+        <div className='bottom d-flex flex-row flex-h-between'>
+          <div className='input-box d-flex flex-column flex-v-center'>
+            <input className='token-name' value={addToken.name} onChange={this.onChangeText} />
+            {!valid && addToken.name.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />Stringa piu lunga di 3 caratteri</div> : null}
+          </div>
+          {nextFunction ? <button disabled={!valid} onClick={nextFunction} >
+          Next
+          </button> : null}
+        </div>
       </div>
     )
   }
