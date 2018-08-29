@@ -38,7 +38,7 @@ class WalletSelection extends Component {
 
         {addToken.walletType === 'metamask' ? <Metamask transaction={transaction} onTransactionHash={onTransactionHash} onReceipt={onReceipt} /> : null }
 
-        {addToken.walletType === 'atomax' ? <Atomax connectorName={connectorName} transaction={transaction} onTransactionHash={onTransactionHash} getContractAddress={this.setContractAddress} /> : null }
+        {addToken.walletType === 'atomax' ? <Atomax connectorName={connectorName} transaction={transaction} onTransactionHash={onTransactionHash} onReceipt={onReceipt} /> : null }
 
         <ResetAndBack />
       </div>
