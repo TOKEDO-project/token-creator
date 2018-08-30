@@ -1,11 +1,11 @@
-import MainTokenSaleABI from '../assets/abi/Token-simple.json'
-import MainTokenSaleBytecode from '../assets/bytecode/Token-simple.json'
+import MainTokenSaleABI from '../assets/abi/Main-Token-sale.json'
+import MainTokenSaleBytecode from '../assets/bytecode/Main-Token-sale.json'
 
 export default async ({ web3, addMainTokenSale }) => {
   const contract = new web3.eth.Contract(MainTokenSaleABI)
   const args = [
-    addMainTokenSale.userAddress,
-    addMainTokenSale.tokenAddress
+    addMainTokenSale.userAddress, // address of the token owner
+    addMainTokenSale.tokenAddress // address of the token to sell
   ]
   const data = '0x' + MainTokenSaleBytecode.object
   const tx = contract.deploy({
