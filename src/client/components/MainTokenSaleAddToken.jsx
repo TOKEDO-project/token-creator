@@ -4,37 +4,37 @@ import { translate } from 'react-i18next'
 
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
-import prepareCreateMainTokenSaleTransaction from '../utils/prepareCreateMainTokenSaleTransaction'
+import MainTokenSaleAmount from './steps/MainTokenSaleAmount'
 import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 
-class MainTokenSaleInit extends Component {
+class MainTokenSaleAddToken extends Component {
   constructor (props) {
     super(props)
     this.state = {
       transaction: null,
-      loading: true
+      loading: false
     }
   }
 
-  async componentDidMount () {
+    /*async componentDidMount () {
     const { web3, tokenId } = this.props
-    const transaction = await prepareCreateMainTokenSaleTransaction({web3, addMainTokenSale: {userAddress: web3.address, tokenAddress: tokenId}})
+    const transaction = await prepareAddTokenMainTokenSaleTransaction({web3, addMainTokenSale: {userAddress: web3.address, tokenAddress: tokenId}})
     this.setState({
       transaction,
       loading: false
     })
-  }
+  }*/
 
   onTransactionHash = (transactionHash) => {
     const { dispatch, web3, tokenId } = this.props
     console.log('OTH:', web3.address, tokenId)
+    dispatch(setState('authorize'))
     dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId }))
   }
 
   onReceipt = (receipt) => {
     const { dispatch, tokenId } = this.props
-    dispatch(setState('deployed'))
     dispatch(saveReceipt(tokenId, receipt))
   }
 
@@ -46,9 +46,12 @@ class MainTokenSaleInit extends Component {
     }
 
     return (
-      <WalletSelection connectorName='mainTokenSaleDeploy' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+      <div>
+        <MainTokenSaleAmount />
+        <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+      </div>
     )
   }
 }
 
-export default translate('translations')(connect(s => s)(MainTokenSaleInit))
+export default translate('translations')(connect(s => s)(MainTokenSaleAddToken))

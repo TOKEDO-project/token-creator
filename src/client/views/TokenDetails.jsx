@@ -7,8 +7,10 @@ import TokenDetailsTutorial from '../components/TokenDetailsTutorial'
 import TokenSaleListForToken from '../components/TokenSaleListForToken'
 import MainTokenSaleDetail from '../components/MainTokenSaleDetail'
 import MainTokenSaleInit from '../components/MainTokenSaleInit'
+import MainTokenSaleAddToken from '../components/MainTokenSaleAddToken'
+import MainTokenSaleAuthorize from '../components/MainTokenSaleAuthorize'
 
-import { setInitialized } from '../redux/addMainTokenSale'
+import { setState } from '../redux/addMainTokenSale'
 
 const TokenDetails = (props) => {
   const { match: { params: { tokenId } }, tokens: { transactions, receipts }, dispatch } = props
@@ -60,7 +62,7 @@ const TokenDetails = (props) => {
           <div className='TokenDetailsMenu left '>
             Menu
             <div>
-              <a href='#'><button onClick={() => dispatch(setInitialized(true))}><i className='fas fa-angle-left' /> {t('Add Token Sale')}</button></a>
+              <a href='#'><button onClick={() => dispatch(setState('initialized'))}><i className='fas fa-angle-left' /> {t('Add Token Sale')}</button></a>
             </div>
             <div>
               <a href='/'><button><i className='fas fa-angle-left' /> {t('Unlock The Token')}</button></a>
@@ -73,12 +75,16 @@ const TokenDetails = (props) => {
             </div>
           </div>
           <div className='TokenDetailsBody right'>
-            {mainTokenSale
+            {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
+            {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
+            {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken /> : null}
+            {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize /> : null}
+            {addMainTokenSale.state === 'authorized'
               ? <div>
                 <MainTokenSaleDetail />
                 {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
               </div>
-              : addMainTokenSale.initialized ? <MainTokenSaleInit tokenId={tokenId} /> : <TokenDetailsTutorial />
+              : null
             }
           </div>
         </div>
