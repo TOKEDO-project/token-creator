@@ -30,7 +30,7 @@ const TokenDetails = (props) => {
   console.log('receipt', receipt, 'tokenDetails', tokenDetails)
   const mainTokenSale = mainTokenSales[tokenId]
   const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
-  const tokenSaleList = mainTokenSaleAddress ? tokenSales[mainTokenSaleAddress] : []
+  const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
   return (
     <div>
       <div id='TokenDetails' className=''>

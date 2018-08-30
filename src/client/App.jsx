@@ -48,10 +48,14 @@ class App extends React.Component {
         }
         if (accounts.length === 0) {
           // there is no active accounts in MetaMask
-          dispatch(setMetamaskStatus(MetamaskStatus.LOCKED))
+          if (web3.metamaskStatus !== MetamaskStatus.LOCKED) {
+            dispatch(setMetamaskStatus(MetamaskStatus.LOCKED))
+          }
         } else {
           // It's ok
-          dispatch(setMetamaskStatus(MetamaskStatus.UNLOCKED))
+          if (web3.metamaskStatus !== MetamaskStatus.UNLOCKED) {
+            dispatch(setMetamaskStatus(MetamaskStatus.UNLOCKED))
+          }
         }
       }, 3000)
     }
