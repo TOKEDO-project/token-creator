@@ -5,7 +5,6 @@ div.step button.radio-box {
  position: relative;
  text-align: center;
  background-color: transparent;
- word-break: break-all;
  font-weight: 500;
 }
 

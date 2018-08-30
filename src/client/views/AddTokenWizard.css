@@ -28,7 +28,14 @@
 #token-wizard div.video-placeholder {
  background-color: #24242A;
  border-radius: 5px;
- min-height: calc(100%);
+ padding: 17.7%;
+ margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+ #token-wizard div.video-placeholder {
+  margin-bottom: 0;
+ }
 }
 
 #token-wizard div.video-placeholder span.fa {

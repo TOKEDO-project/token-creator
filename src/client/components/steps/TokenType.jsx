@@ -38,7 +38,7 @@ class TokenType extends Component {
           </div>
           <form className='bottom d-flex flex-row flex-h-between'>
             <button value='startable-burnable' onClick={this.onChange} type='button' className={`radio-box ${addToken.type === 'startable-burnable' ? 'active' : ''} shadow pure-u-7-24 d-flex flex-row flex-h-center flex-v-center`}>
-              Startable Burnable
+              Startable<br />Burnable
               <div className={`radio-button ${addToken.type === 'startable-burnable' ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                 <div className='radio-button-dot' />
               </div>
