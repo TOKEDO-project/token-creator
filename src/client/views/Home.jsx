@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
-import { map } from 'lodash'
 import shuttle from '../assets/images/shuttle.svg'
+import TokenList from '../components/TokenList'
 import './Home.css'
 
 class Home extends Component {
@@ -29,22 +29,7 @@ class Home extends Component {
         </div>
       )
     }
-    return (
-      <div>
-        {t('List of Token')}
-        <div>
-          {map(tokens.receipts, (receipt, key) => {
-            const transaction = tokens.transactions[receipt.transactionHash]
-            if (receipt.contractAddress) {
-              return <div key={key}>
-                {receipt.contractAddress}<br />{transaction.name} - {transaction.symbol} - {transaction.supply} - {transaction.decimals} - {transaction.type}
-                <a href={`/token/details/${receipt.contractAddress}`}><button>details</button></a>
-              </div>
-            }
-          })}
-        </div>
-      </div>
-    )
+    return <TokenList tokens={tokens} />
   }
 }
 
