@@ -8,6 +8,7 @@ export const setInitialized = createAction('SET_INITIALIZED',
 
 export const addMainTokenSale = handleActions({
   SET_INITIALIZED: (state, { payload }) => {
+    console.log('SET INITIALIZED:', payload)
     return {
       ...state,
       initialized: payload
