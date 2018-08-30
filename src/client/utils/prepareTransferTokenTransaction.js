@@ -2,7 +2,7 @@ import simpleTokenAbi from '../assets/abi/Token-simple.json'
 import startableBurnableTokenAbi from '../assets/abi/Token-startable-burnable.json'
 import startableTokenAbi from '../assets/abi/Token-startable.json'
 
-export default async ({ web3, tokenType, mainTokenSaleAddress, tokenAmount }) => {
+export default async ({ web3, tokenType, tokenAddress, mainTokenSaleAddress, tokenAmount }) => {
   let abi
   switch (tokenType) {
     case 'startable-burnable':
@@ -15,7 +15,7 @@ export default async ({ web3, tokenType, mainTokenSaleAddress, tokenAmount }) =>
       abi = simpleTokenAbi
       break
   }
-  const contract = new web3.eth.Contract(abi)
+  const contract = new web3.eth.Contract(abi, tokenAddress)
   const tx = contract.methods.transfer(mainTokenSaleAddress, web3.utils.toWei(tokenAmount))
   const gasPrice = await web3.eth.getGasPrice()
   let options = { from: web3.address, gasPrice }
