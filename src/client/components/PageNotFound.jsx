@@ -7,7 +7,7 @@ import planetRing from '../assets/images/Planet_2.svg'
 
 const PageNotFound = ({ history }) => {
   return (
-    <div id='notFound' className='d-flex flex-h-center'>
+    <div id='notFound' className='d-flex flex-h-center pure-u-1'>
 
       <div className='pure-u-22-24 pure-u-md-18-24 pure-u-sm-20-24'>
         <div className='shadow'>

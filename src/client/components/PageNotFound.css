@@ -15,7 +15,8 @@
 #notFound .shadow {
   background: white;
   border-radius: 5px;
-  margin-top: 50px;
+  max-width: 600px;
+  margin: 50px auto;
 }
 
 #notFound .shadow .bgContainer {
