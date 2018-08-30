@@ -8,7 +8,8 @@ import { web3 } from './web3'
 import { addToken } from './addToken'
 import { addTokenSale } from './addTokenSale'
 import { tokens } from './tokens'
-import { tokenSale } from './tokenSale'
+import { tokenSales } from './tokenSales'
+import { mainTokenSales } from './mainTokenSales'
 import { preferences } from './preferences'
 
 const reducers = combineReducers({
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   addToken,
   addTokenSale,
   tokens,
-  tokenSale,
+  tokenSales,
+  mainTokenSales,
   preferences
 })
 
@@ -29,8 +31,10 @@ let enhancers = composeEnhancers(
   persistState(
     [
       'addToken',
+      'addTokenSale',
       'tokens',
-      'tokenSale',
+      'tokenSales',
+      'mainTokenSales',
       'preferences'
     ]
   )

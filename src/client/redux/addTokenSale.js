@@ -36,7 +36,7 @@ export const setKYC = createAction('SET_KYC',
   }
 )
 
-export const addToken = handleActions({
+export const addTokenSale = handleActions({
   SET_STEP: (state, { payload }) => {
     return {
       ...state,
