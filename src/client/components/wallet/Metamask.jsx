@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MetamaskStatus } from '../../redux/web3'
 import { connect } from 'react-redux'
+import './Metamask.css'
 
 class Metamask extends Component {
   onClickDeploy = async () => {
@@ -37,7 +38,7 @@ class Metamask extends Component {
   render () {
     const { web3: { metamaskStatus } } = this.props
     return (
-      <button onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
+      <button className='metamask deploy shadow pure-u-1' onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
         {metamaskStatus === MetamaskStatus.LOCKED
           ? 'Unlock Metamask'
           : metamaskStatus === MetamaskStatus.NOT_INSTALLED

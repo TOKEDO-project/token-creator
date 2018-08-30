@@ -1,11 +1,20 @@
 div.step button.radio-box {
- border: 1px solid #888888;
+ border: 2px solid #888888;
  border-radius: 5px;
- height: 100px;
  position: relative;
  text-align: center;
  background-color: transparent;
- font-weight: 500;
+ font-weight: 700;
+ padding: 20px 0;
+ color: #888888;
+}
+
+div.step button.radio-box:first-child {
+ margin-right: 10px;
+}
+
+div.step button.radio-box:last-child {
+ margin-left: 10px;
 }
 
 div.step button.radio-box.active {
@@ -36,4 +45,10 @@ div.step button.radio-box.active div.radio-button {
 
 div.step button.radio-box.active div.radio-button-dot {
  background-color: #FFB950;
+}
+
+div.step button.radio-box img {
+ width: 72px;
+ object-fit: contain;
+ margin-bottom: 10px;
 }

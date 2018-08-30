@@ -28,8 +28,8 @@
 #token-wizard div.video-placeholder {
  background-color: #24242A;
  border-radius: 5px;
- padding: 17.7%;
  margin-bottom: 15px;
+ height: 220px;
 }
 
 @media (min-width: 768px) {
