@@ -14,6 +14,7 @@ import { setStep } from '../redux/addToken'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 import Loading from '../components/Loading'
 import { saveTransaction, saveReceipt } from '../redux/tokens'
+import './AddTokenAdvanced.css'
 
 class AddTokenAdvanced extends React.Component {
   constructor (props) {

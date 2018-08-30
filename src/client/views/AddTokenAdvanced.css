@@ -1,0 +1,14 @@
+#token-advanced {
+ padding: 50px 0;
+}
+
+#token-adavnced button.deploy {
+ background-color: #FFB950;
+ height: 70px;
+ font-weight: 700;
+ color: white;
+ margin-top: 15px;
+ border: none;
+ border-radius: 5px;
+ font-size: 20px;
+}

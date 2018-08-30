@@ -1,11 +1,15 @@
-#token-wizard div.step {
+#token-wizard div.step, #WalletSelection.step {
  background-color: white;
  padding: 50px 25px;
  border-radius: 5px;
 }
 
+div#WalletSelection.step {
+  box-shadow: 0 0 10px 0px #E2E2E2 !important;
+}
+
 #token-advanced div.step {
- box-shadow: none !important;
+ box-shadow: none;
 }
 
 div.step div.top div.left img.icon {
