@@ -1,0 +1,12 @@
+#notFound button {
+    width: 220px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#FFB950, #FCD462);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+  }
