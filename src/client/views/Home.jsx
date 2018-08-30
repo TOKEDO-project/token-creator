@@ -38,7 +38,7 @@ class Home extends Component {
             if (receipt.contractAddress) {
               return <div key={key}>
                 {receipt.contractAddress}<br />{transaction.name} - {transaction.symbol} - {transaction.supply} - {transaction.decimals} - {transaction.type}
-                <a href={`/token/details/${receipt.contractAddress}`}>details</a>
+                <a href={`/token/details/${receipt.contractAddress}`}><button>details</button></a>
               </div>
             }
           })}

@@ -1,4 +1,7 @@
-#TokenDetails{
+.TokenDetailsHeader{
   border-bottom:1px solid #000000;
-  width: 100%;
+}
+.TokenDetailsMenu{
+  border-right:1px solid #000000;
+  padding: 10px;
 }
