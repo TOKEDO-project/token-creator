@@ -12,9 +12,8 @@ import TermsAndConditions from '../components/TermsAndConditions'
 
 import { setStep } from '../redux/addToken'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
-import { onReceiptToken } from '../utils/onReceipt'
 import Loading from '../components/Loading'
-import { saveTransaction } from '../redux/tokens'
+import { saveTransaction, saveReceipt } from '../redux/tokens'
 
 class AddTokenAdvanced extends React.Component {
   constructor (props) {
@@ -80,7 +79,7 @@ class AddTokenAdvanced extends React.Component {
 
   onReceipt = (receipt) => {
     const { dispatch } = this.props
-    onReceiptToken(dispatch, receipt)
+    dispatch(saveReceipt(receipt))
     if (receipt.contractAddress) {
       this.setState({
         contractAddress: receipt.contractAddress
@@ -88,8 +87,13 @@ class AddTokenAdvanced extends React.Component {
     }
   }
 
+  onTransactionHash = (transactionHash) => {
+    const { addToken: { name, symbol, decimals, supply, type }, dispatch } = this.props
+    dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
+  }
+
   render () {
-    const { addToken: { name, symbol, decimals, supply, type, step }, preferences, loading, dispatch } = this.props
+    const { addToken: { step }, preferences, loading } = this.props
     const { transaction, contractAddress } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
@@ -105,7 +109,7 @@ class AddTokenAdvanced extends React.Component {
           <a href='/token/add/wizard'>wizard</a>
         </div>
         <h1>AddTokenAdvanced</h1>
-        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
+        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} contractAddress={contractAddress} />
           : <div>
             <TokenName setValid={this.setValidName} />
             <TokenSymbol setValid={this.setValidSymbol} />

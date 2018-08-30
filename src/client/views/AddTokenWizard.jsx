@@ -9,8 +9,7 @@ import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addToken'
 import Loading from '../components/Loading'
-import { saveTransaction } from '../redux/tokens'
-import { onReceiptToken } from '../utils/onReceipt'
+import { saveTransaction, saveReceipt } from '../redux/tokens'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 import './AddTokenWizard.css'
 import shuttle from '../assets/images/shuttle.svg'
@@ -69,7 +68,7 @@ class AddTokenWizard extends Component {
 
   onReceipt = (receipt) => {
     const { dispatch } = this.props
-    onReceiptToken(dispatch, receipt)
+    dispatch(saveReceipt(receipt))
     if (receipt.contractAddress) {
       this.setState({
         contractAddress: receipt.contractAddress
@@ -77,8 +76,12 @@ class AddTokenWizard extends Component {
     }
   }
 
-  renderStep (step) {
+  onTransactionHash = (transactionHash) => {
     const { addToken: { name, symbol, decimals, supply, type }, dispatch } = this.props
+    dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
+  }
+
+  renderStep (step) {
     const { transaction, contractAddress } = this.state
     switch (step) {
       case 1:
@@ -92,8 +95,7 @@ class AddTokenWizard extends Component {
       case 5:
         return <TokenType nextFunction={this.deployToken} />
       case 6:
-        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
-        } onReceipt={this.onReceipt} contractAddress={contractAddress} />
+        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} contractAddress={contractAddress} />
     }
   }
 

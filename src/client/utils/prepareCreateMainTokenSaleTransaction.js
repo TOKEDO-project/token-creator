@@ -1,5 +1,5 @@
-import MainTokenSaleABI from '../assets/abi/Main-Token-sale.json'
-import MainTokenSaleBytecode from '../assets/bytecode/Main-Token-sale.json'
+import MainTokenSaleABI from '../assets/abi/Main-Token-Sale.json'
+import MainTokenSaleBytecode from '../assets/bytecode/Main-Token-Sale.json'
 
 export default async ({ web3, addMainTokenSale }) => {
   const contract = new web3.eth.Contract(MainTokenSaleABI)

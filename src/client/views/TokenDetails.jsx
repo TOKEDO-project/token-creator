@@ -78,7 +78,7 @@ const TokenDetails = (props) => {
                 <MainTokenSaleDetail />
                 {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
               </div>
-              : addMainTokenSale.initialized ? <MainTokenSaleInit /> : <TokenDetailsTutorial />
+              : addMainTokenSale.initialized ? <MainTokenSaleInit tokenId={tokenId} /> : <TokenDetailsTutorial />
             }
           </div>
         </div>
