@@ -21,7 +21,6 @@ const TokenDetails = (props) => {
   const tokenDetails = transactions[receipt.transactionHash]
   const { t, tokenSale } = props
 
-
   console.log('receipt', receipt, 'tokenDetails', tokenDetails)
   return (
     <div>
