@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 
 import Loading from './Loading'
-import WalletSelection from './WalletSelection'
+import WalletSelection from './steps/WalletSelection'
 import prepareCreateMainTokenSaleTransaction from '../utils/prepareCreateMainTokenSaleTransaction'
 
 class MainTokenSaleInit extends Component {
