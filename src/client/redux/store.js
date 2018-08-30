@@ -8,6 +8,7 @@ import { web3 } from './web3'
 import { addToken } from './addToken'
 import { addTokenSale } from './addTokenSale'
 import { tokens } from './tokens'
+import { tokenSale } from './tokenSale'
 import { preferences } from './preferences'
 
 const reducers = combineReducers({
@@ -15,6 +16,7 @@ const reducers = combineReducers({
   addToken,
   addTokenSale,
   tokens,
+  tokenSale,
   preferences
 })
 
@@ -28,6 +30,7 @@ let enhancers = composeEnhancers(
     [
       'addToken',
       'tokens',
+      'tokenSale',
       'preferences'
     ]
   )
