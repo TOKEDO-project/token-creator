@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setDecimals } from '../../redux/addToken'
+import icon from '../../assets/images/token-decimals.svg'
+import './Step.css'
+import './StepSingleInput.css'
+import { translate } from 'react-i18next'
 
 class TokenDecimals extends Component {
   constructor (props) {
@@ -37,18 +41,32 @@ class TokenDecimals extends Component {
   }
 
   render () {
-    const { addToken, nextFunction } = this.props
+    const { addToken, nextFunction, t } = this.props
     const { valid } = this.state
 
     return (
-      <div>
-        <div>Insert the decimals of your token:</div>
-        <input value={addToken.decimals} onChange={this.onChangeText} />
-        {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
-        {!valid && addToken.decimals.length > 0 ? <div>Inserire un intero tra 0 e 18</div> : null}
+      <div className='step shadow pure-u-1'>
+        <div className='top d-flex flex-row flex-h-start flex-v-center'>
+          <div className='left'>
+            <img className='icon' src={icon} alt='Icon' />
+          </div>
+          <div className='right d-flex flex-column flex-h-center'>
+            <span className='title'>{t(`Insert the decimals of your token`)}:</span>
+            <span className='description'>{t(`You can choose the decimal after the 0. Max length is 18.`)}<br />{t(`Ethereum has 18 decimals and bitcoin has only 8.`)}</span>
+          </div>
+        </div>
+        <form className='bottom d-flex flex-row flex-h-between'>
+          <div className='input-box d-flex flex-column flex-v-center'>
+            <input placeholder={t(`Insert the decimals`)} className='token-decimals text shadow' value={addToken.decimals} onChange={this.onChangeText} />
+            {!valid && addToken.decimals.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`The decimals number must be between 0 and 18`)}</div> : null}
+          </div>
+          {nextFunction ? <button className='next shadow' disabled={!valid} onClick={nextFunction} >
+          Next
+          </button> : null}
+        </form>
       </div>
     )
   }
 }
 
-export default connect(s => s)(TokenDecimals)
+export default translate('translations')(connect(s => s)(TokenDecimals))

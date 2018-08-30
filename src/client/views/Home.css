@@ -2,11 +2,6 @@
  padding: 50px 5%;
 }
 
-#home img.shuttle {
- width: 72px;
- object-fit: contain;
-}
-
 #home span.message {
  font-weight: 700;
  color: #575757;

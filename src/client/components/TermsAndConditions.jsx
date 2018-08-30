@@ -9,7 +9,7 @@ const TermsAndConditions = ({dispatch}) => {
   return (
     <div id='tac' className='pure-u-1 d-flex flex-column flex-v-center'>
       <img className='shuttle' src={shuttle} alt='Shuttle' />
-      <div className='box pure-u-4-5 pure-u-md-3-5 pure-u-lg-2-5'>
+      <div className='box shadow pure-u-4-5 pure-u-md-3-5 pure-u-lg-2-5'>
         <div className='text'>
           Commodo aliquip eiusmod deserunt dolor ullamco non qui veniam sit culpa laboris adipisicing minim incididunt. Occaecat pariatur proident nulla enim cillum anim. Ea veniam voluptate incididunt irure duis commodo ea.
           Do est id minim enim culpa ad labore reprehenderit labore ut. Id labore deserunt magna exercitation culpa velit adipisicing laborum consequat magna cupidatat cillum est amet. Voluptate magna tempor occaecat nulla enim cupidatat minim cupidatat amet labore. Ex proident adipisicing eiusmod id culpa nisi nulla laborum adipisicing. Excepteur ipsum dolor anim in. Commodo do occaecat consequat nostrud deserunt laborum.
@@ -19,8 +19,8 @@ const TermsAndConditions = ({dispatch}) => {
         </div>
       </div>
       <div className='buttons pure-u-4-5 pure-u-md-3-5 pure-u-lg-2-5 d-flex flex-row flex-h-between'>
-        <a href='/'><button type='button' className='refuse'>Refuse</button></a>
-        <a><button type='button' className='accept' onClick={() => dispatch(setTerms(true))}>Accept</button></a>
+        <a href='/'><button type='button' className='refuse shadow'>Refuse</button></a>
+        <a><button type='button' className='accept shadow' onClick={() => dispatch(setTerms(true))}>Accept</button></a>
       </div>
     </div>
   )

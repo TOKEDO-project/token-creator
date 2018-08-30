@@ -29,3 +29,12 @@ button {
   cursor: pointer;
   font-family: 'Ubuntu', sans-serif;
 }
+
+img.shuttle {
+  width: 72px;
+  object-fit: contain;
+}
+
+.shadow {
+  box-shadow: 0 0 10px 0px #E2E2E2;
+}

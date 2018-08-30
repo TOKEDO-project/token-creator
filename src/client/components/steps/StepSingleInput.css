@@ -1,0 +1,56 @@
+div.step form.bottom input.text, div.step form.bottom button.next {
+ height: 40px;
+ border: none;
+ border-radius: 5px;
+ color: white;
+}
+
+div.step form.bottom div.input-box {
+ width: calc(70% - 10px);
+}
+
+div.step form.bottom input.text {
+ width: 100%;
+ padding: 0 10px;
+ border: 1px solid #B8B8B8;
+ border-radius: 5px;
+ color: #888888;
+}
+
+div.step form.bottom input.text::placeholder {
+ font-style: italic;
+ color: #888888;
+}
+
+div.step form.bottom button.next {
+ width: calc(30% - 10px);
+ background: #FFB950;
+ color: white;
+ font-weight: 700;
+ position: relative;
+}
+
+div.step form.bottom div.input-box div.tooltip {
+ position: relative;
+ height: 27px;
+ background-color: black;
+ border-radius: 5px;
+ overflow: visible;
+ white-space: nowrap;
+ padding: 0 10px;
+ font-size: 12px;
+ color: white;
+ margin-top: 10px;
+}
+
+div.step form.bottom div.input-box div.tooltip div.triangle {
+ width: 0;
+ height: 0;
+ border-left: 5px solid transparent;
+ border-right: 5px solid transparent;
+ border-bottom: 5px solid black;
+ position: absolute;
+ top: -5px;
+ left: 50%;
+ transform: translateX(-50%);
+}

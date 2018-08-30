@@ -99,22 +99,23 @@ class AddTokenAdvanced extends React.Component {
       return <Loading />
     }
 
-    return (<div>
-      <div>
-        <a href='/token/add/wizard'>wizard</a>
-      </div>
-      <h1>AddTokenAdvanced</h1>
-      {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
-        : <div>
-          <TokenName setValid={this.setValidName} />
-          <TokenSymbol setValid={this.setValidSymbol} />
-          <TokenDecimals setValid={this.setValidDecimals} />
-          <TokenSupply setValid={this.setValidSupply} />
-          <TokenType />
-          {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+    return (
+      <div id='token-advanced'>
+        <div>
+          <a href='/token/add/wizard'>wizard</a>
         </div>
-      }
-    </div>)
+        <h1>AddTokenAdvanced</h1>
+        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={(transactionHash) => dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))} onReceipt={this.onReceipt} contractAddress={contractAddress} />
+          : <div>
+            <TokenName setValid={this.setValidName} />
+            <TokenSymbol setValid={this.setValidSymbol} />
+            <TokenDecimals setValid={this.setValidDecimals} />
+            <TokenSupply setValid={this.setValidSupply} />
+            <TokenType />
+            {this.isValid() ? <button onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+          </div>
+        }
+      </div>)
   }
 }
 

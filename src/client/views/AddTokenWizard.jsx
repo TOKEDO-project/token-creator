@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
 import TokenDecimals from '../components/steps/TokenDecimals'
@@ -13,6 +12,9 @@ import Loading from '../components/Loading'
 import { saveTransaction } from '../redux/tokens'
 import { onReceiptToken } from '../utils/onReceipt'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
+import './AddTokenWizard.css'
+import shuttle from '../assets/images/shuttle.svg'
+import { translate } from 'react-i18next'
 
 class AddTokenWizard extends Component {
   constructor (props) {
@@ -96,7 +98,7 @@ class AddTokenWizard extends Component {
   }
 
   render () {
-    const { addToken, preferences } = this.props
+    const { addToken, preferences, t } = this.props
     const {loading} = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
@@ -105,13 +107,24 @@ class AddTokenWizard extends Component {
       return <Loading />
     }
     return (
-      <div>
-        <div>Step: {addToken.step}</div>
-        {this.renderStep(addToken.step)}
-        {addToken.step === 6 ? null : <div><a href='/token/add/advanced'>advanced</a></div> }
+      <div id='token-wizard' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24 d-flex flex-column flex-v-center'>
+        <img className='shuttle' src={shuttle} alt='Shuttle' />
+        <div className='progress-container pure-u-1 d-flex flex-column'>
+          <div className={`progress-title pure-u-${addToken.step * 4}-24`}>Step {addToken.step}</div>
+          <div className='progress-bar shadow'>
+            <div className={`progress-bar-content pure-u-${addToken.step * 4}-24`} />
+          </div>
+        </div>
+        <div className='content pure-u-1 d-flex flex-row flex-h-between'>
+          {false ? <video className='pure-u-8-24' src='' /> : <div className='video-placeholder shadow pure-u-8-24 d-flex flex-row flex-h-center flex-v-center'><span className='fa fa-play-circle-o' /></div>}
+          <div className='step-container pure-u-15-24 d-flex flex-column flex-v-center'>
+            {this.renderStep(addToken.step)}
+            {addToken.step === 6 ? null : <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a> }
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-export default connect(s => s)(AddTokenWizard)
+export default translate('translations')(connect(s => s)(AddTokenWizard))

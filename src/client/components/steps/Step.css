@@ -1,0 +1,37 @@
+#token-wizard div.step {
+ background-color: white;
+ padding: 50px 25px;
+ border-radius: 5px;
+}
+
+#token-advanced div.step {
+ box-shadow: none !important;
+}
+
+div.step div.top div.left img.icon {
+ width: 48px;
+ object-fit: contain;
+}
+
+div.step div.top div.right span {
+ font-weight: 700;
+ letter-spacing: 1px;
+}
+
+div.step div.top div.right {
+ margin-left: 15px;
+}
+
+div.step div.top div.right span.title {
+ color: #f9af39;
+}
+
+div.step div.top div.right span.description {
+ font-size: 12px;
+ color: #B8B8B8;
+ margin-top: 5px;
+}
+
+div.step form.bottom {
+ margin-top: 25px;
+}

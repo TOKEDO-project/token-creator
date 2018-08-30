@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setName } from '../../redux/addToken'
 import icon from '../../assets/images/token-name.svg'
-import './InnerStepSingleInput.css'
+import './Step.css'
+import './StepSingleInput.css'
+import { translate } from 'react-i18next'
 
 class TokenName extends Component {
   constructor (props) {
@@ -37,32 +39,32 @@ class TokenName extends Component {
   }
 
   render () {
-    const { addToken, nextFunction } = this.props
+    const { addToken, nextFunction, t } = this.props
     const { valid } = this.state
 
     return (
-      <div className='inner-step'>
+      <div className='step shadow pure-u-1'>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />
           </div>
           <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>Insert the name of your token:</span>
-            <span className='description'>The name of your token. Like 'Ethereum'</span>
+            <span className='title'>{t(`Insert the name of your token`)}:</span>
+            <span className='description'>{t(`The name of your token. Like 'Ethereum'`)}</span>
           </div>
         </div>
-        <div className='bottom d-flex flex-row flex-h-between'>
+        <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
-            <input className='token-name' value={addToken.name} onChange={this.onChangeText} />
-            {!valid && addToken.name.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />Stringa piu lunga di 3 caratteri</div> : null}
+            <input placeholder={t(`Insert the name`)} className='token-name text shadow' value={addToken.name} onChange={this.onChangeText} />
+            {!valid && addToken.name.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
           </div>
-          {nextFunction ? <button disabled={!valid} onClick={nextFunction} >
+          {nextFunction ? <button className='next shadow' disabled={!valid} onClick={nextFunction} >
           Next
           </button> : null}
-        </div>
+        </form>
       </div>
     )
   }
 }
 
-export default connect(s => s)(TokenName)
+export default translate('translations')(connect(s => s)(TokenName))

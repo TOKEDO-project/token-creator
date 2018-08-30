@@ -2,14 +2,8 @@
  padding: 50px 5%;
 }
 
-#tac img.shuttle {
- width: 72px;
- object-fit: contain;
-}
-
 #tac div.box {
  background-color: white;
- box-shadow: 0 0 5px 5px #E2E2E2;
  border-radius: 5px;
  padding: 50px;
  color: #888888;
@@ -41,7 +35,6 @@
  border-radius: 5px;
  font-weight: 700;
  letter-spacing: 1px;
- box-shadow: 0 0 5px 5px #E2E2E2;
  color: white;
 }
 

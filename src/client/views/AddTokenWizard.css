@@ -1,0 +1,58 @@
+#token-wizard {
+ padding: 50px 0;
+}
+
+#token-wizard div.progress-container {
+ margin: 50px 0;
+}
+
+#token-wizard div.progress-title {
+ text-align: right;
+ font-weight: 700;
+ color: #888888;
+}
+
+#token-wizard div.progress-bar {
+ height: 50px;
+ background-color: white;
+ border-radius: 5px;
+ overflow: hidden;
+ margin-top: 25px;
+}
+
+#token-wizard div.progress-bar-content {
+ height: 100%;
+ background: linear-gradient(90deg, #FFB950, #FCD462);
+}
+
+#token-wizard div.video-placeholder {
+ background-color: #24242A;
+ border-radius: 5px;
+ min-height: calc(100%);
+}
+
+#token-wizard div.video-placeholder span.fa {
+ color: white;
+ font-size: 64px;
+}
+
+#token-wizard a.advanced {
+ color: #888888;
+ margin-top: 15px;
+ text-decoration: underline;
+}
+
+#token-wizard div.content {
+ margin-bottom: 50px;
+}
+
+#token-wizard div.step-container button.deploy {
+ background-color: #FFB950;
+ height: 70px;
+ font-weight: 700;
+ color: white;
+ margin-top: 15px;
+ border: none;
+ border-radius: 5px;
+ font-size: 20px;
+}

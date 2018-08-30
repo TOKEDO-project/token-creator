@@ -17,7 +17,7 @@ import './_Router.css'
 
 const AppRouter = () => {
   return (
-    <main className='pure-u-1'>
+    <main className='pure-u-1 d-flex flex-column flex-v-center'>
       <Router>
         <Switch>
           <Route exact path='/' component={Home} />

@@ -1,0 +1,40 @@
+div.step button.radio-box {
+ border: 1px solid #888888;
+ border-radius: 5px;
+ height: 100px;
+ position: relative;
+ text-align: center;
+ background-color: transparent;
+ word-break: break-all;
+ font-weight: 500;
+}
+
+div.step button.radio-box.active {
+ border: 2px solid #FFB950;
+ color: #FFB950;
+}
+
+div.step button.radio-box div.radio-button {
+ position: absolute;
+ top: 5px;
+ right: 5px;
+ width: 16px;
+ height: 16px;
+ border-radius: 1000px;
+ border: 2px solid #888888;
+}
+
+div.step button.radio-box div.radio-button-dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 1000px;
+ background-color: #888888;
+}
+
+div.step button.radio-box.active div.radio-button {
+ border-color: #FFB950;
+}
+
+div.step button.radio-box.active div.radio-button-dot {
+ background-color: #FFB950;
+}
