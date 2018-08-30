@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import './TokenDetails.css'
 import PageNotFound from '../components/PageNotFound'
+import TokenDetailsTutorial from '../components/TokenDetailsTutorial'
+import TokenSaleListForToken from '../components/TokenSaleListForToken'
 
 const TokenDetails = (props) => {
   const { match: { params: { tokenId } }, tokens: { transactions, receipts } } = props
@@ -17,7 +19,8 @@ const TokenDetails = (props) => {
 
   // Get token details
   const tokenDetails = transactions[receipt.transactionHash]
-  const { t } = props
+  const { t, tokenSale } = props
+
 
   console.log('receipt', receipt, 'tokenDetails', tokenDetails)
   return (
@@ -64,7 +67,7 @@ const TokenDetails = (props) => {
             </div>
           </div>
           <div className='TokenDetailsBody right'>
-          - TODO: Video e bottone crea token sale se non ci sono ancora token sale altrimenti lista delle token sale
+            {(!tokenSale || Object.keys(tokenSale.receipts).length === 0) ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
           </div>
         </div>
       </div>
