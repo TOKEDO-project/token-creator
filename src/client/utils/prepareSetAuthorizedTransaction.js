@@ -12,7 +12,7 @@ export default async ({ web3, tokenType, tokenAddress, mainTokenSaleAddress }) =
       break
   }
   const contract = new web3.eth.Contract(abi, tokenAddress)
-  const tx = contract.methods.setAuthorized(mainTokenSaleAddress, true)
+  const tx = await contract.methods.setAuthorized(mainTokenSaleAddress, true)
   const gasPrice = await web3.eth.getGasPrice()
   let options = { from: web3.address, gasPrice }
   await tx.estimateGas(options)

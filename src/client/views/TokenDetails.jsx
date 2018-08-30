@@ -77,8 +77,8 @@ const TokenDetails = (props) => {
           <div className='TokenDetailsBody right'>
             {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
             {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
-            {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken /> : null}
-            {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize /> : null}
+            {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
+            {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
             {addMainTokenSale.state === 'authorized'
               ? <div>
                 <MainTokenSaleDetail />

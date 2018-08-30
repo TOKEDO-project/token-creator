@@ -7,6 +7,8 @@ import WalletSelection from './steps/WalletSelection'
 import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 
+import prepareSetAuthorized from '../utils/prepareSetAuthorizedTransaction'
+
 class MainTokenSaleAuthorize extends Component {
   constructor (props) {
     super(props)
@@ -16,19 +18,22 @@ class MainTokenSaleAuthorize extends Component {
     }
   }
 
-    /*async componentDidMount () {
-    const { web3, tokenId } = this.props
-    const transaction = await prepareAddTokenMainTokenSaleTransaction({web3, addMainTokenSale: {userAddress: web3.address, tokenAddress: tokenId}})
+  async componentDidMount () {
+    const { web3, tokenId, tokens, mainTokenSales } = this.props
+    const transactionHash = tokens.receipts[tokenId].transactionHash
+    const tokenType = tokens.transactions[transactionHash].type
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const transaction = await prepareSetAuthorized({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress})
     this.setState({
       transaction,
       loading: false
     })
-  }*/
+  }
 
   onTransactionHash = (transactionHash) => {
     const { dispatch, web3, tokenId } = this.props
     console.log('OTH:', web3.address, tokenId)
-    dispatch(setState('authorize'))
+    dispatch(setState('authorized'))
     dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId }))
   }
 

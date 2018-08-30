@@ -16,7 +16,7 @@ export default async ({ web3, tokenType, tokenAddress, mainTokenSaleAddress, tok
       break
   }
   const contract = new web3.eth.Contract(abi, tokenAddress)
-  const tx = contract.methods.transfer(mainTokenSaleAddress, web3.utils.toWei(tokenAmount))
+  const tx = await contract.methods.transfer(mainTokenSaleAddress, web3.utils.toWei(tokenAmount))
   const gasPrice = await web3.eth.getGasPrice()
   let options = { from: web3.address, gasPrice }
   await tx.estimateGas(options)

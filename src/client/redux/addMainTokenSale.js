@@ -26,6 +26,6 @@ export const addMainTokenSale = handleActions({
     }
   }
 }, {
-  state: 'uninitialized', // uninitialized, deploy, transfer, initialized
+  state: 'uninitialized', // uninitialized, initialized, deployed, token-transferred, authorized
   amount: ''
 })

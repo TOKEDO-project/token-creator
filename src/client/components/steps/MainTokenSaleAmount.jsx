@@ -23,6 +23,11 @@ class MainTokenSaleAmount extends Component {
     this.setState({
       valid: this.validate(value)
     })
+
+    const {onChangeCB} = this.props
+    if (onChangeCB) {
+      onChangeCB(value)
+    }
   }
 
   validate = (input) => {
