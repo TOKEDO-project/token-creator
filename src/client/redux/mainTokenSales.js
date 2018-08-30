@@ -25,6 +25,6 @@ export const mainTokenSales = handleActions({
     const transactions = cloneDeep(state.transactions)
     const transactionHash = payload.receipt.transactionHash
     transactions[transactionHash].contractAddress = payload.receipt.contractAddress
-    return { ...state, [payload.tokenAddress]: {transactions, receipts: { ...state.receipts, [payload.contractAddress]: payload.receipt }} }
+    return { ...state, [payload.tokenAddress]: {transactions, receipt: payload.receipt} }
   }
 }, {})

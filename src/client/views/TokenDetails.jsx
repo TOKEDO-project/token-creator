@@ -5,6 +5,7 @@ import './TokenDetails.css'
 import PageNotFound from '../components/PageNotFound'
 import TokenDetailsTutorial from '../components/TokenDetailsTutorial'
 import TokenSaleListForToken from '../components/TokenSaleListForToken'
+import MainTokenSaleDetail from '../components/MainTokenSaleDetail'
 
 const TokenDetails = (props) => {
   const { match: { params: { tokenId } }, tokens: { transactions, receipts } } = props
@@ -19,9 +20,12 @@ const TokenDetails = (props) => {
 
   // Get token details
   const tokenDetails = transactions[receipt.transactionHash]
-  const { t, tokenSale } = props
+  const { t, tokenSales, mainTokenSales } = props
 
   console.log('receipt', receipt, 'tokenDetails', tokenDetails)
+  const mainTokenSale = mainTokenSales[tokenId]
+  const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
+  const tokenSaleList = mainTokenSaleAddress ? tokenSales[mainTokenSaleAddress] : []
   return (
     <div>
       <div id='TokenDetails' className=''>
@@ -66,7 +70,8 @@ const TokenDetails = (props) => {
             </div>
           </div>
           <div className='TokenDetailsBody right'>
-            {(!tokenSale || Object.keys(tokenSale.receipts).length === 0) ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
+            {mainTokenSale ? <MainTokenSaleDetail /> : null} }
+            {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
           </div>
         </div>
       </div>
