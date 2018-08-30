@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import './Metamask.css'
 
 class Metamask extends Component {
-  onClickDeploy = async () => {
+  onClickDeploy = async (event) => {
+    if (event) {
+      event.preventDefault()
+    }
+
     const { web3, transaction, onTransactionHash, onReceipt } = this.props
 
     // TODO: change the name of the button in waiting the transaction
