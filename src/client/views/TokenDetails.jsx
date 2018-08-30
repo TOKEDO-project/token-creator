@@ -70,8 +70,8 @@ const TokenDetails = (props) => {
             </div>
           </div>
           <div className='TokenDetailsBody right'>
-            {mainTokenSale ? <MainTokenSaleDetail /> : null} }
-            {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
+            {mainTokenSale ? <MainTokenSaleDetail /> : <TokenDetailsTutorial /> }
+            {tokenSaleList.length === 0 ? null : <TokenSaleListForToken contractAddress={tokenId} /> }
           </div>
         </div>
       </div>
