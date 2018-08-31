@@ -1,7 +1,148 @@
-.TokenDetailsHeader{
-  border-bottom:1px solid #000000;
+/*Token Details Header*/
+.TokenDetailsHeader {
+  padding: 20px 0px;
+  background: white;
 }
-.TokenDetailsMenu{
-  border-right:1px solid #000000;
-  padding: 10px;
+
+.TokenDetailsHeader img {
+  width: 50px;
+  margin-left: 20px;
+}
+
+.TokenDetailsHeader .textCenter {
+  text-align: center;
+}
+
+.TokenDetailsHeader .flexEnd {
+  align-self: flex-end;
+}
+
+.TokenDetailsHeader .flexStart {
+  align-self: flex-start;
+}
+
+.TokenDetailsHeader .breakWord {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.TokenDetailsHeader h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f9af39;
+  margin: 0;
+  font-weight: 500;
+}
+
+.TokenDetailsHeader p {
+  margin: 5px 0;
+  font-weight: 400;
+  color: #b8b8b8;
+  
+}
+
+/*Token Details Menu*/
+.TokenDetailsMenu {
+  min-height: calc(100vh - 231px);
+  background: #575757;
+  font-weight: 700;
+  font-family: 'Ubuntu';
+}
+
+.TokenDetailsMenu .handleMenu p {
+  margin: 0px 10px;
+  font-weight: 700;
+  font-family: 'Ubuntu';
+
+}
+
+.TokenDetailsMenu .handleMenu {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  border-bottom: 2px solid #9b9b9b;
+  background: #9b9b9b;
+  color: white;
+  cursor: pointer;
+}
+
+.TokenDetailsMenu button {
+  width: 100%;
+  text-align: left;
+  height: 100px;
+  padding-left: 40px;
+  border-width: 0px;
+  color:  #9b9b9b;
+  border-bottom: 1px solid #9b9b9b;
+  background: #575757;
+}
+.TokenDetailsMenu button:hover {
+  color:  #fff;
+  background: #515151;
+}
+
+/*Token Details Media Query*/
+@media (min-width: 1560px) {
+  .TokenDetailsHeader p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1559px) {
+  .TokenDetailsHeader p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .TokenDetailsHeader .paddingItems {
+    padding-left: 20px;
+  }
+
+  .TokenDetailsHeader .borderRight {
+    border-right: 1px solid #b8b8b8;
+  }
+
+  .TokenDetailsHeader .flexView {
+    display: flex;
+  }
+
+  .TokenDetailsHeader {
+    padding: 45px 0px;
+  }
+}
+
+@media (min-width: 1301px) {
+  .TokenDetailsHeader .heightBox {
+    height: 50px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .TokenDetailsHeader .heightBox {
+    height: 60px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .TokenDetailsHeader .heightBox {
+    height: 80px;
+  }
+
+  .TokenDetailsHeader .paddingItems {
+    text-align: center;
+  }
+
+  .TokenDetailsHeader .flexView {
+    display: block;
+  }
+
+  .TokenDetailsHeader {
+    padding: 20px 0px;
+  }
 }

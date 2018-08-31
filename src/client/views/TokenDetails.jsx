@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import './TokenDetails.css'
+import backIcon from '../assets/images/back.svg'
 import PageNotFound from '../components/PageNotFound'
 import TokenDetailsTutorial from '../components/TokenDetailsTutorial'
 import TokenSaleListForToken from '../components/TokenSaleListForToken'
@@ -32,37 +33,74 @@ const TokenDetails = (props) => {
   const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
   const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
   return (
-    <div>
-      <div id='TokenDetails' className=''>
-        <div className='TokenDetailsHeader top d-flex flex-row flex-h-start flex-v-center'>
-          <div>
-            <a href='/'><button><i className='fas fa-angle-left' /> back</button></a>
+    <div className='pure-u-1'>
+      <div id='TokenDetails'>
+
+        <div className=''>
+          <div className='TokenDetailsHeader flexView flex-row flex-v-center shadow'>
+
+            <div className='pure-u-lg-2-24 pure-u-md-1-1 pure-u-1'>
+              <a href='/'><img src={backIcon} /></a>
+            </div>
+            <div className='pure-u-lg-2-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
+              <div className='d-flex flex-column flex-h-center heightBox borderRight'>
+                <h4>{t('Token Name')}:</h4>
+                <p>{tokenDetails.name}</p>
+              </div>
+
+            </div>
+            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+              <div className='d-flex flex-column flex-h-center heightBox borderRight'>
+                <h4>{t('Token Symbol')}:</h4>
+                <p>{tokenDetails.symbol}</p>
+              </div>
+
+            </div>
+            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+              <div className='d-flex flex-column flex-h-center heightBox borderRight'>
+                <h4>{t('Decimals')}:</h4>
+                <p>{tokenDetails.decimals}</p>
+              </div>
+
+            </div>
+            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+              <div className='d-flex flex-column flex-h-center heightBox borderRight'>
+                <h4>{t('Total Supply')}:</h4>
+                <p>{tokenDetails.supply}</p>
+              </div>
+
+            </div>
+            <div className='pure-u-lg-7-24  pure-u-md-1-2 pure-u-1-2  paddingItems'>
+              <div className='d-flex flex-column flex-h-center heightBox borderRight'>
+                <h4>{t('Token Address')}:</h4>
+                <p className='breakWord'>{tokenId}</p>
+              </div>
+
+            </div>
+            <div className='pure-u-lg-7-24  pure-u-md-1-2 pure-u-1-2 paddingItems'>
+              <div className='d-flex flex-column flex-h-center heightBox'>
+                <h4>{t('Token Owner')}:</h4>
+                <p className='breakWord'>{receipt.owner}</p>
+              </div>
+
+            </div>
           </div>
-          <div className='flex-v-center'>
-            Token Name<br />
-            {tokenDetails.name}
-          </div>
-          <div className='flex-v-center'>
-            Token Symbol<br />
-            {tokenDetails.symbol}
-          </div>
-          <div className='flex-v-center'>
-          Decimals<br />
-            {tokenDetails.decimals}
-          </div>
-          <div className='flex-v-center'>
-            Total Supply<br />
-            {tokenDetails.supply}
-          </div>
-          <div>Token Address:<br />{tokenId}</div>
-          <div>Token Owner:<br />{receipt.owner}</div>
         </div>
 
-        <div className='TokenDetailsContent bottom d-flex flex-row flex-h-start flex-v-center'>
-          <div className='TokenDetailsMenu left '>
-            Menu
+        <div className='TokenDetailsContent d-flex flex-row flex-h-start flex-v-center'>
+          <div className='TokenDetailsMenu  pure-u-lg-4-24 pure-u-md-1-2 pure-u-1'>
+            <div className='handleMenu'>
+              <p>
+                {t('Close Menu')}
+              </p>
+              <i className='fa fa-close' />
+            </div>
             <div>
-              <a href='#'><button onClick={() => dispatch(setState('initialized'))}><i className='fas fa-angle-left' /> {t('Add Token Sale')}</button></a>
+              <a href='#'>
+                <button onClick={() => dispatch(setState('initialized'))}>
+                  <i className='fas fa-angle-left' /> {t('Add Token Sale')}
+                </button>
+              </a>
             </div>
             <div>
               <a href='/'><button><i className='fas fa-angle-left' /> {t('Unlock The Token')}</button></a>
@@ -82,7 +120,7 @@ const TokenDetails = (props) => {
             {addMainTokenSale.state === 'authorized'
               ? <div>
                 <MainTokenSaleDetail />
-                {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} /> }
+                {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}
               </div>
               : null
             }
