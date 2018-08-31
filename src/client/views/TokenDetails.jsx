@@ -87,7 +87,7 @@ const TokenDetails = (props) => {
           </div>
         </div>
 
-        <div className='TokenDetailsContent d-flex flex-row flex-h-start flex-v-center'>
+        <div className='TokenDetailsContent'>
           <div className='TokenDetailsMenu  pure-u-lg-5-24 pure-u-md-1-2 pure-u-1'>
             <div className='handleMenu'>
               <p>
@@ -112,19 +112,22 @@ const TokenDetails = (props) => {
               <a href='/'><button><i className='fas fa-angle-left' /> {t('Authorize Transfer')}</button></a>
             </div>
           </div>
-          <div className='TokenDetailsBody right'>
-            {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
-            {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
-            {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
-            {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
-            {addMainTokenSale.state === 'authorized'
-              ? <div>
-                <MainTokenSaleDetail />
-                {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}
-              </div>
-              : null
-            }
+          <div className='pure-u-lg-19-24 pure-u-md-1-2 pure-u-1'>
+            <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
+              {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
+              {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
+              {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
+              {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
+              {addMainTokenSale.state === 'authorized'
+                ? <div>
+                  <MainTokenSaleDetail />
+                  {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}
+                </div>
+                : null
+              }
+            </div>
           </div>
+
         </div>
       </div>
     </div>

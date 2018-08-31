@@ -41,7 +41,11 @@
   color: #b8b8b8;
   
 }
+/*Token Details Body*/
+.TokenDetailsBody{
+  min-height: calc(100vh - 231px);
 
+}
 /*Token Details Menu*/
 .TokenDetailsMenu {
   min-height: calc(100vh - 231px);
