@@ -12,7 +12,6 @@
 
 #token-advanced a.wizard {
  color: #888888;
- margin-bottom: 15px;
  text-decoration: underline;
 }
 
@@ -32,4 +31,8 @@
  #token-advanced div.deploy-container {
   margin-bottom: 0;
  }
+}
+
+#token-advanced #wallet-selection {
+ margin-top: 15px;
 }
