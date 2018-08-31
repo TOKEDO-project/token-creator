@@ -1,0 +1,34 @@
+div.step form.bottom div.clipboard-field {
+ border-radius: 5px;
+ overflow: hidden;
+ border: 1px solid #888888;
+}
+
+div.step form.bottom div.clipboard-field>div {
+ padding: 15px;
+ color: #888888;
+ text-overflow: ellipsis;
+}
+
+div.step form.bottom div.clipboard-field>button {
+ height: 100%;
+ border: none;
+ background-color: #888888;
+ color: white;
+}
+
+div.step form.bottom div.clipboard-field span.fa {
+ margin-right: 5px;
+}
+
+div.step form.bottom div.clipboard-field:hover {
+ border-color: #FFB950;
+}
+
+div.step form.bottom div.clipboard-field:hover button {
+ background-color: #FFB950;
+}
+
+div.step form.bottom div.clipboard-field>div::selection {
+ background-color: #FFB950;
+}

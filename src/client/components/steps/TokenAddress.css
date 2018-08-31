@@ -1,0 +1,19 @@
+#token-address button.close {
+ height: 60px;
+ color: white;
+ background-color: #888888;
+ border: none;
+ border-radius: 5px;
+}
+
+#token-address button.deploy-token-sale {
+ height: 60px;
+ color: white;
+ background-color: #FFB950;
+ border: none;
+ border-radius: 5px;
+}
+
+#token-address a {
+ margin-top: 15px;
+}

@@ -1,20 +1,45 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import icon from '../../assets/images/token-live.svg'
+import './Step.css'
+import './StepCopyField.css'
+import { translate } from 'react-i18next'
+import './TokenAddress.css'
 
 class TokenAddress extends Component {
   render () {
-    const { contractAddress } = this.props
+    const { contractAddress, t } = this.props
     return (
-      <div id='ContractAddress'>
-        <h1>Contract created!</h1>
-        {contractAddress} <button>copy</button>
-        <div>
-          <a href='/'>Close</a>
-          <a href={`/token/details/${contractAddress}`}>Deploy Token Sale</a>
+      <div id='token-address' className='step-container pure-u-1 d-flex flex-column'>
+        <div className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
+          <div className='top d-flex flex-row flex-h-start flex-v-center'>
+            <div className='left'>
+              <img className='icon' src={icon} alt='Icon' />
+            </div>
+            <div className='right d-flex flex-column flex-h-center'>
+              <span className='title'>{t(`Your token is now live!`)}:</span>
+              <span className='description font-size-tiny'>{t(`Congratulation, your token is now on the ethereum blockchain`)}</span>
+            </div>
+          </div>
+          <form className='bottom d-flex flex-row flex-h-between'>
+            <div className='clipboard-field shadow pure-u-1'>
+              <div className='pure-u-16-24 font-size-small'>
+                {contractAddress}
+              </div>
+              <button type='button' className='pure-u-8-24'>
+                <span className='fa fa-clipboard' />
+                <span className='font-size-tiny'>Copy</span>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className='pure-u-1 d-flex flex-row flex-h-between'>
+          <a className='pure-u-11-24' href='/'><button className='close pure-u-1 font-weight-bold' type='button'>Close</button></a>
+          <a className='pure-u-11-24' href={`/token/details/${contractAddress}`}><button className='deploy-token-sale pure-u-1 font-weight-bold' type='button'>Deploy the Token Sale</button></a>
         </div>
       </div>
     )
   }
 }
 
-export default connect(s => s)(TokenAddress)
+export default translate('translations')(connect(s => s)(TokenAddress))

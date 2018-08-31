@@ -45,15 +45,15 @@ class WalletSelection extends Component {
           </div>
         </div>
         <form className='bottom d-flex flex-column flex-v-center'>
-          <div className='pure-u-1 d-flex flex-row flex-h-center'>
-            <button onClick={this.onClickMetamask} type='button' className={`radio-box ${addToken.walletType === 'metamask' ? ' active' : ''} shadow pure-u-11-24 pure-u-lg-8-24 d-flex flex-column flex-h-center flex-v-center`}>
+          <div className='pure-u-1 pure-u-lg-4-5 d-flex flex-row flex-h-between flex-wrap'>
+            <button onClick={this.onClickMetamask} type='button' className={`radio-box ${addToken.walletType === 'metamask' ? ' active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-column flex-h-center flex-v-center`}>
               <img className='metamask' src={metamask} alt='Metamask' />
             Metamask
               <div className={`radio-button ${addToken.walletType === 'metamask' ? ' active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                 <div className='radio-button-dot' />
               </div>
             </button>
-            <button onClick={this.onClickAtomax} type='button' className={`radio-box ${addToken.walletType === 'atomax' ? ' active' : ''} shadow pure-u-11-24 pure-u-lg-8-24 d-flex flex-column flex-h-center flex-v-center`}>
+            <button onClick={this.onClickAtomax} type='button' className={`radio-box ${addToken.walletType === 'atomax' ? ' active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-column flex-h-center flex-v-center`}>
               <img className='atomax' src={atomax} alt='Atomax' />
             Atomax
               <div className={`radio-button ${addToken.walletType === 'atomax' ? ' active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
