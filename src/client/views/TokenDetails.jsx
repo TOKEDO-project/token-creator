@@ -88,7 +88,7 @@ const TokenDetails = (props) => {
         </div>
 
         <div className='TokenDetailsContent d-flex flex-row flex-h-start flex-v-center'>
-          <div className='TokenDetailsMenu  pure-u-lg-4-24 pure-u-md-1-2 pure-u-1'>
+          <div className='TokenDetailsMenu  pure-u-lg-5-24 pure-u-md-1-2 pure-u-1'>
             <div className='handleMenu'>
               <p>
                 {t('Close Menu')}
