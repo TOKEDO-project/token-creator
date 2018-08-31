@@ -4,17 +4,23 @@ div.step button.radio-box {
  position: relative;
  text-align: center;
  background-color: transparent;
- font-weight: 700;
+ margin: 10px 0;
  padding: 20px 0;
  color: #888888;
 }
 
-div.step button.radio-box:first-child {
- margin-right: 10px;
+@media (min-width: 568px) {
+ div.step button.radio-box.pure-u-sm-7-24 {
+  margin: 0 0;
+  word-spacing: 30000px;
+ }
 }
 
-div.step button.radio-box:last-child {
- margin-left: 10px;
+@media (min-width: 1024px) {
+ div.step button.radio-box.pure-u-lg-7-24 {
+  margin: 0 0;
+  word-spacing: 30000px;
+ }
 }
 
 div.step button.radio-box.active {

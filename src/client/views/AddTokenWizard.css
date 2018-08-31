@@ -8,7 +8,7 @@
 
 #token-wizard div.progress-title {
  text-align: right;
- font-weight: 700;
+ 
  color: #888888;
 }
 
@@ -56,10 +56,10 @@
 #token-wizard div.step-container button.deploy {
  background-color: #FFB950;
  height: 70px;
- font-weight: 700;
+ 
  color: white;
  margin-top: 15px;
  border: none;
  border-radius: 5px;
- font-size: 20px;
+ 
 }

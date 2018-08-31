@@ -3,9 +3,9 @@
 }
 
 #home span.message {
- font-weight: 700;
+ 
  color: #575757;
- letter-spacing: 1px;
+ 
  margin: 50px 0;
 }
 
@@ -16,5 +16,5 @@
  border: none;
  border-radius: 5px;
  color: white;
- font-weight: 700;
+ 
 }

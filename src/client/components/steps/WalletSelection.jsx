@@ -34,14 +34,14 @@ class WalletSelection extends Component {
       return <TokenAddress contractAddress={contractAddress} />
     }
     return (
-      <div id='WalletSelection' className='step shadow pure-u-1'>
+      <div id='WalletSelection' className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />
           </div>
           <div className='right d-flex flex-column flex-h-center'>
             <span className='title'>{t(`Select the wallet`)}:</span>
-            <span className='description'>{t(`To deploy the smart contract of your token you need an Ethereum address with a little balance of ETH. This address`)}</span>
+            <span className='description font-size-tiny'>{t(`To deploy the smart contract of your token you need an Ethereum address with a little balance of ETH. This address`)}</span>
           </div>
         </div>
         <form className='bottom d-flex flex-column flex-v-center'>

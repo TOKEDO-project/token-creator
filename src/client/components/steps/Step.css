@@ -10,16 +10,13 @@ div#WalletSelection.step {
 
 #token-advanced div.step {
  box-shadow: none;
+ min-height: 100%;
+ padding: 35px;
 }
 
 div.step div.top div.left img.icon {
  width: 48px;
  object-fit: contain;
-}
-
-div.step div.top div.right span {
- font-weight: 700;
- letter-spacing: 1px;
 }
 
 div.step div.top div.right {
@@ -31,7 +28,7 @@ div.step div.top div.right span.title {
 }
 
 div.step div.top div.right span.description {
- font-size: 12px;
+ 
  color: #B8B8B8;
  margin-top: 5px;
 }

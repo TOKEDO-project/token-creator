@@ -5,21 +5,21 @@
 #atomax span.text {
  color: #888888;
  margin: 20px 0;
- font-weight: 700;
- font-size: 12px;
+ 
+ 
  text-align: center;
 }
 
 #atomax span.title {
  color: #FFB950;
- font-size: 16px;
- font-weight: 700;
+ 
+ 
  text-align: center;
 }
 
 #atomax span.description {
- font-size: 12px;
- font-weight: 700;
+ 
+ 
  text-align: center;
  color: #888888;
  margin: 10px 0;
@@ -37,8 +37,8 @@
  text-align: center;
  word-break: break-all;
  color: #888888;
- font-weight: 700;
- font-size: 12px;
+ 
+ 
  margin: 25px 0;
 }
 

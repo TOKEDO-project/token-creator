@@ -5,10 +5,6 @@ div.step form.bottom input.text, div.step form.bottom button.next {
  color: white;
 }
 
-div.step form.bottom div.input-box {
- width: calc(70% - 10px);
-}
-
 div.step form.bottom input.text {
  width: 100%;
  padding: 0 10px;
@@ -23,10 +19,9 @@ div.step form.bottom input.text::placeholder {
 }
 
 div.step form.bottom button.next {
- width: calc(30% - 10px);
  background: #FFB950;
  color: white;
- font-weight: 700;
+ 
  position: relative;
 }
 
@@ -38,7 +33,7 @@ div.step form.bottom div.input-box div.tooltip {
  overflow: visible;
  white-space: nowrap;
  padding: 0 10px;
- font-size: 12px;
+ 
  color: white;
  margin-top: 10px;
 }

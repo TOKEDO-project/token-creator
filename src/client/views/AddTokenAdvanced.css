@@ -2,13 +2,34 @@
  padding: 50px 0;
 }
 
-#token-adavnced button.deploy {
+#token-advanced button.deploy {
  background-color: #FFB950;
  height: 70px;
- font-weight: 700;
  color: white;
- margin-top: 15px;
  border: none;
  border-radius: 5px;
- font-size: 20px;
+}
+
+#token-advanced a.wizard {
+ color: #888888;
+ margin-bottom: 15px;
+ text-decoration: underline;
+}
+
+#token-advanced div.big-card {
+ background-color: white;
+ padding: 25px;
+ border-radius: 5px;
+ margin-top: 15px;
+}
+
+#token-advanced div.deploy-container {
+ padding: 35px;
+ margin-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+ #token-advanced div.deploy-container {
+  margin-bottom: 0;
+ }
 }
