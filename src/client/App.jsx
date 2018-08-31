@@ -71,7 +71,7 @@ class App extends React.Component {
     return (
       <div className='pure-g'>
         <Router >
-          <div>
+          <div className='pure-u-1'>
             <Header />
             {web3.loading ? <Loading /> : <Routes />}
             <Footer />
