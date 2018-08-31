@@ -3,8 +3,9 @@ import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
 import { I18nextProvider } from 'react-i18next'
 import { store } from './redux/store'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import Router from './views/_Router'
+import Routes from './views/_Routes'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -69,9 +70,13 @@ class App extends React.Component {
 
     return (
       <div className='pure-g'>
-        <Header />
-        {web3.loading ? <Loading /> : <Router />}
-        <Footer />
+        <Router >
+          <div>
+            <Header />
+            {web3.loading ? <Loading /> : <Routes />}
+            <Footer />
+          </div>
+        </Router>
       </div>
     )
   }
