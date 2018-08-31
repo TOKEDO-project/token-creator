@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 import { setAmount } from '../../redux/addMainTokenSale'
+import { getTokenInfo } from '../../utils/tokens'
+import bnUtils from '../../../../bnUtils'
 import icon from '../../assets/images/token-supply.svg'
 import './Step.css'
 import './StepSingleInput.css'
-import { translate } from 'react-i18next'
 
 class MainTokenSaleAmount extends Component {
   constructor (props) {
@@ -31,8 +33,9 @@ class MainTokenSaleAmount extends Component {
   }
 
   validate = (input) => {
-    const { setValid } = this.props
-    const valid = input.length > 3
+    const { setValid, contractAddress, tokens } = this.props
+    const tokenInfo = getTokenInfo(contractAddress, tokens)
+    const valid = input.length > 3 && bnUtils.lte(input, tokenInfo.supply)
 
     if (setValid) {
       setValid(valid)
@@ -42,7 +45,6 @@ class MainTokenSaleAmount extends Component {
 
   componentWillMount () {
     const { addMainTokenSale } = this.props
-    console.log('AMOUNT', addMainTokenSale.amount)
     this.setState({ valid: this.validate(addMainTokenSale.amount) })
   }
 
@@ -64,7 +66,7 @@ class MainTokenSaleAmount extends Component {
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
             <input placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale.amount} onChange={this.onChangeText} />
-            {!valid && addMainTokenSale.amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`The total amount must be longer than 3 characters`)}</div> : null}
+            {!valid && addMainTokenSale.amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply`)}</div> : null}
           </div>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router'
 
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
@@ -44,6 +45,8 @@ class MainTokenSaleAddToken extends Component {
 
   render () {
     const {transaction, loading} = this.state
+    const {match: {params: {tokenId}}} = this.props
+    console.log(this.props)
 
     if (loading) {
       return <Loading />
@@ -51,11 +54,11 @@ class MainTokenSaleAddToken extends Component {
 
     return (
       <div>
-        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} />
+        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} contractAddress={tokenId} />
         <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
       </div>
     )
   }
 }
 
-export default translate('translations')(connect(s => s)(MainTokenSaleAddToken))
+export default withRouter(translate('translations')(connect(s => s)(MainTokenSaleAddToken)))
