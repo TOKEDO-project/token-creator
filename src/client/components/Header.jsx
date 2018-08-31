@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './Header.css'
 import logo from '../assets/images/logo.svg'
-import { Menu } from './Menu'
+import Menu from './Menu'
 
-export class Header extends Component {
+class Header extends Component {
   constructor (props) {
     super(props)
 
