@@ -58,7 +58,7 @@ class TokenSymbol extends Component {
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the symbol`)} className='token-symbol text shadow' value={addToken.symbol} onChange={this.onChangeText} />
-            {!valid && addToken.symbol.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`The symbol must be longer than 3 characters`)}</div> : null}
+            {!valid && addToken.symbol.length > 0 ? <div className='tooltip font-size-petite d-flex flex-row flex-v-center'><div className='triangle' />{t(`The symbol must be longer than 3 characters`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
           Next
