@@ -34,7 +34,7 @@ class WalletSelection extends Component {
       return <TokenAddress contractAddress={contractAddress} />
     }
     return (
-      <div id='WalletSelection' className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
+      <div id='wallet-selection' className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />

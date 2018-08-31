@@ -6,6 +6,10 @@
   font-weight: 500;
 }
 
+body {
+  background-color: #EEEEEE;
+}
+
 h1 {
   font-size: 18px;
   margin: 0;
