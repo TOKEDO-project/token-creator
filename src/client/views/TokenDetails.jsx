@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import './TokenDetails.css'
 import backIcon from '../assets/images/back.svg'
+import padlockIcon from '../assets/images/padlock.svg'
+import groupIcon from '../assets/images/groupIcon.svg'
+import shieldIcon from '../assets/images/secure-shield.svg'
+import addIcon from '../assets/images/addIcon.svg'
 import PageNotFound from '../components/PageNotFound'
 import TokenDetailsTutorial from '../components/TokenDetailsTutorial'
 import TokenSaleListForToken from '../components/TokenSaleListForToken'
@@ -32,6 +36,10 @@ const TokenDetails = (props) => {
   const mainTokenSale = mainTokenSales[tokenId]
   const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
   const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
+
+  // Temporary logic for menu
+  let showMenu = true
+
   return (
     <div className='pure-u-1'>
       <div id='TokenDetails'>
@@ -88,28 +96,26 @@ const TokenDetails = (props) => {
         </div>
 
         <div className='TokenDetailsContent'>
-          <div className='TokenDetailsMenu  pure-u-lg-5-24 pure-u-md-1-2 pure-u-1'>
-            <div className='handleMenu'>
-              <p>
-                {t('Close Menu')}
-              </p>
-              <i className='fa fa-close' />
+          <div className={`TokenDetailsMenu ${showMenu ? 'pure-u-lg-6-24 pure-u-md-1-2 pure-u-1' : 'widthMenuClosed'}`}>
+            <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`}>
+
+              {showMenu ? <p>{t('Close Menu')}</p> : <p>{t('Open')}<br />{t('Menu')}</p> }
+
+              <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
             </div>
             <div>
               <a href='#'>
-                <button onClick={() => dispatch(setState('initialized'))}>
-                  <i className='fas fa-angle-left' /> {t('Add Token Sale')}
-                </button>
+                <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={() => dispatch(setState('initialized'))}><img src={addIcon} /> {showMenu ? t('Add Token Sale') : null}</button>
               </a>
             </div>
             <div>
-              <a href='/'><button><i className='fas fa-angle-left' /> {t('Unlock The Token')}</button></a>
+              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} />{showMenu ? t('Unlock The Token') : null}</button></a>
             </div>
             <div>
-              <a href='/'><button><i className='fas fa-angle-left' /> {t('Change Token Owner')}</button></a>
+              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} />{showMenu ? t('Change Token Owner') : null}</button></a>
             </div>
             <div>
-              <a href='/'><button><i className='fas fa-angle-left' /> {t('Authorize Transfer')}</button></a>
+              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} />{showMenu ? t('Authorize Transfer') : null}</button></a>
             </div>
           </div>
           <div className='pure-u-lg-19-24 pure-u-md-1-2 pure-u-1'>

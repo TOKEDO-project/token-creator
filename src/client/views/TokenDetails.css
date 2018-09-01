@@ -39,13 +39,13 @@
   margin: 5px 0;
   font-weight: 400;
   color: #b8b8b8;
-  
 }
-/*Token Details Body*/
-.TokenDetailsBody{
-  min-height: calc(100vh - 231px);
 
+/*Token Details Body*/
+.TokenDetailsBody {
+  min-height: calc(100vh - 231px);
 }
+
 /*Token Details Menu*/
 .TokenDetailsMenu {
   min-height: calc(100vh - 231px);
@@ -54,11 +54,30 @@
   font-family: 'Ubuntu';
 }
 
-.TokenDetailsMenu .handleMenu p {
-  margin: 0px 10px;
+.TokenDetailsMenu .closedHandleMenu {
+  width: 140px;
+  height: 70px;
+  background: #f9af39;
+  color: white;
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+.TokenDetailsMenu .closedHandleMenu i {
+font-size: 25px;
+}
+.TokenDetailsMenu .closedHandleMenu p{
+  margin: 0;
+}
+.TokenDetailsMenu .handleMenu p{
+  margin: 0 10px;
+}
+.TokenDetailsMenu .handleMenu {
+  padding: 0px 10px;
   font-weight: 700;
   font-family: 'Ubuntu';
-
 }
 
 .TokenDetailsMenu .handleMenu {
@@ -75,18 +94,34 @@
   cursor: pointer;
 }
 
+.TokenDetailsMenu button img {
+  width: 25px;
+  margin-right: 10px;
+}
+.TokenDetailsMenu.widthMenuClosed{
+  width: 8%;
+  min-width: 85px;
+}
+.TokenDetailsMenu div a {
+  text-decoration: none;
+}
+
 .TokenDetailsMenu button {
   width: 100%;
   text-align: left;
   height: 100px;
-  padding-left: 40px;
   border-width: 0px;
-  color:  #9b9b9b;
-  border-bottom: 1px solid #9b9b9b;
+  color: #9b9b9b;
   background: #575757;
+  display: flex;
+  align-items: center;
+}
+.TokenDetailsMenu button.borderBtn{
+  border-bottom: 1px solid #9b9b9b;
+  padding-left: 40px;
 }
 .TokenDetailsMenu button:hover {
-  color:  #fff;
+  color: #fff;
   background: #515151;
 }
 
