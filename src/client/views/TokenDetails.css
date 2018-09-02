@@ -8,7 +8,13 @@
   width: 50px;
   margin-left: 20px;
 }
-
+.TokenDetailsHeader a img:active {
+  -webkit-transform: translateY(6px);
+  -moz-transform: translateY(6px);
+  -ms-transform: translateY(6px);
+  -o-transform: translateY(6px);
+  transform: translateY(6px);
+}
 .TokenDetailsHeader .textCenter {
   text-align: center;
 }
@@ -28,14 +34,14 @@
 }
 
 .TokenDetailsHeader h4 {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
   color: #f9af39;
   margin: 0;
   font-weight: 500;
 }
 
 .TokenDetailsHeader p {
+  font-size: 12px;
   margin: 5px 0;
   font-weight: 400;
   color: #b8b8b8;
@@ -43,17 +49,20 @@
 
 /*Token Details Body*/
 .TokenDetailsBody {
-  min-height: calc(100vh - 231px);
+  padding: 20px;
 }
 
 /*Token Details Menu*/
 .TokenDetailsMenu {
-  min-height: calc(100vh - 231px);
   background: #575757;
-  font-weight: 700;
-  font-family: 'Ubuntu';
+  transition: all 50ms ease-in;
+  -webkit-transition:  all 50ms ease-in;
 }
-
+.TokenDetailsMenu a button p {
+  font-weight: 500;
+  font-family: 'Ubuntu';
+  margin: 0 0 0 10px;
+}
 .TokenDetailsMenu .closedHandleMenu {
   width: 140px;
   height: 70px;
@@ -65,15 +74,19 @@
   align-items: center;
   padding: 0 15px;
 }
+
 .TokenDetailsMenu .closedHandleMenu i {
-font-size: 25px;
+  font-size: 25px;
 }
-.TokenDetailsMenu .closedHandleMenu p{
+
+.TokenDetailsMenu .closedHandleMenu p {
   margin: 0;
 }
-.TokenDetailsMenu .handleMenu p{
+
+.TokenDetailsMenu .handleMenu p {
   margin: 0 10px;
 }
+
 .TokenDetailsMenu .handleMenu {
   padding: 0px 10px;
   font-weight: 700;
@@ -96,12 +109,14 @@ font-size: 25px;
 
 .TokenDetailsMenu button img {
   width: 25px;
-  margin-right: 10px;
 }
-.TokenDetailsMenu.widthMenuClosed{
+
+.TokenDetailsMenu.widthMenuClosed {
   width: 8%;
   min-width: 85px;
+  cursor: pointer;
 }
+
 .TokenDetailsMenu div a {
   text-decoration: none;
 }
@@ -116,31 +131,43 @@ font-size: 25px;
   display: flex;
   align-items: center;
 }
-.TokenDetailsMenu button.borderBtn{
+
+.TokenDetailsMenu button.borderBtn {
   border-bottom: 1px solid #9b9b9b;
-  padding-left: 40px;
 }
+
 .TokenDetailsMenu button:hover {
   color: #fff;
   background: #515151;
 }
 
 /*Token Details Media Query*/
-@media (min-width: 1560px) {
-  .TokenDetailsHeader p {
-    font-size: 14px;
+
+@media (min-width: 1301px) {
+  .TokenDetailsHeader .heightBox {
+    height: 50px;
   }
 }
 
-@media (max-width: 1559px) {
-  .TokenDetailsHeader p {
-    font-size: 14px;
+@media (max-width: 1300px) {
+  .TokenDetailsHeader .heightBox {
+    height: 60px;
   }
 }
-
-@media (min-width: 1024px) {
-  .TokenDetailsHeader .paddingItems {
+@media (min-width: 1280px) {
+.TokenDetailsMenu button.borderBtn {
+  padding-left: 40px;
+}
+}
+@media (max-width: 1279px) {
+  .TokenDetailsMenu button.borderBtn {
     padding-left: 20px;
+  }
+  }
+@media (min-width: 1024px) {
+
+  .TokenDetailsHeader .paddingItems {
+    padding-left: 10px;
   }
 
   .TokenDetailsHeader .borderRight {
@@ -153,18 +180,6 @@ font-size: 25px;
 
   .TokenDetailsHeader {
     padding: 45px 0px;
-  }
-}
-
-@media (min-width: 1301px) {
-  .TokenDetailsHeader .heightBox {
-    height: 50px;
-  }
-}
-
-@media (max-width: 1300px) {
-  .TokenDetailsHeader .heightBox {
-    height: 60px;
   }
 }
 
@@ -183,5 +198,32 @@ font-size: 25px;
 
   .TokenDetailsHeader {
     padding: 20px 0px;
+  }
+}
+@media (min-width: 768px) {
+
+  .TokenDetailsBody {
+    padding-top: 70px;
+  }
+  
+  .TokenDetailsMenu {
+    min-height: calc(100vh - 231px);
+  }
+}
+
+@media (max-width: 767px) {
+  .TokenDetailsMenu button.borderBtn {
+    padding-left: 40px;
+  }
+  .TokenDetailsMenu .hideMenuResponsive {
+    display: none;
+  }
+}
+@media (min-width: 64em){
+  .TokenDetailsHeader .lg-2l-24{
+    width: 10.3333%;
+  }
+  .TokenDetailsHeader .lg-2s-24{
+    width: 7.3333%;
   }
 }

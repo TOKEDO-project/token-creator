@@ -38,99 +38,81 @@ const TokenDetails = (props) => {
   const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
 
   // Temporary logic for menu
-  let showMenu = true
+  let showMenu = false
 
   return (
     <div className='pure-u-1'>
       <div id='TokenDetails'>
-
         <div className=''>
           <div className='TokenDetailsHeader flexView flex-row flex-v-center shadow'>
-
-            <div className='pure-u-lg-2-24 pure-u-md-1-1 pure-u-1'>
+            <div className='lg-2s-24 pure-u-md-1-1 pure-u-sm-1'>
               <a href='/'><img src={backIcon} /></a>
             </div>
-            <div className='pure-u-lg-2-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
+            <div className='pure-u-lg-3-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
               <div className='d-flex flex-column flex-h-center heightBox borderRight'>
                 <h4>{t('Token Name')}:</h4>
-                <p>{tokenDetails.name}</p>
+                <p className='breakWord'>{tokenDetails.name}</p>
               </div>
-
             </div>
-            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+            <div className='lg-2l-24 pure-u-md-1-4 pure-u-1-4  textCenter'>
               <div className='d-flex flex-column flex-h-center heightBox borderRight'>
                 <h4>{t('Token Symbol')}:</h4>
-                <p>{tokenDetails.symbol}</p>
+                <p className='breakWord'>{tokenDetails.symbol}</p>
               </div>
-
             </div>
-            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+            <div className='lg-2s-24 pure-u-md-1-4 pure-u-1-4  textCenter'>
               <div className='d-flex flex-column flex-h-center heightBox borderRight'>
                 <h4>{t('Decimals')}:</h4>
-                <p>{tokenDetails.decimals}</p>
+                <p className='breakWord'>{tokenDetails.decimals}</p>
               </div>
-
             </div>
-            <div className='pure-u-lg-2-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
+            <div className='pure-u-lg-3-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
               <div className='d-flex flex-column flex-h-center heightBox borderRight'>
                 <h4>{t('Total Supply')}:</h4>
-                <p>{tokenDetails.supply}</p>
+                <p className='breakWord'>{tokenDetails.supply}</p>
               </div>
-
             </div>
-            <div className='pure-u-lg-7-24  pure-u-md-1-2 pure-u-1-2  paddingItems'>
+            <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2  paddingItems'>
               <div className='d-flex flex-column flex-h-center heightBox borderRight'>
                 <h4>{t('Token Address')}:</h4>
                 <p className='breakWord'>{tokenId}</p>
               </div>
-
             </div>
-            <div className='pure-u-lg-7-24  pure-u-md-1-2 pure-u-1-2 paddingItems'>
+            <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2 paddingItems'>
               <div className='d-flex flex-column flex-h-center heightBox'>
                 <h4>{t('Token Owner')}:</h4>
                 <p className='breakWord'>{receipt.owner}</p>
               </div>
-
             </div>
           </div>
         </div>
 
         <div className='TokenDetailsContent'>
-          <div className={`TokenDetailsMenu ${showMenu ? 'pure-u-lg-6-24 pure-u-md-1-2 pure-u-1' : 'widthMenuClosed'}`}>
-            <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`}>
 
-              {showMenu ? <p>{t('Close Menu')}</p> : <p>{t('Open')}<br />{t('Menu')}</p> }
-
-              <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
-            </div>
-            <div>
-              <a href='#'>
-                <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={() => dispatch(setState('initialized'))}><img src={addIcon} /> {showMenu ? t('Add Token Sale') : null}</button>
-              </a>
-            </div>
-            <div>
-              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} />{showMenu ? t('Unlock The Token') : null}</button></a>
-            </div>
-            <div>
-              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} />{showMenu ? t('Change Token Owner') : null}</button></a>
-            </div>
-            <div>
-              <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} />{showMenu ? t('Authorize Transfer') : null}</button></a>
+          <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
+            : 'pure-u-lg-4-24 pure-u-md-5-24 pure-u-1 pure-u-4-24'}`}>
+            <div className={`TokenDetailsMenu ${showMenu ? 'pure-u-1' : 'widthMenuClosed'}`}>
+              <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`} onClick={() => { this.setState({ showMenu: !showMenu }) }}>
+                {showMenu ? <p >{t('Close Menu')}</p>
+                  : <p >{t('Open')}<br />{t('Menu')}</p>}
+                <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
+              </div>
+              <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
+                <a href='#'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={() => dispatch(setState('initialized'))}><img src={addIcon} /><p>{showMenu ? t('Add Token Sale') : null}</p></button></a>
+                <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
+                <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
+                <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
+              </div>
             </div>
           </div>
-          <div className='pure-u-lg-19-24 pure-u-md-1-2 pure-u-1'>
+
+          <div className='pure-u-lg-19-24 pure-u-md-2-3 pure-u-1 pure-u-19-24'>
             <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
               {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
               {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
               {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
               {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
-              {addMainTokenSale.state === 'authorized'
-                ? <div>
-                  <MainTokenSaleDetail />
-                  {tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}
-                </div>
-                : null
-              }
+              {addMainTokenSale.state === 'authorized' ? <div><MainTokenSaleDetail />{tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}</div> : null}
             </div>
           </div>
 
