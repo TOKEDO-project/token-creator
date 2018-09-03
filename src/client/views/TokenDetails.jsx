@@ -46,7 +46,7 @@ class TokenDetails extends React.Component {
               }
               <div className='d-flex flex-v-center flex-h-center'>
                 <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
-                  {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
+                  {!addMainTokenSale.state || addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
                   {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
                   {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
                   {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
