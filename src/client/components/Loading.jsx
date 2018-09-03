@@ -1,8 +1,12 @@
 import React from 'react'
 import './Loading.css'
 
-const Loading = ({ size }) => {
-  return <div className='pure-u-1 d-flex flex-row flex-h-center flex-v-center'><div className='lds-dual-ring' style={{ width: size, height: size }} /></div>
+const Loading = ({ size, color }) => {
+  return <div className='pure-u-1 d-flex flex-row flex-h-center flex-v-center'>
+    <div className='lds-dual-ring' style={{ width: `${size}px`, height: `${size}px`, margin: `${size}px 0` }}>
+      <div className='lds-dual-ring-inner' style={{borderColor: `${color} transparent ${color} transparent`}} />
+    </div>
+  </div>
 }
 
 export default Loading

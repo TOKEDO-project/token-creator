@@ -7,14 +7,12 @@ div.loading {
  display: inline-block;
  width: 64px;
  height: 64px;
- margin: 10px;
+ margin: 64px 0;
 }
-.lds-dual-ring:after {
- content: " ";
+.lds-dual-ring-inner {
  display: block;
- width: 46px;
- height: 46px;
- margin: 1px;
+ width: 100%;
+ height: 100%;
  border-radius: 50%;
  border: 5px solid #24242A;
  border-color: #24242A transparent #24242A transparent;
