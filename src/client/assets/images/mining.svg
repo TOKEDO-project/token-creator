@@ -14,7 +14,7 @@
       }
 
       .cls-4 {
-        fill: #4da7ff;
+        fill: #b1d1ff;
       }
 
       .cls-5, .cls-6 {
@@ -39,9 +39,9 @@
     <path id="Path_946" data-name="Path 946" class="cls-5" d="M277.578,612.645H367.3L539.424,514.3a25.407,25.407,0,0,1,27.968,1.728l72.382,54.305A253.534,253.534,0,0,0,667.486,358.4C625.434,492.36,482.726,566.878,348.765,524.827A254.3,254.3,0,0,1,182.337,358.4a253.663,253.663,0,0,0,41.214,231.082Z" transform="translate(308.681 344.328)"/>
   </g>
   <g id="Group_970" data-name="Group 970" transform="translate(813.583 406.79)">
-    <rect id="Rectangle_659" data-name="Rectangle 659" class="cls-2" width="50.85" height="127.123"/>
-    <rect id="Rectangle_660" data-name="Rectangle 660" class="cls-2" width="127.123" height="50.85" transform="translate(152.547 228.82)"/>
-    <rect id="Rectangle_661" data-name="Rectangle 661" class="cls-2" width="143.826" height="50.85" transform="translate(246.778 68.855) rotate(135)"/>
+    <rect id="Rectangle_659" data-name="Rectangle 659" class="cls-4" width="50.85" height="127.123"/>
+    <rect id="Rectangle_660" data-name="Rectangle 660" class="cls-4" width="127.123" height="50.85" transform="translate(152.547 228.82)"/>
+    <rect id="Rectangle_661" data-name="Rectangle 661" class="cls-4" width="143.826" height="50.85" transform="translate(246.778 68.855) rotate(135)"/>
   </g>
   <g id="Group_971" data-name="Group 971">
     <path id="Path_947" data-name="Path 947" class="cls-6" d="M1118.676,536.547H1000.02l-94.91-71.188a25.4,25.4,0,0,0-27.968-1.728L705.12,561.973H615.4L446.732,489.691l-98.241-98.244A25.36,25.36,0,0,0,330.517,384H0v50.849H319.993L414.241,529.1a25.393,25.393,0,0,0,7.958,5.391l177.97,76.273a25.055,25.055,0,0,0,10.017,2.059h101.7a25.356,25.356,0,0,0,12.713-3.354l163.478-93.409L976.3,582.313a25.42,25.42,0,0,0,15.255,5.086h116.6l68.825,68.824,35.95-35.956-76.273-76.273A25.365,25.365,0,0,0,1118.676,536.547Z" transform="translate(0 760.099)"/>
@@ -52,8 +52,8 @@
     <rect id="Rectangle_665" data-name="Rectangle 665" class="cls-6" width="50.85" height="50.85" transform="translate(1245.796 1474.616)"/>
     <rect id="Rectangle_666" data-name="Rectangle 666" class="cls-6" width="50.85" height="50.85" transform="translate(1347.496 1398.343)"/>
     <rect id="Rectangle_667" data-name="Rectangle 667" class="cls-6" width="50.85" height="50.85" transform="translate(1474.616 1322.069)"/>
-    <rect id="Rectangle_668" data-name="Rectangle 668" class="cls-6" width="50.85" height="50.85" transform="translate(0 127.123)"/>
-    <rect id="Rectangle_669" data-name="Rectangle 669" class="cls-6" width="50.85" height="50.85"/>
-    <rect id="Rectangle_670" data-name="Rectangle 670" class="cls-6" width="50.85" height="50.85" transform="translate(127.123 50.85)"/>
+    <rect id="Rectangle_668" data-name="Rectangle 668" class="cls-4" width="50.85" height="50.85" transform="translate(0 127.123)"/>
+    <rect id="Rectangle_669" data-name="Rectangle 669" class="cls-4" width="50.85" height="50.85"/>
+    <rect id="Rectangle_670" data-name="Rectangle 670" class="cls-4" width="50.85" height="50.85" transform="translate(127.123 50.85)"/>
   </g>
 </svg>

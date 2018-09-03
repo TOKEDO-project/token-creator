@@ -34,9 +34,9 @@ div.step form.bottom div.clipboard-field>div::selection {
 }
 
 div.step form.bottom div.clipboard-field.copied {
- border-color: #FFB950;
+ border-color: #ffaa00;
 }
 
 div.step form.bottom div.clipboard-field.copied button {
- background-color: #FFB950;
+ background-color: #ffaa00;
 }

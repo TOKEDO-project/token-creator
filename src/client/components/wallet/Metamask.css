@@ -1,8 +1,12 @@
 button.deploy {
- margin: 20px 0;
+ /*margin: 20px 0;*/
  height: 70px;
  color: white;
- background-color: #FFB950;
+ background-color: #fa8100;
  border: none;
  border-radius: 5px;
+}
+
+button.deploy:hover{
+    background: #ffaa00;
 }
