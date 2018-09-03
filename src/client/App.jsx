@@ -10,6 +10,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 import { setWeb3, MetamaskStatus, setMetamaskStatus } from './redux/web3'
+import { saveReceipt } from './redux/tokens'
 
 import '../../node_modules/purecss/build/pure-min.css'
 import '../../node_modules/purecss/build/grids-responsive-min.css'
@@ -29,10 +30,57 @@ class App extends React.Component {
 
   async componentDidMount () {
     const { dispatch } = this.props
-    dispatch(setWeb3(window.web3))
+    await dispatch(setWeb3(window.web3))
     this.setState({
       loading: false
     })
+    this.startRecoveryTransactions()
+  }
+
+  startRecoveryTransactions = () => {
+    const { tokens, dispatch } = this.props
+    const transactions = tokens.transactions
+
+    // Tokens transactions
+    const txs = []
+    for (const txId in transactions) {
+      if (transactions[txId].status === undefined) {
+        txs.push({ txId, onReceipt: (receipt) => dispatch(saveReceipt(receipt)) })
+      }
+    }
+
+    // Main Token Sales transactions
+
+    // Token Sales transactions
+
+    // Other transactions
+
+    if (txs.length > 0) {
+      this.startIntervalTransaction(txs)
+    }
+  }
+
+  startIntervalTransaction = (txs) => {
+    const { web3 } = this.props
+    if (!web3.loading && web3.eth) {
+      this.timer = setTimeout(async () => {
+        const newTxs = []
+        for (const tx of txs) {
+          console.log('CHECKING TX FOR RECEIPT:', tx.txId)
+          let receipt = await web3.eth.getTransactionReceipt(tx.txId)
+          if (receipt) {
+            console.log('RECEIPT RECEIVED FOR:', tx.txId)
+            tx.onReceipt(receipt)
+          } else {
+            newTxs.push(tx)
+          }
+        }
+
+        if (newTxs.length > 0) {
+          this.startIntervalTransaction(newTxs)
+        }
+      }, 3000)
+    }
   }
 
   componentWillUnmount () {

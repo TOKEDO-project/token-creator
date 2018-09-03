@@ -27,6 +27,7 @@ export const tokens = handleActions({
     const transactions = cloneDeep(state.transactions)
     const transactionHash = receipt.transactionHash
     transactions[transactionHash].contractAddress = receipt.contractAddress
+    transactions[transactionHash].status = receipt.status
     const preparedReceipt = prepareReceipt(receipt)
     return { ...state, transactions, receipts: { ...state.receipts, [receipt.contractAddress]: preparedReceipt } }
   }
