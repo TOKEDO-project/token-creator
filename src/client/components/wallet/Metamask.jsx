@@ -3,14 +3,26 @@ import { MetamaskStatus } from '../../redux/web3'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import './Metamask.css'
+import Loading from '../Loading'
 
 class Metamask extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: false
+    }
+  }
+
   onClickDeploy = async (event) => {
     if (event) {
       event.preventDefault()
     }
 
     const { web3, transaction, onTransactionHash, onReceipt } = this.props
+
+    this.setState({
+      loading: true
+    })
 
     // TODO: change the name of the button in waiting the transaction
     try {
@@ -25,13 +37,21 @@ class Metamask extends Component {
       console.log('TX: ', transaction)
 
       await transaction.send({from: web3.address, gasPrice})
-        .on('error', error => console.log(error))
+        .on('error', error => {
+          console.log(error)
+          this.setState({
+            loading: false
+          })
+        })
         .on('transactionHash', transactionHash => {
           console.log(transactionHash)
           onTransactionHash(transactionHash)
         })
         .on('receipt', receipt => {
           console.log('METAMASK:', receipt)
+          this.setState({
+            loading: false
+          })
           onReceipt(receipt)
         })
         .on('confirmation', (confirmationNumber, receipt) => console.log(confirmationNumber))
@@ -42,6 +62,12 @@ class Metamask extends Component {
 
   render () {
     const { web3: { metamaskStatus }, t } = this.props
+    const { loading } = this.state
+    if (loading) {
+      return (
+        <Loading />
+      )
+    }
     return (
       <button className='metamask deploy shadow font-weight-bold font-size-medium pure-u-1' onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
         {metamaskStatus === MetamaskStatus.LOCKED
