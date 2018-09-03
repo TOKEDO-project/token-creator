@@ -4,14 +4,6 @@ import { connect } from 'react-redux'
 import { setStep } from '../../redux/addToken'
 
 class ResetAndBack extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      valid: false
-    }
-  }
-
   goBack = (e) => {
     const { dispatch } = this.props
     dispatch(setStep(1))
@@ -20,6 +12,11 @@ class ResetAndBack extends Component {
     console.log('doReset')
   }
   render () {
+    const { visible } = this.props
+    if (!visible) {
+      return ''
+    }
+
     return (
       <div>
         <button onClick={this.goBack}>Go Back</button>

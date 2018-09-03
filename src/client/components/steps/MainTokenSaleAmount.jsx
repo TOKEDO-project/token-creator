@@ -65,7 +65,7 @@ class MainTokenSaleAmount extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
-            <input placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale.amount} onChange={this.onChangeText} />
+            <input type='number' placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale.amount} onChange={this.onChangeText} />
             {!valid && addMainTokenSale.amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply`)}</div> : null}
           </div>
         </form>
