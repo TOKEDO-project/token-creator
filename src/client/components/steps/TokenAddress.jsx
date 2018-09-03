@@ -41,8 +41,10 @@ class TokenAddress extends Component {
                 {contractAddress}
               </div>
               <Clipboard onSuccess={this.onSuccess} data-clipboard-text={contractAddress} type='button' className='pure-u-8-24'>
-                <span className={`fa fa-${addressCopied ? 'check' : 'clipboard'}`} />
-                <span className='font-size-tiny'>${addressCopied ? 'Copied' : 'Copy'}</span>
+                <div>
+                  <span className={`fa fa-${addressCopied ? 'check' : 'clipboard'}`} />
+                  <span className='font-size-tiny'>{addressCopied ? 'Copied' : 'Copy'}</span>
+                </div>
               </Clipboard>
             </div>
           </form>
