@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
-import { withRouter } from 'react-router'
 import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
