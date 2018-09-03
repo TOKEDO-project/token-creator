@@ -29,7 +29,7 @@ const MainTokenSaleDetail = ({ addMainTokenSale: { amount, state }, t, mainToken
         </div>
       </div>
 
-      {state === 'authorized'
+      {(mainTokenSale.receipt && mainTokenSale.transferReceipt && mainTokenSale.setAuthorizedReceipt)
         ? <div className='btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
           <div className='d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
             <button className='pure-u-23-24'>
