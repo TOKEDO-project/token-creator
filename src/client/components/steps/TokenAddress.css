@@ -9,3 +9,8 @@
 #token-address a {
  margin-top: 15px;
 }
+
+#token-address button.deploy {
+ margin: 0 0;
+ height: 60px;
+}

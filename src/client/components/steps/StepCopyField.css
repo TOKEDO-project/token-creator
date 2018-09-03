@@ -32,3 +32,11 @@ div.step form.bottom div.clipboard-field:hover button {
 div.step form.bottom div.clipboard-field>div::selection {
  background-color: #FFB950;
 }
+
+div.step form.bottom div.clipboard-field.copied {
+ border-color: #FFB950;
+}
+
+div.step form.bottom div.clipboard-field.copied button {
+ background-color: #FFB950;
+}
