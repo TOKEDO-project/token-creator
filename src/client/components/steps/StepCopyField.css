@@ -8,6 +8,7 @@ div.step form.bottom div.clipboard-field>div {
  padding: 15px;
  color: #888888;
  text-overflow: ellipsis;
+ word-break: break-all;
 }
 
 div.step form.bottom div.clipboard-field>button {

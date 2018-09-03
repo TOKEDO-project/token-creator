@@ -10,7 +10,6 @@
 
 #token-wizard div.progress-title {
  text-align: right;
- 
  color: #888888;
 }
 
@@ -24,7 +23,7 @@
 
 #token-wizard div.progress-bar-content {
  height: 100%;
- background: linear-gradient(90deg, #FA8100, #FFCE97);
+ background: linear-gradient(90deg, #FA8100, #fa9e3c);
 }
 
 #token-wizard div.video-placeholder {

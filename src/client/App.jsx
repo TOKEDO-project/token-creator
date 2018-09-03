@@ -121,7 +121,7 @@ class App extends React.Component {
         <Router >
           <div className='pure-u-1'>
             <Header />
-            {web3.loading ? <Loading /> : <Routes />}
+            {web3.loading ? <Loading isView /> : <Routes />}
             <Footer />
           </div>
         </Router>
