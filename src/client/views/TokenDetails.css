@@ -1,9 +1,11 @@
 /*Token Details Header*/
 .TokenDetailsHeader {
   padding: 20px 0px;
+max-width: 1920px;
+}
+.HeaderContainer{
   background: white;
 }
-
 .TokenDetailsHeader img {
   width: 50px;
   margin-left: 20px;
@@ -50,8 +52,11 @@
 /*Token Details Body*/
 .TokenDetailsBody {
   padding: 20px;
+  max-width: 900px;
 }
-
+.DetailsWidth{
+  max-width: 1280px;
+}
 /*Token Details Menu*/
 .TokenDetailsMenu {
   background: #575757;
