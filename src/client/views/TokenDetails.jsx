@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import './TokenDetails.css'
-import backIcon from '../assets/images/back.svg'
 import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
@@ -14,6 +13,7 @@ import MainTokenSaleDetail from '../components/MainTokenSaleDetail'
 import MainTokenSaleInit from '../components/MainTokenSaleInit'
 import MainTokenSaleAddToken from '../components/MainTokenSaleAddToken'
 import MainTokenSaleAuthorize from '../components/MainTokenSaleAuthorize'
+import TokenDetailsTopBar from '../components/TokenDetailsTopBar'
 
 import { setState } from '../redux/addMainTokenSale'
 
@@ -50,50 +50,7 @@ class TokenDetails extends React.Component {
     return (
       <div className='pure-u-1'>
         <div id='TokenDetails'>
-          <div className='HeaderContainer shadow'>
-            <div className='TokenDetailsHeader flexView flex-row flex-v-center '>
-              <div className='lg-2s-24 pure-u-md-1-1 pure-u-sm-1'>
-                <a href='/'><img src={backIcon} /></a>
-              </div>
-              <div className='pure-u-lg-3-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
-                <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-                  <h4>{t('Token Name')}:</h4>
-                  <p className='breakWord'>{tokenDetails.name}</p>
-                </div>
-              </div>
-              <div className='lg-2l-24 pure-u-md-1-4 pure-u-1-4  textCenter'>
-                <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-                  <h4>{t('Token Symbol')}:</h4>
-                  <p className='breakWord'>{tokenDetails.symbol}</p>
-                </div>
-              </div>
-              <div className='lg-2s-24 pure-u-md-1-4 pure-u-1-4  textCenter'>
-                <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-                  <h4>{t('Decimals')}:</h4>
-                  <p className='breakWord'>{tokenDetails.decimals}</p>
-                </div>
-              </div>
-              <div className='pure-u-lg-3-24  pure-u-md-1-4 pure-u-1-4  textCenter'>
-                <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-                  <h4>{t('Total Supply')}:</h4>
-                  <p className='breakWord'>{tokenDetails.supply}</p>
-                </div>
-              </div>
-              <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2  paddingItems'>
-                <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-                  <h4>{t('Token Address')}:</h4>
-                  <p className='breakWord'>{tokenId}</p>
-                </div>
-              </div>
-              <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2 paddingItems'>
-                <div className='d-flex flex-column flex-h-center heightBox'>
-                  <h4>{t('Token Owner')}:</h4>
-                  <p className='breakWord'>{receipt.owner}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <TokenDetailsTopBar tokenDetails={tokenDetails} tokenId={tokenId} receipt={receipt} />
           <div className='TokenDetailsContent'>
 
             <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
