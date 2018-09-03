@@ -5,9 +5,7 @@ import TokenDetailsTutorial from './TokenDetailsTutorial'
 
 class TokenSaleListForToken extends React.Component {
   render () {
-    const { t, tokenId, mainTokenSales, tokenSales } = this.props
-    const mainTokenSale = mainTokenSales[tokenId]
-    const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
+    const { t, tokenId, tokenSales, mainTokenSaleAddress } = this.props
     const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
 
     return (
