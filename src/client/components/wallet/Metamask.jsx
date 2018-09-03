@@ -42,7 +42,7 @@ class Metamask extends Component {
   render () {
     const { web3: { metamaskStatus } } = this.props
     return (
-      <button className='metamask deploy shadow pure-u-1' onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
+      <button className='metamask deploy shadow font-weight-bold font-size-medium pure-u-1' onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
         {metamaskStatus === MetamaskStatus.LOCKED
           ? 'Unlock Metamask'
           : metamaskStatus === MetamaskStatus.NOT_INSTALLED

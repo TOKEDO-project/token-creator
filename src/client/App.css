@@ -35,6 +35,11 @@ button {
   font-family: 'Ubuntu', sans-serif;
 }
 
+button:disabled {
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+
 img.shuttle {
   width: 72px;
   object-fit: contain;

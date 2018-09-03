@@ -4,14 +4,6 @@
  margin: auto;
 }
 
-#token-advanced button.deploy {
- background-color: #FFB950;
- height: 70px;
- color: white;
- border: none;
- border-radius: 5px;
-}
-
 #token-advanced a.wizard {
  color: #888888;
  text-decoration: underline;

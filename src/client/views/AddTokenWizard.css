@@ -54,14 +54,3 @@
 #token-wizard div.content {
  margin-bottom: 50px;
 }
-
-#token-wizard div.step-container button.deploy {
- background-color: #FFB950;
- height: 70px;
- 
- color: white;
- margin-top: 15px;
- border: none;
- border-radius: 5px;
- 
-}

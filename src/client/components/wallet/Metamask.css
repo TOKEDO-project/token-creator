@@ -1,4 +1,9 @@
 button.metamask {
  margin-top: 25px !important;
  margin-bottom: 25px;
+ height: 70px;
+ color: white;
+ background-color: #FFB950;
+ border: none;
+ border-radius: 5px;
 }
