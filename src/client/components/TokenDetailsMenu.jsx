@@ -16,8 +16,13 @@ class TokenDetailsMenu extends React.Component {
   }
 
   addTokenSale = () => {
-    const { dispatch, tokenId } = this.props
-    dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
+    const { dispatch, tokenId, addMainTokenSale } = this.props
+    if (addMainTokenSale[tokenId].state === 'uninitialized') {
+      dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
+    }
+    if (addMainTokenSale[tokenId].state === 'authorized') {
+      console.log('CREAZIONE FIGLIA')
+    }
   }
 
   render () {
