@@ -1,5 +1,7 @@
 #token-wizard {
  padding: 50px 0;
+ max-width: 1280px;
+ margin: auto;
 }
 
 #token-wizard div.progress-container {

@@ -3,7 +3,6 @@ main {
   min-height: calc(100vh - 90px - 64px); */
   
   /* Height = Max viewport height - Header Height */
-  max-width: 1280px;
   min-height: calc(100vh - 90px);
   background-color: #EEEEEE;
   margin: auto;
