@@ -117,11 +117,14 @@ class TokenDetails extends React.Component {
 
               <div className='d-flex flex-v-center flex-h-center'>
                 <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
+                  {addMainTokenSale.state === 'deployed' || addMainTokenSale.state === 'token-transferred' || addMainTokenSale.state === 'authorized'
+                    ? <MainTokenSaleDetail /> : null
+                  }
                   {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
                   {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
                   {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
                   {addMainTokenSale.state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
-                  {addMainTokenSale.state === 'authorized' ? <div><MainTokenSaleDetail />{tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}</div> : null}
+                  {addMainTokenSale.state === 'authorized' ? <div>{tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}</div> : null}
                 </div>
               </div>
 
