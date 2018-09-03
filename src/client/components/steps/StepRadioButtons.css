@@ -24,8 +24,8 @@ div.step button.radio-box {
 }
 
 div.step button.radio-box.active {
- border: 2px solid #FFB950;
- color: #FFB950;
+ border: 2px solid #FA8100;
+ color: #FA8100;
 }
 
 div.step button.radio-box div.radio-button {
@@ -46,11 +46,11 @@ div.step button.radio-box div.radio-button-dot {
 }
 
 div.step button.radio-box.active div.radio-button {
- border-color: #FFB950;
+ border-color: #FA8100;
 }
 
 div.step button.radio-box.active div.radio-button-dot {
- background-color: #FFB950;
+ background-color: #FA8100;
 }
 
 div.step button.radio-box img {

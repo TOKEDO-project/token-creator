@@ -14,9 +14,6 @@ header img.logo {
 header a.title {
  margin-left: 40px;
  padding-bottom: 10px;
- 
- 
- 
 }
 
 header span.fa {
@@ -30,6 +27,6 @@ header span.fa {
 }
 
 header span.fa.menuOpen {
- color: #515151;
+ color: #d4d4d4;
  position: fixed;
 }

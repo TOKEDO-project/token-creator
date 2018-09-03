@@ -3,11 +3,9 @@
   padding-bottom: 50px;
 }
 
-/*
 #tokenList .maxWidth {
-  max-width: 1366px;
+  max-width: 1920px;
 }
-*/
 
 #tokenList h1 {
   color: #838383;
@@ -40,7 +38,7 @@
   height: 60px;
   display: flex;
   justify-content: center;
-  background: linear-gradient(#FFB950, #FCD462);
+  background: #FA8100;
   border: none;
   border-radius: 5px;
   color: white;
@@ -49,7 +47,7 @@
 }
 
 #tokenList .btn a button:hover {
-  background: linear-gradient(rgb(252, 179, 71), #FCD462);
+  background: #FFAA00;
 }
 
 #tokenList .cards {
@@ -73,7 +71,7 @@
   text-align: center;
   font-size: 15px;
   font-weight: 600;
-  color: #f9af39;
+  color: #FA8100;
   margin: 0;
 }
 
@@ -89,17 +87,17 @@
   height: 60px;
   display: flex;
   justify-content: center;
-  background: #888888;
+  background: #69A4F9;
   border: none;
   border-radius: 5px;
   color: white;
   font-weight: 700;
   font-size: 16px;
 }
-/*
+
 .cards a button:hover {
-  color: #515151;
-}*/
+  background: #3583f3;
+}
 
 #tokenList .videoContainer {
   background: #515151;

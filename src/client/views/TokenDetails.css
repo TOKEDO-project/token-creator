@@ -37,7 +37,7 @@ max-width: 1920px;
 
 .TokenDetailsHeader h4 {
   font-size: 13px;
-  color: #f9af39;
+  color: #FA8100;
   margin: 0;
   font-weight: 500;
 }
@@ -46,7 +46,7 @@ max-width: 1920px;
   font-size: 12px;
   margin: 5px 0;
   font-weight: 400;
-  color: #b8b8b8;
+  color: #7D7D7D;
 }
 
 /*Token Details Body*/
@@ -59,8 +59,7 @@ max-width: 1920px;
 /*Token Details Menu*/
 .TokenDetailsMenu {
   background: #575757;
-  transition: all 50ms ease-in;
-  -webkit-transition:  all 50ms ease-in;
+
 }
 .TokenDetailsMenu a button p {
   font-weight: 500;
@@ -70,7 +69,7 @@ max-width: 1920px;
 .TokenDetailsMenu .closedHandleMenu {
   width: 140px;
   height: 80px;
-  background: #f9af39;
+  background: #FA8100;
   color: white;
   text-align: right;
   display: flex;
@@ -81,21 +80,31 @@ max-width: 1920px;
 
 .TokenDetailsMenu .closedHandleMenu i {
   font-size: 25px;
+  transition: all 80ms ease-in;
+  -webkit-transition:  all 80ms ease-in;
 }
 
 .TokenDetailsMenu .closedHandleMenu p {
   margin: 0;
+  transition: all 80ms ease-in;
+  -webkit-transition:  all 80ms ease-in;
 }
 
 .TokenDetailsMenu .handleMenu p {
   margin: 0 10px;
+  transition: all 170ms ease-in;
+  -webkit-transition:  all 170ms ease-in;
 }
-
+.TokenDetailsMenu .handleMenu i {
+  transition: all 180ms ease-in;
+  -webkit-transition:  all 180ms ease-in;
+}
 .TokenDetailsMenu .handleMenu {
   padding: 0px 10px;
   font-weight: 700;
   font-family: 'Ubuntu';
-  transition: all 55ms ease-in;
+  transition: all 100ms linear;
+  -webkit-transition:  all 100ms linear;
 }
 
 .TokenDetailsMenu .handleMenu {
@@ -106,8 +115,8 @@ max-width: 1920px;
   align-items: center;
   justify-content: flex-end;
   padding-right: 10px;
-  border-bottom: 2px solid #9b9b9b;
-  background: #9b9b9b;
+  border-bottom: 2px solid #d4d4d4;
+  background: #343434;
   color: white;
   cursor: pointer;
 }
@@ -131,19 +140,18 @@ max-width: 1920px;
   text-align: left;
   height: 80px;
   border-width: 0px;
-  color: #9b9b9b;
+  color: #d4d4d4;
   background: #575757;
   display: flex;
   align-items: center;
 }
 
 .TokenDetailsMenu button.borderBtn {
-  border-bottom: 1px solid #9b9b9b;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 .TokenDetailsMenu button:hover {
-  color: #fff;
-  background: #515151;
+  background: #343434;
 }
 
 /*Token Details Media Query*/

@@ -43,5 +43,9 @@
 }
 
 #tac div.buttons button.accept {
- background: linear-gradient(#FFB950, #FCD462);
+ background: #FA8100;
 }
+
+#tac div.buttons button.accept:hover {
+    background: #FFAA00;
+  }

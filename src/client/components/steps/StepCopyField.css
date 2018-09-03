@@ -22,15 +22,15 @@ div.step form.bottom div.clipboard-field span.fa {
 }
 
 div.step form.bottom div.clipboard-field:hover {
- border-color: #FFB950;
+ border-color: #FA8100;
 }
 
 div.step form.bottom div.clipboard-field:hover button {
- background-color: #FFB950;
+ background-color: #FA8100;
 }
 
 div.step form.bottom div.clipboard-field>div::selection {
- background-color: #FFB950;
+ background-color: #FA8100;
 }
 
 div.step form.bottom div.clipboard-field.copied {

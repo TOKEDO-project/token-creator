@@ -19,12 +19,14 @@ div.step form.bottom input.text::placeholder {
 }
 
 div.step form.bottom button.next {
- background: #FFB950;
+ background: #FA8100;
  color: white;
  
  position: relative;
 }
-
+div.step form.bottom button.next:hover {
+    background: #FFAA00;
+}
 div.step form.bottom div.input-box div.tooltip {
  position: relative;
  height: 27px;

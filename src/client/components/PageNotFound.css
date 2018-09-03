@@ -3,13 +3,14 @@
   height: 60px;
   display: flex;
   justify-content: center;
-  background: linear-gradient(#FFB950, #FCD462);
+  background: #FA8100;
   border: none;
   border-radius: 5px;
   color: white;
-  
-  
   margin: 50px auto;
+}
+#notFound button:hover {
+  background: #FFAA00;
 }
 
 #notFound .shadow {

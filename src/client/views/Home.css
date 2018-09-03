@@ -12,9 +12,14 @@
 #home button.start-now {
  width: 220px;
  height: 60px;
- background: linear-gradient(#FFB950, #FCD462);
+ background: #FA8100;
  border: none;
  border-radius: 5px;
  color: white;
  
+}
+
+#home button.start-now:hover {
+    background: #FFAA00;
+
 }
