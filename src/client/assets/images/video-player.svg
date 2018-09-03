@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1956.207 1540.234">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #7383bf;
+      }
+
+      .cls-1, .cls-3 {
+        stroke: #424a60;
+        stroke-miterlimit: 10;
+        stroke-width: 15px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #556080;
+      }
+    </style>
+  </defs>
+  <g id="video-player" transform="translate(6.5 0.5)">
+    <rect id="Rectangle_201" data-name="Rectangle 201" class="cls-1" width="1941.207" height="1525.234" transform="translate(1 7)"/>
+    <path id="Path_869" data-name="Path 869" class="cls-2" d="M25,507.3V22L406.309,264.651Z" transform="translate(807.946 504.966)"/>
+    <rect id="Rectangle_202" data-name="Rectangle 202" class="cls-3" width="346.644" height="381.309" transform="translate(1 7)"/>
+    <rect id="Rectangle_203" data-name="Rectangle 203" class="cls-3" width="346.644" height="381.309" transform="translate(1 388.309)"/>
+    <rect id="Rectangle_204" data-name="Rectangle 204" class="cls-3" width="346.644" height="381.309" transform="translate(1 769.617)"/>
+    <rect id="Rectangle_205" data-name="Rectangle 205" class="cls-3" width="346.644" height="381.309" transform="translate(1 1150.926)"/>
+    <rect id="Rectangle_206" data-name="Rectangle 206" class="cls-3" width="346.644" height="381.309" transform="translate(1595.563 7)"/>
+    <rect id="Rectangle_207" data-name="Rectangle 207" class="cls-3" width="346.644" height="381.309" transform="translate(1595.563 388.309)"/>
+    <rect id="Rectangle_208" data-name="Rectangle 208" class="cls-3" width="346.644" height="381.309" transform="translate(1595.563 769.617)"/>
+    <rect id="Rectangle_209" data-name="Rectangle 209" class="cls-3" width="346.644" height="381.309" transform="translate(1595.563 1150.926)"/>
+  </g>
+</svg>

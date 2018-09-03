@@ -30,3 +30,9 @@ header span.fa.menuOpen {
  color: #d4d4d4;
  position: fixed;
 }
+
+@media (max-width: 450px){
+    header a.title {
+       display: none;
+       }
+}

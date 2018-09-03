@@ -159,6 +159,7 @@ max-width: 1920px;
 @media (min-width: 1301px) {
   .TokenDetailsHeader .heightBox {
     height: 50px;
+    max-height: 150px;
   }
 }
 

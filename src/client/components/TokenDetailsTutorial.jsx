@@ -18,11 +18,12 @@ class TokenDetailsTutorial extends React.Component {
   render () {
     const { t } = this.props
     return (
-      <div id='TokenDetailsTutorial'>
-        <div className='videoContent'>
-          <iframe width='560' height='315' src='https://www.youtube.com/embed/cqZhNzZoMh8' frameBorder='0' allow='autoplay; encrypted-media' allowFullScreen />
+      <div id='TokenDetailsTutorial' className='pure-u-1'>
+        <div className='videoContent shadow'>
+          <iframe width='100%' height='315' src='https://www.youtube.com/embed/cqZhNzZoMh8' frameBorder='0' allow='autoplay; encrypted-media' allowFullScreen />
         </div>
-        <div>
+        <div className='d-flex flex-v-center flex-h-center'>
+
           <button onClick={this.addTokenSale}>{t('Add Token Sale')}</button>
         </div>
       </div>
