@@ -28,6 +28,10 @@ div.step button.radio-box.active {
  color: #FA8100;
 }
 
+div.step button.radio-box:hover {
+ border: 2px solid #FA8100;
+}
+
 div.step button.radio-box div.radio-button {
  position: absolute;
  top: 5px;

@@ -4,6 +4,7 @@ import { setType } from '../../redux/addToken'
 import icon from '../../assets/images/token-type.svg'
 import './Step.css'
 import './StepRadioButtons.css'
+import './TokenType.css'
 import { translate } from 'react-i18next'
 
 class TokenType extends Component {
@@ -25,7 +26,7 @@ class TokenType extends Component {
     const { valid } = this.state
     const types = ['startable-burnable', 'startable', 'simple']
     return (
-      <div className='pure-u-1'>
+      <div id='token-type' className='pure-u-1'>
         <div className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
           <div className='top d-flex flex-row flex-h-start flex-v-center'>
             <div className='left'>
