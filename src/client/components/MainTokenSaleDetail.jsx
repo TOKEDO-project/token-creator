@@ -4,7 +4,10 @@ import { translate } from 'react-i18next'
 import './MainTokenSaleDetail.css'
 import iconToken from '../assets/images/token-name.svg'
 
-const MainTokenSaleDetail = ({ addMainTokenSale: { amount, state }, t }) => {
+const MainTokenSaleDetail = ({ addMainTokenSale: { amount, state }, t, mainTokenSale }) => {
+  console.log('---amount, state', amount, state)
+  console.log('----------mainTokenSale', mainTokenSale)
+
   let waiting = t('Waiting...')
   return (
     <div id='MainTokenSaleDetail' className='shadow pure-u-xl-20-24 pure-u-23-24 d-flex flex-h-between'>
@@ -19,7 +22,7 @@ const MainTokenSaleDetail = ({ addMainTokenSale: { amount, state }, t }) => {
           </div>
           <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
             <h4>{t('Token for Sale')}</h4>
-            <p> {state === 'authorized'
+            <p> {(mainTokenSale.receipt && mainTokenSale.transferReceipt && mainTokenSale.setAuthorizedReceipt)
               ? amount
               : waiting}</p>
           </div>

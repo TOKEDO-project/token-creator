@@ -22,10 +22,10 @@ export const saveReceipt = createAction('MAIN_TOKEN_SALES_SAVE_RECEIPT',
 )
 
 export const saveTransferReceipt = createAction('MAIN_TOKEN_SALES_SAVE_TRANSFER_RECEIPT',
-  (tokenAddress, tranferReceipt, amount) => {
+  (tokenAddress, transferReceipt, amount) => {
     return {
       tokenAddress,
-      tranferReceipt,
+      transferReceipt,
       amount
     }
   }
@@ -71,11 +71,11 @@ export const mainTokenSales = handleActions({
       }
     }
   },
-  MAIN_TOKEN_SALES_SAVE_TRANSFER_RECEIPT: (state, { payload: { tokenAddress, tranferReceipt, amount } }) => {
+  MAIN_TOKEN_SALES_SAVE_TRANSFER_RECEIPT: (state, { payload: { tokenAddress, transferReceipt, amount } }) => {
     const transactions = cloneDeep(state[tokenAddress].transactions)
-    const transactionHash = tranferReceipt.transactionHash
+    const transactionHash = transferReceipt.transactionHash
     transactions[transactionHash].amount = amount
-    const preparedReceipt = prepareReceipt(tranferReceipt)
+    const preparedReceipt = prepareReceipt(transferReceipt)
     return {
       ...state,
       [tokenAddress]: {
