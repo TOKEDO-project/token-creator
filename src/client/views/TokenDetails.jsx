@@ -41,12 +41,11 @@ class TokenDetails extends React.Component {
           <div className='TokenDetailsContent'>
             <TokenDetailsMenu />
             <div className='DetailsWidth pure-u-lg-19-24 pure-u-md-2-3 pure-u-1 pure-u-19-24'>
-
+              {addMainTokenSale.state === 'deployed' || addMainTokenSale.state === 'token-transferred' || addMainTokenSale.state === 'authorized'
+                ? <MainTokenSaleDetail /> : null
+              }
               <div className='d-flex flex-v-center flex-h-center'>
                 <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
-                  {addMainTokenSale.state === 'deployed' || addMainTokenSale.state === 'token-transferred' || addMainTokenSale.state === 'authorized'
-                    ? <MainTokenSaleDetail /> : null
-                  }
                   {addMainTokenSale.state === 'uninitialized' ? <TokenDetailsTutorial /> : null}
                   {addMainTokenSale.state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
                   {addMainTokenSale.state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}

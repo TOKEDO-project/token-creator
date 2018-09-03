@@ -5,6 +5,7 @@ import QRCode from 'qrcode.react'
 import './Atomax.css'
 import Loading from '../Loading'
 import mining from '../../assets/images/mining.svg'
+import { translate } from 'react-i18next'
 
 class Atomax extends Component {
   constructor (props) {
@@ -66,23 +67,24 @@ class Atomax extends Component {
 
   render () {
     const { address, txId, loading, data } = this.state
+    const { t } = this.props
     return (
       <div id='atomax' className='pure-u-1'>
         {loading
           ? <Loading size={48} />
           : <div className='d-flex flex-column flex-v-center'>
-            <span className='text'>Scan the QrCode<br />with ATOMAX wallet</span>
+            <span className='text'>{t(`Scan the QrCode`)} <br />{t(`with ATOMAX wallet`)}</span>
             <QRCode fgColor='#24242A' value={data} />
-            <span className='text'>and send the Transaction</span>
+            <span className='text'>{t(`and send the Transaction`)}</span>
             { address && address !== '' ? <div className='address pure-u-1 d-flex flex-column flex-v-center'>
-              <span className='title'>1. Check your ATOMAX address</span>
-              <span className='description'>Check that this is the same address of your wallet.<br />Your ATOMAX wallet address is:</span>
+              <span className='title'>{t(`1. Check your ATOMAX address`)}</span>
+              <span className='description'>{t(`Check that this is the same address of your wallet.`)}<br />{t(`Your ATOMAX wallet address is:`)}</span>
               <div className='address-box shadow pure-u-1'>{address}</div>
             </div> : null }
             { txId && txId !== '' ? <div className='transaction pure-u-1 d-flex flex-column flex-v-center'>
-              <span className='title'>1. Send the transaction from your ATOMAX wallet</span>
+              <span className='title'>{t(`2. Send the transaction from your ATOMAX wallet`)}</span>
               <img src={mining} alt='Mining' className='mining' />
-              <span className='description italic'>Wait until the transaction <b>{txId}</b> is mined</span>
+              <span className='description italic'>{t(`Wait until the transaction`)} <b>{txId}</b> {t(`is mined`)}</span>
             </div> : null }
           </div>
         }
@@ -91,4 +93,4 @@ class Atomax extends Component {
   }
 }
 
-export default connect(s => s)(Atomax)
+export default translate('translations')(connect(s => s)(Atomax))

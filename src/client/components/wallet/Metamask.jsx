@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MetamaskStatus } from '../../redux/web3'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 import './Metamask.css'
 
 class Metamask extends Component {
@@ -40,17 +41,17 @@ class Metamask extends Component {
   }
 
   render () {
-    const { web3: { metamaskStatus } } = this.props
+    const { web3: { metamaskStatus }, t } = this.props
     return (
       <button className='metamask deploy shadow font-weight-bold font-size-medium pure-u-1' onClick={this.onClickDeploy} disabled={metamaskStatus === MetamaskStatus.LOCKED || metamaskStatus === MetamaskStatus.NOT_INSTALLED}>
         {metamaskStatus === MetamaskStatus.LOCKED
-          ? 'Unlock Metamask'
+          ? t(`Unlock Metamask`)
           : metamaskStatus === MetamaskStatus.NOT_INSTALLED
-            ? 'Install Metamask'
-            : 'Deploy the token'}
+            ? t(`Install Metamask`)
+            : t(`Deploy the token`)}
       </button>
     )
   }
 }
 
-export default connect(s => s)(Metamask)
+export default translate('translations')(connect(s => s)(Metamask))

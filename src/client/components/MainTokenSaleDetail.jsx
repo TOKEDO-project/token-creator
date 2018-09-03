@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 
 const MainTokenSaleDetail = ({addMainTokenSale: { amount, state }}) => {
   return (
-    <div>
+    <div className=''>
       <div>
       Token Sale
       </div>
