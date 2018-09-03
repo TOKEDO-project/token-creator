@@ -34,7 +34,7 @@ class MainTokenSaleInit extends Component {
 
   onReceipt = (receipt) => {
     const { dispatch, tokenId } = this.props
-    dispatch(setState('deployed'))
+    dispatch(setState({ state: 'deployed', tokenAddress: tokenId }))
     dispatch(saveReceipt(tokenId, receipt))
   }
 

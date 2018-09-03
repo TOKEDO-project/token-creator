@@ -34,7 +34,7 @@ class MainTokenSaleAddToken extends Component {
   onTransactionHash = (transactionHash) => {
     const { dispatch, web3, tokenId } = this.props
     console.log('OTH:', web3.address, tokenId)
-    dispatch(setState('token-transferred'))
+    dispatch(setState({ state: 'token-transferred', tokenAddress: tokenId }))
     dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId }))
   }
 
@@ -53,7 +53,7 @@ class MainTokenSaleAddToken extends Component {
 
     return (
       <div>
-        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} contractAddress={tokenId} />
+        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} tokenId={tokenId} />
         <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
       </div>
     )

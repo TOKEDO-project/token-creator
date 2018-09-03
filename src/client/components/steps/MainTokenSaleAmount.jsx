@@ -20,8 +20,8 @@ class MainTokenSaleAmount extends Component {
   onChangeText = (e) => {
     const value = e.target.value
 
-    const { dispatch } = this.props
-    dispatch(setAmount(value))
+    const { dispatch, tokenId } = this.props
+    dispatch(setAmount({tokenAddress: tokenId, amount: value}))
     this.setState({
       valid: this.validate(value)
     })
@@ -33,8 +33,8 @@ class MainTokenSaleAmount extends Component {
   }
 
   validate = (input) => {
-    const { setValid, contractAddress, tokens } = this.props
-    const tokenInfo = getTokenInfo(contractAddress, tokens)
+    const { setValid, tokenId, tokens } = this.props
+    const tokenInfo = getTokenInfo(tokenId, tokens)
     const valid = input.length > 3 && bnUtils.lte(input, tokenInfo.supply)
 
     if (setValid) {
@@ -44,12 +44,12 @@ class MainTokenSaleAmount extends Component {
   }
 
   componentWillMount () {
-    const { addMainTokenSale } = this.props
-    this.setState({ valid: this.validate(addMainTokenSale.amount) })
+    const { addMainTokenSale, tokenId } = this.props
+    this.setState({ valid: this.validate(addMainTokenSale[tokenId].amount) })
   }
 
   render () {
-    const { addMainTokenSale, t } = this.props
+    const { addMainTokenSale, t, tokenId } = this.props
     const { valid } = this.state
 
     return (
@@ -65,8 +65,8 @@ class MainTokenSaleAmount extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
-            <input type='number' placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale.amount} onChange={this.onChangeText} />
-            {!valid && addMainTokenSale.amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply`)}</div> : null}
+            <input type='number' placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
+            {!valid && addMainTokenSale[tokenId].amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply`)}</div> : null}
           </div>
         </form>
       </div>

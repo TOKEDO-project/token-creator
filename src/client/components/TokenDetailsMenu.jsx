@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router'
 import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
@@ -15,8 +16,13 @@ class TokenDetailsMenu extends React.Component {
     }
   }
 
+  addTokenSale = () => {
+    const { dispatch, tokenId } = this.props
+    dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
+  }
+
   render () {
-    const { t, dispatch } = this.props
+    const { t } = this.props
     const { showMenu } = this.state
     return (
       <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
@@ -28,7 +34,7 @@ class TokenDetailsMenu extends React.Component {
             <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
           </div>
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
-            <a href='#'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={() => dispatch(setState('initialized'))}><img src={addIcon} /><p>{showMenu ? t('Add Token Sale') : null}</p></button></a>
+            <a href='#'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p>{showMenu ? t('Add Token Sale') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
