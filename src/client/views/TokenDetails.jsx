@@ -50,8 +50,8 @@ class TokenDetails extends React.Component {
     return (
       <div className='pure-u-1'>
         <div id='TokenDetails'>
-          <div className='HeaderContainer'>
-            <div className='TokenDetailsHeader flexView flex-row flex-v-center shadow'>
+          <div className='HeaderContainer shadow'>
+            <div className='TokenDetailsHeader flexView flex-row flex-v-center '>
               <div className='lg-2s-24 pure-u-md-1-1 pure-u-sm-1'>
                 <a href='/'><img src={backIcon} /></a>
               </div>
