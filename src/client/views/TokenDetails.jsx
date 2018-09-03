@@ -27,12 +27,7 @@ class TokenDetails extends React.Component {
 
     // Get token details
     const tokenDetails = transactions[receipt.transactionHash]
-    const { tokenSales, mainTokenSales, addMainTokenSale } = this.props
-
-    console.log('receipt', receipt, 'tokenDetails', tokenDetails)
-    const mainTokenSale = mainTokenSales[tokenId]
-    const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
-    const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
+    const { addMainTokenSale } = this.props
 
     return (
       <div className='pure-u-1'>
@@ -46,11 +41,11 @@ class TokenDetails extends React.Component {
               }
               <div className='d-flex flex-v-center flex-h-center'>
                 <div className='TokenDetailsBody d-flex flex-v-center flex-h-center pure-u-1'>
-                  {!addMainTokenSale[tokenId] || (!addMainTokenSale[tokenId].state || addMainTokenSale[tokenId].state === 'uninitialized') ? <TokenDetailsTutorial /> : null}
+                  {!addMainTokenSale[tokenId] || (!addMainTokenSale[tokenId].state || addMainTokenSale[tokenId].state === 'uninitialized') ? <TokenDetailsTutorial tokenId={tokenId} /> : null}
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
-                  {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized' ? <div>{tokenSaleList.length === 0 ? <TokenDetailsTutorial /> : <TokenSaleListForToken contractAddress={tokenId} />}</div> : null}
+                  {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized' ? <TokenSaleListForToken tokenId={tokenId} /> : null}
                 </div>
               </div>
 
