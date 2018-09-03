@@ -39,7 +39,7 @@ class TokenDetails extends React.Component {
         <div id='TokenDetails'>
           <TokenDetailsTopBar tokenDetails={tokenDetails} tokenId={tokenId} receipt={receipt} />
           <div className='TokenDetailsContent'>
-            <TokenDetailsMenu />
+            <TokenDetailsMenu tokenId={tokenId} />
             <div className='DetailsWidth pure-u-lg-19-24 pure-u-md-2-3 pure-u-1 pure-u-19-24'>
               {addMainTokenSale.state === 'deployed' || addMainTokenSale.state === 'token-transferred' || addMainTokenSale.state === 'authorized'
                 ? <MainTokenSaleDetail /> : null
