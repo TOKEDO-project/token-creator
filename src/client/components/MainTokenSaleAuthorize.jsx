@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
-import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
+import { saveTransaction, saveSetAuthorizedReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 
 import prepareSetAuthorized from '../utils/prepareSetAuthorizedTransaction'
@@ -39,7 +39,7 @@ class MainTokenSaleAuthorize extends Component {
 
   onReceipt = (receipt) => {
     const { dispatch, tokenId } = this.props
-    dispatch(saveReceipt(tokenId, receipt))
+    dispatch(saveSetAuthorizedReceipt(tokenId, receipt))
   }
 
   render () {

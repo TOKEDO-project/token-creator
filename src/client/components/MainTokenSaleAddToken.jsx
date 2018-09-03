@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
 import MainTokenSaleAmount from './steps/MainTokenSaleAmount'
-import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
+import { saveTransaction, saveTransferReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 import prepareTransferTokenTransaction from '../utils/prepareTransferTokenTransaction'
 
@@ -39,14 +39,13 @@ class MainTokenSaleAddToken extends Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, tokenId } = this.props
-    dispatch(saveReceipt(tokenId, receipt))
+    const { dispatch, tokenId, addMainTokenSale: { amount } } = this.props
+    dispatch(saveTransferReceipt(tokenId, receipt, amount))
   }
 
   render () {
     const {transaction, loading} = this.state
     const {match: {params: {tokenId}}} = this.props
-    console.log(this.props)
 
     if (loading) {
       return <Loading />
