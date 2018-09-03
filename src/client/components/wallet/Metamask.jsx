@@ -48,7 +48,7 @@ class Metamask extends Component {
           ? t(`Unlock Metamask`)
           : metamaskStatus === MetamaskStatus.NOT_INSTALLED
             ? t(`Install Metamask`)
-            : t(`Deploy the token`)}
+            : t(`Send Transaction`)}
       </button>
     )
   }
