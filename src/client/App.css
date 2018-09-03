@@ -37,6 +37,7 @@ button {
 
 button:disabled {
   filter: grayscale(100%);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
