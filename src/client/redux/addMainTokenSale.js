@@ -22,7 +22,7 @@ export const addMainTokenSale = handleActions({
   ADD_MAIN_TOKEN_SALE_SET_STATE: (state, { payload }) => {
     const token = state[payload.tokenAddress]
     const amount = token ? token.amount : ''
-    if (payload.state === 'initialized' && token.state && token.state !== 'uninitialized') {
+    if (payload.state === 'initialized' && token && token.state && token.state !== 'uninitialized') {
       return state
     }
     return {

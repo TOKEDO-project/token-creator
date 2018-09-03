@@ -7,10 +7,10 @@ import './TokenDetailsTutorial.css'
 class TokenDetailsTutorial extends React.Component {
   addTokenSale = () => {
     const { dispatch, tokenId, addMainTokenSale } = this.props
-    if (addMainTokenSale[tokenId].state === 'uninitialized') {
+    if (!addMainTokenSale[tokenId] || addMainTokenSale[tokenId].state === 'uninitialized') {
       dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
     }
-    if (addMainTokenSale[tokenId].state === 'authorized') {
+    if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
       console.log('CREAZIONE FIGLIA')
     }
   }
