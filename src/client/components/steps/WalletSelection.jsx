@@ -25,13 +25,10 @@ class WalletSelection extends Component {
   }
 
   render () {
-    const { addToken, web3, transaction, onTransactionHash, onReceipt, contractAddress, connectorName, t } = this.props
+    const { addToken, web3, transaction, onTransactionHash, onReceipt, connectorName, t } = this.props
     console.log('transaction WS', transaction)
     if (web3.loading || !transaction) {
       return <div>Loading...</div>
-    }
-    if (contractAddress) {
-      return <TokenAddress contractAddress={contractAddress} />
     }
     return (
       <div id='wallet-selection' className='step shadow pure-u-1 d-flex flex-column flex-h-between'>

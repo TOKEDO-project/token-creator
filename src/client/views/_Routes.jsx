@@ -15,6 +15,7 @@ import {
   Switch
 } from 'react-router-dom'
 import './_Routes.css'
+import TokenAddress from '../components/steps/TokenAddress'
 
 const AppRouter = () => {
   return (
@@ -24,6 +25,7 @@ const AppRouter = () => {
         <Route exact path='/token/add/advanced' component={AddTokenAdvanced} />
         <Route exact path='/token/add/wizard' component={AddTokenWizard} />
         <Route exact path='/token/details/:tokenId' component={TokenDetails} />
+        <Route exact path='/token/receipt/:tokenId' component={TokenAddress} />
         <Route exact path='/faq' component={FaqPage} />
         <Route exact path='/help' component={HelpPage} />
         <Route exact path='/credits' component={Credits} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
@@ -10,7 +11,7 @@ import TokenType from '../components/steps/TokenType'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 
-import { setStep } from '../redux/addToken'
+import { setStep, reset } from '../redux/addToken'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 import Loading from '../components/Loading'
 import { saveTransaction, saveReceipt } from '../redux/tokens'
@@ -26,15 +27,8 @@ class AddTokenAdvanced extends React.Component {
       validSymbol: false,
       validDecimals: false,
       validSupply: false,
-      transaction: '',
-      contractAddress: ''
+      transaction: ''
     }
-  }
-
-  setContractAddress = (contractAddress) => {
-    this.setState({
-      contractAddress
-    })
   }
 
   goToWalletSelection = async () => {
@@ -79,12 +73,11 @@ class AddTokenAdvanced extends React.Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch(saveReceipt(receipt))
     if (receipt.contractAddress) {
-      this.setState({
-        contractAddress: receipt.contractAddress
-      })
+      dispatch(reset())
+      history.push(`/token/receipt/${receipt.contractAddress}`)
     }
   }
 
@@ -95,7 +88,7 @@ class AddTokenAdvanced extends React.Component {
 
   render () {
     const { addToken: { step }, preferences, loading } = this.props
-    const { transaction, contractAddress } = this.state
+    const { transaction } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
@@ -107,7 +100,7 @@ class AddTokenAdvanced extends React.Component {
     return (
       <div id='token-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
         <a className='wizard' href='/token/add/wizard'>{`< Back to wizard mode`}</a>
-        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} contractAddress={contractAddress} />
+        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
           : <div className='big-card shadow pure-u-1 d-flex flex-column'>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
@@ -139,4 +132,4 @@ class AddTokenAdvanced extends React.Component {
   }
 }
 
-export default connect(s => s)(AddTokenAdvanced)
+export default withRouter(connect(s => s)(AddTokenAdvanced))

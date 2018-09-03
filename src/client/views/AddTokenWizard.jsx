@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
 import TokenDecimals from '../components/steps/TokenDecimals'
@@ -7,7 +8,7 @@ import TokenSupply from '../components/steps/TokenSupply'
 import TokenType from '../components/steps/TokenType'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
-import { setStep } from '../redux/addToken'
+import { setStep, reset } from '../redux/addToken'
 import Loading from '../components/Loading'
 import { saveTransaction, saveReceipt } from '../redux/tokens'
 import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
@@ -20,8 +21,7 @@ class AddTokenWizard extends Component {
     super(props)
     this.state = {
       loading: true,
-      transaction: '',
-      contractAddress: ''
+      transaction: ''
     }
   }
 
@@ -67,12 +67,11 @@ class AddTokenWizard extends Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch(saveReceipt(receipt))
     if (receipt.contractAddress) {
-      this.setState({
-        contractAddress: receipt.contractAddress
-      })
+      dispatch(reset())
+      history.push(`/token/receipt/${receipt.contractAddress}`)
     }
   }
 
@@ -82,7 +81,7 @@ class AddTokenWizard extends Component {
   }
 
   renderStep (step) {
-    const { transaction, contractAddress } = this.state
+    const { transaction } = this.state
     switch (step) {
       case 1:
         return <TokenName nextFunction={this.goToStep2} />
@@ -95,7 +94,7 @@ class AddTokenWizard extends Component {
       case 5:
         return <TokenType nextFunction={this.deployToken} />
       case 6:
-        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} contractAddress={contractAddress} />
+        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
     }
   }
 
@@ -129,4 +128,4 @@ class AddTokenWizard extends Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(AddTokenWizard))
+export default withRouter(translate('translations')(connect(s => s)(AddTokenWizard)))

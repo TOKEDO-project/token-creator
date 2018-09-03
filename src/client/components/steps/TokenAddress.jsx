@@ -21,7 +21,7 @@ class TokenAddress extends Component {
   }
 
   render () {
-    const { contractAddress, t } = this.props
+    const { t, match: { params: { tokenId } } } = this.props
     const { addressCopied } = this.state
     return (
       <div id='token-address' className='step-container pure-u-1 d-flex flex-column'>
@@ -38,9 +38,9 @@ class TokenAddress extends Component {
           <form className='bottom d-flex flex-row flex-h-between'>
             <div className={`clipboard-field shadow ${addressCopied ? 'copied' : ''} pure-u-1`}>
               <div className='pure-u-16-24 font-size-small'>
-                {contractAddress}
+                {tokenId}
               </div>
-              <Clipboard onSuccess={this.onSuccess} data-clipboard-text={contractAddress} type='button' className='pure-u-8-24'>
+              <Clipboard onSuccess={this.onSuccess} data-clipboard-text={tokenId} type='button' className='pure-u-8-24'>
                 <div>
                   <span className={`fa fa-${addressCopied ? 'check' : 'clipboard'}`} />
                   <span className='font-size-tiny'>{addressCopied ? 'Copied' : 'Copy'}</span>
@@ -51,7 +51,7 @@ class TokenAddress extends Component {
         </div>
         <div className='pure-u-1 d-flex flex-row flex-h-between'>
           <a className='pure-u-11-24' href='/'><button className='close pure-u-1 font-weight-bold' type='button'>Close</button></a>
-          <a className='pure-u-11-24' href={`/token/details/${contractAddress}`}><button className='deploy pure-u-1 font-weight-bold' type='button'>Deploy the Token Sale</button></a>
+          <a className='pure-u-11-24' href={`/token/details/${tokenId}`}><button className='deploy pure-u-1 font-weight-bold' type='button'>Deploy the Token Sale</button></a>
         </div>
       </div>
     )

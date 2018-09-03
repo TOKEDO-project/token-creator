@@ -47,6 +47,8 @@ export const setWalletType = createAction('SET_WALLET_TYPE',
   }
 )
 
+export const reset = createAction('RESET_ADD_TOKEN')
+
 export const addToken = handleActions({
   ADD_ADDRESS: (state, { payload }) => {
     return {
@@ -95,9 +97,20 @@ export const addToken = handleActions({
       ...state,
       walletType: payload
     }
+  },
+  RESET_ADD_TOKEN: () => {
+    console.log('RESET_ADD_TOKEN')
+    return {
+      step: 1,
+      name: '',
+      symbol: '',
+      decimals: 18,
+      supply: '',
+      type: 'startable-burnable',
+      walletType: 'metamask'
+    }
   }
 }, {
-  addresses: [],
   step: 1,
   name: '',
   symbol: '',
