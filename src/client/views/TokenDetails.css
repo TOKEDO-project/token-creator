@@ -65,7 +65,7 @@
 }
 .TokenDetailsMenu .closedHandleMenu {
   width: 140px;
-  height: 70px;
+  height: 80px;
   background: #f9af39;
   color: white;
   text-align: right;
@@ -91,6 +91,7 @@
   padding: 0px 10px;
   font-weight: 700;
   font-family: 'Ubuntu';
+  transition: all 55ms ease-in;
 }
 
 .TokenDetailsMenu .handleMenu {
@@ -124,7 +125,7 @@
 .TokenDetailsMenu button {
   width: 100%;
   text-align: left;
-  height: 100px;
+  height: 80px;
   border-width: 0px;
   color: #9b9b9b;
   background: #575757;
@@ -205,10 +206,10 @@
   .TokenDetailsBody {
     padding-top: 70px;
   }
-  
   .TokenDetailsMenu {
-    min-height: calc(100vh - 231px);
+    min-height: calc(100vh);
   }
+
 }
 
 @media (max-width: 767px) {
