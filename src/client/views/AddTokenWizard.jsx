@@ -120,7 +120,7 @@ class AddTokenWizard extends Component {
           {false ? <video className='pure-u-1 pure-u-md-8-24' src='' /> : <div className='video-placeholder shadow pure-u-1 pure-u-md-8-24 d-flex flex-row flex-h-center flex-v-center'><span className='fa fa-play-circle-o' /></div>}
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(addToken.step)}
-            {addToken.step === 6 ? null : <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a> }
+            <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a>
           </div>
         </div>
       </div>
