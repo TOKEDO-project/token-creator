@@ -40,9 +40,9 @@ class TokenType extends Component {
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) =>
               <button key={index} value={type} onClick={this.onChange} type='button' className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}>
-                {type === 'startable-burnable' ? `Startable Burnable` : null}
-                {type === 'startable' ? `Startable` : null}
-                {type === 'simple' ? `Simple` : null}
+                {type === 'startable-burnable' ? t('Startable Burnable') : null}
+                {type === 'startable' ? t('Startable') : null}
+                {type === 'simple' ? t('Simple') : null}
                 <div className={`radio-button ${addToken.type === type ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                   <div className='radio-button-dot' />
                 </div>
@@ -50,7 +50,7 @@ class TokenType extends Component {
             )}
           </form>
         </div>
-        {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >Deploy the Token</button> : null}
+        {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >{t('Deploy the Token')}</button> : null}
       </div>
     )
   }

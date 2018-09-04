@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 
 import TokenSalePrice from '../components/steps/TokenSalePrice'
 import TokenSaleAmount from '../components/steps/TokenSaleAmount'
@@ -10,7 +11,7 @@ import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addTokenSale'
 
-class AddTokenWizard extends Component {
+class AddTokenSaleWizard extends Component {
   goToStep2 = () => {
     const { dispatch } = this.props
     dispatch(setStep(2))
@@ -54,18 +55,17 @@ class AddTokenWizard extends Component {
   }
 
   render () {
-    const { addToken, preferences } = this.props
+    const { addTokenSale, preferences } = this.props
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
     return (
       <div>
-        <div>Step: {addToken.step}</div>
-        {this.renderStep(addToken.step)}
-        {addToken.step === 6 ? null : <div><a href='/token/add/advanced'>advanced</a></div> }
+        <div>Step: {addTokenSale.step}</div>
+        {this.renderStep(addTokenSale.step)}
       </div>
     )
   }
 }
 
-export default connect(s => s)(AddTokenWizard)
+export default translate('translations')(connect(s => s)(AddTokenSaleWizard))
