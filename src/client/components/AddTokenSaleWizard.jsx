@@ -11,6 +11,8 @@ import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addTokenSale'
 
+import './AddTokenSaleWizard.css'
+
 class AddTokenSaleWizard extends Component {
   goToStep2 = () => {
     const { dispatch } = this.props
@@ -60,7 +62,7 @@ class AddTokenSaleWizard extends Component {
       return <TermsAndConditions />
     }
     return (
-      <div>
+      <div id='token-sale-wizard'>
         <div>Step: {addTokenSale.step}</div>
         {this.renderStep(addTokenSale.step)}
       </div>

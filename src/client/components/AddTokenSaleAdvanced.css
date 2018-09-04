@@ -1,0 +1,32 @@
+#token-sale-advanced {
+ padding: 50px 0;
+ max-width: 1280px;
+ margin: auto;
+}
+
+#token-sale-advanced a.wizard {
+ color: #888888;
+ text-decoration: underline;
+}
+
+#token-sale-advanced div.big-card {
+ background-color: white;
+ padding: 25px;
+ border-radius: 5px;
+ margin-top: 15px;
+}
+
+#token-sale-advanced div.deploy-container {
+ padding: 35px;
+ margin-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+ #token-sale-advanced div.deploy-container {
+  margin-bottom: 0;
+ }
+}
+
+#token-sale-advanced #wallet-selection {
+ margin-top: 15px;
+}

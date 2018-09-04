@@ -15,6 +15,7 @@ class TokenSaleAmount extends Component {
     }
   }
   onChangeText = (e) => {
+    e.preventDefault()
     const value = e.target.value
 
     const { dispatch } = this.props

@@ -12,6 +12,8 @@ import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep } from '../redux/addTokenSale'
 
+import './AddTokenSaleAdvanced.css'
+
 class AddTokenSaleAdvanced extends Component {
   constructor (props) {
     super(props)
@@ -57,7 +59,7 @@ class AddTokenSaleAdvanced extends Component {
       return <Loading />
     }
     return (
-      <div id='token-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
+      <div id='token-sale-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
         {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
           : <div className='big-card shadow pure-u-1 d-flex flex-column'>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
