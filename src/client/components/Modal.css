@@ -34,6 +34,7 @@ div.modal div.content {
 
 div.modal div.content div.header {
  padding: 25px;
+ border-bottom: 1px solid #EEEEEE;
 }
 
 div.modal div.content div.header div.left img.icon {

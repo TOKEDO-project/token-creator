@@ -19,7 +19,7 @@ export class Modal extends Component {
                 <span className='fa fa-times' />
               </button>
             </div>
-            <div className='children'>
+            <div className='children pure-u-1'>
               {this.props.children}
             </div>
           </div>
