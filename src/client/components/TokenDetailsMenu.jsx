@@ -42,6 +42,7 @@ class TokenDetailsMenu extends React.Component {
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
+            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>[...]<p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
           </div>
         </div>
       </div>
