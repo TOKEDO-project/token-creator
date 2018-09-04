@@ -1,14 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
+
 import './MainTokenSaleDetail.css'
 import iconToken from '../assets/images/token-name.svg'
 
 class MainTokenSaleDetail extends React.Component {
   addTokenSale = () => {
-    const { tokenId, addMainTokenSale } = this.props
+    const { history, tokenId, addMainTokenSale } = this.props
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
       console.log('CREAZIONE FIGLIA')
+      history.push(`/token/details/${tokenId}/add-token-sale`)
     }
   }
 
@@ -72,4 +75,4 @@ class MainTokenSaleDetail extends React.Component {
 
 }
 
-export default translate('translations')(connect(s => s)(MainTokenSaleDetail))
+export default withRouter(translate('translations')(connect(s => s)(MainTokenSaleDetail)))

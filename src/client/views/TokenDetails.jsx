@@ -27,7 +27,7 @@ class TokenDetails extends React.Component {
 
     // Get token details
     const tokenDetails = transactions[receipt.transactionHash]
-    const { addMainTokenSale, mainTokenSales } = this.props
+    const { addMainTokenSale, mainTokenSales, addTokenSaleForm } = this.props
     const mainTokenSale = mainTokenSales[tokenId]
     const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
 
@@ -47,7 +47,7 @@ class TokenDetails extends React.Component {
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'initialized' ? <MainTokenSaleInit tokenId={tokenId} /> : null}
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'deployed' ? <MainTokenSaleAddToken tokenId={tokenId} /> : null}
                   {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'token-transferred' ? <MainTokenSaleAuthorize tokenId={tokenId} /> : null}
-                  {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized' ? <TokenSaleListForToken tokenId={tokenId} mainTokenSale={mainTokenSale} mainTokenSaleAddress={mainTokenSaleAddress} /> : null}
+                  {addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized' ? <TokenSaleListForToken addTokenSaleForm={addTokenSaleForm} tokenId={tokenId} mainTokenSale={mainTokenSale} mainTokenSaleAddress={mainTokenSaleAddress} /> : null}
                 </div>
               </div>
 

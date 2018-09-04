@@ -5,9 +5,14 @@ import TokenDetailsTutorial from './TokenDetailsTutorial'
 
 class TokenSaleListForToken extends React.Component {
   render () {
-    const { t, tokenId, tokenSales, mainTokenSaleAddress } = this.props
+    const { t, tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm } = this.props
     const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
 
+    if (addTokenSaleForm) {
+      return (
+        <div>addTokenSaleForm...</div>
+      )
+    }
     return (
       <div className=''>
         <div>{tokenSaleList.length === 0 ? <TokenDetailsTutorial tokenId={tokenId} /> : <div>{t('List of token sale')}</div>}</div>
