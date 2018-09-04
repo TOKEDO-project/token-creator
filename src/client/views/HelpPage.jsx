@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 
 class HelpPage extends React.Component {
   constructor (props) {
@@ -9,8 +10,9 @@ class HelpPage extends React.Component {
   }
 
   render () {
-    return (<div>HelpPage</div>)
+    const {t} = this.props
+    return (<div>{t('HelpPage')}</div>)
   }
 }
 
-export default HelpPage
+export default translate('translations')(HelpPage)

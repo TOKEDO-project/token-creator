@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 
 class Credits extends React.Component {
   constructor (props) {
@@ -9,8 +10,9 @@ class Credits extends React.Component {
   }
 
   render () {
-    return (<div>Credits</div>)
+    const {t} = this.props
+    return (<div>{t('Credits')}</div>)
   }
 }
 
-export default Credits
+export default translate('translations')(Credits)

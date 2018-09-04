@@ -1,4 +1,5 @@
 import React from 'react'
+import { translate } from 'react-i18next'
 
 class AboutPage extends React.Component {
   constructor (props) {
@@ -9,8 +10,9 @@ class AboutPage extends React.Component {
   }
 
   render () {
-    return (<div>AboutPage</div>)
+    const {t} = this.props
+    return (<div>{t('AboutPage')}</div>)
   }
 }
 
-export default AboutPage
+export default translate('translations')(AboutPage)

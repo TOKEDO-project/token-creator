@@ -51,7 +51,7 @@ class MainTokenSaleDetail extends React.Component {
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addSaleInfo ? <div className='infoBox'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null}
               <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
@@ -64,7 +64,7 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addTokenInfo ? <div className='infoBox'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null }
               <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
@@ -77,7 +77,7 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { removeTokenInfo ? <div className='infoBox'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null}
               <button className='blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
