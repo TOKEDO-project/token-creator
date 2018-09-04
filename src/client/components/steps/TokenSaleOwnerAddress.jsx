@@ -6,9 +6,40 @@ import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 
 class TokenSaleOwnerAddress extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      valid: false
+    }
+  }
+  onChangeText = (e) => {
+    const value = e.target.value
+    /* Needs a real dispatch condition
+        const { dispatch } = this.props
+        dispatch(setName(value)) */
+    this.setState({
+      valid: this.validate(value)
+    })
+  }
+
+  validate = (input) => {
+    const { setValid } = this.props
+    const valid = true // Needs a real validation condition
+
+    if (setValid) {
+      setValid(valid)
+    }
+    return valid
+  }
+  componentWillMount () {
+    /* Needs the real pointer to this variable
+    const { addToken } = this.props
+    this.setState({ valid: this.validate(addToken.name) }) */
+  }
   render () {
     const { addToken, nextFunction, t } = this.props
-    const valid = true // To be changed with a real one handled by the state
+    const { valid } = this.state
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
@@ -27,7 +58,7 @@ class TokenSaleOwnerAddress extends Component {
             {!valid && addToken.name.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
-          Next
+            Next
           </button> : null}
         </form>
       </div>

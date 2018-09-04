@@ -23,6 +23,10 @@ class MainTokenSaleDetail extends React.Component {
       history.push(`/token/details/${tokenId}/add-token-sale`)
     }
   }
+  redirectTo = (href) => {
+    const { history } = this.props
+    history.push(href)
+  }
 
   render () {
     const { addMainTokenSale, t, mainTokenSale, tokenId } = this.props
@@ -68,7 +72,7 @@ class MainTokenSaleDetail extends React.Component {
               { addTokenInfo ? <div className='infoBox'>
                 <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null }
-              <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Add More Token')}
@@ -81,7 +85,7 @@ class MainTokenSaleDetail extends React.Component {
               { removeTokenInfo ? <div className='infoBox'>
                 <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null}
-              <button className='blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/remove-token`)} className='blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Remove token')}

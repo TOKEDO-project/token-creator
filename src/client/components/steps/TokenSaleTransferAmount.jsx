@@ -6,9 +6,40 @@ import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 
 class TokenSaleTransferAmount extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      valid: false
+    }
+  }
+  onChangeText = (e) => {
+    const value = e.target.value
+    /* Needs a real dispatch condition
+        const { dispatch } = this.props
+        dispatch(setName(value)) */
+    this.setState({
+      valid: this.validate(value)
+    })
+  }
+
+  validate = (input) => {
+    const { setValid } = this.props
+    const valid = true // Needs a real validation condition
+
+    if (setValid) {
+      setValid(valid)
+    }
+    return valid
+  }
+  componentWillMount () {
+    /* Needs the real pointer to this variable
+    const { addToken } = this.props
+    this.setState({ valid: this.validate(addToken.name) }) */
+  }
   render () {
     const { addToken, nextFunction, t } = this.props
-    const valid = true // To be changed with a real one handled by the state
+    const { valid } = this.state
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
