@@ -9,6 +9,7 @@ import shieldIcon from '../assets/images/secure-shield.svg'
 import addIcon from '../assets/images/addIcon.svg'
 import trasferTokens from '../assets/images/transfer-tokens.svg'
 import { setState } from '../redux/addMainTokenSale'
+import { setTokenMenu } from '../redux/preferences'
 
 class TokenDetailsMenu extends React.Component {
   constructor (props) {
@@ -27,15 +28,22 @@ class TokenDetailsMenu extends React.Component {
       history.push(`/token/details/${tokenId}/add-token-sale`)
     }
   }
-
+  handleMenuStatus = () => {
+    console.log('handleMenuStatus')
+    const { dispatch, preferences } = this.props
+    const showMenu = preferences.showMenu
+    console.log('showMenu', showMenu)
+    dispatch(setTokenMenu(!showMenu))
+  }
   render () {
-    const { t, tokenId } = this.props
-    const { showMenu } = this.state
+    const { t, tokenId, preferences } = this.props
+    const showMenu = preferences.showMenu
+    // const { showMenu } = this.state
     return (
       <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
         : 'pure-u-lg-4-24 pure-u-md-5-24 pure-u-1 pure-u-4-24'}`}>
         <div className={`TokenDetailsMenu ${showMenu ? 'pure-u-1' : 'widthMenuClosed'}`}>
-          <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`} onClick={() => { this.setState({ showMenu: !showMenu }) }}>
+          <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`} onClick={this.handleMenuStatus}>
             {showMenu ? <p >{t('Close Menu')}</p>
               : <p >{t('Open')}<br />{t('Menu')}</p>}
             <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
