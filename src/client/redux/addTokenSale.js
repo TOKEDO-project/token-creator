@@ -83,7 +83,13 @@ export const setKYC = createAction('TOKEN_SALE_SET_KYC',
   }
 )
 
-export const reset = createAction('RESET_ADD_TOKEN_SALE')
+export const reset = createAction('RESET_ADD_TOKEN_SALE',
+  ({ tokenAddress }) => {
+    return {
+      tokenAddress
+    }
+  }
+)
 
 export const addTokenSale = handleActions({
   TOKEN_SALE_SET_STEP: (state, { payload }) => {
@@ -166,7 +172,10 @@ export const addTokenSale = handleActions({
       }
     }
   },
-  RESET_ADD_TOKEN_SALE: () => {
-    return defaultToken
+  RESET_ADD_TOKEN_SALE: (state, { payload }) => {
+    return {
+      ...state,
+      [payload.tokenAddress]: defaultToken
+    }
   }
 }, {})
