@@ -17,9 +17,6 @@ class MainTokenSaleDetail extends React.Component {
 
   render () {
     const { addMainTokenSale: { amount, state }, t, mainTokenSale } = this.props
-    console.log('---amount, state', amount, state)
-    console.log('----------mainTokenSale', mainTokenSale)
-
     let waiting = t('Waiting...')
     return (
       <div id='MainTokenSaleDetail' className='shadow pure-u-xl-20-24 pure-u-23-24 d-flex flex-h-between'>
