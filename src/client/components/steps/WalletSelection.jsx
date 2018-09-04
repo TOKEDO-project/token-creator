@@ -4,8 +4,9 @@ import { setWalletType } from '../../redux/addToken'
 import Atomax from '../wallet/Atomax'
 import Metamask from '../wallet/Metamask'
 import { translate } from 'react-i18next'
-import TokenAddress from './TokenAddress'
 import ResetAndBack from './ResetAndBack'
+import Loading from '../Loading'
+
 import './WalletSelection.css'
 import './Step.css'
 import './StepRadioButtons.css'
@@ -28,7 +29,7 @@ class WalletSelection extends Component {
     const { addToken, web3, transaction, onTransactionHash, onReceipt, connectorName, t } = this.props
     console.log('transaction WS', transaction)
     if (web3.loading || !transaction) {
-      return <div>Loading...</div>
+      return <Loading />
     }
     return (
       <div id='wallet-selection' className='step shadow pure-u-1 d-flex flex-column flex-h-between'>

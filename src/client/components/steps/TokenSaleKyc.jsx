@@ -33,8 +33,8 @@ class TokenSaleKyc extends Component {
               <img className='icon' src={icon} alt='Icon' />
             </div>
             <div className='right d-flex flex-column flex-h-center'>
-              <span className='title'>{t(`Select the Token type`)}:</span>
-              <span className='description font-size-tiny'>{t(`We offer different versions of token.`)}</span>
+              <span className='title'>{t(`KYC`)}:</span>
+              <span className='description font-size-tiny'>{t(`You can add our KYC system on this token sale.`)} <a href='' target='_blank'>{t(`Read more about`)}</a></span>
             </div>
           </div>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>

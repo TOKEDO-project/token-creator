@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setFundOwner } from '../../redux/addTokenSale'
+import icon from '../../assets/images/token-name.svg'
+import './Step.css'
+import './StepSingleInput.css'
+import { translate } from 'react-i18next'
 
 class TokenSaleFundOwner extends Component {
   constructor (props) {
@@ -23,7 +27,7 @@ class TokenSaleFundOwner extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    const valid = input.length > 2
+    const valid = input.length > 1
 
     if (setValid) {
       setValid(valid)
@@ -37,18 +41,32 @@ class TokenSaleFundOwner extends Component {
   }
 
   render () {
-    const { addTokenSale, nextFunction } = this.props
+    const { addTokenSale, nextFunction, t } = this.props
     const { valid } = this.state
 
     return (
-      <div>
-        <div>Insert the owner address:</div>
-        <input name='owner' value={addTokenSale.fundOwner} onChange={this.onChangeText} />
-        {nextFunction ? <button disabled={!valid} onClick={nextFunction} >Next</button> : null}
-        {!valid && addTokenSale.fundOwner.length > 0 ? <div>Stringa piu lunga di 2 caratteri</div> : null}
+      <div className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
+        <div className='top d-flex flex-row flex-h-start flex-v-center'>
+          <div className='left'>
+            <img className='icon' src={icon} alt='Icon' />
+          </div>
+          <div className='right d-flex flex-column flex-h-center'>
+            <span className='title'>{t(`Insert the Fund Owner`)}:</span>
+            <span className='description font-size-tiny'>{t(`Set the Ethereum address where you want to recive the ETH of this token sale.`)}</span>
+          </div>
+        </div>
+        <form className='bottom d-flex flex-row flex-h-between'>
+          <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
+            <input placeholder={t(`Insert the fund owner`)} className='token-name text shadow' value={addTokenSale.fundOwner} onChange={this.onChangeText} />
+            {!valid && addTokenSale.fundOwner.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
+          </div>
+          {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
+            {t('Next')}
+          </button> : null}
+        </form>
       </div>
     )
   }
 }
 
-export default connect(s => s)(TokenSaleFundOwner)
+export default translate('translations')(connect(s => s)(TokenSaleFundOwner))

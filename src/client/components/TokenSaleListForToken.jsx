@@ -32,7 +32,6 @@ class TokenSaleListForToken extends React.Component {
     if (addTokenSaleForm) {
       return (
         <div>
-          addTokenSaleForm...
           {addTokenSaleFormType === 'wizard'
             ? <div><AddTokenSaleWizard /> <div><a href='#' onClick={this.onClickSetAdvanced}>advanced</a></div></div>
             : <div><div><a href='#' onClick={this.onClickSetWizard}>wizard</a></div> <AddTokenSaleAdvanced /></div>}
