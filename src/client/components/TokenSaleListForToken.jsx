@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 import TokenDetailsTutorial from './TokenDetailsTutorial'
 import AddTokenSaleWizard from './AddTokenSaleWizard'
 import AddTokenSaleAdvanced from './AddTokenSaleAdvanced'
+import { reset } from '../redux/addTokenSale'
 
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
@@ -23,6 +24,10 @@ class TokenSaleListForToken extends React.Component {
     this.setState({
       addTokenSaleFormType: 'wizard'
     })
+  }
+  componentDidMount () {
+    const { dispatch, tokenId } = this.props
+    dispatch(reset({ tokenAddress: tokenId }))
   }
   render () {
     const { t, tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale } = this.props
