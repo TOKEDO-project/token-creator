@@ -10,7 +10,6 @@ import TokenSaleMinContribution from '../components/steps/TokenSaleMinContributi
 import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
-import { setStep } from '../redux/addTokenSale'
 
 import './AddTokenSaleAdvanced.css'
 
@@ -24,22 +23,23 @@ class AddTokenSaleAdvanced extends Component {
       validAmount: false,
       validMinContribution: false,
       validFundOwner: false,
+      valid: false,
       transaction: ''
     }
   }
 
   // Set validators
   setValidPrice = (valid) => {
-    this.setState({ validPrice: valid })
+    this.setState({ validPrice: valid, valid: this.isValid() })
   }
   setValidAmount = (valid) => {
-    this.setState({ validAmount: valid })
+    this.setState({ validAmount: valid, valid: this.isValid() })
   }
   setValidMinContribution = (valid) => {
-    this.setState({ validMinContribution: valid })
+    this.setState({ validMinContribution: valid, valid: this.isValid() })
   }
   setValidFundOwner = (valid) => {
-    this.setState({ validFundOwner: valid })
+    this.setState({ validFundOwner: valid, valid: this.isValid() })
   }
 
   // is Valid function
@@ -50,7 +50,7 @@ class AddTokenSaleAdvanced extends Component {
 
   render () {
     const { addTokenSale: { step }, preferences, loading, t } = this.props
-    const { transaction } = this.state
+    const { transaction, valid } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
@@ -83,7 +83,7 @@ class AddTokenSaleAdvanced extends Component {
                 <TokenSaleKyc />
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
-                {this.isValid() ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
+                {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
               </div>
             </div>
           </div>
