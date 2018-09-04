@@ -118,7 +118,7 @@ class AddTokenWizard extends Component {
           </div>
         </div>
         <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>
-          <YoutubeVideo className='pure-u-1 pure-u-md-8-24' />
+          <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-md-8-24' />
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(addToken.step)}
             <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a>

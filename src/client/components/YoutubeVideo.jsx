@@ -28,11 +28,11 @@ export class YoutubeVideo extends Component {
  }
 
  render () {
-   const { className } = this.props
+   const { className, shadow, id } = this.props
    const { height } = this.state
    return (
-     <div className={`youtube-video shadow ${className}`} style={{ height }}>
-       <iframe ref={this.youtubeVideo} width='100%' height={height} src='https://www.youtube.com/embed/cqZhNzZoMh8' frameborder='0' />
+     <div className={`youtube-video ${shadow ? 'shadow' : ''} ${className}`} style={{ height }}>
+       <iframe ref={this.youtubeVideo} width='100%' height={height} src={`https://www.youtube.com/embed/${id}`} frameborder='0' />
      </div>
    )
  }
