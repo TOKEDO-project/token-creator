@@ -6,6 +6,10 @@
   font-weight: 500;
 }
 
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   background-color: #EEEEEE;
 }
@@ -44,6 +48,10 @@ button:disabled {
 img.shuttle {
   width: 72px;
   object-fit: contain;
+}
+
+.pure-g, .pure-g [class*=pure-u] {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .shadow {

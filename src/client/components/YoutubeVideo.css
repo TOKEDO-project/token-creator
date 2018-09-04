@@ -1,0 +1,9 @@
+div.youtube-video {
+ border-radius: 5px;
+ overflow: hidden;
+}
+
+div.youtube-video iframe {
+ border-radius: 5px;
+ overflow: hidden;
+}

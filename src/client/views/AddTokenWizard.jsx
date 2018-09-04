@@ -15,6 +15,7 @@ import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 import './AddTokenWizard.css'
 import shuttle from '../assets/images/shuttle.svg'
 import { translate } from 'react-i18next'
+import { YoutubeVideo } from '../components/YoutubeVideo'
 
 class AddTokenWizard extends Component {
   constructor (props) {
@@ -117,7 +118,7 @@ class AddTokenWizard extends Component {
           </div>
         </div>
         <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>
-          {false ? <video className='pure-u-1 pure-u-md-8-24' src='' /> : <div className='video-placeholder shadow pure-u-1 pure-u-md-8-24 d-flex flex-row flex-h-center flex-v-center'><span className='fa fa-play-circle-o' /></div>}
+          <YoutubeVideo className='pure-u-1 pure-u-md-8-24' />
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(addToken.step)}
             <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a>
