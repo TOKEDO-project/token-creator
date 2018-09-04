@@ -4,6 +4,9 @@ import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
 import Modal from '../Modal'
+import { WarningMessage } from '../WarningMessage'
+import TokenAddress from '../steps/TokenAddress'
+import WalletSelection from '../steps/WalletSelection'
 
 class ChangeTokenOwner extends React.Component {
   constructor (props) {
@@ -23,7 +26,8 @@ class ChangeTokenOwner extends React.Component {
     const { visible } = this.state
     return (
       <Modal visible={visible} title={t('ChangeTokenOwner')} toggleVisibility={this.toggleVisibility}>
-        {t('Ciao')}
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
+        <WalletSelection />
       </Modal>
     )
   }

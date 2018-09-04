@@ -25,7 +25,7 @@ class UnlockTheToken extends React.Component {
     const { visible } = this.state
     return (
       <Modal icon={unlock} visible={visible} title={t('Unlock The Token')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title='WARNING: This action can not be undone' description='When you unlock your Token any one will be able to transfer it.' backgroundColor='#888888' icon='exclamation-triangle' shadow />
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('When you unlock your Token any one will be able to transfer it.')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
         <WalletSelection />
       </Modal>
     )

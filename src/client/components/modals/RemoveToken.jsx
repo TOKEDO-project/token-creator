@@ -4,6 +4,9 @@ import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
 import Modal from '../Modal'
+import { WarningMessage } from '../WarningMessage'
+import TokenSupply from '../steps/TokenSupply'
+import WalletSelection from '../steps/WalletSelection'
 
 class RemoveToken extends React.Component {
   constructor (props) {
@@ -23,7 +26,8 @@ class RemoveToken extends React.Component {
     const { visible } = this.state
     return (
       <Modal visible={visible} title={t('RemoveToken')} toggleVisibility={this.toggleVisibility}>
-        {t('Ciao')}
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
+        <WalletSelection />
       </Modal>
     )
   }

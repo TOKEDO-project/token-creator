@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
 import Modal from '../Modal'
+import { WarningMessage } from '../WarningMessage'
 
 class AuthorizeTransfer extends React.Component {
   constructor (props) {
@@ -23,7 +24,7 @@ class AuthorizeTransfer extends React.Component {
     const { visible } = this.state
     return (
       <Modal visible={visible} title={t('AuthorizeTransfer')} toggleVisibility={this.toggleVisibility}>
-        {t('Ciao')}
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
       </Modal>
     )
   }
