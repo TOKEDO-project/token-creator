@@ -1,7 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { translate } from 'react-i18next'
-import { connect } from 'react-redux'
 import './Menu.css'
 
 const Menu = ({ open, location: { pathname }, t }) => {
