@@ -15,7 +15,9 @@ class MainTokenSaleDetail extends React.Component {
       removeTokenInfo: false
     }
   }
-  addTokenSale = () => {
+  addTokenSale = (e) => {
+    e.stopPropagation()
+
     const { history, tokenId, addMainTokenSale } = this.props
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
       history.push(`/token/details/${tokenId}/add-token-sale`)
