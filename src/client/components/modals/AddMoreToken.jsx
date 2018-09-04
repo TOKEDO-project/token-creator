@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom'
 
 import Modal from '../Modal'
 import { WarningMessage } from '../WarningMessage'
-import TokenSupply from '../steps/TokenSupply'
 import WalletSelection from '../steps/WalletSelection'
 
 class AddMoreToken extends React.Component {
@@ -26,7 +25,8 @@ class AddMoreToken extends React.Component {
     const { visible } = this.state
     return (
       <Modal visible={visible} title={t('AddMoreToken')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
+        <div className='separator' />
         <WalletSelection />
       </Modal>
     )

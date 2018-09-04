@@ -2,6 +2,7 @@
  background-color: white;
  padding: 50px 25px;
  border-radius: 5px;
+ box-shadow: 0 0 10px 0px #E2E2E2;
 }
 
 #token-advanced div.step {

@@ -2,8 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
-
+import transferToken from '../../assets/images/transfer-token.svg'
 import Modal from '../Modal'
+import TokenSaleOwnerAddress from '../steps/TokenSaleOwnerAddress'
+import TokenSaleTransferAmount from '../steps/TokenSaleTransferAmount'
+import WalletSelection from '../steps/WalletSelection'
 
 class TransferTokens extends React.Component {
   constructor (props) {
@@ -22,8 +25,12 @@ class TransferTokens extends React.Component {
     const { t } = this.props
     const { visible } = this.state
     return (
-      <Modal visible={visible} title={t('transferTokens')} toggleVisibility={this.toggleVisibility}>
-        {t('Ciao')}
+      <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
+        <TokenSaleOwnerAddress />
+        <div className='separator' />
+        <TokenSaleTransferAmount />
+        <div className='separator' />
+        <WalletSelection />
       </Modal>
     )
   }

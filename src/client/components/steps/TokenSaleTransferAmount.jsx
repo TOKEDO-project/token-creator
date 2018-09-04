@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import icon from '../../assets/images/token-name.svg'
+import icon from '../../assets/images/token-sale-amount.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
@@ -8,10 +8,10 @@ import { translate } from 'react-i18next'
 class TokenSaleTransferAmount extends Component {
   render () {
     const { addToken, nextFunction, t } = this.props
-    const { valid } = this.state
+    const valid = true // To be changed with a real one handled by the state
 
     return (
-      <div className='step shadow pure-u-1 d-flex flex-column flex-h-between'>
+      <div className='step pure-u-1 d-flex flex-column flex-h-between'>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />

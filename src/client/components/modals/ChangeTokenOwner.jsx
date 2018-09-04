@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
-
+import changeOwner from '../../assets/images/change-owner.svg'
 import Modal from '../Modal'
 import { WarningMessage } from '../WarningMessage'
-import TokenAddress from '../steps/TokenAddress'
+import TokenSaleOwnerAddress from '../steps/TokenSaleOwnerAddress'
 import WalletSelection from '../steps/WalletSelection'
 
 class ChangeTokenOwner extends React.Component {
@@ -25,8 +25,11 @@ class ChangeTokenOwner extends React.Component {
     const { t } = this.props
     const { visible } = this.state
     return (
-      <Modal visible={visible} title={t('ChangeTokenOwner')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#888888' icon='exclamation-triangle' shadow />
+      <Modal icon={changeOwner} visible={visible} title={t('Change Token Owner')} toggleVisibility={this.toggleVisibility}>
+        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
+        <div className='separator' />
+        <TokenSaleOwnerAddress />
+        <div className='separator' />
         <WalletSelection />
       </Modal>
     )
