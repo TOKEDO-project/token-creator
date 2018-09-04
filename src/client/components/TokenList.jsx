@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 import { map } from 'lodash'
 import icon from '../assets/images/token-name.svg'
 import './TokenList.css'
+import { YoutubeVideo } from './YoutubeVideo'
 
 const TokenList = (props) => {
   const { t, tokens, addMainTokenSale } = props
@@ -90,9 +91,7 @@ const TokenList = (props) => {
         </div>
 
         <div className='pure-u-1 d-flex flex-v-center flex-h-center'>
-          <div className='videoContainer pure-u-md-2-3 pure-sm-1 pure-u-1  d-flex flex-v-center flex-h-center'>
-            <span className='fa fa-play-circle-o' />
-          </div>
+          <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-md-18-24' />
         </div>
 
       </div>
