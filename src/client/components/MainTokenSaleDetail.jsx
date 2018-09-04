@@ -16,7 +16,8 @@ class MainTokenSaleDetail extends React.Component {
   }
 
   render () {
-    const { addMainTokenSale: { amount, state }, t, mainTokenSale } = this.props
+    const { addMainTokenSale, t, mainTokenSale, tokenId } = this.props
+    const addMainTokenSaleById = addMainTokenSale[tokenId]
     let waiting = t('Waiting...')
     return (
       <div id='MainTokenSaleDetail' className='shadow pure-u-xl-20-24 pure-u-23-24 d-flex flex-h-between'>
@@ -31,8 +32,8 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
               <h4>{t('Token for Sale')}</h4>
-              <p> {(mainTokenSale.receipt && mainTokenSale.transferReceipt && mainTokenSale.setAuthorizedReceipt)
-                ? amount
+              <p> {(mainTokenSale.receipt && mainTokenSale.transferReceipt)
+                ? addMainTokenSaleById.amount
                 : waiting}</p>
             </div>
           </div>
