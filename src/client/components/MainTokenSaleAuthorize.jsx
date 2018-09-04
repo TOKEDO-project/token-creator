@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
-
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
 import { saveTransaction, saveSetAuthorizedReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
-
 import prepareSetAuthorized from '../utils/prepareSetAuthorizedTransaction'
 
 class MainTokenSaleAuthorize extends Component {
@@ -50,7 +48,6 @@ class MainTokenSaleAuthorize extends Component {
 
     return (
       <div>
-        <div>MainTokenSaleAuthorize</div>
         <WalletSelection connectorName='mainTokenSaleAuthorize' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
       </div>
     )
