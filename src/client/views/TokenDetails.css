@@ -95,6 +95,12 @@ max-width: 1920px;
   transition: all 170ms ease-in;
   -webkit-transition:  all 170ms ease-in;
 }
+.TokenDetailsMenu .closedHandleMenu:hover {
+  background: #FFAA00;
+}
+.TokenDetailsMenu .handleMenu:hover{
+  background: #24242a;
+}
 .TokenDetailsMenu .handleMenu i {
   transition: all 180ms ease-in;
   -webkit-transition:  all 180ms ease-in;
