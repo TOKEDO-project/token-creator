@@ -1,0 +1,16 @@
+div.warning-message {
+ color: white;
+ padding: 25px;
+ border-radius: 5px;
+ margin: 0 auto;
+ text-align: center;
+}
+
+div.warning-message div.top span.fa {
+ font-size: 24px;
+ margin-right: 10px;
+}
+
+div.warning-message span.description {
+ margin-top: 15px;
+}
