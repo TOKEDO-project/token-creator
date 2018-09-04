@@ -87,7 +87,7 @@ class AddTokenAdvanced extends React.Component {
   }
 
   render () {
-    const { addToken: { step }, preferences, loading } = this.props
+    const { addToken: { step }, preferences, loading, t } = this.props
     const { transaction } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
@@ -123,7 +123,7 @@ class AddTokenAdvanced extends React.Component {
                 <TokenType />
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
-                {this.isValid() ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >Select the wallet</button> : null}
+                {this.isValid() ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
               </div>
             </div>
           </div>
