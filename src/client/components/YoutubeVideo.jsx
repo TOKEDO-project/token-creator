@@ -32,7 +32,7 @@ export class YoutubeVideo extends Component {
    const { height } = this.state
    return (
      <div className={`youtube-video ${shadow ? 'shadow' : ''} ${className}`} style={{ height }}>
-       <iframe ref={this.youtubeVideo} width='100%' height={height} src={`https://www.youtube.com/embed/${id}`} frameborder='0' />
+       <iframe ref={this.youtubeVideo} width='100%' height={height} src={`https://www.youtube.com/embed/${id}`} frameBorder='0' />
      </div>
    )
  }
