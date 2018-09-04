@@ -67,17 +67,18 @@ class AddTokenSaleWizard extends Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, history } = this.props
+    const { dispatch, history, tokenId } = this.props
     dispatch(saveReceipt(receipt))
     if (receipt.contractAddress) {
-      dispatch(reset())
-      history.push(`/token/receipt/${receipt.contractAddress}`)
+      dispatch(reset({tokenAddress: tokenId}))
+      history.push(`/token/details/${tokenId}`)
     }
   }
 
   onTransactionHash = (transactionHash) => {
-    const { addToken: { name, symbol, decimals, supply, type }, dispatch } = this.props
-    dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
+    const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, addTokenSale}))
   }
 
   renderStep (step) {
