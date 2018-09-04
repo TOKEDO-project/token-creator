@@ -17,8 +17,8 @@ class TokenSalePrice extends Component {
   onChangeText = (e) => {
     const value = e.target.value
 
-    const { dispatch } = this.props
-    dispatch(setPrice(value))
+    const { dispatch, tokenId } = this.props
+    dispatch(setPrice({tokenAddress: tokenId, price: value}))
     this.setState({
       valid: this.validate(value)
     })
@@ -34,13 +34,14 @@ class TokenSalePrice extends Component {
     return valid
   }
   componentWillMount () {
-    const { addTokenSale } = this.props
-    this.setState({ valid: this.validate(addTokenSale.price) })
+    const { addTokenSale, tokenId } = this.props
+    this.setState({ valid: this.validate(addTokenSale[tokenId].price) })
   }
 
   render () {
-    const { addTokenSale, nextFunction, t } = this.props
+    const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
+    const price = addTokenSale[tokenId].price
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
@@ -55,8 +56,8 @@ class TokenSalePrice extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={addTokenSale.price} onChange={this.onChangeText} />
-            {!valid && addTokenSale.price.length > 1 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}
+            <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={price} onChange={this.onChangeText} />
+            {!valid && price.length > 1 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}

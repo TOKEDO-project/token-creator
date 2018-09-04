@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setKyc } from '../../redux/addTokenSale'
+import { setKYC } from '../../redux/addTokenSale'
 import icon from '../../assets/images/token-type.svg'
 import './Step.css'
 import './StepRadioButtons.css'
@@ -17,13 +17,14 @@ class TokenSaleKyc extends Component {
   }
 
   onChange = (e) => {
-    const { dispatch } = this.props
-    dispatch(setKyc(e.target.value))
+    const { dispatch, tokenId } = this.props
+    dispatch(setKYC({tokenAddress: tokenId, kyc: e.target.value}))
   }
 
   render () {
-    const { addTokenSale, nextFunction, t } = this.props
+    const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
+    const kyc = addTokenSale[tokenId].kyc
     const types = ['kyc-yes', 'kyc-no']
     return (
       <div id='token-type' className='pure-u-1'>
@@ -38,14 +39,17 @@ class TokenSaleKyc extends Component {
             </div>
           </div>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
-            {types.map((type, index) =>
-              <button key={index} value={type} onClick={this.onChange} type='button' className={`radio-box ${addTokenSale.kyc === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}>
+            {types.map((type, index) => {
+              const KYCValue = type === 'kyc-yes'
+              const kycActive = (type === 'kyc-yes' && kyc === 'true') || (type === 'kyc-no' && kyc === 'false')
+              return <button key={index} value={KYCValue} onClick={this.onChange} type='button' className={`radio-box ${kycActive ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}>
                 {type === 'kyc-yes' ? t('KYC yes') : null}
                 {type === 'kyc-no' ? t('KYC no') : null}
-                <div className={`radio-button ${addTokenSale.kyc === type ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
+                <div className={`radio-button ${kycActive ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                   <div className='radio-button-dot' />
                 </div>
               </button>
+            }
             )}
           </form>
         </div>

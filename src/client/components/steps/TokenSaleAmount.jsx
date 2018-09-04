@@ -18,8 +18,8 @@ class TokenSaleAmount extends Component {
     e.preventDefault()
     const value = e.target.value
 
-    const { dispatch } = this.props
-    dispatch(setAmount(value))
+    const { dispatch, tokenId } = this.props
+    dispatch(setAmount({tokenAddress: tokenId, amount: value}))
     this.setState({
       valid: this.validate(value)
     })
@@ -35,13 +35,14 @@ class TokenSaleAmount extends Component {
     return valid
   }
   componentWillMount () {
-    const { addTokenSale } = this.props
-    this.setState({ valid: this.validate(addTokenSale.amount) })
+    const { addTokenSale, tokenId } = this.props
+    this.setState({ valid: this.validate(addTokenSale[tokenId].amount) })
   }
 
   render () {
-    const { addTokenSale, nextFunction, t } = this.props
+    const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
+    const amount = addTokenSale[tokenId].amount
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
@@ -56,8 +57,8 @@ class TokenSaleAmount extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the amount`)} className='token-name text shadow' value={addTokenSale.amount} onChange={this.onChangeText} />
-            {!valid && addTokenSale.amount.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
+            <input placeholder={t(`Insert the amount`)} className='token-name text shadow' value={amount} onChange={this.onChangeText} />
+            {!valid && amount.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}

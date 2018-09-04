@@ -23,23 +23,22 @@ class AddTokenSaleAdvanced extends Component {
       validAmount: false,
       validMinContribution: false,
       validFundOwner: false,
-      valid: false,
       transaction: ''
     }
   }
 
   // Set validators
   setValidPrice = (valid) => {
-    this.setState({ validPrice: valid, valid: this.isValid() })
+    this.setState({ validPrice: valid })
   }
   setValidAmount = (valid) => {
-    this.setState({ validAmount: valid, valid: this.isValid() })
+    this.setState({ validAmount: valid })
   }
   setValidMinContribution = (valid) => {
-    this.setState({ validMinContribution: valid, valid: this.isValid() })
+    this.setState({ validMinContribution: valid })
   }
   setValidFundOwner = (valid) => {
-    this.setState({ validFundOwner: valid, valid: this.isValid() })
+    this.setState({ validFundOwner: valid })
   }
 
   // is Valid function
@@ -49,8 +48,8 @@ class AddTokenSaleAdvanced extends Component {
   }
 
   render () {
-    const { addTokenSale: { step }, preferences, loading, t } = this.props
-    const { transaction, valid } = this.state
+    const { addTokenSale: { step }, preferences, loading, t, tokenId } = this.props
+    const { transaction } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
@@ -58,29 +57,30 @@ class AddTokenSaleAdvanced extends Component {
     if (step === 6 && loading) {
       return <Loading />
     }
+    const valid = this.isValid()
     return (
       <div id='token-sale-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
-        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
           : <div className='big-card shadow pure-u-1 d-flex flex-column'>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSalePrice setValid={this.setValidPrice} />
+                <TokenSalePrice setValid={this.setValidPrice} tokenId={tokenId} />
               </div>
               <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleAmount setValid={this.setValidAmount} />
+                <TokenSaleAmount setValid={this.setValidAmount} tokenId={tokenId} />
               </div>
             </div>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleMinContribution setValid={this.setValidMinContribution} />
+                <TokenSaleMinContribution setValid={this.setValidMinContribution} tokenId={tokenId} />
               </div>
               <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleFundOwner setValid={this.setValidFundOwner} />
+                <TokenSaleFundOwner setValid={this.setValidFundOwner} tokenId={tokenId} />
               </div>
             </div>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleKyc />
+                <TokenSaleKyc tokenId={tokenId} />
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
                 {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}

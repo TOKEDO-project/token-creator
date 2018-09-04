@@ -17,8 +17,8 @@ class TokenSaleMinContribution extends Component {
   onChangeText = (e) => {
     const value = e.target.value
 
-    const { dispatch } = this.props
-    dispatch(setMinContribution(value))
+    const { dispatch, tokenId } = this.props
+    dispatch(setMinContribution({tokenAddress: tokenId, minContribution: value}))
     this.setState({
       valid: this.validate(value)
     })
@@ -26,21 +26,25 @@ class TokenSaleMinContribution extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
+    console.log('ASLKDJHASLKJDHASLKJDHASLKDJHASLKDJhj')
     const valid = input.length > 1
+    console.log(input, valid)
 
     if (setValid) {
       setValid(valid)
     }
     return valid
   }
+
   componentWillMount () {
-    const { addTokenSale } = this.props
-    this.setState({ valid: this.validate(addTokenSale.minContribution) })
+    const { addTokenSale, tokenId } = this.props
+    this.setState({ valid: this.validate(addTokenSale[tokenId].minContribution) })
   }
 
   render () {
-    const { addTokenSale, nextFunction, t } = this.props
+    const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
+    const minContribution = addTokenSale[tokenId].minContribution
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
@@ -55,8 +59,8 @@ class TokenSaleMinContribution extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow' value={addTokenSale.minContribution} onChange={this.onChangeText} />
-            {!valid && addTokenSale.minContribution.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
+            <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow' value={minContribution} onChange={this.onChangeText} />
+            {!valid && minContribution.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The name must be longer than 3 characters`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}
