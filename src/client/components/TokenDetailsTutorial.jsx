@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
+
 import { setState } from '../redux/addMainTokenSale'
 import './TokenDetailsTutorial.css'
 
 class TokenDetailsTutorial extends React.Component {
   addTokenSale = () => {
-    const { dispatch, tokenId, addMainTokenSale } = this.props
+    const { history, dispatch, tokenId, addMainTokenSale } = this.props
     if (!addMainTokenSale[tokenId] || addMainTokenSale[tokenId].state === 'uninitialized') {
       dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
     }
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
-      console.log('CREAZIONE FIGLIA')
+      history.push(`/token/details/${tokenId}/add-token-sale`)
     }
   }
 
@@ -31,4 +33,4 @@ class TokenDetailsTutorial extends React.Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(TokenDetailsTutorial))
+export default withRouter(translate('translations')(connect(s => s)(TokenDetailsTutorial)))

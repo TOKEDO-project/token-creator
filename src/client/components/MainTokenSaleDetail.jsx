@@ -10,7 +10,6 @@ class MainTokenSaleDetail extends React.Component {
   addTokenSale = () => {
     const { history, tokenId, addMainTokenSale } = this.props
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
-      console.log('CREAZIONE FIGLIA')
       history.push(`/token/details/${tokenId}/add-token-sale`)
     }
   }
