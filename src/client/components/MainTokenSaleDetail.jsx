@@ -15,9 +15,7 @@ class MainTokenSaleDetail extends React.Component {
       removeTokenInfo: false
     }
   }
-  addTokenSale = (e) => {
-    e.stopPropagation()
-
+  addTokenSale = () => {
     const { history, tokenId, addMainTokenSale } = this.props
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
       history.push(`/token/details/${tokenId}/add-token-sale`)
@@ -64,7 +62,7 @@ class MainTokenSaleDetail extends React.Component {
                 <span>
                   {t('Add Token Sale')}
                 </span>
-                <i onClick={() => { this.setState({addSaleInfo: !addSaleInfo, addTokenInfo: false, removeTokenInfo: false}) }}
+                <i onClick={(e) => { e.stopPropagation(); this.setState({addSaleInfo: !addSaleInfo, addTokenInfo: false, removeTokenInfo: false}) }}
                   className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
@@ -77,7 +75,7 @@ class MainTokenSaleDetail extends React.Component {
                 <span>
                   {t('Add More Token')}
                 </span>
-                <i onClick={() => { this.setState({addTokenInfo: !addTokenInfo, addSaleInfo: false, removeTokenInfo: false}) }}
+                <i onClick={(e) => { e.stopPropagation(); this.setState({addTokenInfo: !addTokenInfo, addSaleInfo: false, removeTokenInfo: false}) }}
                   className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
@@ -90,7 +88,7 @@ class MainTokenSaleDetail extends React.Component {
                 <span>
                   {t('Remove token')}
                 </span>
-                <i onClick={() => { this.setState({removeTokenInfo: !removeTokenInfo, addSaleInfo: false, addTokenInfo: false}) }}
+                <i onClick={(e) => { e.stopPropagation(); this.setState({removeTokenInfo: !removeTokenInfo, addSaleInfo: false, addTokenInfo: false}) }}
                   className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
