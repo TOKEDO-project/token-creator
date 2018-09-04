@@ -30,6 +30,18 @@ export const setFundOwner = createAction('TOKEN_SALE_SET_OWNER',
   }
 )
 
+export const setStartTime = createAction('TOKEN_SALE_SET_START_TIME',
+  (startTime) => {
+    return startTime
+  }
+)
+
+export const setEndTime = createAction('TOKEN_SALE_SET_END_TIME',
+  (endTime) => {
+    return endTime
+  }
+)
+
 export const setKYC = createAction('TOKEN_SALE_SET_KYC',
   (kyc) => {
     return kyc
@@ -67,6 +79,18 @@ export const addTokenSale = handleActions({
       owner: payload
     }
   },
+  TOKEN_SALE_SET_START_TIME: (state, { payload }) => {
+    return {
+      ...state,
+      startTime: payload
+    }
+  },
+  TOKEN_SALE_SET_END_TIME: (state, { payload }) => {
+    return {
+      ...state,
+      endTime: payload
+    }
+  },
   TOKEN_SALE_SET_KYC: (state, { payload }) => {
     return {
       ...state,
@@ -79,5 +103,7 @@ export const addTokenSale = handleActions({
   amount: '',
   minContribution: '',
   owner: '',
+  startTime: '',
+  endTime: '',
   kyc: true
 })
