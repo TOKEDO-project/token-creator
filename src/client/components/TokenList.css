@@ -19,9 +19,10 @@
 #tokenList .fa.fa-plus {
   border-radius: 100%;
   border: 2px solid white;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   margin-right: 10px;
+  font-size: 15px;
 }
 
 #tokenList .flexCenter {
@@ -62,7 +63,7 @@
 }
 
 .cards .partCard {
-  height: 60px;
+  height: 70px;
   text-align: center;
   color: #b8b8b8;
 }
@@ -84,17 +85,21 @@
 
 .cards a button {
   width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: center;
+  height: 70px;
   background: #69A4F9;
   border: none;
   border-radius: 5px;
   color: white;
+
+}
+.cards a button p, button p{
   font-weight: 700;
   font-size: 16px;
+  margin: 0;
 }
-
+.cards a button span{
+font-size: 14px;
+}
 .cards a button:hover {
   background: #3583f3;
 }

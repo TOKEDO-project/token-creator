@@ -19,11 +19,9 @@ const TokenList = (props) => {
           </div>
           <div className='btn flexCenter pure-u-sm-1'>
             <a href='/token/add/wizard'>
-              <button>
-                <div className='flexCenter flexWrap'>
-                  <span className='fa fa-plus flex-row d-flex flex-h-center flex-v-center' />
-                  {t('Create New Token')}
-                </div>
+              <button className='flex-row d-flex flex-h-center flex-v-center'>
+                <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
+                <p>{t('Create New Token')}</p>
               </button>
             </a>
           </div>
@@ -80,8 +78,8 @@ const TokenList = (props) => {
                   <div className='pure-u-md-1-4 pure-u-sm-1' >
                     <a href={`/token/details/${receipt.contractAddress}`}>
                       <button>
-                        {t('Manage Token')} &#38; {t('Token Sale')}
-                        {mainTokenSale ? <span><br />{t('Token for Sale')}: {mainTokenSale.amount}</span> : null }
+                        <p>{t('Manage Token')} &#38; {t('Token Sale')}</p>
+                        {mainTokenSale ? <span>{t('Token for Sale')}: {mainTokenSale.amount}</span> : null }
                       </button>
                     </a>
                   </div>
