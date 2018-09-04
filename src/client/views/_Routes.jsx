@@ -26,6 +26,7 @@ const AppRouter = () => {
         <Route exact path='/token/add/wizard' component={AddTokenWizard} />
         <Route exact path='/token/details/:tokenId' component={TokenDetails} />
         <Route exact path='/token/details/:tokenId/add-token-sale' component={(props) => <TokenDetails {...props} addTokenSaleForm />} />
+        <Route exact path='/token/details/:tokenId/unlock-the-token' component={(props) => <TokenDetails {...props} setModal='unlockTheToken' />} />
         <Route exact path='/token/receipt/:tokenId' component={TokenAddress} />
         <Route exact path='/faq' component={FaqPage} />
         <Route exact path='/help' component={HelpPage} />

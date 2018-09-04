@@ -11,6 +11,7 @@ import MainTokenSaleAddToken from '../components/MainTokenSaleAddToken'
 import MainTokenSaleAuthorize from '../components/MainTokenSaleAuthorize'
 import TokenDetailsTopBar from '../components/TokenDetailsTopBar'
 import TokenDetailsMenu from '../components/TokenDetailsMenu'
+import ModalSelector from '../components/ModalSelector'
 
 class TokenDetails extends React.Component {
   render () {
@@ -27,7 +28,7 @@ class TokenDetails extends React.Component {
 
     // Get token details
     const tokenDetails = transactions[receipt.transactionHash]
-    const { addMainTokenSale, mainTokenSales, addTokenSaleForm } = this.props
+    const { addMainTokenSale, mainTokenSales, addTokenSaleForm, setModal } = this.props
     const mainTokenSale = mainTokenSales[tokenId]
     const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
 
@@ -55,6 +56,7 @@ class TokenDetails extends React.Component {
 
           </div>
         </div>
+        <ModalSelector setModal={setModal} tokenId={tokenId} />
       </div>
     )
   }

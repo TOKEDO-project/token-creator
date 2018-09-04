@@ -28,7 +28,7 @@ class TokenDetailsMenu extends React.Component {
   }
 
   render () {
-    const { t } = this.props
+    const { t, tokenId } = this.props
     const { showMenu } = this.state
     return (
       <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
@@ -41,7 +41,7 @@ class TokenDetailsMenu extends React.Component {
           </div>
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
             <a href='#'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p>{showMenu ? t('Add Token Sale') : null}</p></button></a>
-            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
+            <a href={`/token/details/${tokenId}/unlock-the-token`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>[...]<p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
