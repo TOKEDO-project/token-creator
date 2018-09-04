@@ -43,9 +43,9 @@ class TokenDetailsMenu extends React.Component {
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
             <a href='#'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p>{showMenu ? t('Add Token Sale') : null}</p></button></a>
             <a href={`/token/details/${tokenId}/unlock-the-token`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
-            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
-            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
-            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={trasferTokens} /><p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
+            <a href={`/token/details/${tokenId}/change-token-owner`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
+            <a href={`/token/details/${tokenId}/authorize-transfer`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
+            <a href={`/token/details/${tokenId}/transfer-tokens`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={trasferTokens} /><p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
           </div>
         </div>
       </div>
