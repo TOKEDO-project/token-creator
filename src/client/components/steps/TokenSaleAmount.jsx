@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setPrice } from '../../redux/addTokenSale'
+import { setAmount } from '../../redux/addTokenSale'
 import icon from '../../assets/images/token-name.svg'
 import './Step.css'
 import './StepSingleInput.css'
@@ -19,7 +19,7 @@ class TokenSaleAmount extends Component {
     const value = e.target.value
 
     const { dispatch } = this.props
-    dispatch(setPrice(value))
+    dispatch(setAmount(value))
     this.setState({
       valid: this.validate(value)
     })
