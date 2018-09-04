@@ -42,12 +42,14 @@
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
-#MainTokenSaleDetail button span i{
+#MainTokenSaleDetail button i{
     border-radius: 100%;
     border: 2px solid white;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     margin-right: 10px;
+    color: white;
+    font-size: 15px;
 }
 #MainTokenSaleDetail button:hover {
   background: #ffaa00;
