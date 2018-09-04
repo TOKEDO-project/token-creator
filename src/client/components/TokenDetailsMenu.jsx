@@ -7,6 +7,7 @@ import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
 import addIcon from '../assets/images/addIcon.svg'
+import trasferTokens from '../assets/images/transfer-tokens.svg'
 import { setState } from '../redux/addMainTokenSale'
 
 class TokenDetailsMenu extends React.Component {
@@ -44,7 +45,7 @@ class TokenDetailsMenu extends React.Component {
             <a href={`/token/details/${tokenId}/unlock-the-token`}><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p>{showMenu ? t('Unlock The Token') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p>{showMenu ? t('Change Token Owner') : null}</p></button></a>
             <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p>{showMenu ? t('Authorize Transfer') : null}</p></button></a>
-            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>[...]<p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
+            <a href='/'><button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={trasferTokens} /><p>{showMenu ? t('Transfer Tokens') : null}</p></button></a>
           </div>
         </div>
       </div>

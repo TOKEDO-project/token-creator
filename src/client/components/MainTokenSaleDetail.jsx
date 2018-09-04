@@ -7,6 +7,14 @@ import './MainTokenSaleDetail.css'
 import iconToken from '../assets/images/token-name.svg'
 
 class MainTokenSaleDetail extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      addSaleInfo: false,
+      addTokenInfo: false,
+      removeTokenInfo: false
+    }
+  }
   addTokenSale = () => {
     const { history, tokenId, addMainTokenSale } = this.props
     if (addMainTokenSale[tokenId] && addMainTokenSale[tokenId].state === 'authorized') {
@@ -16,6 +24,7 @@ class MainTokenSaleDetail extends React.Component {
 
   render () {
     const { addMainTokenSale, t, mainTokenSale, tokenId } = this.props
+    const { addSaleInfo, addTokenInfo, removeTokenInfo } = this.state
     const addMainTokenSaleById = addMainTokenSale[tokenId]
     let waiting = t('Waiting...')
     return (
@@ -39,29 +48,44 @@ class MainTokenSaleDetail extends React.Component {
         </div>
 
         {(mainTokenSale.receipt && mainTokenSale.transferReceipt && mainTokenSale.setAuthorizedReceipt)
-          ? <div className='btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
-            <div className='d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              <button className='pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
+          ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
+            <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
+              { addSaleInfo ? <div className='infoBox'>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+              </div> : null}
+              <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Add Token Sale')}
                 </span>
+                <i onClick={() => { this.setState({addSaleInfo: !addSaleInfo, addTokenInfo: false, removeTokenInfo: false}) }}
+                  className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
-            <div className='d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              <button className='pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+            <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
+              { addTokenInfo ? <div className='infoBox'>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+              </div> : null }
+              <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Add More Token')}
                 </span>
+                <i onClick={() => { this.setState({addTokenInfo: !addTokenInfo, addSaleInfo: false, removeTokenInfo: false}) }}
+                  className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
-            <div className='d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              <button className='pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+            <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
+              { removeTokenInfo ? <div className='infoBox'>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. </p>
+              </div> : null}
+              <button className='blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Remove token')}
                 </span>
+                <i onClick={() => { this.setState({removeTokenInfo: !removeTokenInfo, addSaleInfo: false, addTokenInfo: false}) }}
+                  className='fa fa-question d-flex flex-h-center flex-v-center' />
               </button>
             </div>
           </div>

@@ -220,7 +220,7 @@ max-width: 1920px;
     padding-top: 70px;
   }
   .TokenDetailsMenu {
-    min-height: calc(100vh);
+    min-height: calc(170vh);
   }
 
 }

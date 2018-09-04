@@ -28,12 +28,28 @@
 }
 
 #MainTokenSaleDetail button {
-  max-width: 200px;
+  max-width: 300px;
   min-width: 100px;
-  height: 50px;
+  height: 70px;
   border-radius: 5px;
   border: none;
+  position: relative;
+}
+
+#MainTokenSaleDetail button.orange {
   background: #fa8100;
+}
+
+#MainTokenSaleDetail button.orange:hover {
+  background: #ffaa00;
+}
+
+#MainTokenSaleDetail button.blue {
+  background: #3583f3;
+}
+
+#MainTokenSaleDetail button.blue:hover {
+  background: #69A4F9;
 }
 
 #MainTokenSaleDetail button span {
@@ -42,21 +58,74 @@
   color: white;
   font-family: 'Montserrat', sans-serif;
 }
-#MainTokenSaleDetail button i{
-    border-radius: 100%;
-    border: 2px solid white;
-    width: 28px;
-    height: 28px;
-    margin-right: 10px;
-    color: white;
-    font-size: 15px;
+
+#MainTokenSaleDetail button i.fa-plus,
+#MainTokenSaleDetail button i.fa-minus {
+  border-radius: 100%;
+  border: 2px solid white;
+  width: 28px;
+  height: 28px;
+  margin-right: 5px;
+  color: white;
+  font-size: 15px;
 }
-#MainTokenSaleDetail button:hover {
-  background: #ffaa00;
+
+#MainTokenSaleDetail button i.fa-question {
+  border-radius: 100%;
+  border: 1px solid white;
+  width: 14px;
+  height: 14px;
+  margin-bottom: 40px;
+  color: white;
+  font-size: 9px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+#MainTokenSaleDetail button i.fa-question:hover {
+  color: #7D7D7D;
+  border: 1px solid #7D7D7D;
 }
 
 #MainTokenSaleDetail img.iconToken {
   width: 50px;
+}
+
+#MainTokenSaleDetail .relative {
+  position: relative;
+}
+
+#MainTokenSaleDetail .infoBox {
+  position: absolute;
+  bottom: 85px;
+  z-index: 10;
+  background: #9b9b9b;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 95.8333%;
+  max-width: 300px;
+    min-width: 100px;
+}
+
+#MainTokenSaleDetail .infoBox p {
+  font-size: 12px;
+  color: white;
+  margin: 0px;
+}
+#MainTokenSaleDetail .infoBox::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #9b9b9b;
+  border-bottom: 0;
+  border-right: 0;
+  margin-bottom: -10px;
 }
 
 @media (min-width: 1024px) {
@@ -69,14 +138,14 @@
   #MainTokenSaleDetail {
     flex-direction: column;
   }
+
   #MainTokenSaleDetail .btnGroup div {
     margin-top: 10px;
-}
+  }
 }
 
 @media (max-width: 767px) {
   #MainTokenSaleDetail .btnGroup {
     flex-direction: column;
   }
-
 }

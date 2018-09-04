@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.211 38.12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d4d4d4;
+      }
+    </style>
+  </defs>
+  <g id="Group_1268" data-name="Group 1268" transform="translate(-337.5 822.727)">
+    <g id="ethereum" transform="translate(354.236 -811.32)">
+      <g id="Group_1261" data-name="Group 1261" transform="translate(0)">
+        <g id="Group_1260" data-name="Group 1260" transform="translate(0)">
+          <rect id="Rectangle_808" data-name="Rectangle 808" class="cls-1" width="0.767" height="0.767" transform="translate(3.526 3.852)"/>
+          <rect id="Rectangle_809" data-name="Rectangle 809" class="cls-1" width="0.767" height="0.767" transform="translate(3.526 5.386)"/>
+          <path id="Path_1239" data-name="Path 1239" class="cls-1" d="M94.51,0,90.6,6.951l3.91,5.213,3.91-5.213Zm-.384,10.374-1.878-2.5,1.878.834Zm0-3.453v.944L91.6,6.742l2.528-4.495v.837h.767V2.247l2.528,4.495L94.893,7.865V6.921Zm.767,3.453V8.7l1.877-.834Z" transform="translate(-90.6)"/>
+        </g>
+      </g>
+    </g>
+    <g id="bitcoin" transform="translate(337.5 -822.726)">
+      <path id="Path_1241" data-name="Path 1241" class="cls-1" d="M-5.092,217.707v-1.588h-7.589V214.53h2.559v-1.588h-2.559V205H-14.27v8.444a10.3,10.3,0,0,0-6.291-.021l-.936-1.02a.794.794,0,0,0-.849-.211l-10.89,3.846a.788.788,0,0,0-.3.187l-5.124,5.12,1.123,1.125,5-5,10.223-3.609.191.208a10.324,10.324,0,0,0-5.639,8.961l-2.869-.453-.247,1.569,3.146.5a.828.828,0,0,0,.207.006l4.616-.486,2.285.361v2.016h-2.843l-7.341.5a.794.794,0,0,0-.617.368l-2.912,4.6h-3.758v1.588H-33.9a.794.794,0,0,0,.671-.369l2.93-4.624,3.864-.262a10.309,10.309,0,0,0,12.165,4.752V243.12h1.588V228.825h2.559v-1.588h-2.559v-2.383h5.559v-1.588h-5.559v-5.559Zm-9.177,1.378c0,.009,0,.017,0,.026v.231l-.025-.023v3.927l.025-.025v.092l-.025-.025v3.926l.025-.023v4.2a8.69,8.69,0,0,1-10.37-3.177l1.227-.079h3.522a1.069,1.069,0,0,1,.285-.042v-4.842c-.2-.067-.389-.137-.579-.214a1.9,1.9,0,0,1-.2-.048.826.826,0,0,1-.142-.063l-.05-.008-.048,0v0l-2.144-.338a.906.906,0,0,0-.207-.006l-3.193.336a8.736,8.736,0,0,1,8.721-8.381,8.677,8.677,0,0,1,3.177.608Z" transform="translate(38.656 -205)"/>
+      <rect id="Rectangle_822" data-name="Rectangle 822" class="cls-1" width="8.03" height="1.588" transform="translate(38.593 11.118)"/>
+      <rect id="Rectangle_823" data-name="Rectangle 823" class="cls-1" width="7.854" height="1.588" transform="translate(35.592 24.619)"/>
+      <rect id="Rectangle_824" data-name="Rectangle 824" class="cls-1" width="10.06" height="1.588" transform="translate(28.532 14.295)"/>
+      <path id="Path_1242" data-name="Path 1242" class="cls-1" d="M272.635,286.588h1.412V285h-8.383v1.588h6.971Z" transform="translate(-235.454 -277.058)"/>
+      <rect id="Rectangle_825" data-name="Rectangle 825" class="cls-1" width="16.942" height="1.588" transform="translate(31.27 27.796)"/>
+      <rect id="Rectangle_826" data-name="Rectangle 826" class="cls-1" width="1.588" height="1.588" transform="translate(26.769 27.796)"/>
+      <rect id="Rectangle_827" data-name="Rectangle 827" class="cls-1" width="7.942" height="1.588" transform="translate(40.27 18.266)"/>
+      <rect id="Rectangle_828" data-name="Rectangle 828" class="cls-1" width="6.706" height="1.588" transform="translate(40.715 21.443)"/>
+      <rect id="Rectangle_829" data-name="Rectangle 829" class="cls-1" width="1.5" height="1.588" transform="translate(30.74 24.619)"/>
+      <rect id="Rectangle_830" data-name="Rectangle 830" class="cls-1" width="1.588" height="1.588" transform="translate(38.681 7.942)"/>
+      <rect id="Rectangle_831" data-name="Rectangle 831" class="cls-1" width="6.353" height="1.588" transform="translate(41.858 7.942)"/>
+      <rect id="Rectangle_832" data-name="Rectangle 832" class="cls-1" width="1.588" height="1.588" transform="translate(35.505 11.118)"/>
+      <rect id="Rectangle_833" data-name="Rectangle 833" class="cls-1" width="1.588" height="1.588" transform="translate(37.093 18.266)"/>
+      <rect id="Rectangle_834" data-name="Rectangle 834" class="cls-1" width="1.588" height="1.588" transform="translate(36.299 21.443)"/>
+      <rect id="Rectangle_835" data-name="Rectangle 835" class="cls-1" width="1.588" height="1.588" transform="translate(41.064 14.295)"/>
+      <rect id="Rectangle_836" data-name="Rectangle 836" class="cls-1" width="3.971" height="1.588" transform="translate(44.241 14.295)"/>
+    </g>
+  </g>
+</svg>
