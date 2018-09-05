@@ -25,7 +25,7 @@ class TokenAddress extends Component {
     const { addressCopied } = this.state
     return (
       <div id='token-address' className='step-container pure-u-22-24 pure-u-sm-20-24 pure-md-18-24 d-flex flex-column'>
-        <div className='step pure-u-1 d-flex flex-column flex-h-between'>
+        <div className='step alone pure-u-1 d-flex flex-column flex-h-between'>
           <div className='top d-flex flex-row flex-h-start flex-v-center'>
             <div className='left'>
               <img className='icon' src={icon} alt='Icon' />
