@@ -36,8 +36,7 @@ class TokenSaleListForToken extends React.Component {
     const { t, tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale } = this.props
     const { addTokenSaleFormType } = this.state
     const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
-    console.log('addTokenSale.step', addTokenSale[tokenId].step)
-    if (addTokenSaleForm) {
+    if (addTokenSaleForm && addTokenSale[tokenId]) {
       return (
         <div>
           {addTokenSaleFormType === 'wizard'
