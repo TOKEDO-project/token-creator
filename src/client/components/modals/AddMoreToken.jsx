@@ -27,9 +27,9 @@ class AddMoreToken extends React.Component {
     return (
       <Modal icon={plus} visible={visible} title={t('Add More Tokens')} toggleVisibility={this.toggleVisibility}>
         <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <TokenSaleAddAmount />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>
     )

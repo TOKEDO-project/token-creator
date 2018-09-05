@@ -58,6 +58,10 @@ class TokenSalePrice extends Component {
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={price} onChange={this.onChangeText} />
             {!valid && price.length > 1 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}
+            <select>
+              <option value='ETHEREUM' />
+              <option value='DOLLARS' />
+            </select>
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}

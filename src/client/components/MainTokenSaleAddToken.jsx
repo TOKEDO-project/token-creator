@@ -54,6 +54,7 @@ class MainTokenSaleAddToken extends Component {
     return (
       <div>
         <MainTokenSaleAmount onChangeCB={this.prepareTransaction} tokenId={tokenId} />
+        <div className='separator-twentyfive' />
         <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
       </div>
     )

@@ -27,9 +27,9 @@ class RemoveToken extends React.Component {
     return (
       <Modal icon={minus} visible={visible} title={t('Remove Token')} toggleVisibility={this.toggleVisibility}>
         <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <TokenSaleRemoveAmount />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>
     )

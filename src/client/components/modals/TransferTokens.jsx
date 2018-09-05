@@ -27,9 +27,9 @@ class TransferTokens extends React.Component {
     return (
       <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
         <TokenSaleOwnerAddress />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <TokenSaleTransferAmount />
-        <div className='separator' />
+        <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>
     )
