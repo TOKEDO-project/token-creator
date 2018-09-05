@@ -15,7 +15,7 @@ import ModalSelector from '../components/ModalSelector'
 
 class TokenDetails extends React.Component {
   render () {
-    const { match: { params: { tokenId } }, tokens: { transactions, receipts } } = this.props
+    const { match: { params: { tokenId } }, tokens: { transactions, receipts }, addMainTokenSale, mainTokenSales, addTokenSaleForm, setModal } = this.props
 
     // Get token receipt
     const receipt = receipts[tokenId]
@@ -28,7 +28,6 @@ class TokenDetails extends React.Component {
 
     // Get token details
     const tokenDetails = transactions[receipt.transactionHash]
-    const { addMainTokenSale, mainTokenSales, addTokenSaleForm, setModal } = this.props
     const mainTokenSale = mainTokenSales[tokenId]
     const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
 
