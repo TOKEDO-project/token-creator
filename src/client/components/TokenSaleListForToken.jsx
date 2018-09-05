@@ -25,10 +25,6 @@ class TokenSaleListForToken extends React.Component {
       addTokenSaleFormType: 'wizard'
     })
   }
-  componentDidMount () {
-    const { dispatch, tokenId } = this.props
-    dispatch(reset({ tokenAddress: tokenId }))
-  }
   render () {
     const { t, tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale } = this.props
     const { addTokenSaleFormType } = this.state
