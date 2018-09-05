@@ -1,4 +1,5 @@
 import { handleActions, createAction } from 'redux-actions'
+import moment from 'moment'
 
 const defaultToken = {
   step: 1,
@@ -6,8 +7,8 @@ const defaultToken = {
   amount: '',
   minContribution: '',
   owner: '',
-  startTime: '',
-  endTime: '',
+  startTime: moment().valueOf() + '',
+  endTime: moment().add(1, 'month').valueOf() + '',
   kyc: true
 }
 

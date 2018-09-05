@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
 
 import TokenSalePrice from '../components/steps/TokenSalePrice'
 import TokenSaleAmount from '../components/steps/TokenSaleAmount'
@@ -15,6 +16,7 @@ import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransact
 import { saveTransaction, saveReceipt } from '../redux/tokenSales'
 
 import './AddTokenSaleWizard.css'
+import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
 
 class AddTokenSaleWizard extends Component {
   constructor (props) {
@@ -27,7 +29,7 @@ class AddTokenSaleWizard extends Component {
 
   componentDidMount = async () => {
     const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
-    if (addTokenSale[tokenId].step === 6) {
+    if (addTokenSale[tokenId].step === 7) {
       const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
       const tokenTxId = tokens.receipts[tokenId].transactionHash
       const tokenDecimals = tokens.transactions[tokenTxId].decimals
@@ -63,10 +65,24 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({tokenAddress: tokenId, step: 5}))
   }
 
-  deployTokenSale = (e) => {
+  goToStep6 = (e) => {
     e.preventDefault()
     const { dispatch, tokenId } = this.props
-    dispatch(setStep({tokenAddress: tokenId, step: 6}))
+    dispatch(setStep({ tokenAddress: tokenId, step: 6 }))
+  }
+
+  deployTokenSale = async (e) => {
+    e.preventDefault()
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const tokenTxId = tokens.receipts[tokenId].transactionHash
+    const tokenDecimals = tokens.transactions[tokenTxId].decimals
+    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    this.setState({
+      transaction,
+      loading: false
+    })
+    dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
   onReceipt = (receipt) => {
@@ -98,8 +114,10 @@ class AddTokenSaleWizard extends Component {
       case 4:
         return <TokenSaleFundOwner nextFunction={this.goToStep5} tokenId={tokenId} />
       case 5:
-        return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
+        return <TokenSaleStartEndTime nextFunction={this.goToStep6} tokenId={tokenId} />
       case 6:
+        return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
+      case 7:
         return <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
     }
   }
@@ -111,7 +129,7 @@ class AddTokenSaleWizard extends Component {
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
-    if (step === 6 && loading) {
+    if (step === 7 && loading) {
       return <Loading />
     }
     return (
@@ -123,4 +141,4 @@ class AddTokenSaleWizard extends Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(AddTokenSaleWizard))
+export default withRouter(translate('translations')(connect(s => s)(AddTokenSaleWizard)))

@@ -16,6 +16,7 @@ import { setStep, reset } from '../redux/addTokenSale'
 import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
 
 import './AddTokenSaleAdvanced.css'
+import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
 
 class AddTokenSaleAdvanced extends Component {
   constructor (props) {
@@ -28,6 +29,20 @@ class AddTokenSaleAdvanced extends Component {
       validMinContribution: false,
       validFundOwner: false,
       transaction: ''
+    }
+  }
+
+  componentDidMount = async () => {
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
+    if (addTokenSale[tokenId].step === 7) {
+      const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+      const tokenTxId = tokens.receipts[tokenId].transactionHash
+      const tokenDecimals = tokens.transactions[tokenTxId].decimals
+      const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+      this.setState({
+        transaction,
+        loading: false
+      })
     }
   }
 
@@ -77,7 +92,7 @@ class AddTokenSaleAdvanced extends Component {
       transaction,
       loading: false
     })
-    dispatch(setStep({tokenAddress: tokenId, step: 6}))
+    dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
   render () {
@@ -88,13 +103,13 @@ class AddTokenSaleAdvanced extends Component {
     }
 
     const step = addTokenSale[tokenId].step
-    if (step === 6 && loading) {
+    if (step === 7 && loading) {
       return <Loading />
     }
     const valid = this.isValid()
     return (
       <div id='token-sale-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
-        {step === 6
+        {step === 7
           ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
           : <div className='big-card shadow pure-u-1 d-flex flex-column'>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
@@ -116,6 +131,9 @@ class AddTokenSaleAdvanced extends Component {
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
                 <TokenSaleKyc tokenId={tokenId} />
+              </div>
+              <div className='pure-u-1 pure-u-md-12-24'>
+                <TokenSaleStartEndTime tokenId={tokenId} />
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
                 {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
