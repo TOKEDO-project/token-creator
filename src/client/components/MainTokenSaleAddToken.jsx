@@ -19,16 +19,22 @@ class MainTokenSaleAddToken extends Component {
     }
   }
 
-  prepareTransaction = async (amount) => {
-    const { web3, tokens, tokenId, mainTokenSales } = this.props
-    const transactionHash = tokens.receipts[tokenId].transactionHash
-    const tokenType = tokens.transactions[transactionHash].type
-    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
-    this.setState({
-      transaction,
-      loading: false
-    })
+  prepareTransaction = async (amount, isValid) => {
+    if (!isValid) {
+      this.setState({
+        transaction: null
+      })
+    } else {
+      const { web3, tokens, tokenId, mainTokenSales } = this.props
+      const transactionHash = tokens.receipts[tokenId].transactionHash
+      const tokenType = tokens.transactions[transactionHash].type
+      const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+      const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
+      this.setState({
+        transaction,
+        loading: false
+      })
+    }
   }
 
   onTransactionHash = (transactionHash) => {
@@ -45,7 +51,7 @@ class MainTokenSaleAddToken extends Component {
 
   render () {
     const {transaction, loading} = this.state
-    const {match: {params: {tokenId}}} = this.props
+    const {match: {params: {tokenId}}, t} = this.props
 
     if (loading) {
       return <Loading />
@@ -53,9 +59,24 @@ class MainTokenSaleAddToken extends Component {
 
     return (
       <div>
-        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} tokenId={tokenId} />
         <div className='separator-twentyfive' />
-        <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+        <MainTokenSaleAmount onChangeCB={this.prepareTransaction} tokenId={tokenId} />
+        {transaction
+          ? <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+            <div className='top d-flex flex-row flex-h-start flex-v-center'>
+              <div className='left'>
+                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+              </div>
+              <div className='right d-flex flex-column flex-h-center'>
+                <span className='title'>{t(`Allocate tokes`)}:</span>
+                <span className='description font-size-tiny'>{t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}</span>
+              </div>
+            </div>
+            <div className='separator-twentyfive' />
+          </WalletSelection>
+          : null
+        }
+
       </div>
     )
   }

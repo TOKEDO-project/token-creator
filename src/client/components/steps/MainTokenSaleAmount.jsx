@@ -19,24 +19,24 @@ class MainTokenSaleAmount extends Component {
 
   onChangeText = (e) => {
     const value = e.target.value
-
+    console.log('VALID', 'onChangeText')
     const { dispatch, tokenId } = this.props
     dispatch(setAmount({tokenAddress: tokenId, amount: value}))
-    this.setState({
-      valid: this.validate(value)
-    })
-
+    const isValid = this.validate(value)
+    this.setState({ valid: isValid })
     const {onChangeCB} = this.props
     if (onChangeCB) {
-      onChangeCB(value)
+      onChangeCB(value, isValid)
     }
   }
 
   validate = (input) => {
     const { setValid, tokenId, tokens } = this.props
     const tokenInfo = getTokenInfo(tokenId, tokens)
-    const valid = input.length > 3 && bnUtils.lte(input, tokenInfo.supply)
-
+    input = input.replace(',', '.')
+    const reg = /^-?\d*\.?\d*$/
+    let valid = bnUtils.lte(input, tokenInfo.supply) && reg.test(input)
+    // Questo serve solo nell'advance poerche noi vogliamo fare la validazione sul pulsante mentre questo qui è una validazione interna
     if (setValid) {
       setValid(valid)
     }
@@ -45,7 +45,13 @@ class MainTokenSaleAmount extends Component {
 
   componentWillMount () {
     const { addMainTokenSale, tokenId } = this.props
-    this.setState({ valid: this.validate(addMainTokenSale[tokenId].amount) })
+    const value = addMainTokenSale[tokenId].amount
+    const isValid = this.validate(value)
+    this.setState({ valid: isValid })
+    const {onChangeCB} = this.props
+    if (onChangeCB) {
+      onChangeCB(value, isValid)
+    }
   }
 
   render () {
@@ -60,13 +66,13 @@ class MainTokenSaleAmount extends Component {
           </div>
           <div className='right d-flex flex-column flex-h-center'>
             <span className='title'>{t(`Insert the token amount`)}:</span>
-            <span className='description'>{t(`Choose wisely.`)}</span>
+            <span className='description'>{t(`Insert the total amount of token to be sold. After make the transaction.`)}</span>
           </div>
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
-            <input type='number' placeholder={t(`Insert the total amount`)} className='token-supply text shadow' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
-            {!valid && addMainTokenSale[tokenId].amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply`)}</div> : null}
+            <input type='number' placeholder={t(`Insert the token amount`)} className='token-supply text shadow' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
+            {!valid && addMainTokenSale[tokenId].amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply, and must be only number`)}</div> : null}
           </div>
         </form>
       </div>

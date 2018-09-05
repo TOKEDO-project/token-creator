@@ -40,6 +40,7 @@ class MainTokenSaleAuthorize extends Component {
   }
 
   render () {
+    const { t } = this.props
     const {transaction, loading} = this.state
 
     if (loading) {
@@ -48,7 +49,18 @@ class MainTokenSaleAuthorize extends Component {
 
     return (
       <div>
-        <WalletSelection connectorName='mainTokenSaleAuthorize' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+        <WalletSelection connectorName='mainTokenSaleAuthorize' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+          <div className='top d-flex flex-row flex-h-start flex-v-center'>
+            <div className='left'>
+              <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+            </div>
+            <div className='right d-flex flex-column flex-h-center'>
+              <span className='title'>{t(`Authorization`)}:</span>
+              <span className='description font-size-tiny'>{t(`This is the final transaction. You need to authorize this token sale to move the token.`)}</span>
+            </div>
+          </div>
+          <div className='separator-twentyfive' />
+        </WalletSelection>
       </div>
     )
   }

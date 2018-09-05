@@ -83,6 +83,7 @@ class AddTokenWizard extends Component {
 
   renderStep (step) {
     const { transaction } = this.state
+    const { t } = this.props
     switch (step) {
       case 1:
         return <TokenName nextFunction={this.goToStep2} />
@@ -95,7 +96,20 @@ class AddTokenWizard extends Component {
       case 5:
         return <TokenType nextFunction={this.deployToken} />
       case 6:
-        return <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} />
+        return (
+          <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+            <div className='top d-flex flex-row flex-h-start flex-v-center'>
+              <div className='left'>
+                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+              </div>
+              <div className='right d-flex flex-column flex-h-center'>
+                <span className='title'>{t(`Deploy the token`)}:</span>
+                <span className='description font-size-tiny'>{t(`Now everything is ready, you need to send the transaction to deploy the token.`)}</span>
+              </div>
+            </div>
+            <div className='separator-twentyfive' />
+          </WalletSelection>
+        )
     }
   }
 

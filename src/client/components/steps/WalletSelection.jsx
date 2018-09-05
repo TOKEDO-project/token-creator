@@ -28,11 +28,10 @@ class WalletSelection extends Component {
   render () {
     const { addToken, web3, transaction, onTransactionHash, onReceipt, connectorName, t } = this.props
     console.log('transaction WS', transaction)
-    if (web3.loading || !transaction) {
-      return <Loading />
-    }
+    if (web3.loading || !transaction) { return <Loading /> }
     return (
       <div id='wallet-selection' className='step alone pure-u-1 d-flex flex-column flex-h-between'>
+        {this.props.children}
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />

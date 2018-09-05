@@ -60,7 +60,8 @@ class AddTokenSaleAdvanced extends Component {
     const valid = this.isValid()
     return (
       <div id='token-sale-advanced' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24'>
-        {step === 6 ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+        {step === 6
+          ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
           : <div className='big-card shadow pure-u-1 d-flex flex-column'>
             <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
               <div className='pure-u-1 pure-u-md-12-24'>
