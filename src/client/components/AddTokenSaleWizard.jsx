@@ -133,7 +133,7 @@ class AddTokenSaleWizard extends Component {
       return <Loading />
     }
     return (
-      <div id='token-sale-wizard'>
+      <div id='token-sale-wizard' className='pure-u-1'>
         <div>Step: {step}</div>
         {this.renderStep(step)}
       </div>

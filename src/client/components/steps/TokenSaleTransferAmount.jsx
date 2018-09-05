@@ -42,7 +42,7 @@ class TokenSaleTransferAmount extends Component {
     const { valid } = this.state
 
     return (
-      <div className='step pure-u-1 d-flex flex-column flex-h-between'>
+      <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />
