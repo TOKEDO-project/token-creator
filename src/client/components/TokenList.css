@@ -95,7 +95,10 @@
 .cards a button p, button p{
   font-weight: 700;
   font-size: 16px;
-  margin: 0;
+  margin-left: 0;
+}
+p.marginTxt{
+  margin-left: 10px;
 }
 .cards a button span{
 font-size: 14px;
