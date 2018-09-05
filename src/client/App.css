@@ -45,6 +45,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+button:active {
+  transform: translateY(5px);
+}
+
 img.shuttle {
   width: 72px;
   object-fit: contain;
