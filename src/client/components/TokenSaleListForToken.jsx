@@ -4,6 +4,7 @@ import { translate } from 'react-i18next'
 import TokenDetailsTutorial from './TokenDetailsTutorial'
 import AddTokenSaleWizard from './AddTokenSaleWizard'
 import AddTokenSaleAdvanced from './AddTokenSaleAdvanced'
+import { reset } from '../redux/addTokenSale'
 
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
@@ -24,11 +25,18 @@ class TokenSaleListForToken extends React.Component {
       addTokenSaleFormType: 'wizard'
     })
   }
+  componentDidMount () {
+    const { dispatch, tokenId, addTokenSale } = this.props
+    // const step = addTokenSale[tokenId].step
+    if (!addTokenSale[tokenId]) {
+      dispatch(reset({ tokenAddress: tokenId }))
+    }
+  }
   render () {
     const { t, tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale } = this.props
     const { addTokenSaleFormType } = this.state
     const tokenSaleList = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress] : []
-    console.log('addTokenSale.step', addTokenSale.step)
+    console.log('addTokenSale.step', addTokenSale[tokenId].step)
     if (addTokenSaleForm) {
       return (
         <div>
