@@ -53,7 +53,7 @@ class MainTokenSaleAmount extends Component {
     const { valid } = this.state
 
     return (
-      <div className='step pure-u-1'>
+      <div className='step alone pure-u-1'>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
             <img className='icon' src={icon} alt='Icon' />

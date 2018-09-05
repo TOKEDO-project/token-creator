@@ -37,10 +37,13 @@ div.modal div.container {
 div.modal div.content {
  background-color: white;
  border-radius: 5px;
+ max-height: 90%;
 }
 
 div.modal div.content div.header {
- padding: 25px;
+ min-height: 90px;
+ max-height: 90px;
+ padding: 0 25px;
  border-bottom: 1px solid #EEEEEE;
 }
 
@@ -68,6 +71,7 @@ div.modal div.content div.header button.right span.fa {
 div.modal div.children {
  /* Calc padding by left original padding + icon size + icon margin */
  padding: 25px calc(25px + 32px + 25px);
+ overflow-y: auto;
 }
 
 div.modal div.children div.separator {
