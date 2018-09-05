@@ -15,7 +15,7 @@ export default async ({ web3, tokenSale, mainTokenSaleAddress, tokenDecimals }) 
   }
 
   const contract = new web3.eth.Contract(abi)
-  const priceFeed = '0xa035537c2d653fbb82dd268be1961927531bcab4'
+  const priceFeed = process.env.NODE_ENV === 'production' ? '0x661e56ea0b4f833602fa70447ea376ebe117b201' : '0xa035537c2d653fbb82dd268be1961927531bcab4'
   const priceCurrency = ''
   const args = [
     mainTokenSaleAddress,
