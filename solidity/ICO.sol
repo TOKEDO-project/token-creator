@@ -84,7 +84,7 @@ contract TokenSaleInterface {
     // then it will decrease. It is used to calculate the percentage of sold tokens as remainingTokens() / totalTokens()
     function remainingTokens() public view returns(uint256);
 
-    // return the price as number of tokens released for each ether
+    // return the price of one token
     function price() public view returns(uint256);
 }
 
@@ -138,6 +138,10 @@ contract AtomaxKyc {
     }
 }
 
+contract FeedPriceInterface {
+    function read(bytes32 _currency) view public returns (uint256);
+}
+ 
 contract SaleEngine is TokenSaleInterface {
     using SafeMath for uint256;
     
@@ -149,13 +153,16 @@ contract SaleEngine is TokenSaleInterface {
     uint256 public etherMinimum;
     uint256 public soldTokens;
     uint256 public remainingTokens;
+    
     uint256 public tokenPrice;
+    bytes32 public priceCurrency;
+    FeedPriceInterface public priceFeed;
 	
 	mapping(address => uint256) public etherUser; // address => ether amount
 	mapping(address => uint256) public pendingTokenUser; // address => token amount that will be claimed after KYC
 	mapping(address => uint256) public tokenUser; // address => token amount owned
 	
-    constructor(address _tokenSaleContract, uint256 _tokenPrice, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) internal {
+    constructor(address _tokenSaleContract, uint256 _tokenPrice, address _priceFeed, string _priceCurrency, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) internal {
         require ( _tokenSaleContract != address(0), "_tokenSaleContract != address(0)" );
         require ( _tokenPrice != 0, "_tokenPrice != 0" );
         require ( _remainingTokens != 0, "_remainingTokens != 0" );  
@@ -166,7 +173,11 @@ contract SaleEngine is TokenSaleInterface {
         
         soldTokens = 0;
         remainingTokens = _remainingTokens;
+        
         tokenPrice = _tokenPrice;
+        priceFeed = FeedPriceInterface(_priceFeed);
+        priceCurrency = keccak256(abi.encodePacked(_priceCurrency));
+        
         etherMinimum = _etherMinimum;
         
         startTime = _startTime;
@@ -217,8 +228,12 @@ contract SaleEngine is TokenSaleInterface {
         return remainingTokens;
     }
     
-    function price() public view returns(uint) {
-        return uint256(1 ether).div( tokenPrice ).mul( 10 ** uint256(tokenSaleContract.decimals()) );
+    function price() public view returns(uint256) {
+        if ( priceCurrency == 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470 ) { //keccak256(abi.encodePacked(""))
+            return tokenPrice;
+        } else {
+            return tokenPrice.mul(1e18).div(priceFeed.read(priceCurrency));
+        }
     }
 
 	event TakeEther(address buyer, uint256 value, uint256 soldToken, uint256 tokenPrice );
@@ -230,7 +245,7 @@ contract SaleEngine is TokenSaleInterface {
         require( remainingTokens > 0, "remainingTokens > 0" );
         
         uint256 oneToken = 10 ** uint256(tokenSaleContract.decimals());
-        uint256 tokenAmount = msg.value.mul( oneToken ).div( tokenPrice );
+        uint256 tokenAmount = msg.value.mul( oneToken ).div( price() );
         
         uint256 remainingTokensGlobal = tokenInterface( tokenSaleContract.tokenContract() ).balanceOf( address(tokenSaleContract) );
         
@@ -243,7 +258,7 @@ contract SaleEngine is TokenSaleInterface {
         
         uint256 refund = 0;
         if ( remainingTokensApplied < tokenAmount ) {
-            refund = (tokenAmount - remainingTokensApplied).mul(tokenPrice).div(oneToken);
+            refund = (tokenAmount - remainingTokensApplied).mul(price()).div(oneToken);
             tokenAmount = remainingTokensApplied;
 			remainingTokens = 0; // set remaining token to 0
             _buyer.transfer(refund);
@@ -254,7 +269,7 @@ contract SaleEngine is TokenSaleInterface {
         etherUser[_buyer] = etherUser[_buyer].add(msg.value.sub(refund));
         pendingTokenUser[_buyer] = pendingTokenUser[_buyer].add(tokenAmount);	
         
-        emit TakeEther( _buyer, msg.value, tokenAmount, tokenPrice );
+        emit TakeEther( _buyer, msg.value, tokenAmount, price() );
 	}
 	
 	function giveToken(address _buyer) internal {
@@ -286,8 +301,8 @@ contract SaleEngine is TokenSaleInterface {
 }
 
 contract Sale is SaleEngine {
-    constructor(address _tokenSaleContract, uint256 _tokenPrice, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
-    SaleEngine(_tokenSaleContract, _tokenPrice, _remainingTokens, _etherMinimum, _startTime , _endTime) {
+    constructor(address _tokenSaleContract, uint256 _tokenPrice, address _priceFeed, string _priceCurrency, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
+    SaleEngine(_tokenSaleContract, _tokenPrice, _priceFeed, _priceCurrency, _remainingTokens, _etherMinimum, _startTime , _endTime) {
     }
     
 	function () public payable{
@@ -296,11 +311,11 @@ contract Sale is SaleEngine {
 }
 
 contract Sale_KYC_Atomax is SaleEngine, AtomaxKyc {
-    constructor(address _tokenSaleContract, uint256 _tokenPrice, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
-    SaleEngine(_tokenSaleContract, _tokenPrice, _remainingTokens, _etherMinimum, _startTime , _endTime) {
+    constructor(address _tokenSaleContract, uint256 _tokenPrice, address _priceFeed, string _priceCurrency, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
+    SaleEngine(_tokenSaleContract, _tokenPrice, _priceFeed, _priceCurrency, _remainingTokens, _etherMinimum, _startTime , _endTime) {
     }
     
-    function transferTokensTo(address _buyer) internal returns(bool) {
+    function releaseTokensTo(address _buyer) internal returns(bool) {
         return transferTokensTo(_buyer);
     }
     
@@ -311,9 +326,8 @@ contract Sale_KYC_Atomax is SaleEngine, AtomaxKyc {
 }
 
 contract Sale_KYC_Manual is SaleEngine {
-    constructor(address _tokenSaleContract, uint256 _tokenPrice, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
-    SaleEngine(_tokenSaleContract, _tokenPrice, _remainingTokens, _etherMinimum, _startTime , _endTime) 
-    {
+    constructor(address _tokenSaleContract, uint256 _tokenPrice, address _priceFeed, string _priceCurrency, uint256 _remainingTokens, uint256 _etherMinimum, uint256 _startTime , uint256 _endTime) public 
+    SaleEngine(_tokenSaleContract, _tokenPrice, _priceFeed, _priceCurrency, _remainingTokens, _etherMinimum, _startTime , _endTime) {
     }
     
     function authorizeUser(address _user) onlyTokenSaleOwner public {
