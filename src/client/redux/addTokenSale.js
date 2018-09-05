@@ -4,6 +4,7 @@ import moment from 'moment'
 const defaultToken = {
   step: 1,
   price: '',
+  priceCurrency: '',
   amount: '',
   minContribution: '',
   owner: '',
@@ -26,6 +27,15 @@ export const setPrice = createAction('TOKEN_SALE_SET_PRICE',
     return {
       tokenAddress,
       price
+    }
+  }
+)
+
+export const setPriceCurrency = createAction('TOKEN_SALE_SET_PRICE_CURRENCY',
+  ({ tokenAddress, priceCurrency }) => {
+    return {
+      tokenAddress,
+      priceCurrency
     }
   }
 )
@@ -110,6 +120,16 @@ export const addTokenSale = handleActions({
       [payload.tokenAddress]: {
         ...token,
         price: payload.price
+      }
+    }
+  },
+  TOKEN_SALE_SET_PRICE_CURRENCY: (state, { payload }) => {
+    const token = state[payload.tokenAddress] || defaultToken
+    return {
+      ...state,
+      [payload.tokenAddress]: {
+        ...token,
+        priceCurrency: payload.priceCurrency
       }
     }
   },

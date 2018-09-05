@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setPrice } from '../../redux/addTokenSale'
+import { setPrice, setPriceCurrency } from '../../redux/addTokenSale'
 import icon from '../../assets/images/token-name.svg'
 import './Step.css'
 import './StepSingleInput.css'
@@ -39,10 +39,17 @@ class TokenSalePrice extends Component {
     this.setState({ valid: this.validate(addTokenSale[tokenId].price) })
   }
 
+  onChangePriceSelect = (e) => {
+    const value = e.target.value
+    const { dispatch, tokenId } = this.props
+    dispatch(setPriceCurrency({ tokenAddress: tokenId, priceCurrency: value }))
+  }
+
   render () {
     const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
     const price = addTokenSale[tokenId].price
+    const priceCurrency = addTokenSale[tokenId].priceCurrency
 
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
@@ -59,9 +66,9 @@ class TokenSalePrice extends Component {
           <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <div className='pure-u-1 d-flex flex-row'>
               <input placeholder={t(`Insert the price`)} className='token-name text shadow pure-u-1' value={price} onChange={this.onChangeText} />
-              <select>
-                <option value='ethereum'>ETHEREUM</option>
-                <option value='dollar'>DOLLAR</option>
+              <select value={priceCurrency} onChange={this.onChangePriceSelect}>
+                <option value=''>ETHEREUM</option>
+                <option value='usd'>DOLLAR</option>
               </select>
             </div>
             {!valid && price.length > 1 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}

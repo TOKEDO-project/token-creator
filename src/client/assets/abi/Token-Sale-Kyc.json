@@ -48,6 +48,20 @@
   {
     "constant": true,
     "inputs": [],
+    "name": "priceCurrency",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
     "name": "ended",
     "outputs": [
       {
@@ -202,6 +216,20 @@
       {
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "priceFeed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
       }
     ],
     "payable": false,
@@ -447,6 +475,14 @@
       {
         "name": "_tokenPrice",
         "type": "uint256"
+      },
+      {
+        "name": "_priceFeed",
+        "type": "address"
+      },
+      {
+        "name": "_priceCurrency",
+        "type": "string"
       },
       {
         "name": "_remainingTokens",
