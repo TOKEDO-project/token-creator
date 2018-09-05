@@ -34,14 +34,14 @@ div.step form.bottom div.input-box {
 
 div.step form.bottom div.input-box div.tooltip {
     position: relative;
-    height: 27px;
     background-color: black;
     border-radius: 5px;
     overflow: visible;
-    white-space: nowrap;
-    padding: 0 10px;
+    padding: 10px;
     color: white;
     margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
 }
 
 div.step form.bottom div.input-box div.tooltip div.triangle {

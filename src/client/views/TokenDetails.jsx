@@ -37,7 +37,7 @@ class TokenDetails extends React.Component {
           <TokenDetailsTopBar tokenDetails={tokenDetails} tokenId={tokenId} receipt={receipt} />
           <div className='TokenDetailsContent'>
             <TokenDetailsMenu tokenId={tokenId} />
-            <div className='DetailsWidth pure-u-lg-19-24 pure-u-md-2-3 pure-u-1 pure-u-19-24'>
+            <div className='DetailsWidth pure-u-lg-19-24 pure-u-md-2-3 pure-u-19-24'>
               {mainTokenSale
                 ? <MainTokenSaleDetail mainTokenSale={mainTokenSale} tokenId={tokenId} /> : null
               }

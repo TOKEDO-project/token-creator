@@ -57,8 +57,8 @@ class TokenDecimals extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the decimals`)} className='token-decimals text shadow' value={addToken.decimals} onChange={this.onChangeText} />
-            {!valid && addToken.decimals.length > 0 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The decimals number must be between 0 and 18`)}</div> : null}
+            <input placeholder={t(`Insert the decimals`)} className='token-decimals text shadow pure-u-1' value={addToken.decimals} onChange={this.onChangeText} />
+            {!valid && addToken.decimals.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The decimals number must be between 0 and 18`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
           Next

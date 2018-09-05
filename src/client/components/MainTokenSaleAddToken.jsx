@@ -58,7 +58,7 @@ class MainTokenSaleAddToken extends Component {
     }
 
     return (
-      <div>
+      <div className='pure-u-1'>
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
