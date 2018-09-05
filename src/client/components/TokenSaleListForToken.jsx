@@ -4,7 +4,6 @@ import { translate } from 'react-i18next'
 import TokenDetailsTutorial from './TokenDetailsTutorial'
 import AddTokenSaleWizard from './AddTokenSaleWizard'
 import AddTokenSaleAdvanced from './AddTokenSaleAdvanced'
-import { reset } from '../redux/addTokenSale'
 
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
