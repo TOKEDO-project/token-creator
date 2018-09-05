@@ -74,11 +74,11 @@ class MainTokenSaleAmount extends Component {
           </div>
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
-          <div className='input-box d-flex flex-column flex-v-center'>
+          <div className='input-box pure-u-16-24 d-flex flex-column flex-v-center'>
             <input type='text' placeholder={t(`Insert the token amount`)} className='token-supply text shadow pure-u-1' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
-            {valid ? <button onClick={this.onClickNext}>{t('Next')}</button> : null }
             {!valid ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply. And must be only number. And must use only dot for decimal separator`)}</div> : null}
           </div>
+          {valid ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
         </form>
       </div>
     )
