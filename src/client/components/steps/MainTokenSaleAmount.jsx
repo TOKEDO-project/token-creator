@@ -17,6 +17,14 @@ class MainTokenSaleAmount extends Component {
     }
   }
 
+  onClickNext = (e) => {
+    e.preventDefault()
+    const {onChangeCB, addMainTokenSale, tokenId} = this.props
+    const value = addMainTokenSale[tokenId].amount
+    const isValid = this.validate(value)
+    this.setState({ valid: isValid })
+    if (onChangeCB && isValid) { onChangeCB(value) }
+  }
   onChangeText = (e) => {
     const value = e.target.value
     console.log('VALID', 'onChangeText')
@@ -24,18 +32,16 @@ class MainTokenSaleAmount extends Component {
     dispatch(setAmount({tokenAddress: tokenId, amount: value}))
     const isValid = this.validate(value)
     this.setState({ valid: isValid })
-    const {onChangeCB} = this.props
-    if (onChangeCB) {
-      onChangeCB(value, isValid)
-    }
+    // const {onChangeCB} = this.props
+    // if (onChangeCB) { onChangeCB(value, isValid) }
   }
 
   validate = (input) => {
     const { setValid, tokenId, tokens } = this.props
     const tokenInfo = getTokenInfo(tokenId, tokens)
-    input = input.replace(',', '.')
+    // input = input.replace(',', '.')
     const reg = /^-?\d*\.?\d*$/
-    let valid = bnUtils.lte(input, tokenInfo.supply) && reg.test(input)
+    let valid = input.length > 0 && bnUtils.lte(input, tokenInfo.supply) && bnUtils.gt(input, 0) && reg.test(input)
     // Questo serve solo nell'advance poerche noi vogliamo fare la validazione sul pulsante mentre questo qui è una validazione interna
     if (setValid) {
       setValid(valid)
@@ -48,10 +54,8 @@ class MainTokenSaleAmount extends Component {
     const value = addMainTokenSale[tokenId].amount
     const isValid = this.validate(value)
     this.setState({ valid: isValid })
-    const {onChangeCB} = this.props
-    if (onChangeCB) {
-      onChangeCB(value, isValid)
-    }
+    // const {onChangeCB} = this.props
+    // if (onChangeCB) { onChangeCB(value, isValid) }
   }
 
   render () {
@@ -71,8 +75,9 @@ class MainTokenSaleAmount extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box d-flex flex-column flex-v-center'>
-            <input type='number' placeholder={t(`Insert the token amount`)} className='token-supply text shadow' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
-            {!valid && addMainTokenSale[tokenId].amount.length > 0 ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply, and must be only number`)}</div> : null}
+            <input type='text' placeholder={t(`Insert the token amount`)} className='token-supply text shadow' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
+            {valid ? <button onClick={this.onClickNext}>{t('Next')}</button> : null }
+            {!valid ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply. And must be only number. And must use only dot for decimal separator`)}</div> : null}
           </div>
         </form>
       </div>
