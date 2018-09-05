@@ -12,10 +12,9 @@ export const saveTransaction = createAction('TOKEN_SALES_SAVE_TRANSACTION',
 )
 
 export const saveReceipt = createAction('TOKEN_SALES_SAVE_RECEIPT',
-  (mainTokenSaleAddress, contractAddress, receipt) => {
+  ({mainTokenSaleAddress, receipt}) => {
     return {
       mainTokenSaleAddress,
-      contractAddress,
       receipt
     }
   }
@@ -23,8 +22,9 @@ export const saveReceipt = createAction('TOKEN_SALES_SAVE_RECEIPT',
 
 export const tokenSales = handleActions({
   TOKEN_SALES_SAVE_TRANSACTION: (state, { payload: { mainTokenSaleAddress, txId, tokenSale } }) => {
-    const receipts = state[mainTokenSaleAddress].receipts
-    const transactions = state[mainTokenSaleAddress].transactions
+    const mainTokenSale = state[mainTokenSaleAddress]
+    const receipts = mainTokenSale ? mainTokenSale.receipts : {}
+    const transactions = mainTokenSale ? mainTokenSale.transactions : {}
     return {
       ...state,
       [mainTokenSaleAddress]: {
@@ -33,10 +33,10 @@ export const tokenSales = handleActions({
       }
     }
   },
-  TOKEN_SALES_SAVE_RECEIPT: (state, { payload }) => {
-    const transactions = cloneDeep(state.transactions)
-    const transactionHash = payload.receipt.transactionHash
-    transactions[transactionHash].contractAddress = payload.receipt.contractAddress
-    return { ...state, [payload.mainTokenSaleAddress]: { transactions, receipts: { ...state.receipts, [payload.contractAddress]: payload.receipt } } }
+  TOKEN_SALES_SAVE_RECEIPT: (state, { payload: { mainTokenSaleAddress, receipt } }) => {
+    const transactions = cloneDeep(state[mainTokenSaleAddress].transactions)
+    const transactionHash = receipt.transactionHash
+    transactions[transactionHash].contractAddress = receipt.contractAddress
+    return { ...state, [mainTokenSaleAddress]: { transactions, receipts: { ...state[mainTokenSaleAddress].receipts, [receipt.contractAddress]: receipt } } }
   }
 }, {})

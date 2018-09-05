@@ -31,7 +31,7 @@ class AddTokenSaleWizard extends Component {
       const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
       const tokenTxId = tokens.receipts[tokenId].transactionHash
       const tokenDecimals = tokens.transactions[tokenTxId].decimals
-      const transaction = await prepareAddTokenSaleTransaction({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals })
+      const transaction = await prepareAddTokenSaleTransaction({ web3, addTokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
       this.setState({
         transaction,
         loading: false
@@ -70,8 +70,9 @@ class AddTokenSaleWizard extends Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, history, tokenId } = this.props
-    dispatch(saveReceipt(receipt))
+    const { dispatch, history, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
     if (receipt.contractAddress) {
       dispatch(reset({tokenAddress: tokenId}))
       history.push(`/token/details/${tokenId}`)
@@ -81,7 +82,7 @@ class AddTokenSaleWizard extends Component {
   onTransactionHash = (transactionHash) => {
     const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, addTokenSale}))
+    dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId]}))
   }
 
   renderStep (step) {

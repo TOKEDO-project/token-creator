@@ -16,14 +16,13 @@ export default async ({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals 
   }
 
   const contract = new web3.eth.Contract(abi)
-  console.log('PREPARE', addTokenSale, mainTokenSaleAddress, tokenDecimals)
   const args = [
     mainTokenSaleAddress,
     new BigNumber(addTokenSale.price),
     bnUtils.times(addTokenSale.amount, bnUtils.pow(10, tokenDecimals)),
     new BigNumber(addTokenSale.minContribution),
-    addTokenSale.startTime,
-    addTokenSale.endTime
+    1536148001441,
+    1577833200000
   ]
   const data = '0x' + bytecode.object
   const tx = contract.deploy({
