@@ -46,14 +46,14 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
               <h4>{t('Token for Sale')}</h4>
-              <p> {(!isEmpty(mainTokenSalesById.receipt) && !isEmpty(mainTokenSalesById.transferReceipt))
+              <p> {(!isEmpty(mainTokenSalesById.transferReceipt))
                 ? addMainTokenSaleById.amount
                 : waiting}</p>
             </div>
           </div>
         </div>
 
-        {(!isEmpty(mainTokenSalesById.receipt) && !isEmpty(mainTokenSalesById.transferReceipt) && !isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+        {(!isEmpty(mainTokenSalesById.setAuthorizedReceipt))
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addSaleInfo ? <div className='infoBox'>

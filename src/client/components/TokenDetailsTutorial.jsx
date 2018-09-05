@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
+import { isEmpty } from 'lodash'
 
 import { setState } from '../redux/addMainTokenSale'
 import './TokenDetailsTutorial.css'
@@ -19,12 +20,16 @@ class TokenDetailsTutorial extends React.Component {
   }
 
   render () {
-    const { t } = this.props
+    const { t, tokenId, mainTokenSales } = this.props
+    const mainTokenSalesById = mainTokenSales[tokenId]
+
     return (
       <div id='TokenDetailsTutorial' className='pure-u-1'>
         <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1' />
         <div className='d-flex flex-v-center flex-h-center'>
-          <button onClick={this.addTokenSale}>{t('Add Token Sale')}</button>
+          {(mainTokenSalesById && isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+            ? null
+            : <button onClick={this.addTokenSale}>{t('Add Token Sale')}</button> }
         </div>
       </div>
     )

@@ -2,7 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
+import { isEmpty } from 'lodash'
 
+import Loading from './Loading'
 import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
@@ -40,8 +42,9 @@ class TokenDetailsMenu extends React.Component {
     history.push(href)
   }
   render () {
-    const { t, tokenId, preferences } = this.props
+    const { t, tokenId, preferences, mainTokenSales } = this.props
     const showMenu = preferences.showMenu
+    const mainTokenSalesById = mainTokenSales[tokenId]
     // const { showMenu } = this.state
     return (
       <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
@@ -53,7 +56,10 @@ class TokenDetailsMenu extends React.Component {
             <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
           </div>
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
-            <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p className='marginTxt'>{showMenu ? t('Add Token Sale') : null}</p></button>
+            {(mainTokenSalesById && isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+              ? <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><div style={{ width: '21px', marginRight: '9px' }}><Loading size='21' color='#ffffff' /></div><p className='marginTxt'>{showMenu ? t('Waiting...') : null}</p></button>
+              : <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p className='marginTxt'>{showMenu ? t('Add Token Sale') : null}</p></button>
+            }
             <button onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p className='marginTxt'>{showMenu ? t('Unlock The Token') : null}</p></button>
             <button onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p className='marginTxt'>{showMenu ? t('Change Token Owner') : null}</p></button>
             <button onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p className='marginTxt'>{showMenu ? t('Authorize Transfer') : null}</p></button>
