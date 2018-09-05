@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
 
 import Loading from '../components/Loading'
 import TokenSalePrice from '../components/steps/TokenSalePrice'
@@ -10,6 +11,9 @@ import TokenSaleMinContribution from '../components/steps/TokenSaleMinContributi
 import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
+import { saveTransaction, saveReceipt } from '../redux/tokenSales'
+import { setStep, reset } from '../redux/addTokenSale'
+import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
 
 import './AddTokenSaleAdvanced.css'
 
@@ -47,13 +51,43 @@ class AddTokenSaleAdvanced extends Component {
     return validPrice && validAmount && validMinContribution && validFundOwner
   }
 
+  onReceipt = (receipt) => {
+    const { dispatch, history, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveReceipt({ mainTokenSaleAddress, receipt }))
+    if (receipt.contractAddress) {
+      dispatch(reset({ tokenAddress: tokenId }))
+      history.push(`/token/details/${tokenId}`)
+    }
+  }
+
+  onTransactionHash = (transactionHash) => {
+    const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransaction({ mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId] }))
+  }
+
+  goToWalletSelection = async () => {
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const tokenTxId = tokens.receipts[tokenId].transactionHash
+    const tokenDecimals = tokens.transactions[tokenTxId].decimals
+    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    this.setState({
+      transaction,
+      loading: false
+    })
+    dispatch(setStep({tokenAddress: tokenId, step: 6}))
+  }
+
   render () {
-    const { addTokenSale: { step }, preferences, loading, t, tokenId } = this.props
+    const { addTokenSale, preferences, loading, t, tokenId } = this.props
     const { transaction } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
 
+    const step = addTokenSale[tokenId].step
     if (step === 6 && loading) {
       return <Loading />
     }
@@ -93,4 +127,4 @@ class AddTokenSaleAdvanced extends Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(AddTokenSaleAdvanced))
+export default withRouter(translate('translations')(connect(s => s)(AddTokenSaleAdvanced)))
