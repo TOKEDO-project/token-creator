@@ -85,13 +85,26 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
+  deployAddRc = async () => {
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const tokenTxId = tokens.receipts[tokenId].transactionHash
+    const tokenDecimals = tokens.transactions[tokenTxId].decimals
+    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    this.setState({
+      transaction,
+      loading: false
+    })
+    dispatch(setStep({tokenAddress: tokenId, step: 8}))
+  }
+
   onReceipt = (receipt) => {
     const { dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
     if (receipt.contractAddress) {
       dispatch(reset({tokenAddress: tokenId}))
-      dispatch(setStep({tokenAddress: tokenId, step: 8}))
+      this.deployAddRc()
       // history.push(`/token/details/${tokenId}`)
     }
   }
