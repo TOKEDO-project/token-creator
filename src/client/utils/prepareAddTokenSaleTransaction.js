@@ -5,9 +5,9 @@ import TokenSaleKycBytecode from '../assets/bytecode/Token-Sale-Kyc.json'
 import bnUtils from '../../../bnUtils'
 import BigNumber from 'bignumber.js'
 
-export default async ({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals }) => {
+export default async ({ web3, tokenSale, mainTokenSaleAddress, tokenDecimals }) => {
   let abi, bytecode
-  if (addTokenSale.kyc) {
+  if (tokenSale.kyc) {
     abi = TokenSaleKycAbi
     bytecode = TokenSaleKycBytecode
   } else {
@@ -18,9 +18,9 @@ export default async ({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals 
   const contract = new web3.eth.Contract(abi)
   const args = [
     mainTokenSaleAddress,
-    new BigNumber(addTokenSale.price),
-    bnUtils.times(addTokenSale.amount, bnUtils.pow(10, tokenDecimals)),
-    new BigNumber(addTokenSale.minContribution),
+    new BigNumber(tokenSale.price),
+    bnUtils.times(tokenSale.amount, bnUtils.pow(10, tokenDecimals)),
+    new BigNumber(tokenSale.minContribution),
     1536148001441,
     1577833200000
   ]

@@ -31,7 +31,7 @@ class AddTokenSaleWizard extends Component {
       const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
       const tokenTxId = tokens.receipts[tokenId].transactionHash
       const tokenDecimals = tokens.transactions[tokenTxId].decimals
-      const transaction = await prepareAddTokenSaleTransaction({ web3, addTokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+      const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
       this.setState({
         transaction,
         loading: false
@@ -63,7 +63,7 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({tokenAddress: tokenId, step: 5}))
   }
 
-  deployToken = (e) => {
+  deployTokenSale = (e) => {
     e.preventDefault()
     const { dispatch, tokenId } = this.props
     dispatch(setStep({tokenAddress: tokenId, step: 6}))
@@ -98,7 +98,7 @@ class AddTokenSaleWizard extends Component {
       case 4:
         return <TokenSaleFundOwner nextFunction={this.goToStep5} tokenId={tokenId} />
       case 5:
-        return <TokenSaleKyc nextFunction={this.deployToken} tokenId={tokenId} />
+        return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
       case 6:
         return <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
     }
