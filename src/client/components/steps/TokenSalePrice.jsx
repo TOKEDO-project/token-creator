@@ -56,7 +56,7 @@ class TokenSalePrice extends Component {
           </div>
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
-          <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
+          <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <div className='pure-u-1 d-flex flex-row'>
               <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={price} onChange={this.onChangeText} />
               <select>

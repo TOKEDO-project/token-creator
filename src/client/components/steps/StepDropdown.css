@@ -1,4 +1,4 @@
-div.step div.input-box select {
+div.step div.input-box.dropdown select {
  position: absolute;
  top: 0;
  right: 0;
@@ -10,7 +10,7 @@ div.step div.input-box select {
  padding: 0 10px;
 }
 
-div.step div.input-box input.text {
+div.step div.input-box.dropdown input.text {
  width: 70%;
  padding-right: calc(10px + 4px);
 }
