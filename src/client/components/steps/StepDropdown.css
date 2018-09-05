@@ -1,0 +1,16 @@
+div.step div.input-box select {
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: calc(30% + 4px);
+ height: 40px;
+ border-radius: 0 5px 5px 0;
+ background-color: #EEEEEE;
+ color: #888888;
+ padding: 0 10px;
+}
+
+div.step div.input-box input.text {
+ width: 70%;
+ padding-right: calc(10px + 4px);
+}

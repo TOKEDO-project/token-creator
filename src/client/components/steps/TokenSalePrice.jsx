@@ -4,6 +4,7 @@ import { setPrice } from '../../redux/addTokenSale'
 import icon from '../../assets/images/token-name.svg'
 import './Step.css'
 import './StepSingleInput.css'
+import './StepDropdown.css'
 import { translate } from 'react-i18next'
 
 class TokenSalePrice extends Component {
@@ -18,7 +19,7 @@ class TokenSalePrice extends Component {
     const value = e.target.value
 
     const { dispatch, tokenId } = this.props
-    dispatch(setPrice({tokenAddress: tokenId, price: value}))
+    dispatch(setPrice({ tokenAddress: tokenId, price: value }))
     this.setState({
       valid: this.validate(value)
     })
@@ -56,12 +57,14 @@ class TokenSalePrice extends Component {
         </div>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={price} onChange={this.onChangeText} />
+            <div className='pure-u-1 d-flex flex-row'>
+              <input placeholder={t(`Insert the price`)} className='token-name text shadow' value={price} onChange={this.onChangeText} />
+              <select>
+                <option value='ethereum'>ETHEREUM</option>
+                <option value='dollar'>DOLLAR</option>
+              </select>
+            </div>
             {!valid && price.length > 1 ? <div className='tooltip font-size-tiny d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}
-            <select>
-              <option value='ETHEREUM' />
-              <option value='DOLLARS' />
-            </select>
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}
