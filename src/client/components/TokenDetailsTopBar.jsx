@@ -47,13 +47,21 @@ class TokenDetailsTopBar extends React.Component {
           <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2  paddingItems'>
             <div className='d-flex flex-column flex-h-center heightBox borderRight'>
               <h4>{t('Token Address')}:</h4>
-              <p className='breakWord'>{tokenId}</p>
+              <p className='breakWord'>
+                <a target='_blank' href={`${process.env.ETHERSCAN_URI}address/${tokenId}`}>
+                  <i className='fas fa-external-link-alt' /> {tokenId}
+                </a>
+              </p>
             </div>
           </div>
           <div className='pure-u-lg-6-24  pure-u-md-1-2 pure-u-1-2 paddingItems'>
             <div className='d-flex flex-column flex-h-center heightBox'>
               <h4>{t('Token Owner')}:</h4>
-              <p className='breakWord'>{receipt.owner}</p>
+              <p className='breakWord'>
+                <a target='_blank' href={`${process.env.ETHERSCAN_URI}address/${receipt.owner}`}>
+                  <i className='fas fa-external-link-alt' /> {receipt.owner}
+                </a>
+              </p>
             </div>
           </div>
         </div>

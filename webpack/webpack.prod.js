@@ -17,7 +17,9 @@ module.exports = merge(common, {
     }),
     new CleanWebpackPlugin(['build']),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.WEB3_PROVIDER': JSON.stringify('https://mainnet.infura.io/'),
+      'process.env.ETHERSCAN_URI': JSON.stringify('https://etherscan.io/')
     }),
     new webpack.EnvironmentPlugin([])
   ]

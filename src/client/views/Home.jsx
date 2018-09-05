@@ -15,6 +15,7 @@ class Home extends Component {
 
   render () {
     const { t, tokens } = this.props
+
     if (!tokens || Object.keys(tokens.receipts).length === 0) {
       return (
         <div id='home' className='pure-u-1 d-flex flex-column flex-h-center flex-v-center'>
