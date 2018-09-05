@@ -1,14 +1,14 @@
-#token-wizard div.step {
+div.step {
+ box-shadow: none;
+ min-height: 100%;
+ padding: 35px;
+}
+
+div.step.alone {
  background-color: white;
  padding: 50px 25px;
  border-radius: 5px;
  box-shadow: 0 0 10px 0px #E2E2E2;
-}
-
-#token-advanced div.step {
- box-shadow: none;
- min-height: 100%;
- padding: 35px;
 }
 
 div.step div.top div.left img.icon {
