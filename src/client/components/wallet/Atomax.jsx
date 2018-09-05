@@ -23,11 +23,13 @@ class Atomax extends Component {
   }
 
   startIntervalAtomax = (txId) => {
+    console.log('ATOMAX', 'startIntervalAtomax')
     const { web3, onReceipt } = this.props
     if (!web3.loading && web3.eth) {
       this.timer = setInterval(async () => {
         let receipt = await web3.eth.getTransactionReceipt(txId)
         if (receipt) {
+          console.log('ATOMAX', 'receipt', receipt, 'txId', txId)
           onReceipt(receipt)
           clearTimeout(this.timer)
         }

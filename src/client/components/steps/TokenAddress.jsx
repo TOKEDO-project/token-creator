@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import icon from '../../assets/images/token-live.svg'
 import './Step.css'
 import './StepCopyField.css'
 import { translate } from 'react-i18next'
 import './TokenAddress.css'
 import Clipboard from 'react-clipboard.js'
+import { setState } from '../../redux/addMainTokenSale'
 
 class TokenAddress extends Component {
   constructor (props) {
@@ -19,7 +21,16 @@ class TokenAddress extends Component {
   onSuccess = () => {
     this.setState({ addressCopied: true })
   }
-
+  redirectTo = (href) => {
+    const { history } = this.props
+    history.push(href)
+  }
+  redirectToTokenSale = (href, tokenId) => {
+    const { history, dispatch } = this.props
+    dispatch(setState({ state: 'initialized', tokenAddress: tokenId }))
+    console.log('redirectToTokenSale', tokenId, href)
+    history.push(href)
+  }
   render () {
     const { t, match: { params: { tokenId } } } = this.props
     const { addressCopied } = this.state
@@ -50,12 +61,14 @@ class TokenAddress extends Component {
           </form>
         </div>
         <div className='pure-u-1 d-flex flex-row flex-h-between'>
-          <a className='pure-u-11-24' href='/'><button className='close pure-u-1 font-weight-bold' type='button'>Close</button></a>
-          <a className='pure-u-11-24' href={`/token/details/${tokenId}`}><button className='deploy pure-u-1 font-weight-bold' type='button'>Deploy the Token Sale</button></a>
+          <button onClick={() => this.redirectTo(`/`)} className='close pure-u-1 font-weight-bold' type='button'>Close</button>
+          {/* <a className='pure-u-11-24' href={`/token/details/${tokenId}`}> */}
+          <button onClick={() => this.redirectToTokenSale(`/token/details/${tokenId}`, `${tokenId}`)} className='deploy pure-u-1 font-weight-bold' type='button'>Deploy the Token Sale</button>
+          {/* </a> */}
         </div>
       </div>
     )
   }
 }
 
-export default translate('translations')(connect(s => s)(TokenAddress))
+export default withRouter(translate('translations')(connect(s => s)(TokenAddress)))
