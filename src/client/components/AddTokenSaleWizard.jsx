@@ -26,9 +26,12 @@ class AddTokenSaleWizard extends Component {
   }
 
   componentDidMount = async () => {
-    const { web3, addTokenSale } = this.props
-    if (addTokenSale.step === 6) {
-      const transaction = await prepareAddTokenSaleTransaction({ web3, addTokenSale })
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
+    if (addTokenSale[tokenId].step === 6) {
+      const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+      const tokenTxId = tokens.receipts[tokenId].transactionHash
+      const tokenDecimals = tokens.transactions[tokenTxId].decimals
+      const transaction = await prepareAddTokenSaleTransaction({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals })
       this.setState({
         transaction,
         loading: false

@@ -1,7 +1,7 @@
-import TokenSaleAbi from '../assets/abi/Token-simple.json'
-import TokenSaleBytecode from '../assets/bytecode/Token-simple.json'
-import TokenSaleKycAbi from '../assets/abi/Token-startable-burnable.json'
-import TokenSaleKycBytecode from '../assets/bytecode/Token-startable-burnable.json'
+import TokenSaleAbi from '../assets/abi/Token-Sale.json'
+import TokenSaleBytecode from '../assets/bytecode/Token-Sale.json'
+import TokenSaleKycAbi from '../assets/abi/Token-Sale-Kyc.json'
+import TokenSaleKycBytecode from '../assets/bytecode/Token-Sale-Kyc.json'
 import bnUtils from '../../../bnUtils'
 import BigNumber from 'bignumber.js'
 
@@ -16,6 +16,7 @@ export default async ({ web3, addTokenSale, mainTokenSaleAddress, tokenDecimals 
   }
 
   const contract = new web3.eth.Contract(abi)
+  console.log('PREPARE', addTokenSale, mainTokenSaleAddress, tokenDecimals)
   const args = [
     mainTokenSaleAddress,
     new BigNumber(addTokenSale.price),
