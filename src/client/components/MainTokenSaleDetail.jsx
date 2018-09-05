@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
-
+import { isEmpty } from 'lodash'
 import './MainTokenSaleDetail.css'
 import iconToken from '../assets/images/token-name.svg'
+import Loading from '../components/Loading'
 
 class MainTokenSaleDetail extends React.Component {
   constructor (props) {
@@ -27,9 +28,10 @@ class MainTokenSaleDetail extends React.Component {
   }
 
   render () {
-    const { addMainTokenSale, t, mainTokenSale, tokenId } = this.props
+    const { addMainTokenSale, t, mainTokenSales, tokenId } = this.props
     const { addSaleInfo, addTokenInfo, removeTokenInfo } = this.state
     const addMainTokenSaleById = addMainTokenSale[tokenId]
+    const mainTokenSalesById = mainTokenSales[tokenId]
     let waiting = t('Waiting...')
     return (
       <div id='MainTokenSaleDetail' className='shadow pure-u-xl-20-24 pure-u-23-24 d-flex flex-h-between'>
@@ -44,14 +46,14 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
               <h4>{t('Token for Sale')}</h4>
-              <p> {(mainTokenSale.receipt && mainTokenSale.transferReceipt)
+              <p> {(!isEmpty(mainTokenSalesById.receipt) && !isEmpty(mainTokenSalesById.transferReceipt))
                 ? addMainTokenSaleById.amount
                 : waiting}</p>
             </div>
           </div>
         </div>
 
-        {(mainTokenSale.receipt && mainTokenSale.transferReceipt && mainTokenSale.setAuthorizedReceipt)
+        {(!isEmpty(mainTokenSalesById.receipt) && !isEmpty(mainTokenSalesById.transferReceipt) && !isEmpty(mainTokenSalesById.setAuthorizedReceipt))
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addSaleInfo ? <div className='infoBox'>
@@ -93,7 +95,7 @@ class MainTokenSaleDetail extends React.Component {
               </button>
             </div>
           </div>
-          : null }
+          : <Loading size='24' /> }
       </div>
     )
   }
