@@ -129,6 +129,7 @@ max-width: 1920px;
 
 .TokenDetailsMenu button img {
   width: 25px;
+  margin-right: 9px;
 }
 
 .TokenDetailsMenu.widthMenuClosed {
