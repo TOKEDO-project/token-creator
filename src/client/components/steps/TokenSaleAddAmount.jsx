@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import icon from '../../assets/images/token-name.svg'
+import icon from '../../assets/images/token-sale-amount.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
