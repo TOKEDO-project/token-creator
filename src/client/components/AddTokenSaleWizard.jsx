@@ -86,16 +86,34 @@ class AddTokenSaleWizard extends Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, history, tokenId, mainTokenSales } = this.props
+    const { dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
     if (receipt.contractAddress) {
       dispatch(reset({tokenAddress: tokenId}))
-      history.push(`/token/details/${tokenId}`)
+      dispatch(setStep({tokenAddress: tokenId, step: 8}))
+      // history.push(`/token/details/${tokenId}`)
     }
   }
 
   onTransactionHash = (transactionHash) => {
+    const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId]}))
+  }
+
+  onReceiptRc = (receipt) => {
+    const { dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
+    if (receipt.contractAddress) {
+      dispatch(reset({tokenAddress: tokenId}))
+      dispatch(setStep({tokenAddress: tokenId, step: 8}))
+      // history.push(`/token/details/${tokenId}`)
+    }
+  }
+
+  onTransactionHashRc = (transactionHash) => {
     const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId]}))
@@ -119,6 +137,8 @@ class AddTokenSaleWizard extends Component {
         return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
       case 7:
         return <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+      case 8:
+        return <WalletSelection connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
     }
   }
 
