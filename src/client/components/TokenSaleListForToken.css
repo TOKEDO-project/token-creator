@@ -62,7 +62,7 @@ color: #D93D3D;
 }
 
 #TokenSaleListForToken button.copy {
-    height: 30px;
+    min-height: 30px;
     padding: 0 40px;
     background-color: #888888;
     color: white;
@@ -84,7 +84,7 @@ color: #D93D3D;
 
 
 #TokenSaleListForToken button.modify {
-    height: 30px;
+    min-height: 30px;
     padding: 0 40px;
     background-color: #FA8100;
     color: white;
