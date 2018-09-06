@@ -125,3 +125,25 @@ a.wizard {
   color: #888888;
   text-decoration: underline;
 }
+
+div.progress-container {
+  margin: 50px 0;
+}
+
+div.progress-title {
+  text-align: right;
+  color: #888888;
+}
+
+div.progress-bar {
+  height: 25px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 25px;
+}
+
+div.progress-bar-content {
+  height: 100%;
+  background: linear-gradient(90deg, #FA8100, #fa9e3c);
+}
