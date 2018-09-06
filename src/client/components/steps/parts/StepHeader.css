@@ -1,0 +1,19 @@
+div.step div.top div.left img.icon {
+ width: 48px;
+ object-fit: contain;
+}
+
+@media (min-width: 568px) {
+ div.step div.top div.right {
+  margin-left: 15px;
+ }
+}
+
+div.step div.top div.right span.title {
+ color: #FA8100;
+}
+
+div.step div.top div.right span.description {
+ color: #B8B8B8;
+ margin-top: 5px;
+}

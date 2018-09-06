@@ -34,7 +34,7 @@ class TokenSaleListForToken extends React.Component {
     }
   }
   render () {
-    const { tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale } = this.props
+    const { tokenId, tokenSales, mainTokenSaleAddress, addTokenSaleForm, addTokenSale, t } = this.props
     const { addTokenSaleFormType } = this.state
     const tokenSaleReceipts = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress].receipts : []
     const tokenSaleTransactions = mainTokenSaleAddress && tokenSales[mainTokenSaleAddress] ? tokenSales[mainTokenSaleAddress].transactions : []
@@ -42,8 +42,12 @@ class TokenSaleListForToken extends React.Component {
       return (
         <div className='pure-u-1'>
           {addTokenSaleFormType === 'wizard'
-            ? <div className='pure-u-1'><AddTokenSaleWizard tokenId={tokenId} /> <div><a href='#' onClick={this.onClickSetAdvanced}>advanced</a></div></div>
-            : <div><div><a className='wizard' href='' onClick={this.onClickSetWizard}>{`< Back to wizard mode`}</a></div> <AddTokenSaleAdvanced tokenId={tokenId} /></div>}
+            ? <AddTokenSaleWizard tokenId={tokenId} >
+              <a className='advanced' href='#' onClick={this.onClickSetAdvanced}>{t('Advanced Mode (show all fields)')}</a>
+            </AddTokenSaleWizard>
+            : <div className='pure-u-1'>
+              <a className='wizard' href='' onClick={this.onClickSetWizard}>{`< Back to wizard mode`}</a><AddTokenSaleAdvanced tokenId={tokenId} />
+            </div>}
         </div>
       )
     }

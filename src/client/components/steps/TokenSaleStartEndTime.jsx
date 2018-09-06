@@ -6,10 +6,10 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import icon from '../../assets/images/token-name.svg'
 import './Step.css'
-import './StepSingleInput.css'
-import './StepDropdown.css'
+import './StepDateField.css'
 import { translate } from 'react-i18next'
 import moment from 'moment'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSaleStartEndTime extends Component {
   constructor (props) {
@@ -36,27 +36,23 @@ class TokenSaleStartEndTime extends Component {
     const endTime = addTokenSale[tokenId].endTime
 
     return (
-      <div className='step pure-u-1 d-flex flex-column flex-h-between'>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Choose the start and end time`)}:</span>
-            <span className='description font-size-tiny'>{t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}</span>
-          </div>
-        </div>
+      <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
+        <StepHeader
+          icon={icon}
+          title={t(`Choose the start and end time`)}
+          description={t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}
+        />
         <form className='bottom d-flex flex-row flex-h-between'>
-          <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <div className='pure-u-1 d-flex flex-row'>
-              Start Time
+          <div className={`date-pickers d-flex flex-column flex-v-center`}>
+            <div className='date-picker pure-u-1 d-flex flex-column'>
+              <span>Start Time:</span>
               <DatePicker
                 selected={moment(startTime, 'x')}
                 onChange={this.onChangeStartTime}
               />
             </div>
-            <div className='pure-u-1 d-flex flex-row'>
-              End Time
+            <div className='date-picker pure-u-1 d-flex flex-column'>
+              <span>End Time:</span>
               <DatePicker
                 selected={moment(endTime, 'x')}
                 onChange={this.onChangeEndTime}

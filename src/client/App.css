@@ -120,3 +120,8 @@ img.shuttle {
   width: 100%;
   height: 25px;
 }
+
+a.wizard {
+  color: #888888;
+  text-decoration: underline;
+}

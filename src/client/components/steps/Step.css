@@ -11,13 +11,27 @@ div.step.alone {
  box-shadow: 0 0 10px 0px #E2E2E2;
 }
 
+div.step form.bottom {
+ margin-top: 25px;
+}
+
+@media (min-width: 568px) {
+ div.step form.bottom {
+  padding-left: 63px;
+ }
+}
+
+/* Next lines are to delete after the StepHeader refactor is complete */
+
 div.step div.top div.left img.icon {
  width: 48px;
  object-fit: contain;
 }
 
-div.step div.top div.right {
- margin-left: 15px;
+@media (min-width: 568px) {
+ div.step div.top div.right {
+  margin-left: 15px;
+ }
 }
 
 div.step div.top div.right span.title {
@@ -25,12 +39,6 @@ div.step div.top div.right span.title {
 }
 
 div.step div.top div.right span.description {
- 
  color: #B8B8B8;
  margin-top: 5px;
-}
-
-div.step form.bottom {
- margin-top: 25px;
- padding-left: 63px;
 }

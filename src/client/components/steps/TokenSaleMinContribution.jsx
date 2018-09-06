@@ -6,6 +6,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSaleMinContribution extends Component {
   constructor (props) {
@@ -52,15 +53,11 @@ class TokenSaleMinContribution extends Component {
 
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Insert the Minimum Contribution`)}:</span>
-            <span className='description font-size-tiny'>{t(`Set the minimum value to accept for each contribution.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Insert the Minimum Contribution`)}
+          description={t(`Set the minimum value to accept for each contribution.`)}
+        />
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />

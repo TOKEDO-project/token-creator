@@ -19,6 +19,7 @@ import { saveTransaction, saveReceipt } from '../redux/tokenSales'
 
 import './AddTokenSaleWizard.css'
 import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
+import { YoutubeVideo } from './YoutubeVideo'
 
 class AddTokenSaleWizard extends Component {
   constructor (props) {
@@ -151,7 +152,7 @@ class AddTokenSaleWizard extends Component {
   }
 
   render () {
-    const { addTokenSale, preferences, tokenId } = this.props
+    const { addTokenSale, preferences, tokenId, t } = this.props
     const { loading } = this.state
     const step = addTokenSale[tokenId].step
     if (!preferences.terms) {
@@ -162,8 +163,19 @@ class AddTokenSaleWizard extends Component {
     }
     return (
       <div id='token-sale-wizard' className='pure-u-1'>
-        <div>Step: {step}</div>
-        {this.renderStep(step)}
+        <div className='progress-container pure-u-1 d-flex flex-column'>
+          <div className={`progress-title pure-u-${step * 4}-24`}>Step {step}</div>
+          <div className='progress-bar shadow'>
+            <div className={`progress-bar-content pure-u-${step * 4}-24`} />
+          </div>
+        </div>
+        <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>
+          <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-md-8-24' />
+          <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
+            {this.renderStep(step)}
+            {this.props.children}
+          </div>
+        </div>
       </div>
     )
   }

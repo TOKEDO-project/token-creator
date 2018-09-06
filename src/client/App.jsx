@@ -16,6 +16,7 @@ import '../../node_modules/purecss/build/pure-min.css'
 import '../../node_modules/purecss/build/grids-responsive-min.css'
 import './App.css'
 import './flex.css'
+import './text.css'
 
 import i18n from './i18n'
 import Loading from './components/Loading'
