@@ -24,7 +24,7 @@ class MainTokenSaleAddToken extends Component {
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount})
     this.setState({
       transaction,
       loading: false

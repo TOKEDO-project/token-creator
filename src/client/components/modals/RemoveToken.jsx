@@ -29,7 +29,7 @@ class RemoveToken extends React.Component {
     const tokenType = tokens.transactions[transactionHash].type
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     console.log('---------prepareTransaction', tokenType, tokenId, mainTokenSaleAddress, amount)
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount})
     this.setState({
       amount: amount,
       transaction,

@@ -5,8 +5,9 @@ import { withRouter } from 'react-router-dom'
 import transferToken from '../../assets/images/transfer-token.svg'
 import Modal from '../Modal'
 import EthereumAddress from '../steps/EthereumAddress'
-import TokenSaleTransferAmount from '../steps/TokenSaleTransferAmount'
+import TransferTokenAmount from '../steps/TransferTokenAmount'
 import WalletSelection from '../steps/WalletSelection'
+import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTransaction'
 
 class TransferTokens extends React.Component {
   constructor (props) {
@@ -24,17 +25,34 @@ class TransferTokens extends React.Component {
     // this.setState({ visible: !this.state.visible })
     history.push(`/token/details/${tokenId}`)
   }
+
+  setValidAddress = (address) => {
+    const { amount } = this.state
+    this.setState({
+      address
+    })
+    if (amount) {
+      this.prepareTransaction(address, amount)
+    }
+  }
+
+  setValidAmount = (amount) => {
+    const { address } = this.state
+    this.setState({
+      amount
+    })
+    if (address) {
+      this.prepareTransaction(address, amount)
+    }
+  }
+
   prepareTransaction = async (address, amount) => {
-    const { web3, tokens, tokenId, mainTokenSales } = this.props
+    const { web3, tokens, tokenId } = this.props
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
-    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    console.log('---------prepareTransaction', tokenType, tokenId, mainTokenSaleAddress, amount)
-    // const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareTransferTokenTransaction({ web3, tokenType, tokenAddress: tokenId, to: address, tokenAmount: amount })
     this.setState({
-      address: address,
-      amount: amount,
-      transaction: transaction,
+      transaction,
       loading: false
     })
   }
@@ -79,9 +97,9 @@ class TransferTokens extends React.Component {
             </div>
           </WalletSelection>
           : <div>
-            <EthereumAddress onIsValidCB={this.setValidInput} tokenId={tokenId} />
+            <EthereumAddress onIsValidCB={this.setValidAddress} tokenId={tokenId} hideNextButton />
             <div className='separator-twentyfive' />
-            <TokenSaleTransferAmount onIsValidCB={this.setValidInput} tokenId={tokenId} />
+            <TransferTokenAmount onIsValidCB={this.setValidAmount} tokenId={tokenId} hideNextButton />
           </div>
         }
         <div className='separator-twentyfive' />
