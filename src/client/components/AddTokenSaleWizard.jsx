@@ -13,6 +13,8 @@ import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep, reset } from '../redux/addTokenSale'
 import Loading from '../components/Loading'
 import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
+import prepareAddRCTransaction from '../utils/prepareAddRCTransaction'
+
 import { saveTransaction, saveReceipt } from '../redux/tokenSales'
 
 import './AddTokenSaleWizard.css'
@@ -85,12 +87,10 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
-  deployAddRc = async () => {
-    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+  deployAddRc = async (tokenSaleAddress) => {
+    const { web3, tokenId, mainTokenSales, dispatch } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const tokenTxId = tokens.receipts[tokenId].transactionHash
-    const tokenDecimals = tokens.transactions[tokenTxId].decimals
-    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress })
     this.setState({
       transaction,
       loading: false
@@ -103,9 +103,7 @@ class AddTokenSaleWizard extends Component {
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
     if (receipt.contractAddress) {
-      dispatch(reset({tokenAddress: tokenId}))
-      this.deployAddRc()
-      // history.push(`/token/details/${tokenId}`)
+      this.deployAddRc(receipt.contractAddress)
     }
   }
 
@@ -116,14 +114,11 @@ class AddTokenSaleWizard extends Component {
   }
 
   onReceiptRc = (receipt) => {
-    const { dispatch, tokenId, mainTokenSales } = this.props
+    const { history, dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
-    if (receipt.contractAddress) {
-      dispatch(reset({tokenAddress: tokenId}))
-      dispatch(setStep({tokenAddress: tokenId, step: 8}))
-      // history.push(`/token/details/${tokenId}`)
-    }
+    dispatch(reset({tokenAddress: tokenId}))
+    history.push(`/token/details/${tokenId}`)
   }
 
   onTransactionHashRc = (transactionHash) => {
