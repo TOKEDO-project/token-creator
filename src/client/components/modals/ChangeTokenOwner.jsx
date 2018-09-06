@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import changeOwner from '../../assets/images/change-owner.svg'
 import Modal from '../Modal'
 import { WarningMessage } from '../WarningMessage'
-import TokenSaleOwnerAddress from '../steps/TokenSaleOwnerAddress'
+import EthereumAddress from '../steps/EthereumAddress'
 import WalletSelection from '../steps/WalletSelection'
 
 class ChangeTokenOwner extends React.Component {
@@ -28,7 +28,7 @@ class ChangeTokenOwner extends React.Component {
       <Modal icon={changeOwner} visible={visible} title={t('Change Token Owner')} toggleVisibility={this.toggleVisibility}>
         <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
         <div className='separator-twentyfive' />
-        <TokenSaleOwnerAddress />
+        <EthereumAddress />
         <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>

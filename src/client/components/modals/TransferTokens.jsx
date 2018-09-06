@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 import transferToken from '../../assets/images/transfer-token.svg'
 import Modal from '../Modal'
-import TokenSaleOwnerAddress from '../steps/TokenSaleOwnerAddress'
+import EthereumAddress from '../steps/EthereumAddress'
 import TokenSaleTransferAmount from '../steps/TokenSaleTransferAmount'
 import WalletSelection from '../steps/WalletSelection'
 
@@ -26,7 +26,7 @@ class TransferTokens extends React.Component {
     const { visible } = this.state
     return (
       <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
-        <TokenSaleOwnerAddress />
+        <EthereumAddress />
         <div className='separator-twentyfive' />
         <TokenSaleTransferAmount />
         <div className='separator-twentyfive' />

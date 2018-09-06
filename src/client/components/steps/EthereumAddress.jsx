@@ -5,7 +5,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 
-class TokenSaleOwnerAddress extends Component {
+class EthereumAddress extends Component {
   constructor (props) {
     super(props)
 
@@ -66,4 +66,4 @@ class TokenSaleOwnerAddress extends Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(TokenSaleOwnerAddress))
+export default translate('translations')(connect(s => s)(EthereumAddress))

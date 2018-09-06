@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import authorize from '../../assets/images/authorize.svg'
 import Modal from '../Modal'
 import { WarningMessage } from '../WarningMessage'
-import TokenSaleOwnerAddress from '../steps/TokenSaleOwnerAddress'
+import EthereumAddress from '../steps/EthereumAddress'
 import WalletSelection from '../steps/WalletSelection'
 
 class AuthorizeTransfer extends React.Component {
@@ -28,7 +28,7 @@ class AuthorizeTransfer extends React.Component {
       <Modal icon={authorize} visible={visible} title={t('Authorize Transfer')} toggleVisibility={this.toggleVisibility}>
         <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
         <div className='separator-twentyfive' />
-        <TokenSaleOwnerAddress />
+        <EthereumAddress />
         <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>
