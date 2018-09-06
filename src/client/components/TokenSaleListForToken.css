@@ -2,6 +2,7 @@
     background: white;
     border-radius: 5px;
     padding: 5%;
+    margin-bottom: 25px;
 }
 #TokenSaleListForToken img{
     width: 50px;
@@ -13,7 +14,6 @@
 #TokenSaleListForToken .heightBox {
     height: 50px;
     max-height: 150px;
-    text-align: center;
     padding:0px 5px;
     margin-top: 10px;
 }

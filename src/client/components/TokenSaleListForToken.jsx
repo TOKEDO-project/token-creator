@@ -7,8 +7,12 @@ import AddTokenSaleAdvanced from './AddTokenSaleAdvanced'
 import { reset } from '../redux/addTokenSale'
 import { isEmpty, map } from 'lodash'
 import './TokenSaleListForToken.css'
-import kyc from '../assets/images/token-name.svg'
 import moment from 'moment'
+
+import kycYes from '../assets/images/token-sale-kyc-yes.svg'
+import kycNo from '../assets/images/token-sale-kyc-no.svg'
+import StatusOpen from '../assets/images/token-sale-status-open.svg'
+import StatusClosed from '../assets/images/token-sale-status-closed.svg'
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
     super(props)
@@ -71,29 +75,29 @@ class TokenSaleListForToken extends React.Component {
 
                       <div className='pure-u-1'>
                         <div className='pure-u-2-24 centerTxt'>
-                          <img src={kyc} />
+                          <img src={kycYes} />
                           <h4>Status:</h4>
                           <span className={`${tokenSale.kyc ? 'greenTxt' : 'redTxt'}`}>
                             {tokenSale.kyc ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div className='pure-u-3-24 borderRight heightBox'>
+                        <div className='pure-u-3-24 borderRight heightBox centerTxt'>
                           <h4>Token Price: </h4>
                           <p className='breakWord'>{tokenSale.price}</p>
                         </div>
-                        <div className='pure-u-4-24 borderRight heightBox'>
+                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
                           <h4>Token Sale Amount: </h4>
                           <p className='breakWord'>{tokenSale.amount}</p>
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox'>
+                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
                           <h4>Owner: </h4>
                           <p className='breakWord'>{tokenSale.owner}</p>
                         </div>
-                        <div className='pure-u-4-24 borderRight heightBox'>
+                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
                           <h4>Min Contribution: </h4>
                           <p className='breakWord'>{tokenSale.minContribution}</p>
                         </div>
-                        <div className='pure-u-4-24 heightBox'>
+                        <div className='pure-u-4-24 heightBox centerTxt'>
                           <h4>ETH collected: </h4>
                           <p className='breakWord'> ETH: 0</p>
                         </div>
@@ -101,7 +105,7 @@ class TokenSaleListForToken extends React.Component {
 
                       <div className='pure-u-1 marginTop'>
                         <div className='pure-u-2-24 centerTxt'>
-                          <img src={kyc} />
+                          <img src={kycYes} />
                           <h4>KYC:</h4>
                           <span className={`${tokenSale.kyc ? 'greenTxt' : 'redTxt'}`}>
                             {tokenSale.kyc ? 'Yes' : 'No'}
@@ -111,11 +115,11 @@ class TokenSaleListForToken extends React.Component {
                           <h4>Token Sale Address: </h4>
                           <p className='breakWord'>{tokenSale.contractAddress}</p>
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox'>
+                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
                           <h4>Start Time: </h4>
                           <p className='breakWord'>{tokenSale.startTime}</p>
                         </div>
-                        <div className='pure-u-6-24 heightBox'>
+                        <div className='pure-u-6-24 heightBox centerTxt'>
                           <h4>End Time: </h4>
                           <p className='breakWord'>{tokenSale.endTime}</p>
                         </div>

@@ -1,0 +1,49 @@
+<svg id="Group_1183" data-name="Group 1183" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1051.615 1524.84">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c9dfff;
+      }
+
+      .cls-2 {
+        fill: #b1d1ff;
+      }
+
+      .cls-3 {
+        fill: #8c8c8c;
+      }
+
+      .cls-4 {
+        fill: #95a5a5;
+      }
+
+      .cls-5 {
+        fill: #b19046;
+      }
+
+      .cls-6 {
+        fill: #e4c05c;
+      }
+
+      .cls-7 {
+        fill: #f3d55b;
+      }
+    </style>
+  </defs>
+  <g id="Group_1032" data-name="Group 1032" transform="translate(0)">
+    <g id="debt">
+      <path id="Path_1006" data-name="Path 1006" class="cls-1" d="M262.9,0h762.42a26.292,26.292,0,0,1,26.29,26.29V1498.55a26.292,26.292,0,0,1-26.29,26.29H26.29A26.292,26.292,0,0,1,0,1498.55V262.9Zm0,0"/>
+      <path id="Path_1012" data-name="Path 1012" class="cls-2" d="M262.9,236.613V0L0,262.9H236.613A26.292,26.292,0,0,0,262.9,236.613Zm0,0"/>
+      <path id="Path_1017" data-name="Path 1017" class="cls-3" d="M138.29,56H532.646a26.29,26.29,0,0,1,0,52.581H138.29a26.29,26.29,0,0,1,0-52.581Zm0,0" transform="translate(256.065 128.033)"/>
+      <path id="Path_1018" data-name="Path 1018" class="cls-3" d="M50.29,104H891.582a26.29,26.29,0,1,1,0,52.58H50.29a26.29,26.29,0,1,1,0-52.58Zm0,0" transform="translate(54.871 237.775)"/>
+      <path id="Path_1019" data-name="Path 1019" class="cls-3" d="M50.29,136h262.9a26.29,26.29,0,1,1,0,52.581H50.29a26.29,26.29,0,0,1,0-52.581Zm0,0" transform="translate(54.871 310.936)"/>
+      <path id="Path_1020" data-name="Path 1020" class="cls-3" d="M250.29,136H434.323a26.29,26.29,0,1,1,0,52.581H250.29a26.29,26.29,0,0,1,0-52.581Zm0,0" transform="translate(512.13 310.936)"/>
+    </g>
+    <g id="bitcoin_6_" data-name="bitcoin (6)" transform="translate(320.834 721.404)">
+      <path id="Path_1029" data-name="Path 1029" class="cls-4" d="M482.583,122.909V294.471H420.2V122.909c0-37.9-41.9-68.625-93.576-68.625S233.05,85.008,233.05,122.909V294.471H170.667V122.909c0-63.167,69.825-114.375,155.958-114.375S482.583,59.74,482.583,122.909Z" transform="translate(-123.878 -8.534)"/>
+      <path id="Path_1030" data-name="Path 1030" class="cls-5" d="M170.668,452.267H482.586v45.75c0,12.635-13.965,22.875-31.192,22.875H201.859c-17.227,0-31.193-10.24-31.193-22.875v-45.75Z" transform="translate(-123.878 142.482)"/>
+      <path id="Path_1031" data-name="Path 1031" class="cls-6" d="M176.258,204.8H519.367c17.228,0,31.193,10.241,31.193,22.875V536.488c0,12.634-13.965,22.875-31.193,22.875H176.258c-17.227,0-31.192-10.241-31.192-22.875V227.675C145.068,215.041,159.033,204.8,176.258,204.8Z" transform="translate(-145.066 58.261)"/>
+      <rect id="Rectangle_734" data-name="Rectangle 734" class="cls-7" width="405.493" height="263.063" transform="translate(0.002 308.812)"/>
+    </g>
+  </g>
+</svg>
