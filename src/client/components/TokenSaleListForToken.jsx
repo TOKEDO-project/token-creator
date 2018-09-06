@@ -66,9 +66,7 @@ class TokenSaleListForToken extends React.Component {
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
                 // open closed  controlla se passato l' end date
-                console.log(moment(new Date()).format('MMMM Do YYYY, h:mm:ss a'), 'today')
-                console.log(moment(tokenSale.endTime).format('MMMM Do YYYY, h:mm:ss a'), 'endTime')
-
+                const isOpen = moment(Date.now()).diff(parseInt(tokenSale.endTime)) < 0
                 if (tokenSale.contractAddress) {
                   return (
                     <div id='TokenSaleListForToken' className='shadow pure-u-1' key={address}>
@@ -77,8 +75,8 @@ class TokenSaleListForToken extends React.Component {
                         <div className='pure-u-2-24 centerTxt'>
                           <img src={kycYes} />
                           <h4>Status:</h4>
-                          <span className={`${tokenSale.kyc ? 'greenTxt' : 'redTxt'}`}>
-                            {tokenSale.kyc ? 'Yes' : 'No'}
+                          <span className={`${isOpen ? 'greenTxt' : 'redTxt'}`}>
+                            {isOpen ? 'Yes' : 'No'}
                           </span>
                         </div>
                         <div className='pure-u-3-24 borderRight heightBox centerTxt'>
@@ -107,8 +105,8 @@ class TokenSaleListForToken extends React.Component {
                         <div className='pure-u-2-24 centerTxt'>
                           <img src={kycYes} />
                           <h4>KYC:</h4>
-                          <span className={`${tokenSale.kyc ? 'greenTxt' : 'redTxt'}`}>
-                            {tokenSale.kyc ? 'Yes' : 'No'}
+                          <span className={`${tokenSale.kyc === 'true' ? 'greenTxt' : 'redTxt'}`}>
+                            {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
                           </span>
                         </div>
                         <div className='pure-u-10-24 borderRight heightBox'>
