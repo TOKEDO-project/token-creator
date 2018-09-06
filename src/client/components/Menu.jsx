@@ -8,7 +8,7 @@ const Menu = ({ open, location: { pathname }, t }) => {
   return (
     <div id='sidebar' className={`${open ? 'open' : ''} d-flex flex-column`}>
       <div className='item title d-flex flex-row flex-h-between flex-v-center'>
-        <span>{t('Menu')}</span>
+        &nbsp;
       </div>
       {routes.map(({name, route}, index) =>
         <a key={index} href={route} className={`item ${pathname === route ? 'active' : ''} d-flex flex-row flex-h-between flex-v-center`}>
