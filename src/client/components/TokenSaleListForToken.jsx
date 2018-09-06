@@ -116,20 +116,32 @@ class TokenSaleListForToken extends React.Component {
                             {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div className='pure-u-10-24 heightBox'>
+                        <div className='pure-u-10-24'>
                           <div className='pure-u-1 borderRight heightBox'>
                             <h4>Token Sale Address: </h4>
                             <p className='breakWord'>{tokenSale.contractAddress}</p>
                           </div>
                           <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
-                          <h4>Start Time: </h4>
-                          <p className='breakWord'>{tokenSale.startTime}</p>
+                        <div className='pure-u-6-24 centerTxt'>
+                          <div className='pure-u-1 borderRight heightBox'>
+                            <h4>Start Time: </h4>
+                            <p className='breakWord'>{tokenSale.startTime}</p>
+                          </div>
+                          <button className='modify' type='button'>
+                            <span className='fa fa-pencil-square-o' />
+                            <span className='font-size-tiny'>Modify</span>
+                          </button>
                         </div>
-                        <div className='pure-u-6-24 heightBox centerTxt'>
-                          <h4>End Time: </h4>
-                          <p className='breakWord'>{tokenSale.endTime}</p>
+                        <div className='pure-u-6-24 centerTxt'>
+                          <div className='pure-u-1 heightBox'>
+                            <h4>End Time: </h4>
+                            <p className='breakWord'>{tokenSale.endTime}</p>
+                          </div>
+                          <button className='modify' type='button'>
+                            <span className='fa fa-pencil-square-o' />
+                            <span className='font-size-tiny'>Modify</span>
+                          </button>
                         </div>
                       </div>
 

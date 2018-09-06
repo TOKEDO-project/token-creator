@@ -81,3 +81,21 @@ color: #D93D3D;
 #TokenSaleListForToken button.copy.copied {
     background-color: #33BE24;
 }
+
+
+#TokenSaleListForToken button.modify {
+    height: 30px;
+    padding: 0 40px;
+    background-color: #FA8100;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#TokenSaleListForToken button.modify:hover {
+    background-color: #FFAA00;
+}
+
+#TokenSaleListForToken button.modify span.fa {
+    margin-right: 5px;
+}
