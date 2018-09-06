@@ -1,6 +1,7 @@
 div.youtube-video {
  border-radius: 5px;
  overflow: hidden;
+ margin-bottom: 15px;
 }
 
 div.youtube-video iframe {
