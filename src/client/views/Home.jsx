@@ -13,6 +13,11 @@ class Home extends Component {
     }
   }
 
+  redirectTo = (href) => {
+    const { history } = this.props
+    history.push(href)
+  }
+
   render () {
     const { t, tokens } = this.props
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import backIcon from '../assets/images/back.svg'
+import { Link } from 'react-router-dom'
 
 class TokenDetailsTopBar extends React.Component {
   constructor (props) {
@@ -18,7 +19,7 @@ class TokenDetailsTopBar extends React.Component {
       <div className='HeaderContainer shadow'>
         <div className='TokenDetailsHeader flexView flex-row flex-v-center '>
           <div className='lg-2s-24 pure-u-md-1-1 pure-u-sm-1'>
-            <a href='/'><img src={backIcon} /></a>
+            <Link to='/'><img src={backIcon} /></Link>
           </div>
           <div className='pure-u-lg-3-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
             <div className='d-flex flex-column flex-h-center heightBox borderRight'>

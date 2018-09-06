@@ -5,6 +5,7 @@ import { map } from 'lodash'
 import icon from '../assets/images/token-name.svg'
 import './TokenList.css'
 import { YoutubeVideo } from './YoutubeVideo'
+import { Link } from 'react-router-dom'
 
 const TokenList = (props) => {
   const { t, tokens, addMainTokenSale } = props
@@ -19,12 +20,12 @@ const TokenList = (props) => {
             <h1>{t('List of the Token you have created')}</h1>
           </div>
           <div className='btn flexCenter pure-u-sm-1'>
-            <a href='/token/add/wizard'>
+            <Link to='/token/add/wizard'>
               <button className='flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <p>{t('Create New Token')}</p>
               </button>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -77,12 +78,12 @@ const TokenList = (props) => {
                     </div>
                   </div>
                   <div className='pure-u-md-1-4 pure-u-sm-1' >
-                    <a href={`/token/details/${receipt.contractAddress}`}>
+                    <Link to={`/token/details/${receipt.contractAddress}`}>
                       <button>
                         <p>{t('Manage Token')} &#38; {t('Token Sale')}</p>
                         {mainTokenSale ? <span>{t('Token for Sale')}: {mainTokenSale.amount}</span> : null }
                       </button>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
