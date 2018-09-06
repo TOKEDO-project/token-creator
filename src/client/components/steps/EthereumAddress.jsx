@@ -71,7 +71,7 @@ class EthereumAddress extends Component {
             <span className='description font-size-tiny'>{description}</span>
           </div>
         </div>
-        <form className='bottom d-flex flex-row flex-h-between'>
+        <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onSubmit}>
           <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
             <input placeholder={t(`Insert ethereum address`)} className='token-name text shadow pure-u-1' value={address} onChange={this.onChangeText} />
             {!valid ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
