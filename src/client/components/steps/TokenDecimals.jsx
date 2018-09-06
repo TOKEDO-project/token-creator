@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setDecimals } from '../../redux/addToken'
+import { setDecimals, setSupply } from '../../redux/addToken'
 import icon from '../../assets/images/token-decimals.svg'
 import './Step.css'
 import './StepSingleInput.css'
@@ -26,8 +26,16 @@ class TokenDecimals extends Component {
   }
 
   validate = (input) => {
-    const { setValid } = this.props
-    const valid = input >= 0 && input <= 18
+    const { setValid, addToken: { supply }, dispatch } = this.props
+    const reg = /^\d+$/
+    const valid = input >= 0 && input <= 18 && reg.test(input)
+
+    const amountDecimalArr = supply.split('.')
+    const amountDecimal = (amountDecimalArr[1]) ? amountDecimalArr[1].length : 0
+    if (valid && amountDecimal > input) {
+      const newSupply = amountDecimalArr[0] + '.' + amountDecimalArr[1].slice(0, amountDecimal - input)
+      dispatch(setSupply(newSupply))
+    }
 
     if (setValid) {
       setValid(valid)
