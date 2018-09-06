@@ -4,10 +4,16 @@
     padding: 5%;
     margin-bottom: 25px;
 }
-#TokenSaleListForToken img{
-    width: 50px;
+#TokenSaleListForToken img.status{
+    width: 40px;
     margin: 0 auto;
 }
+
+#TokenSaleListForToken img.kyc{
+    width: 60px;
+    margin: 0 auto;
+}
+
 #TokenSaleListForToken .centerTxt{
     text-align: center;
 }

@@ -66,14 +66,16 @@ class TokenSaleListForToken extends React.Component {
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
                 // open closed  controlla se passato l' end date
-                const isOpen = moment(Date.now()).diff(parseInt(tokenSale.endTime)) < 0
+                const endTime = moment(parseInt(tokenSale.endTime))
+                const today = moment(Date.now())
+                const isOpen = moment(today).diff(endTime) < 0
                 if (tokenSale.contractAddress) {
                   return (
                     <div id='TokenSaleListForToken' className='shadow pure-u-1' key={address}>
 
                       <div className='pure-u-1'>
                         <div className='pure-u-2-24 centerTxt'>
-                          <img src={kycYes} />
+                          <img className='status' src={isOpen ? StatusOpen : StatusClosed} />
                           <h4>Status:</h4>
                           <span className={`${isOpen ? 'greenTxt' : 'redTxt'}`}>
                             {isOpen ? 'Open' : 'Close'}
@@ -103,7 +105,7 @@ class TokenSaleListForToken extends React.Component {
 
                       <div className='pure-u-1 marginTop'>
                         <div className='pure-u-2-24 centerTxt'>
-                          <img src={kycYes} />
+                          <img className='kyc' src={tokenSale.kyc === 'true' ? kycYes : kycNo} />
                           <h4>KYC:</h4>
                           <span className={`${tokenSale.kyc === 'true' ? 'greenTxt' : 'redTxt'}`}>
                             {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
