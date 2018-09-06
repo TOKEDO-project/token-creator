@@ -78,7 +78,7 @@ class MainTokenSaleAddToken extends Component {
             </div>
             <div className='separator-twentyfive' />
           </WalletSelection>
-          : <MainTokenSaleAmount onChangeCB={this.prepareTransaction} tokenId={tokenId} />
+          : <MainTokenSaleAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
         }
 
       </div>

@@ -4,32 +4,47 @@ import icon from '../../assets/images/token-sale-amount.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
+import { getTokenInfo } from '../../utils/tokens'
+import bnUtils from '../../../../bnUtils'
 
 class MainTokenSaleAddAmount extends Component {
   constructor (props) {
     super(props)
-
     this.state = {
-      valid: false
+      valid: false,
+      tokenAddAmountInput: ''
     }
+  }
+  onClickNext = (e) => {
+    e.preventDefault()
+    console.log('tokenInfo', 'onClickNext')
+    /* const {onIsValidCB, addMainTokenSale, tokenId} = this.props
+    const value = addMainTokenSale[tokenId].amount
+    const isValid = this.validate(value)
+    this.setState({ valid: isValid })
+    if (onIsValidCB && isValid) { onIsValidCB(value) } */
   }
   onChangeText = (e) => {
     const value = e.target.value
-    /* Needs a real dispatch condition
-        const { dispatch } = this.props
-        dispatch(setName(value)) */
+    const isValid = this.validate(value)
     this.setState({
-      valid: this.validate(value)
+      tokenAddAmountInput: value,
+      valid: isValid
     })
   }
 
   validate = (input) => {
-    const { setValid } = this.props
-    const valid = true // Needs a real validation condition
-
-    if (setValid) {
-      setValid(valid)
-    }
+    const { tokenId, setValid, tokens, addMainTokenSale } = this.props
+    const tokenInfo = getTokenInfo(tokenId, tokens)
+    // input = input.replace(',', '.')
+    const reg = /^-?\d*\.?\d*$/
+    const amountDecimalArr = input.split('.')
+    const amountDecimal = (amountDecimalArr[1]) ? amountDecimalArr[1].length : 0
+    console.log('tokenInfo', 'amountDecimal', amountDecimalArr, 'amountDecimal', amountDecimal)
+    const remainingTokens = (tokenInfo.supply - addMainTokenSale[tokenId].amount)
+    const valid = input.length > 0 && bnUtils.lte(input, remainingTokens) && bnUtils.gt(input, 0) && reg.test(input) && amountDecimal <= tokenInfo.decimals
+    // this.setState({ errorMessage: t('') })
+    if (setValid) { setValid(valid) }
     return valid
   }
   componentWillMount () {
@@ -37,10 +52,23 @@ class MainTokenSaleAddAmount extends Component {
     const { addToken } = this.props
     this.setState({ valid: this.validate(addToken.name) }) */
   }
-  render () {
-    const { addToken, nextFunction, t } = this.props
+  onSubmit = (e) => {
+    e.preventDefault()
     const { valid } = this.state
-
+    if (valid) {
+      this.onClickNext()
+    }
+  }
+  render () {
+    const { tokenId, nextFunction, t, tokens, addMainTokenSale } = this.props
+    const { valid, tokenAddAmountInput } = this.state
+    console.log('tokenInfo', 'tokenAddAmount--', tokenAddAmountInput)
+    const tokenInfo = getTokenInfo(tokenId, tokens)
+    const mainTokenSaleAmount = addMainTokenSale[tokenId].amount
+    const remainingTokens = (tokenInfo.supply - mainTokenSaleAmount)
+    const errorMessage = t('Can not be more than') +
+      ' ' + remainingTokens + ' ' + t('tokens') +
+      ' ' + t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + tokenInfo.decimals
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
@@ -52,14 +80,12 @@ class MainTokenSaleAddAmount extends Component {
             <span className='description font-size-tiny'>{t(`The quantity of tokens you want to add.`)}</span>
           </div>
         </div>
-        <form className='bottom d-flex flex-row flex-h-between'>
+        <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onSubmit}>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the amount`)} className='token-name text shadow pure-u-1' value={addToken.name} onChange={this.onChangeText} />
-            {!valid && addToken.name.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`Do not know the error yet`)}</div> : null}
+            <input placeholder={t(`Insert the amount`)} className='token-name text shadow pure-u-1' value={tokenAddAmountInput} onChange={this.onChangeText} />
+            {!valid ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
-          {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
-          Next
-          </button> : null}
+          {valid ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
         </form>
       </div>
     )

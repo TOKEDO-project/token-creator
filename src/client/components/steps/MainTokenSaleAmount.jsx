@@ -19,11 +19,11 @@ class MainTokenSaleAmount extends Component {
 
   onClickNext = (e) => {
     e.preventDefault()
-    const {onChangeCB, addMainTokenSale, tokenId} = this.props
+    const {onIsValidCB, addMainTokenSale, tokenId} = this.props
     const value = addMainTokenSale[tokenId].amount
     const isValid = this.validate(value)
     this.setState({ valid: isValid })
-    if (onChangeCB && isValid) { onChangeCB(value) }
+    if (onIsValidCB && isValid) { onIsValidCB(value) }
   }
   onChangeText = (e) => {
     const value = e.target.value
@@ -32,8 +32,8 @@ class MainTokenSaleAmount extends Component {
     dispatch(setAmount({tokenAddress: tokenId, amount: value}))
     const isValid = this.validate(value)
     this.setState({ valid: isValid })
-    // const {onChangeCB} = this.props
-    // if (onChangeCB) { onChangeCB(value, isValid) }
+    // const {onIsValidCB} = this.props
+    // if (onIsValidCB) { onIsValidCB(value, isValid) }
   }
 
   validate = (input) => {
@@ -54,8 +54,8 @@ class MainTokenSaleAmount extends Component {
     const value = addMainTokenSale[tokenId].amount
     const isValid = this.validate(value)
     this.setState({ valid: isValid })
-    // const {onChangeCB} = this.props
-    // if (onChangeCB) { onChangeCB(value, isValid) }
+    // const {onIsValidCB} = this.props
+    // if (onIsValidCB) { onIsValidCB(value, isValid) }
   }
 
   render () {
