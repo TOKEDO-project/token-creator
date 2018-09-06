@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { translate } from 'react-i18next'
 
 import TokenName from '../components/steps/TokenName'
 import TokenSymbol from '../components/steps/TokenSymbol'
@@ -132,4 +133,4 @@ class AddTokenAdvanced extends React.Component {
   }
 }
 
-export default withRouter(connect(s => s)(AddTokenAdvanced))
+export default withRouter(translate('translations')(connect(s => s)(AddTokenAdvanced)))
