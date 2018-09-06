@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router'
-
+import './MainTokenSaleAddToken.css'
 import Loading from './Loading'
 import WalletSelection from './steps/WalletSelection'
 import MainTokenSaleAmount from './steps/MainTokenSaleAmount'
@@ -58,13 +58,13 @@ class MainTokenSaleAddToken extends Component {
     }
 
     return (
-      <div className='pure-u-1'>
+      <div className='pure-u-1' id='MainTokenSaleAddToken'>
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
             <div className='top d-flex flex-row flex-h-start flex-v-center'>
               <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+                <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
               </div>
               <div className='right d-flex flex-column flex-h-center'>
                 <span className='title'>{t(`Allocate tokes`)}:</span>
@@ -75,6 +75,12 @@ class MainTokenSaleAddToken extends Component {
                   {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
                 </p>
               </div>
+            </div>
+            <div className='groupBottom pure-u-1 d-flex flex-v-center flex-h-between'>
+              <p>
+                {t('You are adding')}: {amount} {t('tokens for sale')}
+              </p>
+              <button className='btnOrng' onClick={this.changeAmount}><i class='fas fa-undo-alt' /> Change the amount</button>
             </div>
             <div className='separator-twentyfive' />
           </WalletSelection>

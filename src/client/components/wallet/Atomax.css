@@ -1,53 +1,45 @@
 #atomax {
- padding: 10px 0;
+  padding: 10px 0;
 }
 
 #atomax span.text {
- color: #888888;
- margin: 20px 0;
- 
- 
- text-align: center;
+  color: #888888;
+  margin: 20px 0;
+  text-align: center;
 }
 
 #atomax span.title {
- color: #FA8100;
- 
- 
- text-align: center;
+  color: #FA8100;
+  text-align: center;
 }
 
 #atomax span.description {
- 
- 
- text-align: center;
- color: #888888;
- margin: 10px 0;
+  text-align: center;
+  color: #7D7D7D;
+  margin: 10px;
 }
 
 #atomax span.description.italic {
- font-style: italic;
- font-weight: 500;
+  font-style: italic;
+  font-weight: 500;
 }
 
 #atomax div.address-box {
- padding: 15px;
- border: 1px solid #888888;
- border-radius: 5px;
- text-align: center;
- word-break: break-all;
- color: #888888;
- 
- 
- margin: 25px 0;
+  padding: 15px;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  text-align: center;
+  word-break: break-all;
+  color: #888888;
+  margin: 25px 0;
 }
 
 #atomax div.transaction {
- margin-top: 10px;
+  margin-top: 10px;
 }
 
 #atomax img.mining {
- width: 72px;
- object-fit: contain;
- margin: 20px 0 10px 0;
+  width: 72px;
+  object-fit: contain;
+  margin: 20px 0 10px 0;
 }

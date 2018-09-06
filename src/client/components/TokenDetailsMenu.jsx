@@ -9,7 +9,7 @@ import padlockIcon from '../assets/images/padlock.svg'
 import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
 import addIcon from '../assets/images/addIcon.svg'
-import trasferTokens from '../assets/images/transfer-tokens.svg'
+import trasferTokens from '../assets/images/transfer-token-gray.svg'
 import { setState } from '../redux/addMainTokenSale'
 import { setTokenMenu } from '../redux/preferences'
 

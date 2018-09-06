@@ -52,7 +52,7 @@ class TokenSaleListForToken extends React.Component {
       )
     }
     return (
-      <div className=''>
+      <div className='pure-u-1'>
         {
           isEmpty(tokenSaleReceipts)
             ? <TokenDetailsTutorial tokenId={tokenId} />

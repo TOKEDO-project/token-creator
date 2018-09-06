@@ -1,0 +1,36 @@
+#MainTokenSaleAddToken p {
+  font-size: 15px;
+  color: #7D7D7D;
+}
+
+#MainTokenSaleAddToken .btnOrng {
+  background: #FA8100;
+  color: white;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+#MainTokenSaleAddToken .groupBottom {
+  margin: 20px 0px;
+}
+
+#MainTokenSaleAddToken .btnOrng:hover {
+  background: #ffaa00;
+}
+
+@media (min-width: 600px) {
+  #MainTokenSaleAddToken .groupBottom {
+    padding-left: 63px;
+  }
+
+  #MainTokenSaleAddToken .groupBottom {
+    flex-direction: row;
+  }
+}
+@media (max-width: 599px) {
+
+    #MainTokenSaleAddToken .groupBottom {
+      flex-direction: column;
+    }
+  }

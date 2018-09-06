@@ -63,7 +63,7 @@ class AddMoreToken extends React.Component {
           ? <WalletSelection>
             <div className='top d-flex flex-row flex-h-start flex-v-center'>
               <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+                <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
               </div>
               <div className='right d-flex flex-column flex-h-center'>
                 <span className='title'>{t(`Add More Token to Sale`)}:</span>

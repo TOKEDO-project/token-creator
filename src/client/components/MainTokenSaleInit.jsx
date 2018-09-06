@@ -50,7 +50,7 @@ class MainTokenSaleInit extends Component {
       <WalletSelection connectorName='mainTokenSaleDeploy' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
         <div className='top d-flex flex-row flex-h-start flex-v-center'>
           <div className='left'>
-            <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+            <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
           </div>
           <div className='right d-flex flex-column flex-h-center'>
             <span className='title'>{t(`Initialization`)}:</span>
