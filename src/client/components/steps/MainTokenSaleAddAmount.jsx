@@ -5,7 +5,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 
-class TokenSaleAddAmount extends Component {
+class MainTokenSaleAddAmount extends Component {
   constructor (props) {
     super(props)
 
@@ -66,4 +66,4 @@ class TokenSaleAddAmount extends Component {
   }
 }
 
-export default translate('translations')(connect(s => s)(TokenSaleAddAmount))
+export default translate('translations')(connect(s => s)(MainTokenSaleAddAmount))

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import plus from '../../assets/images/plus.svg'
 import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
-import TokenSaleAddAmount from '../steps/TokenSaleAddAmount'
+import MainTokenSaleAddAmount from '../steps/MainTokenSaleAddAmount'
 
 class AddMoreToken extends React.Component {
   constructor (props) {
@@ -25,7 +25,7 @@ class AddMoreToken extends React.Component {
     const { visible } = this.state
     return (
       <Modal icon={plus} visible={visible} title={t('Add More Tokens')} toggleVisibility={this.toggleVisibility}>
-        <TokenSaleAddAmount />
+        <MainTokenSaleAddAmount />
         <div className='separator-twentyfive' />
         <WalletSelection />
       </Modal>
