@@ -55,19 +55,21 @@ class TokenSaleListForToken extends React.Component {
             : <div>
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
-                return (
-                  <div key={address}>
-                    <div>Amount: {tokenSale.amount}</div>
-                    <div>Address: {tokenSale.contractAddress}</div>
-                    <div>End Time: {tokenSale.endTime}</div>
-                    <div>kyc: {tokenSale.kyc}</div>
-                    <div>Min Contribution: {tokenSale.minContribution}</div>
-                    <div>Owner: {tokenSale.owner}</div>
-                    <div>Price: {tokenSale.price}</div>
-                    <div>Start Time: {tokenSale.startTime}</div>
-                    <br />
-                  </div>
-                )
+                if (tokenSale.contractAddress) {
+                  return (
+                    <div key={address}>
+                      <div>Amount: {tokenSale.amount}</div>
+                      <div>Address: {tokenSale.contractAddress}</div>
+                      <div>End Time: {tokenSale.endTime}</div>
+                      <div>kyc: {tokenSale.kyc}</div>
+                      <div>Min Contribution: {tokenSale.minContribution}</div>
+                      <div>Owner: {tokenSale.owner}</div>
+                      <div>Price: {tokenSale.price}</div>
+                      <div>Start Time: {tokenSale.startTime}</div>
+                      <br />
+                    </div>
+                  )
+                }
               })}
             </div>
         }
