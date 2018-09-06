@@ -1,0 +1,56 @@
+#TokenSaleListForToken{
+    background: white;
+    border-radius: 5px;
+    padding: 5%;
+}
+#TokenSaleListForToken img{
+    width: 50px;
+    margin: 0 auto;
+}
+#TokenSaleListForToken .centerTxt{
+    text-align: center;
+}
+#TokenSaleListForToken .heightBox {
+    height: 50px;
+    max-height: 150px;
+    text-align: center;
+    padding:0px 5px;
+    margin-top: 10px;
+}
+#TokenSaleListForToken h4 {
+    font-size: 13px;
+    color: #FA8100;
+    margin: 0;
+    font-weight: 500;
+}
+
+#TokenSaleListForToken p {
+    font-size: 12px;
+    margin: 5px 0;
+    font-weight: 400;
+    color: #7D7D7D;
+}
+
+#TokenSaleListForToken .marginTop {
+    margin-top: 15px;
+}
+
+#TokenSaleListForToken .borderTop {
+    border-top: 1px solid #b8b8b8;
+}
+
+#TokenSaleListForToken .breakWord {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+#TokenSaleListForToken .borderRight{
+    border-right: 1px solid #b8b8b8;
+}
+#TokenSaleListForToken .greenTxt{
+color: #33BE24;
+}
+
+#TokenSaleListForToken .redTxt{
+color: #D93D3D;
+}
