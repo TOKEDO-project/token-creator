@@ -6,6 +6,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import './StepDropdown.css'
 import { translate } from 'react-i18next'
+import bnUtils from '../../../../bnUtils'
 
 class TokenSalePrice extends Component {
   constructor (props) {
@@ -16,7 +17,13 @@ class TokenSalePrice extends Component {
     }
   }
   onChangeText = (e) => {
-    const value = e.target.value
+    let value = e.target.value
+
+    value = value.replace(',', '.')
+    const reg = /^-?\d*\.?\d*$/
+    if (!reg.test(value)) {
+      return
+    }
 
     const { dispatch, tokenId } = this.props
     dispatch(setPrice({ tokenAddress: tokenId, price: value }))
@@ -27,7 +34,7 @@ class TokenSalePrice extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    const valid = input.length > 1
+    let valid = input.length > 0 && bnUtils.gt(input, 0)
 
     if (setValid) {
       setValid(valid)
@@ -71,7 +78,7 @@ class TokenSalePrice extends Component {
                 <option value='usd'>DOLLAR</option>
               </select>
             </div>
-            {!valid && price.length > 1 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be longer than 1 characters`)}</div> : null}
+            {!valid && price.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be bigger than zero`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}
