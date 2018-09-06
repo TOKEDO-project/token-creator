@@ -10,12 +10,12 @@ import TokenSaleMinContribution from '../components/steps/TokenSaleMinContributi
 import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
-import { setStep, reset } from '../redux/addTokenSale'
+import { setStep, reset, setTokenSaleAddress } from '../redux/addTokenSale'
 import Loading from '../components/Loading'
 import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
 import prepareAddRCTransaction from '../utils/prepareAddRCTransaction'
 
-import { saveTransaction, saveReceipt } from '../redux/tokenSales'
+import { saveTransaction, saveReceipt, saveAddRCReceipt } from '../redux/tokenSales'
 
 import './AddTokenSaleWizard.css'
 import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
@@ -104,6 +104,7 @@ class AddTokenSaleWizard extends Component {
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
     if (receipt.contractAddress) {
+      dispatch(setTokenSaleAddress({tokenAddress: tokenId, address: receipt.contractAddress}))
       this.deployAddRc(receipt.contractAddress)
     }
   }
@@ -115,9 +116,10 @@ class AddTokenSaleWizard extends Component {
   }
 
   onReceiptRc = (receipt) => {
-    const { history, dispatch, tokenId, mainTokenSales } = this.props
+    const { history, dispatch, tokenId, mainTokenSales, addTokenSale } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    dispatch(saveReceipt({mainTokenSaleAddress, receipt}))
+    receipt.contractAddress = addTokenSale[tokenId].address
+    dispatch(saveAddRCReceipt({mainTokenSaleAddress, receipt}))
     dispatch(reset({tokenAddress: tokenId}))
     history.push(`/token/details/${tokenId}`)
   }
