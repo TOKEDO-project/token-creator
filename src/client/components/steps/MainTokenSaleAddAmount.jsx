@@ -18,11 +18,13 @@ class MainTokenSaleAddAmount extends Component {
   onClickNext = (e) => {
     e.preventDefault()
     console.log('tokenInfo', 'onClickNext')
-    /* const {onIsValidCB, addMainTokenSale, tokenId} = this.props
-    const value = addMainTokenSale[tokenId].amount
+    const {onIsValidCB} = this.props
+    const {tokenAddAmountInput} = this.state
+    const value = tokenAddAmountInput
     const isValid = this.validate(value)
+    console.log('tokenAddAmountInput', tokenAddAmountInput)
     this.setState({ valid: isValid })
-    if (onIsValidCB && isValid) { onIsValidCB(value) } */
+    if (onIsValidCB && isValid) { onIsValidCB(value) }
   }
   onChangeText = (e) => {
     const value = e.target.value
