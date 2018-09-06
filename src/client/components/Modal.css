@@ -1,75 +1,101 @@
 div.modal {
- z-index: 200;
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- min-height: 100%;
- pointer-events: none;
- opacity: 0;
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+  pointer-events: none;
+  opacity: 0;
 }
 
 div.modal.visible {
- pointer-events: all;
- opacity: 1;
+  pointer-events: all;
+  opacity: 1;
 }
 
 div.modal div.background {
- position: absolute;
- background-color: rgba(0, 0, 0, 0.5);
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- min-height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
 }
 
 div.modal div.container {
- z-index: 1;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 div.modal div.content {
- background-color: white;
- border-radius: 5px;
- max-height: 90%;
+  background-color: white;
+  border-radius: 5px;
+  max-height: 90%;
 }
 
 div.modal div.content div.header {
- min-height: 90px;
- max-height: 90px;
- padding: 0 25px;
- border-bottom: 1px solid #EEEEEE;
+  min-height: 90px;
+  max-height: 90px;
+  padding: 0 25px;
+  border-bottom: 1px solid #EEEEEE;
 }
 
 div.modal div.content div.header div.left img.icon {
- width: 48px;
- object-fit: contain;
- margin-right: 25px;
+  width: 48px;
+  object-fit: contain;
+  margin-right: 25px;
 }
 
 div.modal div.content div.header div.left span.title {
- color: #f9af39;
+  color: #f9af39;
+  font-size: 24px;
 }
 
 div.modal div.content div.header button.right {
- background-color: transparent;
- border: none;
- color: #888888;
+  background-color: transparent;
+  border: none;
+  color: #888888;
 }
 
 div.modal div.content div.header button.right span.fa {
- font-size: 32px;
- margin-left: 15px;
+  font-size: 32px;
+}
+div.modal .hideTxt{
+  margin-right: 15px;
+}
+div.modal div.children {
+  /* Calc padding by left original padding + icon size + icon margin */
+  padding: 25px calc(25px + 32px + 25px);
+  overflow-y: auto;
 }
 
-div.modal div.children {
- /* Calc padding by left original padding + icon size + icon margin */
- padding: 25px calc(25px + 32px + 25px);
- overflow-y: auto;
+@media (max-width: 1024px) {
+  div.modal div.container {
+    padding: 2%;
+  }
 }
+
+@media (max-width: 600px) {
+    div.modal div.children,
+    div.modal div.content div.header {
+        padding: 5%;
+      }
+      div.modal .hideTxt{
+          display: none;
+      }
+  }
+  @media (max-width: 400px) {
+      div.modal div.content div.header div.left span.title {
+        font-size: 14px;
+      }
+      div.modal div.content div.header button.right span.fa {
+        margin-left: 0px;
+    }
+  }
