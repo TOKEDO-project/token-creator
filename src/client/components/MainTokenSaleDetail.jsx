@@ -34,7 +34,7 @@ class MainTokenSaleDetail extends React.Component {
     const mainTokenSalesById = mainTokenSales[tokenId]
     let waiting = t('Waiting...')
     return (
-      <div id='MainTokenSaleDetail' className='shadow pure-u-xl-20-24 pure-u-23-24 d-flex flex-h-between'>
+      <div id='MainTokenSaleDetail' className='shadow pure-u-1 d-flex flex-h-between'>
 
         <div className='d-flex flex-row flex-v-center pure-u-lg-10-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
           <div>
