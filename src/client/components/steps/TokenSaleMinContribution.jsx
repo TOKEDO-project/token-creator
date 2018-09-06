@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setMinContribution } from '../../redux/addTokenSale'
-import icon from '../../assets/images/token-name.svg'
+import icon from '../../assets/images/token-sale-min-contribution.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'

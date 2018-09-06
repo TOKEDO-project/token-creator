@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setPrice, setPriceCurrency } from '../../redux/addTokenSale'
-import icon from '../../assets/images/token-name.svg'
+import icon from '../../assets/images/token-price.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import './StepDropdown.css'

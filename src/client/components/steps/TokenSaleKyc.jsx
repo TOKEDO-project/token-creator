@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setKYC } from '../../redux/addTokenSale'
-import icon from '../../assets/images/token-type.svg'
+import icon from '../../assets/images/token-sale-kyc-yes.svg'
 import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'

@@ -4,7 +4,7 @@ import { setStartTime, setEndTime } from '../../redux/addTokenSale'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-import icon from '../../assets/images/token-name.svg'
+import icon from '../../assets/images/token-sale-date.svg'
 import './Step.css'
 import './StepDateField.css'
 import { translate } from 'react-i18next'
@@ -42,17 +42,17 @@ class TokenSaleStartEndTime extends Component {
           title={t(`Choose the start and end time`)}
           description={t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}
         />
-        <form className='bottom d-flex flex-row flex-h-between'>
-          <div className={`date-pickers d-flex flex-column flex-v-center`}>
+        <form className='bottom d-flex flex-row flex-h-between flex-v-end'>
+          <div className={`date-pickers d-flex flex-column pure-u-16-24`}>
             <div className='date-picker pure-u-1 d-flex flex-column'>
-              <span>Start Time:</span>
+              <span className='date-picker-title'>Start Time:</span>
               <DatePicker
                 selected={moment(startTime, 'x')}
                 onChange={this.onChangeStartTime}
               />
             </div>
             <div className='date-picker pure-u-1 d-flex flex-column'>
-              <span>End Time:</span>
+              <span className='date-picker-title'>End Time:</span>
               <DatePicker
                 selected={moment(endTime, 'x')}
                 onChange={this.onChangeEndTime}

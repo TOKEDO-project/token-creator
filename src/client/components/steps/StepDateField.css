@@ -1,0 +1,22 @@
+div.step form.bottom div.date-picker input {
+ width: 100%;
+ height: 40px;
+ padding: 0 10px;
+ border: 1px solid #B8B8B8;
+ border-radius: 5px;
+ color: #888888;
+ margin-top: 5px;
+}
+
+div.step form.bottom div.date-picker input::placeholder {
+ font-style: italic;
+ color: #888888;
+}
+
+div.step form.bottom span.date-picker-title {
+ color: #FA8100;
+}
+
+div.step form.bottom div.date-picker {
+ margin-top: 5px;
+}
