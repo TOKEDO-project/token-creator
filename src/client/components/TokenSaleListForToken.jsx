@@ -76,7 +76,7 @@ class TokenSaleListForToken extends React.Component {
                           <img src={kycYes} />
                           <h4>Status:</h4>
                           <span className={`${isOpen ? 'greenTxt' : 'redTxt'}`}>
-                            {isOpen ? 'Yes' : 'No'}
+                            {isOpen ? 'Open' : 'Close'}
                           </span>
                         </div>
                         <div className='pure-u-3-24 borderRight heightBox centerTxt'>
