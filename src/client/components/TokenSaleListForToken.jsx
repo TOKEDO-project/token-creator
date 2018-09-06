@@ -8,11 +8,12 @@ import { reset } from '../redux/addTokenSale'
 import { isEmpty, map } from 'lodash'
 import './TokenSaleListForToken.css'
 import moment from 'moment'
-
 import kycYes from '../assets/images/token-sale-kyc-yes.svg'
 import kycNo from '../assets/images/token-sale-kyc-no.svg'
 import StatusOpen from '../assets/images/token-sale-status-open.svg'
 import StatusClosed from '../assets/images/token-sale-status-closed.svg'
+import Clipboard from 'react-clipboard.js'
+
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
     super(props)
@@ -86,12 +87,16 @@ class TokenSaleListForToken extends React.Component {
                           <p className='breakWord'>{tokenSale.price}</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>Token Sale Amount: </h4>
+                          <h4>Token For Sale: </h4>
                           <p className='breakWord'>{tokenSale.amount}</p>
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
-                          <h4>Owner: </h4>
-                          <p className='breakWord'>{tokenSale.owner}</p>
+                        <div className='pure-u-3-24 borderRight heightBox centerTxt'>
+                          <h4>Token Sold: </h4>
+                          <p className='breakWord'>0</p>
+                        </div>
+                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                          <h4>Remaining Token: </h4>
+                          <p className='breakWord'>0</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
                           <h4>Min Contribution: </h4>
@@ -111,17 +116,32 @@ class TokenSaleListForToken extends React.Component {
                             {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div className='pure-u-10-24 borderRight heightBox'>
-                          <h4>Token Sale Address: </h4>
-                          <p className='breakWord'>{tokenSale.contractAddress}</p>
+                        <div className='pure-u-10-24 centerTxt'>
+                          <div className='pure-u-1 borderRight heightBox'>
+                            <h4>Token Sale Address: </h4>
+                            <p className='breakWord'>{tokenSale.contractAddress}</p>
+                          </div>
+                          <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
-                          <h4>Start Time: </h4>
-                          <p className='breakWord'>{tokenSale.startTime}</p>
+                        <div className='pure-u-6-24 centerTxt'>
+                          <div className='pure-u-1 borderRight heightBox'>
+                            <h4>Start Time: </h4>
+                            <p className='breakWord'>{tokenSale.startTime}</p>
+                          </div>
+                          <button className='modify' type='button'>
+                            <span className='fa fa-pencil-square-o' />
+                            <span className='font-size-tiny'>Modify</span>
+                          </button>
                         </div>
-                        <div className='pure-u-6-24 heightBox centerTxt'>
-                          <h4>End Time: </h4>
-                          <p className='breakWord'>{tokenSale.endTime}</p>
+                        <div className='pure-u-6-24 centerTxt'>
+                          <div className='pure-u-1 heightBox'>
+                            <h4>End Time: </h4>
+                            <p className='breakWord'>{tokenSale.endTime}</p>
+                          </div>
+                          <button className='modify' type='button'>
+                            <span className='fa fa-pencil-square-o' />
+                            <span className='font-size-tiny'>Modify</span>
+                          </button>
                         </div>
                       </div>
 
@@ -132,6 +152,31 @@ class TokenSaleListForToken extends React.Component {
             </div>
         }
       </div>
+    )
+  }
+}
+
+class TokenSaleContractAddressClipboard extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      isAddressCopied: false
+    }
+  }
+
+  onSuccessCopy = () => {
+    this.setState({ isAddressCopied: true })
+  }
+
+  render () {
+    const { address } = this.props
+    const { isAddressCopied } = this.state
+    return (
+      <Clipboard onSuccess={this.onSuccessCopy} data-clipboard-text={address} className={`copy ${isAddressCopied ? 'copied' : ''}`} type='button'>
+        <span className={`fa fa-${isAddressCopied ? 'check' : 'clipboard'}`} />
+        <span className='font-size-tiny'>{isAddressCopied ? 'Copied' : 'Copy'}</span>
+      </Clipboard>
     )
   }
 }
