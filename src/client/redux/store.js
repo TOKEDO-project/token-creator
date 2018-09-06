@@ -12,6 +12,7 @@ import { tokenSales } from './tokenSales'
 import { addMainTokenSale } from './addMainTokenSale'
 import { mainTokenSales } from './mainTokenSales'
 import { preferences } from './preferences'
+import { actions } from './actions'
 
 const reducers = combineReducers({
   web3,
@@ -21,7 +22,8 @@ const reducers = combineReducers({
   tokens,
   tokenSales,
   mainTokenSales,
-  preferences
+  preferences,
+  actions
 })
 
 const composeEnhancers = composeWithDevTools({realtime: true, port: 8080})
@@ -38,7 +40,8 @@ let enhancers = composeEnhancers(
       'tokens',
       'tokenSales',
       'mainTokenSales',
-      'preferences'
+      'preferences',
+      'actions'
     ]
   )
 )

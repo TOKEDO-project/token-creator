@@ -7,6 +7,9 @@ import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
 import MainTokenSaleAddAmount from '../steps/MainTokenSaleAddAmount'
 import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTransaction'
+import { saveAddMoreTokenTransaction, saveAddMoreTokenReceipt } from '../../redux/actions'
+import { setAmount } from '../../redux/addMainTokenSale'
+import bnUtils from '../../../../bnUtils'
 
 class AddMoreToken extends React.Component {
   constructor (props) {
@@ -28,39 +31,43 @@ class AddMoreToken extends React.Component {
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    console.log('---------prepareTransaction', tokenType, tokenId, mainTokenSaleAddress, amount)
     const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress, tokenAmount: amount})
     this.setState({
-      amount: amount,
+      amount,
       transaction,
       loading: false
     })
   }
 
   onTransactionHash = (transactionHash) => {
-    /* const { dispatch, web3, tokenId } = this.props
-    console.log('OTH:', web3.address, tokenId)
-    dispatch(setState({ state: 'token-transferred', tokenAddress: tokenId }))
-    dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId })) */
+    const { dispatch, tokenId, mainTokenSales } = this.props
+    const { amount } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveAddMoreTokenTransaction({mainTokenSaleAddress, txId: transactionHash, amount}))
   }
 
   onReceipt = (receipt) => {
-    /* const { dispatch, tokenId, addMainTokenSale: { amount } } = this.props
-    dispatch(saveTransferReceipt(tokenId, receipt, amount)) */
+    const { dispatch, tokenId, mainTokenSales, addMainTokenSale } = this.props
+    const { amount } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveAddMoreTokenReceipt({ mainTokenSaleAddress, receipt }))
+    dispatch(setAmount({tokenAddress: tokenId, amount: bnUtils.plus(addMainTokenSale[tokenId].amount, amount)}))
   }
+
   changeAmount = (e) => {
     e.preventDefault()
     this.setState({
       transaction: null
     })
   }
+
   render () {
     const { t, tokenId } = this.props
     const { visible, transaction, amount } = this.state
     return (
       <Modal icon={plus} visible={visible} title={t('Add More Tokens')} toggleVisibility={this.toggleVisibility}>
         {transaction
-          ? <WalletSelection>
+          ? <WalletSelection connectorName='addMoreToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId}>
             <div className='top d-flex flex-row flex-h-start flex-v-center'>
               <div className='left'>
                 <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
@@ -71,7 +78,7 @@ class AddMoreToken extends React.Component {
                   {t(`You need to make the transaction to add more tokens to sale.`)}
                 </span>
                 <p>
-                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i class='fas fa-undo-alt' /> Change the amount</button>
+                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
                 </p>
               </div>
             </div>
