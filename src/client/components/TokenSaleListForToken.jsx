@@ -116,7 +116,7 @@ class TokenSaleListForToken extends React.Component {
                             {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div className='pure-u-10-24'>
+                        <div className='pure-u-10-24 centerTxt'>
                           <div className='pure-u-1 borderRight heightBox'>
                             <h4>Token Sale Address: </h4>
                             <p className='breakWord'>{tokenSale.contractAddress}</p>
