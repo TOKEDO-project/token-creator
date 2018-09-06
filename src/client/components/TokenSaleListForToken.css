@@ -60,3 +60,24 @@ color: #33BE24;
 #TokenSaleListForToken .redTxt{
 color: #D93D3D;
 }
+
+#TokenSaleListForToken button.copy {
+    height: 30px;
+    padding: 0 40px;
+    background-color: #888888;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#TokenSaleListForToken button.copy:hover {
+    background-color: #6e6e6e;
+}
+
+#TokenSaleListForToken button.copy span.fa {
+    margin-right: 5px;
+}
+
+#TokenSaleListForToken button.copy.copied {
+    background-color: #33BE24;
+}
