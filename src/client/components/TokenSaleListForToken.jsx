@@ -86,12 +86,16 @@ class TokenSaleListForToken extends React.Component {
                           <p className='breakWord'>{tokenSale.price}</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>Token Sale Amount: </h4>
+                          <h4>Token For Sale: </h4>
                           <p className='breakWord'>{tokenSale.amount}</p>
                         </div>
-                        <div className='pure-u-6-24 borderRight heightBox centerTxt'>
-                          <h4>Owner: </h4>
-                          <p className='breakWord'>{tokenSale.owner}</p>
+                        <div className='pure-u-3-24 borderRight heightBox centerTxt'>
+                          <h4>Token Sold: </h4>
+                          <p className='breakWord'>0</p>
+                        </div>
+                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                          <h4>Remaining Token: </h4>
+                          <p className='breakWord'>0</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
                           <h4>Min Contribution: </h4>
