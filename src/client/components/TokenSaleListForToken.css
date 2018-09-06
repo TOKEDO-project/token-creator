@@ -1,99 +1,113 @@
-#TokenSaleListForToken{
-    background: white;
-    border-radius: 5px;
-    padding: 5%;
-    margin-bottom: 25px;
-}
-#TokenSaleListForToken img.status{
-    width: 40px;
-    margin: 0 auto;
+#TokenSaleListForToken {
+  background: white;
+  border-radius: 5px;
+  padding: 5%;
+  margin-bottom: 25px;
 }
 
-#TokenSaleListForToken img.kyc{
-    width: 60px;
-    margin: 0 auto;
+#TokenSaleListForToken img.status {
+  width: 40px;
+  margin: 0 auto;
 }
 
-#TokenSaleListForToken .centerTxt{
-    text-align: center;
+#TokenSaleListForToken img.kyc {
+  width: 60px;
+  margin: 0 auto;
 }
+
+#TokenSaleListForToken .centerTxt {
+  text-align: center;
+}
+
 #TokenSaleListForToken .heightBox {
-    height: 50px;
-    max-height: 150px;
-    padding:0px 5px;
-    margin-top: 10px;
+  height: 50px;
+  max-height: 150px;
+  padding: 0px 5px;
+  margin-top: 10px;
 }
+
 #TokenSaleListForToken h4 {
-    font-size: 13px;
-    color: #FA8100;
-    margin: 0;
-    font-weight: 500;
+  font-size: 13px;
+  color: #FA8100;
+  margin: 0;
+  font-weight: 500;
 }
 
 #TokenSaleListForToken p {
-    font-size: 12px;
-    margin: 5px 0;
-    font-weight: 400;
-    color: #7D7D7D;
+  font-size: 12px;
+  margin: 5px 0;
+  font-weight: 400;
+  color: #7D7D7D;
 }
 
 #TokenSaleListForToken .marginTop {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 #TokenSaleListForToken .borderTop {
-    border-top: 1px solid #b8b8b8;
+  border-top: 1px solid #b8b8b8;
 }
 
 #TokenSaleListForToken .breakWord {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-all;
-}
-#TokenSaleListForToken .borderRight{
-    border-right: 1px solid #b8b8b8;
-}
-#TokenSaleListForToken .greenTxt{
-color: #33BE24;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
-#TokenSaleListForToken .redTxt{
-color: #D93D3D;
+#TokenSaleListForToken .borderRight {
+  border-right: 1px solid #b8b8b8;
+}
+
+#TokenSaleListForToken .greenTxt {
+  color: #33BE24;
+}
+
+#TokenSaleListForToken .redTxt {
+  color: #D93D3D;
 }
 
 #TokenSaleListForToken button.copy {
-    padding: 5px 40px;
-    background-color: #888888;
-    color: white;
-    border: none;
-    border-radius: 5px;
+  padding: 5px 40px;
+  max-width: 90%;
+  background-color: #888888;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px auto;
 }
 
 #TokenSaleListForToken button.copy:hover {
-    background-color: #6e6e6e;
+  background-color: #6e6e6e;
 }
 
 #TokenSaleListForToken button.copy span.fa {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 #TokenSaleListForToken button.copy.copied {
-    background-color: #33BE24;
+  background-color: #33BE24;
 }
 
-
 #TokenSaleListForToken button.modify {
-    padding: 5px 40px;
-    background-color: #FA8100;
-    color: white;
-    border: none;
-    border-radius: 5px;
+  padding: 5px 40px;
+  max-width: 90%;
+  background-color: #FA8100;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px auto;
 }
 
 #TokenSaleListForToken button.modify:hover {
-    background-color: #FFAA00;
+  background-color: #FFAA00;
 }
 
 #TokenSaleListForToken button.modify span.fa {
-    margin-right: 5px;
+  margin-right: 5px;
 }
