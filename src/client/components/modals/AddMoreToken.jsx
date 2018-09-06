@@ -12,7 +12,8 @@ class AddMoreToken extends React.Component {
     super(props)
 
     this.state = {
-      visible: true
+      visible: true,
+      transaction: null
     }
   }
   toggleVisibility = () => {
@@ -51,12 +52,15 @@ class AddMoreToken extends React.Component {
   }
   render () {
     const { t, tokenId } = this.props
-    const { visible } = this.state
+    const { visible, transaction } = this.state
     return (
       <Modal icon={plus} visible={visible} title={t('Add More Tokens')} toggleVisibility={this.toggleVisibility}>
-        <MainTokenSaleAddAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
+        {transaction
+          ? <WalletSelection />
+          : <MainTokenSaleAddAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
+        }
         <div className='separator-twentyfive' />
-        <WalletSelection />
+
       </Modal>
     )
   }
