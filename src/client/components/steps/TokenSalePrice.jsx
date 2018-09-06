@@ -74,8 +74,8 @@ class TokenSalePrice extends Component {
             <div className='pure-u-1 d-flex flex-row'>
               <input placeholder={t(`Insert the price`)} className='token-name text shadow pure-u-1' value={price} onChange={this.onChangeText} />
               <select value={priceCurrency} onChange={this.onChangePriceSelect}>
-                <option value=''>ETHEREUM</option>
-                <option value='usd'>DOLLAR</option>
+                <option value=''>ETH</option>
+                <option value='usd'>USD</option>
               </select>
             </div>
             {!valid && price.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be bigger than zero`)}</div> : null}
