@@ -72,7 +72,7 @@ class MainTokenSaleAddToken extends Component {
                   {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
                 </span>
                 <p>
-                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i class='fas fa-undo-alt' /> Change the amount</button>
+                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
                 </p>
               </div>
             </div>
