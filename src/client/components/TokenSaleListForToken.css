@@ -45,7 +45,7 @@
 }
 
 #TokenSaleListForToken .borderTop {
-  border-top: 1px solid #b8b8b8;
+  border-top: 1px solid #d4d4d4;
 }
 
 #TokenSaleListForToken .breakWord {
@@ -55,7 +55,7 @@
 }
 
 #TokenSaleListForToken .borderRight {
-  border-right: 1px solid #b8b8b8;
+  border-right: 1px solid #d4d4d4;
 }
 
 #TokenSaleListForToken .greenTxt {
@@ -67,7 +67,7 @@
 }
 
 #TokenSaleListForToken button.copy {
-  padding: 5px 40px;
+  padding: 8px 40px;
   max-width: 90%;
   background-color: #888888;
   color: white;
@@ -92,7 +92,7 @@
 }
 
 #TokenSaleListForToken button.modify {
-  padding: 5px 40px;
+  padding: 8px 40px;
   max-width: 90%;
   background-color: #FA8100;
   color: white;
@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 10px auto;
+  margin: 10px auto 0;
 }
 
 #TokenSaleListForToken button.modify:hover {

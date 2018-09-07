@@ -56,10 +56,10 @@ class MainTokenSaleDetail extends React.Component {
         {(!isEmpty(mainTokenSalesById.setAuthorizedReceipt))
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              { addSaleInfo ? <div className='infoBox'>
+              { addSaleInfo ? <div className='shadow infoBox'>
                 <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null}
-              <button className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
+              <button className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Add Token Sale')}
@@ -69,10 +69,10 @@ class MainTokenSaleDetail extends React.Component {
               </button>
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              { addTokenInfo ? <div className='infoBox'>
+              { addTokenInfo ? <div className='shadow infoBox'>
                 <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null }
-              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Add More Token')}
@@ -82,10 +82,10 @@ class MainTokenSaleDetail extends React.Component {
               </button>
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
-              { removeTokenInfo ? <div className='infoBox'>
+              { removeTokenInfo ? <div className='shadow infoBox'>
                 <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
               </div> : null}
-              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/remove-token`)} className='blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
+              <button onClick={() => this.redirectTo(`/token/details/${tokenId}/remove-token`)} className='shadow blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
                 <span>
                   {t('Remove token')}

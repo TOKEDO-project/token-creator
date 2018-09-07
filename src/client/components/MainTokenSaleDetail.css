@@ -30,7 +30,7 @@
 #MainTokenSaleDetail button {
   max-width: 300px;
   min-width: 100px;
-  height: 70px;
+  height: 60px;
   border-radius: 5px;
   border: none;
   position: relative;
@@ -98,7 +98,7 @@
 
 #MainTokenSaleDetail .infoBox {
   position: absolute;
-  bottom: 85px;
+  bottom: 75px;
   z-index: 10;
   background: #9b9b9b;
   color: white;

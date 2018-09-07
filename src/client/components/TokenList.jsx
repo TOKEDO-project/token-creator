@@ -21,7 +21,7 @@ const TokenList = (props) => {
           </div>
           <div className='btn flexCenter pure-u-sm-1'>
             <Link to='/token/add/wizard'>
-              <button className='flex-row d-flex flex-h-center flex-v-center'>
+              <button className='shadow flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <p>{t('Create New Token')}</p>
               </button>
@@ -79,7 +79,7 @@ const TokenList = (props) => {
                   </div>
                   <div className='pure-u-md-1-4 pure-u-sm-1' >
                     <Link to={`/token/details/${receipt.contractAddress}`}>
-                      <button>
+                      <button className='shadow'>
                         <p>{t('Manage Token')} &#38; {t('Token Sale')}</p>
                         {mainTokenSale ? <span>{t('Token for Sale')}: {mainTokenSale.amount}</span> : null }
                       </button>

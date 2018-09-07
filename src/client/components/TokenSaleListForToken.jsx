@@ -75,6 +75,7 @@ class TokenSaleListForToken extends React.Component {
                     <div id='TokenSaleListForToken' className='shadow pure-u-1' key={address}>
 
                       <div className='pure-u-1'>
+
                         <div className='pure-u-3-24 centerTxt'>
                           <img className='status' src={isOpen ? StatusOpen : StatusClosed} />
                           <h4>{t('Status')}:</h4>
@@ -82,33 +83,38 @@ class TokenSaleListForToken extends React.Component {
                             {isOpen ? t('Open') : t('Close')}
                           </span>
                         </div>
-                        <div className='pure-u-3-24 borderRight heightBox'>
-                          <h4>{t('Token Price')}:</h4>
-                          <p className='breakWord'>{t(tokenSale.price)}</p>
+
+                        <div className='pure-u-21-24'>
+                          <div className='pure-u-3-24 borderRight heightBox'>
+                            <h4>{t('Token Price')}:</h4>
+                            <p className='breakWord'>{t(tokenSale.price)}</p>
+                          </div>
+                          <div className='pure-u-5-24 borderRight heightBox centerTxt'>
+                            <h4>{t('Token For Sale')}:</h4>
+                            <p className='breakWord'>{t(tokenSale.amount)}</p>
+                          </div>
+                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                            <h4>{t('Token Sold')}:</h4>
+                            <p className='breakWord'>{t('0')}</p>
+                          </div>
+                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                            <h4>{t('Remaining Token')}:</h4>
+                            <p className='breakWord'>{t('0')}</p>
+                          </div>
+                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                            <h4>{t('Min Contribution')}:</h4>
+                            <p className='breakWord'>{t(tokenSale.minContribution)}</p>
+                          </div>
+                          <div className='pure-u-4-24 heightBox centerTxt'>
+                            <h4>{t('ETH collected')}:</h4>
+                            <p className='breakWord'> {t('ETH')}: 0</p>
+                          </div>
                         </div>
-                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>{t('Token For Sale')}:</h4>
-                          <p className='breakWord'>{t(tokenSale.amount)}</p>
-                        </div>
-                        <div className='pure-u-3-24 borderRight heightBox centerTxt'>
-                          <h4>{t('Token Sold')}:</h4>
-                          <p className='breakWord'>{t('0')}</p>
-                        </div>
-                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>{t('Remaining Token')}:</h4>
-                          <p className='breakWord'>{t('0')}</p>
-                        </div>
-                        <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>{t('Min Contribution')}:</h4>
-                          <p className='breakWord'>{t(tokenSale.minContribution)}</p>
-                        </div>
-                        <div className='pure-u-3-24 heightBox centerTxt'>
-                          <h4>{t('ETH collected')}:</h4>
-                          <p className='breakWord'> {t('ETH')}: 0</p>
-                        </div>
+
                       </div>
 
                       <div className='pure-u-1 marginTop'>
+
                         <div className='pure-u-3-24 centerTxt'>
                           <img className='kyc' src={tokenSale.kyc === 'true' ? kycYes : kycNo} />
                           <h4>{t('KYC')}:</h4>
@@ -116,33 +122,37 @@ class TokenSaleListForToken extends React.Component {
                             {tokenSale.kyc === 'true' ? t('Yes') : t('No')}
                           </span>
                         </div>
-                        <div className='pure-u-10-24'>
-                          <div className='pure-u-1 borderRight heightBox'>
-                            <h4>{t('Token Sale Address')}:</h4>
-                            <p className='breakWord'>{tokenSale.contractAddress}</p>
+
+                        <div className='pure-u-21-24'>
+                          <div className='pure-u-12-24'>
+                            <div className='pure-u-1 borderRight heightBox'>
+                              <h4>{t('Token Sale Address')}:</h4>
+                              <p className='breakWord'>{tokenSale.contractAddress}</p>
+                            </div>
+                            <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                           </div>
-                          <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
-                        </div>
-                        <div className='pure-u-4-24 centerTxt'>
-                          <div className='pure-u-1 borderRight heightBox'>
-                            <h4>{t('Start Time')}:</h4>
-                            <p className='breakWord'>{moment(startTime).format('L')}</p>
+                          <div className='pure-u-4-24 centerTxt'>
+                            <div className='pure-u-1 borderRight heightBox'>
+                              <h4>{t('Start Time')}:</h4>
+                              <p className='breakWord'>{moment(startTime).format('L')}</p>
+                            </div>
+                            <button className='modify shadow' type='button'>
+                              <span className='fa fa-pencil-square-o' />
+                              <span className='font-size-tiny'>{t('Modify')}</span>
+                            </button>
                           </div>
-                          <button className='modify' type='button'>
-                            <span className='fa fa-pencil-square-o' />
-                            <span className='font-size-tiny'>{t('Modify')}</span>
-                          </button>
-                        </div>
-                        <div className='pure-u-4-24 centerTxt'>
-                          <div className='pure-u-1 heightBox'>
-                            <h4>{t('End Time')}:</h4>
-                            <p className='breakWord'>{moment(endTime).format('L')}</p>
+                          <div className='pure-u-4-24 centerTxt'>
+                            <div className='pure-u-1 heightBox'>
+                              <h4>{t('End Time')}:</h4>
+                              <p className='breakWord'>{moment(endTime).format('L')}</p>
+                            </div>
+                            <button className='modify shadow' type='button'>
+                              <span className='fa fa-pencil-square-o' />
+                              <span className='font-size-tiny'>{t('Modify')}</span>
+                            </button>
                           </div>
-                          <button className='modify' type='button'>
-                            <span className='fa fa-pencil-square-o' />
-                            <span className='font-size-tiny'>{t('Modify')}</span>
-                          </button>
                         </div>
+
                       </div>
                     </div>
                   )
@@ -172,9 +182,11 @@ class TokenSaleContractAddressClipboard extends React.Component {
     const { address } = this.props
     const { isAddressCopied } = this.state
     return (
-      <Clipboard onSuccess={this.onSuccessCopy} data-clipboard-text={address} className={`copy ${isAddressCopied ? 'copied' : ''}`} type='button'>
-        <span className={`fa fa-${isAddressCopied ? 'check' : 'clipboard'}`} />
-        <span className='font-size-tiny'>{isAddressCopied ? 'Copied' : 'Copy'}</span>
+      <Clipboard onSuccess={this.onSuccessCopy} data-clipboard-text={address} className={`copy shadow ${isAddressCopied ? 'copied' : ''}`} type='button'>
+        <div>
+          <span className={`fa fa-${isAddressCopied ? 'check' : 'clipboard'}`} />
+          <span className='font-size-tiny'>{isAddressCopied ? 'Copied' : 'Copy'}</span>
+        </div>
       </Clipboard>
     )
   }
