@@ -85,27 +85,27 @@ class TokenSaleListForToken extends React.Component {
                         </div>
 
                         <div className='pure-u-20-24'>
-                          <div className='pure-u-3-24 borderRight heightBox'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-3-24 pure-u-xl-3-24 borderRight heightBox centerTextResponsive'>
                             <h4>{t('Token Price')}:</h4>
                             <p className='breakWord'>{t(tokenSale.price)}</p>
                           </div>
-                          <div className='pure-u-5-24 borderRight heightBox centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-5-24 pure-u-xl-5-24 borderRight heightBox centerTxt'>
                             <h4>{t('Token For Sale')}:</h4>
                             <p className='breakWord'>{t(tokenSale.amount)}</p>
                           </div>
-                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 borderRight heightBox centerTxt'>
                             <h4>{t('Token Sold')}:</h4>
                             <p className='breakWord'>{t('0')}</p>
                           </div>
-                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 borderRight heightBox centerTxt'>
                             <h4>{t('Remaining Token')}:</h4>
                             <p className='breakWord'>{t('0')}</p>
                           </div>
-                          <div className='pure-u-4-24 borderRight heightBox centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24borderRight heightBox centerTxt'>
                             <h4>{t('Min Contribution')}:</h4>
                             <p className='breakWord'>{t(tokenSale.minContribution)}</p>
                           </div>
-                          <div className='pure-u-4-24 heightBox centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 heightBox centerTxt'>
                             <h4>{t('ETH collected')}:</h4>
                             <p className='breakWord'> {t('ETH')} 0</p>
                           </div>
@@ -124,14 +124,14 @@ class TokenSaleListForToken extends React.Component {
                         </div>
 
                         <div className='pure-u-20-24 borderTop paddingTop'>
-                          <div className='pure-u-12-24'>
-                            <div className='pure-u-1 borderRight heightBox'>
+                          <div className='centerResponsive pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
+                            <div className='pure-u-1 borderRight heightBox '>
                               <h4>{t('Token Sale Address')}:</h4>
                               <p className='breakWord'>{tokenSale.contractAddress}</p>
                             </div>
                             <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                           </div>
-                          <div className='pure-u-4-24 centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
                             <div className='pure-u-1 borderRight heightBox'>
                               <h4>{t('Start Time')}:</h4>
                               <p className='breakWord'>{moment(startTime).format('L')}</p>
@@ -141,7 +141,7 @@ class TokenSaleListForToken extends React.Component {
                               <span className='font-size-tiny'>{t('Modify')}</span>
                             </button>
                           </div>
-                          <div className='pure-u-4-24 centerTxt'>
+                          <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
                             <div className='pure-u-1 heightBox'>
                               <h4>{t('End Time')}:</h4>
                               <p className='breakWord'>{moment(endTime).format('L')}</p>
@@ -183,7 +183,7 @@ class TokenSaleContractAddressClipboard extends React.Component {
     const { isAddressCopied } = this.state
     return (
       <Clipboard onSuccess={this.onSuccessCopy} data-clipboard-text={address} className={`copy shadow ${isAddressCopied ? 'copied' : ''}`} type='button'>
-        <div>
+        <div className='d-flex flex-row flex-v-center'>
           <span className={`fa fa-${isAddressCopied ? 'check' : 'clipboard'}`} />
           <span className='font-size-tiny'>{isAddressCopied ? 'Copied' : 'Copy'}</span>
         </div>

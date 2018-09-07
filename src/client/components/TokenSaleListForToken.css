@@ -47,9 +47,7 @@
   padding-top: 15px;
 }
 
-#TokenSaleListForToken .borderTop {
-  border-top: 1px solid #d4d4d4;
-}
+
 
 #TokenSaleListForToken .breakWord {
   word-wrap: break-word;
@@ -76,9 +74,6 @@
   color: white;
   border: none;
   border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   margin-top: 10px;
 }
 
@@ -113,4 +108,45 @@
 
 #TokenSaleListForToken button.modify span.fa {
   margin-right: 5px;
+}
+
+@media (min-width: 1024px){
+  #TokenSaleListForToken .borderTop {
+    border-top: 1px solid #d4d4d4;
+  }
+}
+@media (max-width: 1023px){
+  .centerResponsive {
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+  }
+.centerTextResponsive{
+  text-align: center;
+}
+}
+
+@media (min-width: 400px){
+  #TokenSaleListForToken img.status {
+    width: 40px;
+    margin: 0 auto;
+  }
+  
+  #TokenSaleListForToken img.kyc {
+    width: 60px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 399px){
+  #TokenSaleListForToken img.status {
+    width: 20px;
+    margin: 0 auto;
+  }
+  
+  #TokenSaleListForToken img.kyc {
+    width: 40px;
+    margin: 0 auto;
+  }
 }
