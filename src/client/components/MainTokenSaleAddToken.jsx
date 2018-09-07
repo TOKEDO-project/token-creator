@@ -9,6 +9,8 @@ import MainTokenSaleAmount from './steps/MainTokenSaleAmount'
 import { saveTransaction, saveTransferReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 import prepareTransferTokenTransaction from '../utils/prepareTransferTokenTransaction'
+import { StepHeader } from './steps/parts/StepHeader'
+import icon from '../assets/images/help.svg'
 
 class MainTokenSaleAddToken extends Component {
   constructor (props) {
@@ -24,7 +26,7 @@ class MainTokenSaleAddToken extends Component {
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareTransferTokenTransaction({ web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount })
     this.setState({
       transaction,
       loading: false
@@ -49,8 +51,8 @@ class MainTokenSaleAddToken extends Component {
     })
   }
   render () {
-    const {transaction, loading} = this.state
-    const {match: {params: {tokenId}}, t, addMainTokenSale} = this.props
+    const { transaction, loading } = this.state
+    const { match: { params: { tokenId } }, t, addMainTokenSale } = this.props
     const amount = addMainTokenSale[tokenId].amount
 
     if (loading) {
@@ -62,25 +64,20 @@ class MainTokenSaleAddToken extends Component {
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Allocate tokes`)}:</span>
-                <span className='description font-size-tiny'>
-                  {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
-                </span>
-                <p>
-                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-                </p>
-              </div>
-            </div>
+            <StepHeader
+              icon={icon}
+              title={t(`Allocate tokes`)}
+            >
+              {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
+              <p>
+                {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+              </p>
+            </StepHeader>
             <div className='groupBottom pure-u-1 d-flex flex-v-center flex-h-between'>
               <p>
                 {t('You are adding')}: {amount} {t('tokens for sale')}
               </p>
-              <button className='btnOrng' onClick={this.changeAmount}><i class='fas fa-undo-alt' /> Change the amount</button>
+              <button className='btnOrng' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
             </div>
             <div className='separator-twentyfive' />
           </WalletSelection>

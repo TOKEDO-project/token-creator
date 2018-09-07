@@ -10,6 +10,8 @@ import prepareWithdrawTransaction from '../../utils/prepareWithdrawTransaction'
 import { saveRemoveTokenTransaction, saveRemoveTokenReceipt } from '../../redux/actions'
 import bnUtils from '../../../../bnUtils'
 import { setAmount } from '../../redux/addMainTokenSale'
+import { StepHeader } from '../steps/parts/StepHeader'
+import icon from '../../assets/images/help.svg'
 
 class RemoveToken extends React.Component {
   constructor (props) {
@@ -68,20 +70,15 @@ class RemoveToken extends React.Component {
       <Modal icon={minus} visible={visible} title={t('Remove Token')} toggleVisibility={this.toggleVisibility}>
         {transaction
           ? <WalletSelection connectorName='mainTokenSaleRemoveToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Remove Token to Sale`)}:</span>
-                <span className='description font-size-tiny'>
-                  {t(`You need to make the transaction to an ethereum address to remove tokens to sale.`)}
-                </span>
-                <p>
-                  {t('You are removing')}: {amount} {t('tokens from sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-                </p>
-              </div>
-            </div>
+            <StepHeader
+              icon={icon}
+              title={t(`Remove Token to Sale`)}
+            >
+              {t(`You need to make the transaction to an ethereum address to remove tokens to sale.`)}
+              <p>
+                {t('You are removing')}: {amount} {t('tokens from sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+              </p>
+            </StepHeader>
           </WalletSelection>
           : <TokenSaleRemoveAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
         }

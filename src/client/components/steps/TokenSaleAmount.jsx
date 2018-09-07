@@ -5,6 +5,7 @@ import icon from '../../assets/images/token-sale-amount.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSaleAmount extends Component {
   constructor (props) {
@@ -46,15 +47,12 @@ class TokenSaleAmount extends Component {
 
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Insert the Token Amount`)}:</span>
-            <span className='description font-size-tiny'>{t(`Add the quantity of the token for this smart contract. You can add many token sale, each smart contract can have different amount.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Insert the Token Amount`)}
+        >
+          {t(`Add the quantity of the token for this smart contract. You can add many token sale, each smart contract can have different amount.`)}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the amount`)} className='token-name text shadow pure-u-1' value={amount} onChange={this.onChangeText} />

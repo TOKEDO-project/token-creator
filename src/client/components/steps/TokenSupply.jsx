@@ -6,6 +6,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSupply extends Component {
   constructor (props) {
@@ -49,15 +50,12 @@ class TokenSupply extends Component {
     const errorMessage = t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + decimalAllowed
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Insert the total supply of your token`)}:</span>
-            <span className='description font-size-tiny'>{t(`The total supply is the total amount of the token. Choose wisely.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Insert the total supply of your token`)}
+        >
+          {t(`The total supply is the total amount of the token. Choose wisely.`)}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the total supply`)} className='token-supply text shadow pure-u-1' value={addToken.supply} onChange={this.onChangeText} />

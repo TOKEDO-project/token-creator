@@ -6,6 +6,7 @@ import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'
 import { translate } from 'react-i18next'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSaleKyc extends Component {
   constructor (props) {
@@ -29,15 +30,12 @@ class TokenSaleKyc extends Component {
     return (
       <div id='token-type' className='step-container pure-u-1'>
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-          <div className='top d-flex flex-row flex-h-start flex-v-center'>
-            <div className='left'>
-              <img className='icon' src={icon} alt='Icon' />
-            </div>
-            <div className='right d-flex flex-column flex-h-center'>
-              <span className='title'>{t(`KYC`)}:</span>
-              <span className='description font-size-tiny'>{t(`You can add our KYC system on this token sale.`)} <a href='' target='_blank'>{t(`Read more about`)}</a></span>
-            </div>
-          </div>
+          <StepHeader
+            icon={icon}
+            title={t(`KYC`)}
+          >
+            {t(`You can add our KYC system on this token sale.`)} <a href='' target='_blank'>{t(`Read more about`)}</a>
+          </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) => {
               const KYCValue = type === 'kyc-yes'

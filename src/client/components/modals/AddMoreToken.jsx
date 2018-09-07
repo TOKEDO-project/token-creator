@@ -10,6 +10,8 @@ import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTra
 import { saveAddMoreTokenTransaction, saveAddMoreTokenReceipt } from '../../redux/actions'
 import { setAmount } from '../../redux/addMainTokenSale'
 import bnUtils from '../../../../bnUtils'
+import { StepHeader } from '../steps/parts/StepHeader'
+import icon from '../../assets/images/help.svg'
 
 class AddMoreToken extends React.Component {
   constructor (props) {
@@ -68,20 +70,15 @@ class AddMoreToken extends React.Component {
       <Modal icon={plus} visible={visible} title={t('Add More Tokens')} toggleVisibility={this.toggleVisibility}>
         {transaction
           ? <WalletSelection connectorName='addMoreToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Add More Token to Sale`)}:</span>
-                <span className='description font-size-tiny'>
-                  {t(`You need to make the transaction to add more tokens to sale.`)}
-                </span>
-                <p>
-                  {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-                </p>
-              </div>
-            </div>
+            <StepHeader
+              icon={icon}
+              title={t(`Add More Token to Sale`)}
+            >
+              {t(`You need to make the transaction to add more tokens to sale.`)}
+              <p>
+                {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+              </p>
+            </StepHeader>
           </WalletSelection>
           : <MainTokenSaleAddAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
         }

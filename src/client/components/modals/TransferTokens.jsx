@@ -11,6 +11,8 @@ import prepareWithdrawTransaction from '../../utils/prepareWithdrawTransaction'
 import { saveTransferTokenTransaction, saveTransferTokenReceipt } from '../../redux/actions'
 import bnUtils from '../../../../bnUtils'
 import { setAmount } from '../../redux/addMainTokenSale'
+import { StepHeader } from '../steps/parts/StepHeader'
+import icon from '../../assets/images/help.svg'
 
 class TransferTokens extends React.Component {
   constructor (props) {
@@ -105,27 +107,22 @@ class TransferTokens extends React.Component {
       <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
         {transaction
           ? <WalletSelection connectorName='mainTokenSaletransferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Transfer Token`)}:</span>
-                <span className='description font-size-tiny'>
-                  {t(`You need to make the transaction to transfer the tokens.`)}
-                </span>
-                <p>
-                  {t('You are sending')}: {amount} {t('to')}: {address}  <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the data</button>
-                </p>
-              </div>
-            </div>
+            <StepHeader
+              icon={icon}
+              title={t(`Transfer Token`)}
+            >
+              {t(`You need to make the transaction to transfer the tokens.`)}
+              <p>
+                {t('You are sending')}: {amount} {t('to')}: {address}  <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the data</button>
+              </p>
+            </StepHeader>
           </WalletSelection>
           : <div>
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
             <div className='separator-twentyfive' />
             <TransferTokenAmount onChangeAmount={this.onChangeAmount} onValidAmount={this.onValidAmount} tokenId={tokenId} hideNextButton />
 
-            {validAddress && validAmount ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
+            {validAddress && validAmount ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null}
           </div>
         }
         <div className='separator-twentyfive' />

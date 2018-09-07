@@ -4,6 +4,7 @@ import icon from '../../assets/images/token-name.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
+import { StepHeader } from './parts/StepHeader'
 
 class EthereumAddress extends Component {
   constructor (props) {
@@ -65,15 +66,12 @@ class EthereumAddress extends Component {
     const errorMessage = t('Must be a valid Ethereum address')
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{title}:</span>
-            <span className='description font-size-tiny'>{description}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={title}
+        >
+          {description}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onSubmit}>
           <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
             <input placeholder={t(`Insert ethereum address`)} className='token-name text shadow pure-u-1' value={address} onChange={this.onChangeText} />

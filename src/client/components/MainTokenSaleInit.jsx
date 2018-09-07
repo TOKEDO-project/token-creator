@@ -7,6 +7,8 @@ import WalletSelection from './steps/WalletSelection'
 import prepareCreateMainTokenSaleTransaction from '../utils/prepareCreateMainTokenSaleTransaction'
 import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
+import { StepHeader } from './steps/parts/StepHeader'
+import icon from '../assets/images/help.svg'
 
 class MainTokenSaleInit extends Component {
   constructor (props) {
@@ -48,15 +50,12 @@ class MainTokenSaleInit extends Component {
 
     return (
       <WalletSelection connectorName='mainTokenSaleDeploy' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Initialization`)}:</span>
-            <span className='description font-size-tiny'>{t(`To add token sale you need to peerform 3 transaction for initialization. This is the first transaction.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Initialization`)}
+        >
+          {t(`To add token sale you need to peerform 3 transaction for initialization. This is the first transaction.`)}
+        </StepHeader>
         <div className='separator-twentyfive' />
       </WalletSelection>
     )

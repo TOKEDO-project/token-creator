@@ -7,6 +7,7 @@ import bnUtils from '../../../../bnUtils'
 import icon from '../../assets/images/token-supply.svg'
 import './Step.css'
 import './StepSingleInput.css'
+import { StepHeader } from './parts/StepHeader'
 
 class MainTokenSaleAmount extends Component {
   constructor (props) {
@@ -64,15 +65,12 @@ class MainTokenSaleAmount extends Component {
 
     return (
       <div className='step alone pure-u-1'>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Insert the token amount`)}:</span>
-            <span className='description'>{t(`Insert the total amount of token to be sold. After make the transaction.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Insert the token amount`)}
+        >
+          {t(`Insert the total amount of token to be sold. After make the transaction.`)}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box pure-u-16-24 d-flex flex-column flex-v-center'>
             <input type='text' placeholder={t(`Insert the token amount`)} className='token-supply text shadow pure-u-1' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />

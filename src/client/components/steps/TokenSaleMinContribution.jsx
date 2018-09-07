@@ -25,7 +25,7 @@ class TokenSaleMinContribution extends Component {
       return
     }
 
-    dispatch(setMinContribution({tokenAddress: tokenId, minContribution: value}))
+    dispatch(setMinContribution({ tokenAddress: tokenId, minContribution: value }))
     this.setState({
       valid: this.validate(value)
     })
@@ -56,8 +56,9 @@ class TokenSaleMinContribution extends Component {
         <StepHeader
           icon={icon}
           title={t(`Insert the Minimum Contribution`)}
-          description={t(`Set the minimum value to accept for each contribution.`)}
-        />
+        >
+          {t(`Set the minimum value to accept for each contribution.`)}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />

@@ -13,6 +13,7 @@ import './StepRadioButtons.css'
 import icon from '../../assets/images/wallet-selection.svg'
 import metamask from '../../assets/images/metamask.svg'
 import atomax from '../../assets/images/atomax.svg'
+import { StepHeader } from './parts/StepHeader'
 
 // TODO: this can be stateless
 class WalletSelection extends Component {
@@ -32,15 +33,12 @@ class WalletSelection extends Component {
     return (
       <div id='wallet-selection' className='step alone pure-u-1 d-flex flex-column flex-h-between'>
         {this.props.children}
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Select the wallet`)}:</span>
-            <span className='description font-size-tiny'>{t(`To deploy the smart contract of your token you need an Ethereum address with a little balance of ETH. This address`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Select the wallet`)}
+        >
+          {t(`To deploy the smart contract of your token you need an Ethereum address with a little balance of ETH. This address`)}
+        </StepHeader>
         <form className='bottom d-flex flex-column flex-v-center'>
           <div className='pure-u-1 pure-u-lg-4-5 d-flex flex-row flex-h-between flex-wrap'>
             <button onClick={this.onClickMetamask} type='button' className={`radio-box ${addToken.walletType === 'metamask' ? ' active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-column flex-h-center flex-v-center`}>

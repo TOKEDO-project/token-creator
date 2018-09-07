@@ -7,6 +7,7 @@ import './StepSingleInput.css'
 import './StepDropdown.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenSalePrice extends Component {
   constructor (props) {
@@ -60,15 +61,12 @@ class TokenSalePrice extends Component {
 
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-        <div className='top d-flex flex-row flex-h-start flex-v-center'>
-          <div className='left'>
-            <img className='icon' src={icon} alt='Icon' />
-          </div>
-          <div className='right d-flex flex-column flex-h-center'>
-            <span className='title'>{t(`Insert the price for one token`)}:</span>
-            <span className='description font-size-tiny'>{t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}</span>
-          </div>
-        </div>
+        <StepHeader
+          icon={icon}
+          title={t(`Insert the price for one token`)}
+        >
+          {t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}
+        </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <div className='pure-u-1 d-flex flex-row'>

@@ -6,6 +6,7 @@ import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'
 import { translate } from 'react-i18next'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenType extends Component {
   constructor (props) {
@@ -28,15 +29,12 @@ class TokenType extends Component {
     return (
       <div id='token-type' className='pure-u-1'>
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
-          <div className='top d-flex flex-row flex-h-start flex-v-center'>
-            <div className='left'>
-              <img className='icon' src={icon} alt='Icon' />
-            </div>
-            <div className='right d-flex flex-column flex-h-center'>
-              <span className='title'>{t(`Select the Token type`)}:</span>
-              <span className='description font-size-tiny'>{t(`We offer different versions of token.`)}</span>
-            </div>
-          </div>
+          <StepHeader
+            icon={icon}
+            title={t(`Select the Token type`)}
+          >
+            {t(`We offer different versions of token.`)}
+          </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) =>
               <button key={index} value={type} onClick={this.onChange} type='button' className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}>

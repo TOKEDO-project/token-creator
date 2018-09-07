@@ -8,6 +8,7 @@ import { translate } from 'react-i18next'
 import './TokenAddress.css'
 import Clipboard from 'react-clipboard.js'
 import { setState } from '../../redux/addMainTokenSale'
+import { StepHeader } from './parts/StepHeader'
 
 class TokenAddress extends Component {
   constructor (props) {
@@ -37,15 +38,12 @@ class TokenAddress extends Component {
     return (
       <div id='token-address' className='step-container pure-u-22-24 pure-u-sm-20-24 pure-md-18-24 d-flex flex-column'>
         <div className='step alone pure-u-1 d-flex flex-column flex-h-between'>
-          <div className='top d-flex flex-row flex-h-start flex-v-center'>
-            <div className='left'>
-              <img className='icon' src={icon} alt='Icon' />
-            </div>
-            <div className='right d-flex flex-column flex-h-center'>
-              <span className='title'>{t(`Your token is now live!`)}:</span>
-              <span className='description font-size-tiny'>{t(`Congratulation, your token is now on the ethereum blockchain`)}</span>
-            </div>
-          </div>
+          <StepHeader
+            icon={icon}
+            title={t(`Your token is now live!`)}
+          >
+            {t(`Congratulation, your token is now on the ethereum blockchain`)}
+          </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between'>
             <div className={`clipboard-field shadow ${addressCopied ? 'copied' : ''} pure-u-1`}>
               <div className='pure-u-16-24 font-size-small'>

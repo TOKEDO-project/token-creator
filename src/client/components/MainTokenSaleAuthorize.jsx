@@ -6,6 +6,8 @@ import WalletSelection from './steps/WalletSelection'
 import { saveTransaction, saveSetAuthorizedReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 import prepareSetAuthorized from '../utils/prepareSetAuthorizedTransaction'
+import { StepHeader } from './steps/parts/StepHeader'
+import icon from '../assets/images/help.svg'
 
 class MainTokenSaleAuthorize extends Component {
   constructor (props) {
@@ -50,15 +52,12 @@ class MainTokenSaleAuthorize extends Component {
     return (
       <div>
         <WalletSelection connectorName='mainTokenSaleAuthorize' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-          <div className='top d-flex flex-row flex-h-start flex-v-center'>
-            <div className='left'>
-              <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
-            </div>
-            <div className='right d-flex flex-column flex-h-center'>
-              <span className='title'>{t(`Authorization`)}:</span>
-              <span className='description font-size-tiny'>{t(`This is the final transaction. You need to authorize this token sale to move the token.`)}</span>
-            </div>
-          </div>
+          <StepHeader
+            icon={icon}
+            title={t(`Authorization`)}
+          >
+            {t(`This is the final transaction. You need to authorize this token sale to move the token.`)}
+          </StepHeader>
           <div className='separator-twentyfive' />
         </WalletSelection>
       </div>

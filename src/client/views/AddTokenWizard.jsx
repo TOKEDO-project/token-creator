@@ -16,6 +16,8 @@ import './AddTokenWizard.css'
 import shuttle from '../assets/images/shuttle.svg'
 import { translate } from 'react-i18next'
 import { YoutubeVideo } from '../components/YoutubeVideo'
+import { StepHeader } from '../components/steps/parts/StepHeader'
+import icon from '../assets/images/help.svg'
 
 class AddTokenWizard extends Component {
   constructor (props) {
@@ -98,15 +100,12 @@ class AddTokenWizard extends Component {
       case 6:
         return (
           <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: '#7D7D7D' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Deploy the token`)}:</span>
-                <span className='description font-size-tiny'>{t(`Now everything is ready, you need to send the transaction to deploy the token.`)}</span>
-              </div>
-            </div>
+            <StepHeader
+              icon={icon}
+              title={t(`Deploy the token`)}
+            >
+              {t(`Now everything is ready, you need to send the transaction to deploy the token.`)}
+            </StepHeader>
             <div className='separator-twentyfive' />
           </WalletSelection>
         )
