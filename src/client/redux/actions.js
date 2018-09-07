@@ -78,6 +78,25 @@ export const saveUnlockTokenReceipt = createAction('UNLOCK_TOKEN_SAVE_RECEIPT',
   }
 )
 
+export const saveAuthorizeTransferTokenTransaction = createAction('AUTHORIZE_TRANSFER_TOKEN_SAVE_TRANSACTION',
+  ({ mainTokenSaleAddress, txId, address }) => {
+    return {
+      mainTokenSaleAddress,
+      txId,
+      address
+    }
+  }
+)
+
+export const saveAuthorizeTransferTokenReceipt = createAction('AUTHORIZE_TRANSFER_TOKEN_SAVE_RECEIPT',
+  ({ mainTokenSaleAddress, receipt }) => {
+    return {
+      mainTokenSaleAddress,
+      receipt
+    }
+  }
+)
+
 export const actions = handleActions({
   ADD_MORE_TOKEN_SAVE_TRANSACTION: (state, { payload: { mainTokenSaleAddress, txId, amount } }) => {
     const mainTokenSale = state['addMoreToken'] ? state['addMoreToken'][mainTokenSaleAddress] : null
@@ -156,5 +175,25 @@ export const actions = handleActions({
     const transactionHash = receipt.transactionHash
     const preparedReceipt = prepareReceipt(receipt)
     return { ...state, 'unlockToken': { [mainTokenSaleAddress]: { transactions, receipts: { ...state['unlockToken'][mainTokenSaleAddress].receipts, [transactionHash]: preparedReceipt } } } }
+  },
+  AUTHORIZE_TRANSFER_TOKEN_SAVE_TRANSACTION: (state, { payload: { mainTokenSaleAddress, txId, address } }) => {
+    const mainTokenSale = state['authorizeTransferToken'] ? state['authorizeTransferToken'][mainTokenSaleAddress] : null
+    const receipts = mainTokenSale ? mainTokenSale.receipts : {}
+    const transactions = mainTokenSale ? mainTokenSale.transactions : {}
+    return {
+      ...state,
+      'authorizeTransferToken': {
+        [mainTokenSaleAddress]: {
+          receipts,
+          transactions: { ...transactions, [txId]: { address } }
+        }
+      }
+    }
+  },
+  AUTHORIZE_TRANSFER_TOKEN_SAVE_RECEIPT: (state, { payload: { mainTokenSaleAddress, receipt } }) => {
+    const transactions = cloneDeep(state['authorizeTransferToken'][mainTokenSaleAddress].transactions)
+    const transactionHash = receipt.transactionHash
+    const preparedReceipt = prepareReceipt(receipt)
+    return { ...state, 'authorizeTransferToken': { [mainTokenSaleAddress]: { transactions, receipts: { ...state['authorizeTransferToken'][mainTokenSaleAddress].receipts, [transactionHash]: preparedReceipt } } } }
   }
 }, {})

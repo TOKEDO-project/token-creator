@@ -21,7 +21,7 @@ class MainTokenSaleAuthorize extends Component {
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareSetAuthorized({web3, tokenType, tokenAddress: tokenId, mainTokenSaleAddress})
+    const transaction = await prepareSetAuthorized({ web3, tokenType, tokenAddress: tokenId, authorizedAddress: mainTokenSaleAddress })
     this.setState({
       transaction,
       loading: false
