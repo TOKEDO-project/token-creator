@@ -43,6 +43,9 @@
 #TokenSaleListForToken .marginTop {
   margin-top: 15px;
 }
+#TokenSaleListForToken .paddingTop {
+  padding-top: 15px;
+}
 
 #TokenSaleListForToken .borderTop {
   border-top: 1px solid #d4d4d4;

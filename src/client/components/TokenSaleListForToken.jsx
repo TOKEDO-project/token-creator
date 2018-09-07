@@ -84,7 +84,7 @@ class TokenSaleListForToken extends React.Component {
                           </span>
                         </div>
 
-                        <div className='pure-u-21-24'>
+                        <div className='pure-u-20-24'>
                           <div className='pure-u-3-24 borderRight heightBox'>
                             <h4>{t('Token Price')}:</h4>
                             <p className='breakWord'>{t(tokenSale.price)}</p>
@@ -107,15 +107,15 @@ class TokenSaleListForToken extends React.Component {
                           </div>
                           <div className='pure-u-4-24 heightBox centerTxt'>
                             <h4>{t('ETH collected')}:</h4>
-                            <p className='breakWord'> {t('ETH')}: 0</p>
+                            <p className='breakWord'> {t('ETH')} 0</p>
                           </div>
                         </div>
 
                       </div>
 
-                      <div className='pure-u-1 marginTop'>
+                      <div className='pure-u-1'>
 
-                        <div className='pure-u-3-24 centerTxt'>
+                        <div className='pure-u-3-24 centerTxt marginTop'>
                           <img className='kyc' src={tokenSale.kyc === 'true' ? kycYes : kycNo} />
                           <h4>{t('KYC')}:</h4>
                           <span className={`${tokenSale.kyc === 'true' ? 'greenTxt' : 'redTxt'}`}>
@@ -123,7 +123,7 @@ class TokenSaleListForToken extends React.Component {
                           </span>
                         </div>
 
-                        <div className='pure-u-21-24'>
+                        <div className='pure-u-20-24 borderTop paddingTop'>
                           <div className='pure-u-12-24'>
                             <div className='pure-u-1 borderRight heightBox'>
                               <h4>{t('Token Sale Address')}:</h4>

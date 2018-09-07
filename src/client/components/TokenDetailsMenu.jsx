@@ -57,13 +57,29 @@ class TokenDetailsMenu extends React.Component {
           </div>
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
             {(mainTokenSalesById && isEmpty(mainTokenSalesById.setAuthorizedReceipt))
-              ? <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><div style={{ width: '21px', marginRight: '9px' }}><Loading size='21' color='#ffffff' /></div><p className='marginTxt'>{showMenu ? t('Waiting...') : null}</p></button>
-              : <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}><img src={addIcon} /><p className='marginTxt'>{showMenu ? t('Add Token Sale') : null}</p></button>
+              ? <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><div style={{ width: '21px', marginRight: '9px' }}>
+                <Loading size='21' color='#ffffff' /></div><p className='marginTxt'>{showMenu ? t('Waiting...') : null}</p>
+              </button>
+              : <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}>
+                <img src={addIcon} />{showMenu ? <p className='marginTxt'>{t('Add Token Sale')}</p> : null}
+              </button>
             }
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={padlockIcon} /><p className='marginTxt'>{showMenu ? t('Unlock The Token') : null}</p></button>
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={groupIcon} /><p className='marginTxt'>{showMenu ? t('Change Token Owner') : null}</p></button>
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={shieldIcon} /><p className='marginTxt'>{showMenu ? t('Authorize Transfer') : null}</p></button>
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/transfer-tokens`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><img src={trasferTokens} /><p className='marginTxt'>{showMenu ? t('Transfer Tokens') : null}</p></button>
+            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={padlockIcon} />{showMenu ? <p className='marginTxt'>{t('Unlock The Token')}</p> : null}
+            </button>
+
+            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={groupIcon} />{showMenu ? <p className='marginTxt'>{t('Change Token Owner')}</p> : null}
+            </button>
+
+            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={shieldIcon} />{showMenu ? <p className='marginTxt'>{ t('Authorize Transfer')}</p> : null}
+            </button>
+
+            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/transfer-tokens`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={trasferTokens} />{showMenu ? <p className='marginTxt'>{t('Transfer Tokens')}</p> : null}
+            </button>
+
           </div>
         </div>
       </div>
