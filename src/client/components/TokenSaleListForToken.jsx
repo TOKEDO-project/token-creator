@@ -53,7 +53,7 @@ class TokenSaleListForToken extends React.Component {
               <a className='advanced' href='#' onClick={this.onClickSetAdvanced}>{t('Advanced Mode (show all fields)')}</a>
             </AddTokenSaleWizard>
             : <div className='pure-u-1'>
-              <a className='wizard' href='' onClick={this.onClickSetWizard}>{`< Back to wizard mode`}</a><AddTokenSaleAdvanced tokenId={tokenId} />
+              <a className='wizard' href='' onClick={this.onClickSetWizard}>{t('< Back to wizard mode')}</a><AddTokenSaleAdvanced tokenId={tokenId} />
             </div>}
         </div>
       )
@@ -66,8 +66,8 @@ class TokenSaleListForToken extends React.Component {
             : <div className='pure-u-1'>
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
-                // open closed  controlla se passato l' end date
                 const endTime = moment(parseInt(tokenSale.endTime))
+                const startTime = moment(parseInt(tokenSale.startTime))
                 const today = moment(Date.now())
                 const isOpen = moment(today).diff(endTime) < 0
                 if (tokenSale.contractAddress) {
@@ -77,74 +77,73 @@ class TokenSaleListForToken extends React.Component {
                       <div className='pure-u-1'>
                         <div className='pure-u-2-24 centerTxt'>
                           <img className='status' src={isOpen ? StatusOpen : StatusClosed} />
-                          <h4>Status:</h4>
+                          <h4>{t('Status')}:</h4>
                           <span className={`${isOpen ? 'greenTxt' : 'redTxt'}`}>
-                            {isOpen ? 'Open' : 'Close'}
+                            {isOpen ? t('Open') : t('Close')}
                           </span>
                         </div>
                         <div className='pure-u-3-24 borderRight heightBox centerTxt'>
-                          <h4>Token Price: </h4>
-                          <p className='breakWord'>{tokenSale.price}</p>
+                          <h4>{t('Token Price')}:</h4>
+                          <p className='breakWord'>{t(tokenSale.price)}</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>Token For Sale: </h4>
-                          <p className='breakWord'>{tokenSale.amount}</p>
+                          <h4>{t('Token For Sale')}:</h4>
+                          <p className='breakWord'>{t(tokenSale.amount)}</p>
                         </div>
                         <div className='pure-u-3-24 borderRight heightBox centerTxt'>
-                          <h4>Token Sold: </h4>
-                          <p className='breakWord'>0</p>
+                          <h4>{t('Token Sold')}:</h4>
+                          <p className='breakWord'>{t('0')}</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>Remaining Token: </h4>
-                          <p className='breakWord'>0</p>
+                          <h4>{t('Remaining Token')}:</h4>
+                          <p className='breakWord'>{t('0')}</p>
                         </div>
                         <div className='pure-u-4-24 borderRight heightBox centerTxt'>
-                          <h4>Min Contribution: </h4>
-                          <p className='breakWord'>{tokenSale.minContribution}</p>
+                          <h4>{t('Min Contribution')}:</h4>
+                          <p className='breakWord'>{t(tokenSale.minContribution)}</p>
                         </div>
                         <div className='pure-u-4-24 heightBox centerTxt'>
-                          <h4>ETH collected: </h4>
-                          <p className='breakWord'> ETH: 0</p>
+                          <h4>{t('ETH collected')}:</h4>
+                          <p className='breakWord'> {t('ETH')}: 0</p>
                         </div>
                       </div>
 
                       <div className='pure-u-1 marginTop'>
                         <div className='pure-u-2-24 centerTxt'>
                           <img className='kyc' src={tokenSale.kyc === 'true' ? kycYes : kycNo} />
-                          <h4>KYC:</h4>
+                          <h4>{t('KYC')}:</h4>
                           <span className={`${tokenSale.kyc === 'true' ? 'greenTxt' : 'redTxt'}`}>
-                            {tokenSale.kyc === 'true' ? 'Yes' : 'No'}
+                            {tokenSale.kyc === 'true' ? t('Yes') : t('No')}
                           </span>
                         </div>
                         <div className='pure-u-10-24 centerTxt'>
                           <div className='pure-u-1 borderRight heightBox'>
-                            <h4>Token Sale Address: </h4>
+                            <h4>{t('Token Sale Address')}:</h4>
                             <p className='breakWord'>{tokenSale.contractAddress}</p>
                           </div>
                           <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                         </div>
                         <div className='pure-u-6-24 centerTxt'>
                           <div className='pure-u-1 borderRight heightBox'>
-                            <h4>Start Time: </h4>
-                            <p className='breakWord'>{tokenSale.startTime}</p>
+                            <h4>{t('Start Time')}:</h4>
+                            <p className='breakWord'>{moment(startTime).format('L')}</p>
                           </div>
                           <button className='modify' type='button'>
                             <span className='fa fa-pencil-square-o' />
-                            <span className='font-size-tiny'>Modify</span>
+                            <span className='font-size-tiny'>{t('Modify')}</span>
                           </button>
                         </div>
                         <div className='pure-u-6-24 centerTxt'>
                           <div className='pure-u-1 heightBox'>
-                            <h4>End Time: </h4>
-                            <p className='breakWord'>{tokenSale.endTime}</p>
+                            <h4>{t('End Time')}:</h4>
+                            <p className='breakWord'>{moment(endTime).format('L')}</p>
                           </div>
                           <button className='modify' type='button'>
                             <span className='fa fa-pencil-square-o' />
-                            <span className='font-size-tiny'>Modify</span>
+                            <span className='font-size-tiny'>{t('Modify')}</span>
                           </button>
                         </div>
                       </div>
-
                     </div>
                   )
                 }
