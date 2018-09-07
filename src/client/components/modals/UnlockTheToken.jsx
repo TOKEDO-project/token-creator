@@ -7,6 +7,7 @@ import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
 import { WarningMessage } from '../WarningMessage'
 import prepareUnlockTokenTransaction from '../../utils/prepareUnlockTokenTransaction'
+import { saveUnlockTokenTransaction, saveUnlockTokenReceipt } from '../../redux/actions'
 
 class UnlockTheToken extends React.Component {
   constructor (props) {
@@ -29,13 +30,16 @@ class UnlockTheToken extends React.Component {
   }
 
   onTransactionHash = (transactionHash) => {
-    /* const { dispatch, web3, tokenId } = this.props
-    dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId })) */
+    const { dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveUnlockTokenTransaction({ mainTokenSaleAddress, txId: transactionHash }))
   }
 
   onReceipt = (receipt) => {
-    /* const { dispatch, tokenId, addMainTokenSale: { amount } } = this.props
-    dispatch(saveTransferReceipt(tokenId, receipt, amount)) */
+    const { dispatch, tokenId, mainTokenSales, history } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveUnlockTokenReceipt({ mainTokenSaleAddress, receipt }))
+    history.push(`/token/details/${tokenId}`)
   }
 
   toggleVisibility = () => {

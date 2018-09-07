@@ -11,7 +11,7 @@ class EthereumAddress extends Component {
 
     this.state = {
       valid: false,
-      address: null
+      address: ''
     }
   }
   onClickNext = (e) => {
@@ -26,12 +26,15 @@ class EthereumAddress extends Component {
     if (onIsValidCB && isValid) { onIsValidCB(value) }
   }
   onChangeText = (e) => {
+    const { onChangeAddress, onValidAddress } = this.props
     const value = e.target.value
     const isValid = this.validate(value)
     this.setState({
       address: value,
       valid: isValid
     })
+    if (onChangeAddress) { onChangeAddress(value) }
+    if (onValidAddress) { onValidAddress(isValid) }
   }
 
   validate = (input) => {
@@ -56,9 +59,9 @@ class EthereumAddress extends Component {
     }
   }
   render () {
-    const { t, title = t(`Insert your ethereum address`), description = t(`Insert your ethereum address`) } = this.props
+    const { t, title = t(`Insert your ethereum address`), description = t(`Insert your ethereum address`), hideNextButton } = this.props
 
-    const { valid, address, hideNextButton } = this.state
+    const { valid, address } = this.state
     const errorMessage = t('Must be a valid Ethereum address')
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>

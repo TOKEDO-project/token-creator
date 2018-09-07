@@ -7,15 +7,20 @@ import Modal from '../Modal'
 import EthereumAddress from '../steps/EthereumAddress'
 import TransferTokenAmount from '../steps/TransferTokenAmount'
 import WalletSelection from '../steps/WalletSelection'
-import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTransaction'
+import prepareWithdrawTransaction from '../../utils/prepareWithdrawTransaction'
+import { saveTransferTokenTransaction, saveTransferTokenReceipt } from '../../redux/actions'
+import bnUtils from '../../../../bnUtils'
+import { setAmount } from '../../redux/addMainTokenSale'
 
 class TransferTokens extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      address: null,
-      amount: null,
+      address: '',
+      validAddress: false,
+      amount: '',
+      validAmount: false,
       visible: true,
       transaction: null
     }
@@ -26,31 +31,44 @@ class TransferTokens extends React.Component {
     history.push(`/token/details/${tokenId}`)
   }
 
-  setValidAddress = (address) => {
-    const { amount } = this.state
+  onChangeAddress = (address) => {
+    console.log('Transfer Token address', address)
     this.setState({
       address
     })
-    if (amount) {
-      this.prepareTransaction(address, amount)
-    }
   }
 
-  setValidAmount = (amount) => {
-    const { address } = this.state
+  onValidAddress = (validAddress) => {
+    console.log('Transfer Token valid address', validAddress)
+    this.setState({
+      validAddress
+    })
+  }
+
+  onChangeAmount = (amount) => {
+    console.log('Transfer Token amount', amount)
     this.setState({
       amount
     })
-    if (address) {
-      this.prepareTransaction(address, amount)
-    }
+  }
+
+  onValidAmount = (validAmount) => {
+    console.log('Transfer Token valid amount', validAmount)
+    this.setState({
+      validAmount
+    })
+  }
+
+  onClickNext = (e) => {
+    const { address, amount } = this.state
+    e.preventDefault()
+    this.prepareTransaction(address, amount)
   }
 
   prepareTransaction = async (address, amount) => {
-    const { web3, tokens, tokenId } = this.props
-    const transactionHash = tokens.receipts[tokenId].transactionHash
-    const tokenType = tokens.transactions[transactionHash].type
-    const transaction = await prepareTransferTokenTransaction({ web3, tokenType, tokenAddress: tokenId, to: address, tokenAmount: amount })
+    const { web3, mainTokenSales, tokenId } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: address, amount })
     this.setState({
       transaction,
       loading: false
@@ -58,16 +76,21 @@ class TransferTokens extends React.Component {
   }
 
   onTransactionHash = (transactionHash) => {
-    /* const { dispatch, web3, tokenId } = this.props
-    console.log('OTH:', web3.address, tokenId)
-    dispatch(setState({ state: 'token-transferred', tokenAddress: tokenId }))
-    dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId })) */
+    const { dispatch, tokenId, mainTokenSales } = this.props
+    const { amount, address } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransferTokenTransaction({ mainTokenSaleAddress, txId: transactionHash, to: address, amount }))
   }
 
   onReceipt = (receipt) => {
-    /* const { dispatch, tokenId, addMainTokenSale: { amount } } = this.props
-    dispatch(saveTransferReceipt(tokenId, receipt, amount)) */
+    const { dispatch, tokenId, mainTokenSales, addMainTokenSale, history } = this.props
+    const { amount } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransferTokenReceipt({ mainTokenSaleAddress, receipt }))
+    dispatch(setAmount({ tokenAddress: tokenId, amount: bnUtils.minus(addMainTokenSale[tokenId].amount, amount) }))
+    history.push(`/token/details/${tokenId}`)
   }
+
   changeAmount = (e) => {
     e.preventDefault()
     this.setState({
@@ -76,11 +99,12 @@ class TransferTokens extends React.Component {
   }
   render () {
     const { t, tokenId } = this.props
-    const { visible, transaction, address, amount } = this.state
+    const { visible, transaction, address, amount, validAddress, validAmount } = this.state
+    console.log('ADDR', address, amount)
     return (
       <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
         {transaction
-          ? <WalletSelection connectorName='transferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+          ? <WalletSelection connectorName='mainTokenSaletransferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
             <div className='top d-flex flex-row flex-h-start flex-v-center'>
               <div className='left'>
                 <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
@@ -97,9 +121,11 @@ class TransferTokens extends React.Component {
             </div>
           </WalletSelection>
           : <div>
-            <EthereumAddress onIsValidCB={this.setValidAddress} tokenId={tokenId} hideNextButton />
+            <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
             <div className='separator-twentyfive' />
-            <TransferTokenAmount onIsValidCB={this.setValidAmount} tokenId={tokenId} hideNextButton />
+            <TransferTokenAmount onChangeAmount={this.onChangeAmount} onValidAmount={this.onValidAmount} tokenId={tokenId} hideNextButton />
+
+            {validAddress && validAmount ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
           </div>
         }
         <div className='separator-twentyfive' />

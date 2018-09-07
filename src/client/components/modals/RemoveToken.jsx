@@ -6,7 +6,10 @@ import minus from '../../assets/images/minus.svg'
 import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
 import TokenSaleRemoveAmount from '../steps/TokenSaleRemoveAmount'
-import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTransaction'
+import prepareWithdrawTransaction from '../../utils/prepareWithdrawTransaction'
+import { saveRemoveTokenTransaction, saveRemoveTokenReceipt } from '../../redux/actions'
+import bnUtils from '../../../../bnUtils'
+import { setAmount } from '../../redux/addMainTokenSale'
 
 class RemoveToken extends React.Component {
   constructor (props) {
@@ -18,36 +21,40 @@ class RemoveToken extends React.Component {
       transaction: null
     }
   }
+
   toggleVisibility = () => {
     const { history, tokenId } = this.props
     // this.setState({ visible: !this.state.visible })
     history.push(`/token/details/${tokenId}`)
   }
+
   prepareTransaction = async (amount) => {
-    const { web3, tokens, tokenId, mainTokenSales } = this.props
-    const transactionHash = tokens.receipts[tokenId].transactionHash
-    const tokenType = tokens.transactions[transactionHash].type
+    const { web3, mainTokenSales, tokenId } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    console.log('---------prepareTransaction', tokenType, tokenId, mainTokenSaleAddress, amount)
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: web3.address, amount })
     this.setState({
-      amount: amount,
+      amount,
       transaction,
       loading: false
     })
   }
 
   onTransactionHash = (transactionHash) => {
-    /* const { dispatch, web3, tokenId } = this.props
-    console.log('OTH:', web3.address, tokenId)
-    dispatch(setState({ state: 'token-transferred', tokenAddress: tokenId }))
-    dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId })) */
+    const { dispatch, tokenId, mainTokenSales, web3 } = this.props
+    const { amount } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveRemoveTokenTransaction({ mainTokenSaleAddress, txId: transactionHash, to: web3.address, amount }))
   }
 
   onReceipt = (receipt) => {
-    /* const { dispatch, tokenId, addMainTokenSale: { amount } } = this.props
-    dispatch(saveTransferReceipt(tokenId, receipt, amount)) */
+    const { dispatch, tokenId, mainTokenSales, addMainTokenSale, history } = this.props
+    const { amount } = this.state
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveRemoveTokenReceipt({ mainTokenSaleAddress, receipt }))
+    dispatch(setAmount({ tokenAddress: tokenId, amount: bnUtils.minus(addMainTokenSale[tokenId].amount, amount) }))
+    history.push(`/token/details/${tokenId}`)
   }
+
   changeAmount = (e) => {
     e.preventDefault()
     this.setState({

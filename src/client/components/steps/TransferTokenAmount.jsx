@@ -12,17 +12,21 @@ class TransferTokenAmount extends Component {
     super(props)
 
     this.state = {
-      amount: null,
+      amount: '',
       valid: false
     }
   }
+
   onChangeText = (e) => {
+    const { onChangeAmount, onValidAmount } = this.props
     const value = e.target.value
     const isValid = this.validate(value)
     this.setState({
       amount: value,
       valid: isValid
     })
+    if (onChangeAmount) { onChangeAmount(value) }
+    if (onValidAmount) { onValidAmount(isValid) }
   }
 
   validate = (input) => {
