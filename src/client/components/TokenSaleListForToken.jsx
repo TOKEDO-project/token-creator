@@ -75,14 +75,14 @@ class TokenSaleListForToken extends React.Component {
                     <div id='TokenSaleListForToken' className='shadow pure-u-1' key={address}>
 
                       <div className='pure-u-1'>
-                        <div className='pure-u-2-24 centerTxt'>
+                        <div className='pure-u-3-24 centerTxt'>
                           <img className='status' src={isOpen ? StatusOpen : StatusClosed} />
                           <h4>{t('Status')}:</h4>
                           <span className={`${isOpen ? 'greenTxt' : 'redTxt'}`}>
                             {isOpen ? t('Open') : t('Close')}
                           </span>
                         </div>
-                        <div className='pure-u-3-24 borderRight heightBox centerTxt'>
+                        <div className='pure-u-3-24 borderRight heightBox'>
                           <h4>{t('Token Price')}:</h4>
                           <p className='breakWord'>{t(tokenSale.price)}</p>
                         </div>
@@ -102,28 +102,28 @@ class TokenSaleListForToken extends React.Component {
                           <h4>{t('Min Contribution')}:</h4>
                           <p className='breakWord'>{t(tokenSale.minContribution)}</p>
                         </div>
-                        <div className='pure-u-4-24 heightBox centerTxt'>
+                        <div className='pure-u-3-24 heightBox centerTxt'>
                           <h4>{t('ETH collected')}:</h4>
                           <p className='breakWord'> {t('ETH')}: 0</p>
                         </div>
                       </div>
 
                       <div className='pure-u-1 marginTop'>
-                        <div className='pure-u-2-24 centerTxt'>
+                        <div className='pure-u-3-24 centerTxt'>
                           <img className='kyc' src={tokenSale.kyc === 'true' ? kycYes : kycNo} />
                           <h4>{t('KYC')}:</h4>
                           <span className={`${tokenSale.kyc === 'true' ? 'greenTxt' : 'redTxt'}`}>
                             {tokenSale.kyc === 'true' ? t('Yes') : t('No')}
                           </span>
                         </div>
-                        <div className='pure-u-10-24 centerTxt'>
+                        <div className='pure-u-10-24'>
                           <div className='pure-u-1 borderRight heightBox'>
                             <h4>{t('Token Sale Address')}:</h4>
                             <p className='breakWord'>{tokenSale.contractAddress}</p>
                           </div>
                           <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                         </div>
-                        <div className='pure-u-6-24 centerTxt'>
+                        <div className='pure-u-4-24 centerTxt'>
                           <div className='pure-u-1 borderRight heightBox'>
                             <h4>{t('Start Time')}:</h4>
                             <p className='breakWord'>{moment(startTime).format('L')}</p>
@@ -133,7 +133,7 @@ class TokenSaleListForToken extends React.Component {
                             <span className='font-size-tiny'>{t('Modify')}</span>
                           </button>
                         </div>
-                        <div className='pure-u-6-24 centerTxt'>
+                        <div className='pure-u-4-24 centerTxt'>
                           <div className='pure-u-1 heightBox'>
                             <h4>{t('End Time')}:</h4>
                             <p className='breakWord'>{moment(endTime).format('L')}</p>
