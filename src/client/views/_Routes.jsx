@@ -32,6 +32,7 @@ const AppRouter = () => {
         <Route exact path='/token/details/:tokenId/transfer-tokens' render={(props) => <TokenDetails {...props} setModal='transferTokens' />} />
         <Route exact path='/token/details/:tokenId/add-more-token' render={(props) => <TokenDetails {...props} setModal='addMoreToken' />} />
         <Route exact path='/token/details/:tokenId/remove-token' render={(props) => <TokenDetails {...props} setModal='removeToken' />} />
+        <Route exact path='/token/details/:tokenId/:tokenSaleTransactionId/changeStartEndTimeTokenSale' render={(props) => <TokenDetails {...props} setModal='changeStartEndTimeTokenSale' />} />
         <Route exact path='/token/receipt/:tokenId' component={TokenAddress} />
         <Route exact path='/faq' component={FaqPage} />
         <Route exact path='/help' component={HelpPage} />

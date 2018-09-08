@@ -6,7 +6,7 @@ import bnUtils from '../../../bnUtils'
 
 export default async ({ web3, tokenSale, mainTokenSaleAddress, tokenDecimals }) => {
   let abi, bytecode
-  if (tokenSale.kyc) {
+  if (tokenSale.kyc === 'true') {
     abi = TokenSaleKycAbi
     bytecode = TokenSaleKycBytecode
   } else {

@@ -97,6 +97,26 @@ export const saveAuthorizeTransferTokenReceipt = createAction('AUTHORIZE_TRANSFE
   }
 )
 
+export const saveSetTimeTokenSaleTransaction = createAction('SET_TIME_TOKEN_SALE_SAVE_TRANSACTION',
+  ({ tokenSaleAddress, txId, startTime, endTime }) => {
+    return {
+      tokenSaleAddress,
+      txId,
+      startTime,
+      endTime
+    }
+  }
+)
+
+export const saveSetTimeTokenSaleReceipt = createAction('SET_TIME_TOKEN_SALE_SAVE_RECEIPT',
+  ({ tokenSaleAddress, receipt }) => {
+    return {
+      tokenSaleAddress,
+      receipt
+    }
+  }
+)
+
 export const actions = handleActions({
   ADD_MORE_TOKEN_SAVE_TRANSACTION: (state, { payload: { mainTokenSaleAddress, txId, amount } }) => {
     const mainTokenSale = state['addMoreToken'] ? state['addMoreToken'][mainTokenSaleAddress] : null
@@ -195,5 +215,25 @@ export const actions = handleActions({
     const transactionHash = receipt.transactionHash
     const preparedReceipt = prepareReceipt(receipt)
     return { ...state, 'authorizeTransferToken': { [mainTokenSaleAddress]: { transactions, receipts: { ...state['authorizeTransferToken'][mainTokenSaleAddress].receipts, [transactionHash]: preparedReceipt } } } }
+  },
+  SET_TIME_TOKEN_SALE_SAVE_TRANSACTION: (state, { payload: { tokenSaleAddress, txId, startTime, endTime } }) => {
+    const tokenSale = state['setTimeTokenSale'] ? state['setTimeTokenSale'][tokenSaleAddress] : null
+    const receipts = tokenSale ? tokenSale.receipts : {}
+    const transactions = tokenSale ? tokenSale.transactions : {}
+    return {
+      ...state,
+      'setTimeTokenSale': {
+        [tokenSaleAddress]: {
+          receipts,
+          transactions: { ...transactions, [txId]: { startTime, endTime } }
+        }
+      }
+    }
+  },
+  SET_TIME_TOKEN_SALE_SAVE_RECEIPT: (state, { payload: { tokenSaleAddress, receipt } }) => {
+    const transactions = cloneDeep(state['setTimeTokenSale'][tokenSaleAddress].transactions)
+    const transactionHash = receipt.transactionHash
+    const preparedReceipt = prepareReceipt(receipt)
+    return { ...state, 'setTimeTokenSale': { [tokenSaleAddress]: { transactions, receipts: { ...state['setTimeTokenSale'][tokenSaleAddress].receipts, [transactionHash]: preparedReceipt } } } }
   }
 }, {})
