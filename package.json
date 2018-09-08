@@ -15,7 +15,8 @@
     "dev": "nf start -j Procfile.dev",
     "prod": "npm run build && npm run start:server",
     "lint": "standard",
-    "start": "npm run start:server"
+    "start": "npm run start:server",
+    "postinstall": "npm run build"
   },
   "author": "linosorice",
   "license": "MIT",
