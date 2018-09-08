@@ -14,6 +14,7 @@ import kycNo from '../assets/images/token-sale-kyc-no.svg'
 import StatusOpen from '../assets/images/token-sale-status-open.svg'
 import StatusClosed from '../assets/images/token-sale-status-closed.svg'
 import Clipboard from 'react-clipboard.js'
+import { getTokenSaleTimes } from '../utils/tokenSales'
 
 class TokenSaleListForToken extends React.Component {
   constructor (props) {
@@ -76,8 +77,7 @@ class TokenSaleListForToken extends React.Component {
             : <div className='pure-u-1'>
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
-                const endTime = moment(tokenSale.endTime, 'x')
-                const startTime = moment(tokenSale.startTime, 'x')
+                const { startTime, endTime } = getTokenSaleTimes(tokenSale)
                 const today = moment(Date.now())
                 const isOpen = moment(today).diff(endTime) < 0
                 if (tokenSale.contractAddress) {
@@ -144,7 +144,7 @@ class TokenSaleListForToken extends React.Component {
                           <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
                             <div className='pure-u-1 borderRight heightBox'>
                               <h4>{t('Start Time')}:</h4>
-                              <p className='breakWord'>{startTime.format('DD/MM/YYYY')}</p>
+                              <p className='breakWord'>{moment(startTime, 'x').format('DD/MM/YYYY')}</p>
                             </div>
                             <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
                               <span className='fa fa-pencil-square-o' />
@@ -154,7 +154,7 @@ class TokenSaleListForToken extends React.Component {
                           <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
                             <div className='pure-u-1 heightBox'>
                               <h4>{t('End Time')}:</h4>
-                              <p className='breakWord'>{endTime.format('DD/MM/YYYY')}</p>
+                              <p className='breakWord'>{moment(endTime, 'x').format('DD/MM/YYYY')}</p>
                             </div>
                             <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
                               <span className='fa fa-pencil-square-o' />

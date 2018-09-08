@@ -30,7 +30,32 @@ export const saveAddRCReceipt = createAction('TOKEN_SALES_SAVE_ADD_RC_RECEIPT',
   }
 )
 
+export const pushStartDate = createAction('PUSH_START_END_TIMES_TOKEN_SALE',
+  ({ mainTokenSaleAddress, tokenSaleAddress, startTime, endTime }) => {
+    return {
+      mainTokenSaleAddress,
+      tokenSaleAddress,
+      startTime,
+      endTime
+    }
+  }
+)
+
 export const tokenSales = handleActions({
+  PUSH_START_END_TIMES_TOKEN_SALE: (state, { payload: { mainTokenSaleAddress, tokenSaleAddress, startTime, endTime } }) => {
+    const transactions = cloneDeep(state[mainTokenSaleAddress].transactions)
+    const tokenSaleTxHash = state[mainTokenSaleAddress].receipts[tokenSaleAddress].transactionHash
+    const tokenSale = transactions[tokenSaleTxHash]
+    tokenSale.startEndTimes.push({ startTime, endTime })
+    return {
+      ...state,
+      [mainTokenSaleAddress]: {
+        transactions,
+        receiptsAddRC: state[mainTokenSaleAddress].receiptsAddRC,
+        receipts: state[mainTokenSaleAddress].receipts
+      }
+    }
+  },
   TOKEN_SALES_SAVE_TRANSACTION: (state, { payload: { mainTokenSaleAddress, txId, tokenSale } }) => {
     const mainTokenSale = state[mainTokenSaleAddress]
     const receipts = mainTokenSale ? mainTokenSale.receipts : {}
@@ -41,7 +66,7 @@ export const tokenSales = handleActions({
       [mainTokenSaleAddress]: {
         receipts,
         receiptsAddRC,
-        transactions: { ...transactions, [txId]: tokenSale }
+        transactions: { ...transactions, [txId]: { ...tokenSale, startEndTimes: [] } }
       }
     }
   },

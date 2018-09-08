@@ -6,14 +6,12 @@ import moment from 'moment'
 import transferToken from '../../assets/images/transfer-token.svg'
 import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
-import prepareWithdrawTransaction from '../../utils/prepareWithdrawTransaction'
-import { saveTransferTokenTransaction, saveTransferTokenReceipt, saveSetTimeTokenSaleTransaction, saveSetTimeTokenSaleReceipt } from '../../redux/actions'
-import bnUtils from '../../../../bnUtils'
-import { setAmount } from '../../redux/addMainTokenSale'
-import { getTokenSalesTransactions } from '../../utils/tokenSales'
+import { saveSetTimeTokenSaleTransaction, saveSetTimeTokenSaleReceipt } from '../../redux/actions'
+import { getTokenSalesTransactions, getTokenSaleTimes } from '../../utils/tokenSales'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import prepareSetTimeTransaction from '../../utils/prepareSetTimeTransaction'
+import { pushStartDate } from '../../redux/tokenSales'
 
 class ChangeStartEndTimeTokenSale extends React.Component {
   constructor (props) {
@@ -23,9 +21,11 @@ class ChangeStartEndTimeTokenSale extends React.Component {
     const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
 
+    const { startTime, endTime } = getTokenSaleTimes(tokenSale)
+
     this.state = {
-      newStartTime: tokenSale.startTime,
-      newEndTime: tokenSale.endTime,
+      newStartTime: startTime,
+      newEndTime: endTime,
       visible: true,
       transaction: null
     }
@@ -54,9 +54,10 @@ class ChangeStartEndTimeTokenSale extends React.Component {
     this.prepareTransaction(address, amount)
   }
 
-  prepareTransaction = async (address, amount) => {
+  prepareTransaction = async (e) => {
     const { web3, mainTokenSales, tokenId, tokenSaleTransactionId, tokenSales } = this.props
     const { newStartTime, newEndTime } = this.state
+    e.preventDefault()
     const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
     console.log('CHANGE DATES', tokenSale)
@@ -77,9 +78,12 @@ class ChangeStartEndTimeTokenSale extends React.Component {
 
   onReceipt = (receipt) => {
     const { history, dispatch, tokenId, tokenSaleTransactionId, tokenSales, mainTokenSales } = this.props
+    const { newStartTime, newEndTime } = this.state
     const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
-    // TODO: Save the new token sale end and start date
+    const mainTokenSale = mainTokenSales[tokenId]
+    const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
+    dispatch(pushStartDate({mainTokenSaleAddress, tokenSaleAddress: tokenSale.contractAddress, startTime: newStartTime, endTime: newEndTime}))
     dispatch(saveSetTimeTokenSaleReceipt({ tokenSaleAddress: tokenSale.contractAddress, receipt }))
     history.push(`/token/details/${tokenId}`)
   }
@@ -90,13 +94,15 @@ class ChangeStartEndTimeTokenSale extends React.Component {
       transaction: null
     })
   }
+
   render () {
     const { t, tokenId, tokenSaleTransactionId, tokenSales, mainTokenSales } = this.props
     const { visible, transaction, newStartTime, newEndTime } = this.state
     const tokenSaleTransactions = getTokenSalesTransactions({tokenId, mainTokenSales, tokenSales})
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
-    const differentStartTime = !moment(newStartTime, 'x').isSame(moment(tokenSale.startTime, 'x'), 'day')
-    const differentEndTime = !moment(newEndTime, 'x').isSame(moment(tokenSale.endTime, 'x'), 'day')
+    const { startTime, endTime } = getTokenSaleTimes(tokenSale)
+    const differentStartTime = !moment(newStartTime, 'x').isSame(moment(startTime, 'x'), 'day')
+    const differentEndTime = !moment(newEndTime, 'x').isSame(moment(endTime, 'x'), 'day')
 
     return (
       <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
@@ -118,7 +124,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
             </div>
           </WalletSelection>
           : <div>
-            Current Start Time: {moment(tokenSale.startTime, 'x').format('DD/MM/YYYY')}
+            Current Start Time: {moment(startTime, 'x').format('DD/MM/YYYY')}
             <br />
             Start Time:
             <DatePicker
@@ -126,7 +132,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               onChange={this.onChangeStartTime}
               dateFormat='DD/MM/YYYY'
             />
-            Current End Time: {moment(tokenSale.endTime, 'x').format('DD/MM/YYYY')}
+            Current End Time: {moment(endTime, 'x').format('DD/MM/YYYY')}
             <br />
             End Time:
             <DatePicker
