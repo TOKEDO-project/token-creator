@@ -26,31 +26,31 @@ const reducers = combineReducers({
   actions
 })
 
+const reducersToPersist = [
+  'addToken',
+  'addTokenSale',
+  'addMainTokenSale',
+  'tokens',
+  'tokenSales',
+  'mainTokenSales',
+  'preferences',
+  'actions'
+]
+
 const composeEnhancers = composeWithDevTools({realtime: true, port: 8080})
 
 let enhancers = composeEnhancers(
   applyMiddleware(thunkMiddleware,
     promiseMiddleware()
-  ),
-  persistState(
-    [
-      'addToken',
-      'addTokenSale',
-      'addMainTokenSale',
-      'tokens',
-      'tokenSales',
-      'mainTokenSales',
-      'preferences',
-      'actions'
-    ]
   )
 )
 
 if (process.env.NODE_ENV === 'production') {
-  enhancers = applyMiddleware(thunkMiddleware, promiseMiddleware(), persistState())
+  enhancers = applyMiddleware(thunkMiddleware, promiseMiddleware())
 }
 
 export const store = createStore(
   reducers,
-  enhancers
+  enhancers,
+  persistState(reducersToPersist)
 )
