@@ -95,7 +95,7 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.TokenDetailsMenu p, .TokenDetailsMenu i{
+.TokenDetailsMenu p.marginTxt, .TokenDetailsMenu .handleMenu p{
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */
    -ms-animation: fadein 2s; /* Internet Explorer */
@@ -203,7 +203,7 @@
   position: absolute;
   left: 90px;
   width: 200px;
-  color: #d3d3d3;
+  color: #7D7D7D;
 }
 
 .TokenDetailsMenu p.hoverTxt {
