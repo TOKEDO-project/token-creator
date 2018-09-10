@@ -17,16 +17,11 @@ class TokenSalePrice extends Component {
       valid: false
     }
   }
+
   onChangeText = (e) => {
-    let value = e.target.value
-
-    value = value.replace(',', '.')
-    const reg = /^-?\d*\.?\d*$/
-    if (!reg.test(value)) {
-      return
-    }
-
     const { dispatch, tokenId } = this.props
+
+    const value = e.target.value
     dispatch(setPrice({ tokenAddress: tokenId, price: value }))
     this.setState({
       valid: this.validate(value)
@@ -35,13 +30,14 @@ class TokenSalePrice extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    let valid = input.length > 0 && bnUtils.gt(input, 0)
-
-    if (setValid) {
-      setValid(valid)
-    }
+    const reg = /^-?\d*\.?\d*$/
+    const amountDecimalArr = input.split('.')
+    const amountDecimal = (amountDecimalArr[1]) ? amountDecimalArr[1].length : 0
+    const valid = input.length > 0 && bnUtils.gt(input, 0) && reg.test(input) && amountDecimal <= 18
+    if (setValid) { setValid(valid) }
     return valid
   }
+
   componentWillMount () {
     const { addTokenSale, tokenId } = this.props
     this.setState({ valid: this.validate(addTokenSale[tokenId].price) })
@@ -58,7 +54,7 @@ class TokenSalePrice extends Component {
     const { valid } = this.state
     const price = addTokenSale[tokenId].price
     const priceCurrency = addTokenSale[tokenId].priceCurrency
-
+    const errorMessage = t(`Decimal must be separated by ' . ' and decimals lenght not more than 18`)
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
@@ -76,7 +72,7 @@ class TokenSalePrice extends Component {
                 <option value='usd'>USD</option>
               </select>
             </div>
-            {!valid && price.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The price must be bigger than zero`)}</div> : null}
+            {!valid && price.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}

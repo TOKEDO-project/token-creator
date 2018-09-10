@@ -19,11 +19,6 @@ class TokenSaleMinContribution extends Component {
   onChangeText = (e) => {
     const { dispatch, tokenId } = this.props
     let value = e.target.value
-    value = value.replace(',', '.')
-    const reg = /^-?\d*\.?\d*$/
-    if (!reg.test(value)) {
-      return
-    }
 
     dispatch(setMinContribution({ tokenAddress: tokenId, minContribution: value }))
     this.setState({
@@ -33,11 +28,11 @@ class TokenSaleMinContribution extends Component {
 
   validate = (input) => {
     const { setValid } = this.props
-    const valid = input.length > 0 && bnUtils.gt(input, 0)
-
-    if (setValid) {
-      setValid(valid)
-    }
+    const reg = /^-?\d*\.?\d*$/
+    const amountDecimalArr = input.split('.')
+    const amountDecimal = (amountDecimalArr[1]) ? amountDecimalArr[1].length : 0
+    const valid = input.length > 0 && bnUtils.gt(input, 0) && reg.test(input) && amountDecimal <= 18
+    if (setValid) { setValid(valid) }
     return valid
   }
 
@@ -50,7 +45,7 @@ class TokenSaleMinContribution extends Component {
     const { addTokenSale, nextFunction, t, tokenId } = this.props
     const { valid } = this.state
     const minContribution = addTokenSale[tokenId].minContribution
-
+    const errorMessage = t(`Decimal must be separated by ' . ' and decimals lenght not more than 18`)
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
@@ -62,7 +57,7 @@ class TokenSaleMinContribution extends Component {
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />
-            {!valid && minContribution.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The number has to be greater than zero`)}</div> : null}
+            {!valid && minContribution.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
             {t('Next')}
