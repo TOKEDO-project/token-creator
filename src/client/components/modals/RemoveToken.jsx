@@ -12,6 +12,7 @@ import bnUtils from '../../../../bnUtils'
 import { setAmount } from '../../redux/addMainTokenSale'
 import { StepHeader } from '../steps/parts/StepHeader'
 import icon from '../../assets/images/help.svg'
+import { getTokenInfo } from '../../utils/tokens'
 
 class RemoveToken extends React.Component {
   constructor (props) {
@@ -31,9 +32,10 @@ class RemoveToken extends React.Component {
   }
 
   prepareTransaction = async (amount) => {
-    const { web3, mainTokenSales, tokenId } = this.props
+    const { web3, mainTokenSales, tokenId, tokens } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: web3.address, amount })
+    const token = getTokenInfo(tokenId, tokens)
+    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: web3.address, amount, decimals: token.decimals })
     this.setState({
       amount,
       transaction,

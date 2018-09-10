@@ -4,7 +4,7 @@ import MainTokenSaleBytecode from '../assets/bytecode/Main-Token-Sale.json'
 export default async ({ web3, addMainTokenSale }) => {
   const contract = new web3.eth.Contract(MainTokenSaleABI)
   const args = [
-    addMainTokenSale.userAddress, // address of the token owner
+    addMainTokenSale.userAddress, // address where the money will go
     addMainTokenSale.tokenAddress // address of the token to sell
   ]
   const data = '0x' + MainTokenSaleBytecode.object

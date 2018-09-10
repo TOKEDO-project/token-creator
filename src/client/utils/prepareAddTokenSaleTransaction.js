@@ -19,11 +19,11 @@ export default async ({ web3, tokenSale, mainTokenSaleAddress, tokenDecimals }) 
   const priceCurrency = ''
   const args = [
     mainTokenSaleAddress,
-    bnUtils.times(tokenSale.price, bnUtils.pow(10, tokenDecimals)),
+    web3.utils.toWei(tokenSale.price),
     priceFeed,
     priceCurrency,
     bnUtils.times(tokenSale.amount, bnUtils.pow(10, tokenDecimals)),
-    bnUtils.times(tokenSale.minContribution, bnUtils.pow(10, tokenDecimals)),
+    web3.utils.toWei(tokenSale.minContribution),
     tokenSale.startTime,
     tokenSale.endTime
   ]

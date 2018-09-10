@@ -12,6 +12,7 @@ import { setAmount } from '../../redux/addMainTokenSale'
 import bnUtils from '../../../../bnUtils'
 import { StepHeader } from '../steps/parts/StepHeader'
 import icon from '../../assets/images/help.svg'
+import { getTokenInfo } from '../../utils/tokens'
 
 class AddMoreToken extends React.Component {
   constructor (props) {
@@ -30,10 +31,9 @@ class AddMoreToken extends React.Component {
   }
   prepareTransaction = async (amount) => {
     const { web3, tokens, tokenId, mainTokenSales } = this.props
-    const transactionHash = tokens.receipts[tokenId].transactionHash
-    const tokenType = tokens.transactions[transactionHash].type
+    const token = getTokenInfo(tokenId, tokens)
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareTransferTokenTransaction({web3, tokenType, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount})
+    const transaction = await prepareTransferTokenTransaction({web3, tokenType: token.type, tokenAddress: tokenId, to: mainTokenSaleAddress, tokenAmount: amount, tokenDecimals: token.decimals})
     this.setState({
       amount,
       transaction,
@@ -49,11 +49,12 @@ class AddMoreToken extends React.Component {
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, tokenId, mainTokenSales, addMainTokenSale } = this.props
+    const { dispatch, tokenId, mainTokenSales, addMainTokenSale, history } = this.props
     const { amount } = this.state
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveAddMoreTokenReceipt({ mainTokenSaleAddress, receipt }))
     dispatch(setAmount({tokenAddress: tokenId, amount: bnUtils.plus(addMainTokenSale[tokenId].amount, amount)}))
+    history.push(`/token/details/${tokenId}`)
   }
 
   changeAmount = (e) => {

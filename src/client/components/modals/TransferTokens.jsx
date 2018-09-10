@@ -13,6 +13,7 @@ import bnUtils from '../../../../bnUtils'
 import { setAmount } from '../../redux/addMainTokenSale'
 import { StepHeader } from '../steps/parts/StepHeader'
 import icon from '../../assets/images/help.svg'
+import { getTokenInfo } from '../../utils/tokens'
 
 class TransferTokens extends React.Component {
   constructor (props) {
@@ -68,9 +69,10 @@ class TransferTokens extends React.Component {
   }
 
   prepareTransaction = async (address, amount) => {
-    const { web3, mainTokenSales, tokenId } = this.props
+    const { web3, mainTokenSales, tokenId, tokens } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: address, amount })
+    const token = getTokenInfo(tokenId, tokens)
+    const transaction = await prepareWithdrawTransaction({ web3, mainTokenSaleAddress, to: address, amount, decimals: token.decimals })
     this.setState({
       transaction,
       loading: false
