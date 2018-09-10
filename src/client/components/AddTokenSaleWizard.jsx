@@ -11,7 +11,6 @@ import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep, reset, setTokenSaleAddress } from '../redux/addTokenSale'
-import Loading from '../components/Loading'
 import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
 import prepareAddRCTransaction from '../utils/prepareAddRCTransaction'
 
@@ -25,23 +24,21 @@ class AddTokenSaleWizard extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      loading: true,
-      transaction: ''
+      transaction: null
     }
   }
 
   componentDidMount = async () => {
-    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
+    const { addTokenSale, tokenId } = this.props
+    let transaction = null
     if (addTokenSale[tokenId].step === 7) {
-      const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-      const tokenTxId = tokens.receipts[tokenId].transactionHash
-      const tokenDecimals = tokens.transactions[tokenTxId].decimals
-      const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
-      this.setState({
-        transaction,
-        loading: false
-      })
+      transaction = await this.createAddTokenSaleTransaction()
+    } else if (addTokenSale[tokenId].step === 8) {
+      transaction = await this.createAddRCTransaction()
     }
+    this.setState({
+      transaction
+    })
   }
 
   goToStep2 = (e) => {
@@ -74,27 +71,37 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({ tokenAddress: tokenId, step: 6 }))
   }
 
-  deployTokenSale = async (e) => {
-    e.preventDefault()
-    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+  createAddTokenSaleTransaction = async () => {
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     const tokenTxId = tokens.receipts[tokenId].transactionHash
     const tokenDecimals = tokens.transactions[tokenTxId].decimals
     const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    return transaction
+  }
+
+  createAddRCTransaction = async (tokenSaleAddress) => {
+    const { web3, tokenId, mainTokenSales, addTokenSale } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress: tokenSaleAddress || addTokenSale.address })
+    return transaction
+  }
+
+  deployTokenSale = async (e) => {
+    const { dispatch, tokenId } = this.props
+    e.preventDefault()
+    const transaction = await this.createAddTokenSaleTransaction()
     this.setState({
-      transaction,
-      loading: false
+      transaction
     })
     dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
-  deployAddRc = async (tokenSaleAddress) => {
-    const { web3, tokenId, mainTokenSales, dispatch } = this.props
-    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress })
+  deployAddRc = async () => {
+    const { tokenId, dispatch } = this.props
+    const transaction = await this.createAddRCTransaction()
     this.setState({
-      transaction,
-      loading: false
+      transaction
     })
     dispatch(setStep({tokenAddress: tokenId, step: 8}))
   }
@@ -154,14 +161,10 @@ class AddTokenSaleWizard extends Component {
   }
 
   render () {
-    const { addTokenSale, preferences, tokenId, t } = this.props
-    const { loading } = this.state
+    const { addTokenSale, preferences, tokenId } = this.props
     const step = addTokenSale[tokenId].step
     if (!preferences.terms) {
       return <TermsAndConditions />
-    }
-    if (step === 7 && loading) {
-      return <Loading />
     }
     return (
       <div id='token-sale-wizard' className='pure-u-1'>
