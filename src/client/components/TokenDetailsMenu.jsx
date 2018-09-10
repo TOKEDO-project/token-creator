@@ -47,7 +47,7 @@ class TokenDetailsMenu extends React.Component {
     const mainTokenSalesById = mainTokenSales[tokenId]
     // const { showMenu } = this.state
     return (
-      <div className={` ${showMenu ? 'pure-u-lg-5-24 pure-u-md-1-3 pure-u-1 pure-u-5-24'
+      <div className={` ${showMenu ? ' pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-5-24 pure-u-xl-5-24'
         : 'pure-u-lg-4-24 pure-u-md-5-24 pure-u-1 pure-u-4-24'}`}>
         <div className={`TokenDetailsMenu ${showMenu ? 'pure-u-1' : 'widthMenuClosed'}`}>
           <div className={` ${showMenu ? 'handleMenu' : 'closedHandleMenu'}`} onClick={this.handleMenuStatus}>

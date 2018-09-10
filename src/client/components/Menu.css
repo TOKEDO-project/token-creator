@@ -4,8 +4,7 @@
  right: 0;
  min-height: 100%;
  background-color: #575757;
- width: 320px;
- transform: translateX(320px);
+ transform: translateX(100%);
  z-index: 100;
 }
 
@@ -16,7 +15,7 @@
 #sidebar .item {
  height: 90px;
  color: #d4d4d4;
- padding: 0 25px;
+ padding-left: 40px;
  border-bottom: 1px solid #d4d4d4;
  cursor: pointer;
 }
@@ -39,4 +38,9 @@
 #sidebar .item:hover {
     background-color: #343434;
     color: #fa8100;
+}
+
+#sidebar .mainMenuImg {
+    width: 25px;
+    margin-right: 19px;
 }
