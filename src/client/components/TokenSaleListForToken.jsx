@@ -78,8 +78,8 @@ class TokenSaleListForToken extends React.Component {
               {map(tokenSaleReceipts, (receipt, address) => {
                 const tokenSale = tokenSaleTransactions[receipt.transactionHash]
                 const { startTime, endTime } = getTokenSaleTimes(tokenSale)
-                const today = moment(Date.now())
-                const isOpen = moment(today).diff(endTime) < 0
+                const today = moment()
+                const isOpen = today.diff(moment(endTime, 'x')) < 0
                 if (tokenSale.contractAddress) {
                   return (
                     <div id='TokenSaleListForToken' className='shadow pure-u-1' key={address}>
