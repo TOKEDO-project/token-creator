@@ -17,7 +17,11 @@ class TokenDetailsMenu extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      showMenu: true
+      addToggle: false,
+      unlockToggle: false,
+      changeToggle: false,
+      authorizeToggle: false,
+      transferToggle: false
     }
   }
 
@@ -42,6 +46,7 @@ class TokenDetailsMenu extends React.Component {
     history.push(href)
   }
   render () {
+    const { addToggle, unlockToggle, changeToggle, authorizeToggle, transferToggle } = this.state
     const { t, tokenId, preferences, mainTokenSales } = this.props
     const showMenu = preferences.showMenu
     const mainTokenSalesById = mainTokenSales[tokenId]
@@ -60,24 +65,44 @@ class TokenDetailsMenu extends React.Component {
               ? <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><div style={{ width: '21px', marginRight: '9px' }}>
                 <Loading size='21' color='#ffffff' /></div><p className='marginTxt'>{showMenu ? t('Waiting...') : null}</p>
               </button>
-              : <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}>
-                <img src={addIcon} />{showMenu ? <p className='marginTxt'>{t('Add Token Sale')}</p> : null}
+              : <button
+                onMouseEnter={() => { if (!showMenu) { this.setState({addToggle: true}) } }}
+                onMouseLeave={() => this.setState({addToggle: false})}
+                className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}>
+                <img src={addIcon} />
+                {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Add Token Sale')}</p> : null}
               </button>
             }
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img src={padlockIcon} />{showMenu ? <p className='marginTxt'>{t('Unlock The Token')}</p> : null}
+            <button
+              onMouseEnter={() => { if (!showMenu) { this.setState({unlockToggle: true}) } }}
+              onMouseLeave={() => this.setState({unlockToggle: false})}
+              onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={padlockIcon} />
+              {showMenu || unlockToggle ? <p className={` ${unlockToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Unlock The Token')}</p> : null}
             </button>
 
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img src={groupIcon} />{showMenu ? <p className='marginTxt'>{t('Change Token Owner')}</p> : null}
+            <button
+              onMouseEnter={() => { if (!showMenu) { this.setState({changeToggle: true}) } }}
+              onMouseLeave={() => this.setState({changeToggle: false})}
+              onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={groupIcon} />
+              {showMenu || changeToggle ? <p className={` ${changeToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Change Token Owner')}</p> : null}
             </button>
 
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img src={shieldIcon} />{showMenu ? <p className='marginTxt'>{ t('Authorize Transfer')}</p> : null}
+            <button
+              onMouseEnter={() => { if (!showMenu) { this.setState({authorizeToggle: true}) } }}
+              onMouseLeave={() => this.setState({authorizeToggle: false})}
+              onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={shieldIcon} />
+              {showMenu || authorizeToggle ? <p className={` ${authorizeToggle ? 'hoverTxt' : 'marginTxt'}`}>{ t('Authorize Transfer')}</p> : null}
             </button>
 
-            <button onClick={() => this.redirectTo(`/token/details/${tokenId}/transfer-tokens`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img src={trasferTokens} />{showMenu ? <p className='marginTxt'>{t('Transfer Tokens')}</p> : null}
+            <button
+              onMouseEnter={() => { if (!showMenu) { this.setState({transferToggle: true}) } }}
+              onMouseLeave={() => this.setState({transferToggle: false})}
+              onClick={() => this.redirectTo(`/token/details/${tokenId}/transfer-tokens`)} className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+              <img src={trasferTokens} />
+              {showMenu || transferToggle ? <p className={` ${transferToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Transfer Tokens')}</p> : null}
             </button>
 
           </div>
@@ -86,4 +111,5 @@ class TokenDetailsMenu extends React.Component {
     )
   }
 }
+
 export default withRouter(translate('translations')(connect(s => s)(TokenDetailsMenu)))

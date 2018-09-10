@@ -1,15 +1,19 @@
 /*Token Details Header*/
 .TokenDetailsHeader {
   padding: 20px 0px;
-max-width: 1920px;
+  max-width: 1920px;
+
 }
-.HeaderContainer{
+
+.HeaderContainer {
   background: white;
 }
+
 .TokenDetailsHeader img {
   width: 50px;
   margin-left: 20px;
 }
+
 .TokenDetailsHeader a img:active {
   -webkit-transform: translateY(6px);
   -moz-transform: translateY(6px);
@@ -17,6 +21,7 @@ max-width: 1920px;
   -o-transform: translateY(6px);
   transform: translateY(6px);
 }
+
 .TokenDetailsHeader .textCenter {
   text-align: center;
 }
@@ -53,19 +58,58 @@ max-width: 1920px;
 .TokenDetailsBody {
   padding-top: 5px;
 }
-.DetailsWidth{
+
+.DetailsWidth {
   padding: 25px;
 }
+
 /*Token Details Menu*/
 .TokenDetailsMenu {
   background: #575757;
-
 }
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.TokenDetailsMenu p, .TokenDetailsMenu i{
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+   -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+       animation: fadein 2s;
+}
+
+
 .TokenDetailsMenu a button p {
   font-weight: 500;
   font-family: 'Ubuntu';
   margin: 0 0 0 10px;
 }
+
 .TokenDetailsMenu .closedHandleMenu {
   width: 140px;
   height: 80px;
@@ -81,36 +125,29 @@ max-width: 1920px;
 .TokenDetailsMenu .closedHandleMenu i {
   font-size: 25px;
   transition: all 80ms ease-in;
-  -webkit-transition:  all 80ms ease-in;
 }
 
 .TokenDetailsMenu .closedHandleMenu p {
   margin: 0;
   transition: all 80ms ease-in;
-  -webkit-transition:  all 80ms ease-in;
 }
 
 .TokenDetailsMenu .handleMenu p {
   margin: 0 10px;
-  transition: all 170ms ease-in;
-  -webkit-transition:  all 170ms ease-in;
 }
+
 .TokenDetailsMenu .closedHandleMenu:hover {
   background: #FFAA00;
 }
-.TokenDetailsMenu .handleMenu:hover{
+
+.TokenDetailsMenu .handleMenu:hover {
   background: #24242a;
 }
-.TokenDetailsMenu .handleMenu i {
-  transition: all 180ms ease-in;
-  -webkit-transition:  all 180ms ease-in;
-}
+
 .TokenDetailsMenu .handleMenu {
   padding: 0px 10px;
   font-weight: 700;
   font-family: 'Ubuntu';
-  transition: all 100ms linear;
-  -webkit-transition:  all 100ms linear;
 }
 
 .TokenDetailsMenu .handleMenu {
@@ -151,6 +188,7 @@ max-width: 1920px;
   background: #575757;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .TokenDetailsMenu button.borderBtn {
@@ -159,6 +197,17 @@ max-width: 1920px;
 
 .TokenDetailsMenu button:hover {
   background: #343434;
+}
+
+.TokenDetailsMenu .hoverTxt {
+  position: absolute;
+  left: 90px;
+  width: 200px;
+  color: #d3d3d3;
+}
+
+.TokenDetailsMenu p.hoverTxt {
+  margin: 0px;
 }
 
 /*Token Details Media Query*/
@@ -175,16 +224,19 @@ max-width: 1920px;
     height: 60px;
   }
 }
+
 @media (min-width: 1280px) {
-.TokenDetailsMenu button.borderBtn {
-  padding-left: 40px;
+  .TokenDetailsMenu button.borderBtn {
+    padding-left: 40px;
+  }
 }
-}
+
 @media (max-width: 1279px) {
   .TokenDetailsMenu button.borderBtn {
     padding-left: 20px;
   }
-  }
+}
+
 @media (min-width: 1024px) {
 
   .TokenDetailsHeader .paddingItems {
@@ -221,11 +273,13 @@ max-width: 1920px;
     padding: 20px 0px;
   }
 }
+
 @media (min-width: 768px) {
 
   .TokenDetailsBody {
     padding-top: 70px;
   }
+
   .TokenDetailsMenu {
     min-height: calc(170vh);
   }
@@ -236,15 +290,18 @@ max-width: 1920px;
   .TokenDetailsMenu button.borderBtn {
     padding-left: 40px;
   }
+
   .TokenDetailsMenu .hideMenuResponsive {
     display: none;
   }
 }
-@media (min-width: 64em){
-  .TokenDetailsHeader .lg-2l-24{
+
+@media (min-width: 64em) {
+  .TokenDetailsHeader .lg-2l-24 {
     width: 10.3333%;
   }
-  .TokenDetailsHeader .lg-2s-24{
+
+  .TokenDetailsHeader .lg-2s-24 {
     width: 7.3333%;
   }
 }
