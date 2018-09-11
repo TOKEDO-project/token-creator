@@ -114,10 +114,20 @@ class TransferTokens extends React.Component {
               title={t(`Transfer Token`)}
             >
               {t(`You need to make the transaction to transfer the tokens.`)}
-              <p>
-                {t('You are sending')}: {amount} {t('to')}: {address}  <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the data</button>
-              </p>
+
             </StepHeader>
+            <div className='groupBottom pure-u-1 d-flex flex-v-center'>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                <p>
+                  <span>
+                    {t('You are sending')}:
+                  </span> {amount} <br /> {t('to')}: {address}
+                </p>
+              </div>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the data</button>
+              </div>
+            </div>
           </WalletSelection>
           : <div>
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />

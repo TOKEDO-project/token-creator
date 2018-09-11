@@ -1,51 +1,70 @@
 #tac {
- padding: 50px 5%;
+  padding: 50px 5%;
 }
 
 #tac div.box {
- background-color: white;
- border-radius: 5px;
- padding: 50px;
- color: #888888;
- 
- margin: 50px 0;
- 
- 
- word-spacing: 2px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 50px;
+  color: #888888;
+  margin: 50px 0;
+  word-spacing: 2px;
 }
 
 #tac div.box div.text {
- max-height: 300px;
- overflow-y: scroll;
- padding-right: 5px;
+  max-height: 500px;
+  overflow-y: scroll;
+  padding-right: 5px;
 }
 
 #tac div.buttons {
- margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 #tac div.buttons a {
- width: calc(50% - 10px);
+  width: calc(50% - 10px);
 }
 
 #tac div.buttons button {
- width: 100%;
- height: 60px;
- border: none;
- border-radius: 5px;
- 
- 
- color: white;
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+
+
+  color: white;
 }
 
 #tac div.buttons button.refuse {
- background-color: #BBBBBB;
+  background-color: #BBBBBB;
 }
 
 #tac div.buttons button.accept {
- background: #FA8100;
+  background: #FA8100;
 }
 
 #tac div.buttons button.accept:hover {
-    background: #FFAA00;
-  }
+  background: #FFAA00;
+}
+#tac .centerTxt{
+  text-align:center;
+}
+
+#tac span.marginLeft{
+  margin-left: 15px;
+}
+
+#tac span {
+ font-size: 16px;
+ font-weight: 600;
+}
+
+#tac h3 {
+  font-size: 18px;
+  font-weight: 600;
+ }
+
+ #tac p {
+  font-size: 15px;
+  font-weight: 400;
+ }

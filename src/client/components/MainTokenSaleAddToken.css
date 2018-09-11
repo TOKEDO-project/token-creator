@@ -1,10 +1,10 @@
-#MainTokenSaleAddToken p {
+#MainTokenSaleAddToken p, .groupBottom p {
   font-size: 15px;
   color: #b8b8b8;
   margin-right: 20px;
 }
 
-#MainTokenSaleAddToken .btnChange {
+#MainTokenSaleAddToken .btnChange, .btnChange {
   background: #7d7d7d;
   color: white;
   height: 35px;
@@ -12,10 +12,11 @@
   padding: 0 10px;
   border: none;
   border-radius: 5px;
+  max-width: 200px;
 }
 
-#MainTokenSaleAddToken .groupBottom {
-  margin: 20px 0px;
+#MainTokenSaleAddToken .groupBottom, .groupBottom {
+  margin: 40px 0px;
 }
 
 #MainTokenSaleAddToken .btnChange:hover {

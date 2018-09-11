@@ -42,7 +42,7 @@ class MainTokenSaleDetail extends React.Component {
           </div>
           <div className='pure-u-1 d-flex flex-row flex-v-center '>
             <div className='pure-u-lg-10-24 pure-u-md-8-24 pure-u-sm-7-24'>
-              <h2>{t('Token Sale')}</h2>
+              <h2>{t('Token Sale Manager')}</h2>
             </div>
             <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
               <h4>{t('Token for Sale')}</h4>

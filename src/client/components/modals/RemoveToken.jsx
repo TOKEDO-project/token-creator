@@ -77,10 +77,20 @@ class RemoveToken extends React.Component {
               title={t(`Remove Token to Sale`)}
             >
               {t(`You need to make the transaction to an ethereum address to remove tokens to sale.`)}
-              <p>
-                {t('You are removing')}: {amount} {t('tokens from sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-              </p>
+
             </StepHeader>
+            <div className='groupBottom pure-u-1 d-flex flex-v-center'>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                <p>
+                  <span>
+                    {t('You are removing')}:
+                  </span> {amount} <br /> {t('tokens from sale')}
+                </p>
+              </div>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+              </div>
+            </div>
           </WalletSelection>
           : <TokenSaleRemoveAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
         }

@@ -11,7 +11,11 @@ class FaqPage extends React.Component {
 
   render () {
     const {t} = this.props
-    return (<div>{t('FaqPage')}</div>)
+    return (
+      <div>
+        {t('FaqPage')}
+      </div>
+    )
   }
 }
 

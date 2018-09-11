@@ -70,7 +70,7 @@ class TokenDetailsMenu extends React.Component {
                 onMouseLeave={() => this.setState({addToggle: false})}
                 className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`} onClick={this.addTokenSale}>
                 <img src={addIcon} />
-                {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Add Token Sale')}</p> : null}
+                {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Create Token Sale')}</p> : null}
               </button>
             }
             <button

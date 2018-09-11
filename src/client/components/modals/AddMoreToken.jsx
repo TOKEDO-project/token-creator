@@ -76,10 +76,20 @@ class AddMoreToken extends React.Component {
               title={t(`Add More Token to Sale`)}
             >
               {t(`You need to make the transaction to add more tokens to sale.`)}
-              <p>
-                {t('You are adding')}: {amount} {t('tokens for sale')} <button onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-              </p>
+
             </StepHeader>
+            <div className='groupBottom pure-u-1 d-flex flex-v-center'>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                <p>
+                  <span>
+                    {t('You are adding')}:
+                  </span> {amount} {t('tokens for sale')}
+                </p>
+                <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                  <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+                </div>
+              </div>
+            </div>
           </WalletSelection>
           : <MainTokenSaleAddAmount onIsValidCB={this.prepareTransaction} tokenId={tokenId} />
         }

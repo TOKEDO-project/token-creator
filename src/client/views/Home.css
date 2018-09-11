@@ -1,25 +1,37 @@
 #home {
- padding: 50px 5%;
+  padding: 50px 5%;
+}
+#home p{
+  margin-top: 20px;
+  line-height: 30px;
+  font-size: 15px;
 }
 
 #home span.message {
- 
- color: #575757;
- 
- margin: 50px 0;
+  color: #575757;
+  margin: 50px 0;
+}
+
+#home .homeText {
+  color: #575757;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 50px;
 }
 
 #home button.start-now {
- width: 220px;
- height: 60px;
- background: #FA8100;
- border: none;
- border-radius: 5px;
- color: white;
- 
+  width: 220px;
+  height: 60px;
+  background: #FA8100;
+  border: none;
+  border-radius: 5px;
+  color: white;
+
 }
 
 #home button.start-now:hover {
-    background: #FFAA00;
+  background: #FFAA00;
 
 }

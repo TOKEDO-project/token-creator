@@ -71,12 +71,16 @@ class MainTokenSaleAddToken extends Component {
               {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
             </StepHeader>
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
-              <p>
-                <span>
-                  {t('You are adding')}:
-                </span> {amount} {t('tokens for sale')}
-              </p>
-              <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                <p>
+                  <span>
+                    {t('You are adding')}:
+                  </span> {amount} {t('tokens for sale')}
+                </p>
+                <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                  <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+                </div>
+              </div>
             </div>
             <div className='separator-twentyfive' />
           </WalletSelection>
