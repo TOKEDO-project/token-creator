@@ -123,8 +123,9 @@ class TransferTokens extends React.Component {
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
             <div className='separator-twentyfive' />
             <TransferTokenAmount onChangeAmount={this.onChangeAmount} onValidAmount={this.onValidAmount} tokenId={tokenId} hideNextButton />
-
-            {validAddress && validAmount ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null}
+            <div className='pure-u-1 d-flex flex-v-center'>
+              {validAddress && validAmount ? <button className='nextBtn next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null}
+            </div>
           </div>
         }
         <div className='separator-twentyfive' />

@@ -77,7 +77,7 @@ class AuthorizeTransfer extends React.Component {
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='authorizeTransferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
+            <div className='marginTop top d-flex flex-row flex-h-start flex-v-center'>
               <div className='left'>
                 <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
               </div>
@@ -89,10 +89,10 @@ class AuthorizeTransfer extends React.Component {
               </div>
             </div>
           </WalletSelection>
-          : <div>
+          : <div className='d-flex flex-row'>
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
 
-            {validAddress ? <button className='next shadow pure-u-7-24' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
+            {validAddress ? <button className='btnNext next shadow pure-u-7-24' >{t('Next')}</button> : null}
           </div>
         }
         <div className='separator-twentyfive' />

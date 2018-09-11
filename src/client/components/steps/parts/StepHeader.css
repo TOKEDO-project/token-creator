@@ -17,3 +17,7 @@ div.step div.top div.right span.description {
  color: #B8B8B8;
  margin-top: 5px;
 }
+
+div.step .marginTop {
+    margin-top: 15px;
+   }

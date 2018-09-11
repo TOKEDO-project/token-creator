@@ -71,8 +71,9 @@ div.modal .hideTxt{
   margin-right: 15px;
 }
 div.modal div.children {
-  /* Calc padding by left original padding + icon size + icon margin */
-  padding: 25px calc(25px + 32px + 25px);
+  /* Calc padding by left original padding + icon size + icon margin
+  padding: 25px calc(25px + 32px + 25px); */
+  padding: 50px;
   overflow-y: auto;
 }
 

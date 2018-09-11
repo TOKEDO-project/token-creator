@@ -1,12 +1,15 @@
 #MainTokenSaleAddToken p {
   font-size: 15px;
-  color: #7D7D7D;
+  color: #b8b8b8;
+  margin-right: 20px;
 }
 
-#MainTokenSaleAddToken .btnOrng {
-  background: #FA8100;
+#MainTokenSaleAddToken .btnChange {
+  background: #7d7d7d;
   color: white;
-  height: 40px;
+  height: 35px;
+  font-size: 15px;
+  padding: 0 10px;
   border: none;
   border-radius: 5px;
 }
@@ -15,8 +18,8 @@
   margin: 20px 0px;
 }
 
-#MainTokenSaleAddToken .btnOrng:hover {
-  background: #ffaa00;
+#MainTokenSaleAddToken .btnChange:hover {
+  background: #b8b8b8;
 }
 
 @media (min-width: 600px) {
