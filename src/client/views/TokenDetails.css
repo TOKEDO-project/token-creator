@@ -294,6 +294,10 @@
   .TokenDetailsMenu .hideMenuResponsive {
     display: none;
   }
+  
+  .TokenDetailsBody {
+    padding-top: 70px;
+  }
 }
 
 @media (min-width: 64em) {

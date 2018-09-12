@@ -4,16 +4,16 @@
 #home p{
   margin-top: 20px;
   line-height: 30px;
-  font-size: 0.99rem;
+  font-size: 0.96rem;
 }
 
-#home span.message {
-  color: #575757;
+#home h1.message {
+  color: #24242a;
   margin: 50px 0;
 }
 
 #home .homeText {
-  color: #575757;
+  color: #888;
   text-align: center;
   background: white;
   padding: 20px;

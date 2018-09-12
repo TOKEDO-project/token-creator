@@ -29,7 +29,7 @@ class Menu extends Component {
     const routes = [
       {name: t('Home'), route: '/', img: home, imgActive: homeActive},
       {name: t('FAQ'), route: '/faq', img: faq, imgActive: faqActive},
-      {name: t('Help'), route: '/help', img: help, imgActive: helpActive},
+      // {name: t('Help'), route: '/help', img: help, imgActive: helpActive},
       {name: t('Credits'), route: '/credits', img: credits, imgActive: creditsActive}
     ]
     return (

@@ -25,8 +25,8 @@ class Home extends Component {
       return (
         <div id='home' className='pure-u-1 d-flex flex-column flex-h-center flex-v-center'>
           <img className='shuttle' src={shuttle} alt='Home' />
-          <span className='message'>{t('Your Token Sale in 5 Minutes')}</span>
-          <div className='pure-u-1 pure-u-sm-1 pure-u-md-22-24 pure-u-lg-15-24 pure-xl-15-24 homeText shadow'>
+          <h1 className='message font-size-huge'>{t('Your Token Sale in 5 Minutes')}</h1>
+          <div className='font-size-tiny pure-u-1 pure-u-sm-1 pure-u-md-22-24 pure-u-lg-10-24 pure-xl-10-24 homeText shadow'>
             <p>
               {t('It’s quick, it’s easy. Tokenize your company')}
               <br />

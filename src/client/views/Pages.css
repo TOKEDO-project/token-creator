@@ -1,20 +1,84 @@
-.pages .box{
-    background: white;
-    padding: 25px 50px;
-    border-radius: 5px;
-    margin: 20px 0;
-    padding: 50px;
-    color: #888888;
-    margin: 50px 0;
-    word-spacing: 2px;
-    text-align: center;
+.pages .box {
+  background: white;
+  padding: 25px 50px;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 50px;
+  color: #888888;
+  margin: 50px 0;
+  word-spacing: 2px;
+  text-align: center;
 }
 
-.pages h4{
-    text-align: center;
-    font-weight: 600;
-    color: #FA8100;
-    margin: 0;
-    margin-bottom: 20px;
+.pages h4 {
+  text-align: center;
+  font-weight: 600;
+  color: #FA8100;
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
+#faqPage {
+  padding: 50px 5%;
+}
+
+#faqPage .centerTxt {
+  text-align: center;
+}
+
+#faqPage .leftTxt {
+  text-align: left;
+}
+
+#faqPage span.marginLeft {
+  margin-left: 15px;
+}
+
+#faqPage span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#faqPage h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 40px 0 20px 0;
+  text-align: left;
+}
+
+#faqPage p {
+  font-size: 0.99rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+
+#faqPage ul li {
+  text-decoration: none;
+  text-align: left;
+  font-weight: 400;
+}
+
+#faqPage a {
+  text-decoration: underline;
+  color: #3583f3;
+}
+
+.scroll {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+scroll:active {
+    transform: translateY(5px);
+  }
+span.fa-chevron-up {
+  color: #8888;
+}
