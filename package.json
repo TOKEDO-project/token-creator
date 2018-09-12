@@ -11,7 +11,7 @@
     "build": "webpack -p --config ./webpack/webpack.prod.js --progress",
     "start:client": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
     "start:server": "node ./src/server/index.js",
-    "start:serverdev": "nodemon ./src/server/index.js",
+    "start:serverdev": "nodemon ./src/server/index.js & npx ganache-cli --account=\"$PRIVATE_KEY, 100000000000000000000\"",
     "dev": "nf start -j Procfile.dev",
     "prod": "npm run build && npm run start:server",
     "lint": "standard",
@@ -51,6 +51,7 @@
     "web3": "^1.0.0-beta.35"
   },
   "devDependencies": {
+    "ganache-cli": "^6.1.8",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
