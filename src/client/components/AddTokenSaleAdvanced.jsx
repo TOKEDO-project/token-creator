@@ -8,12 +8,12 @@ import TokenSalePrice from '../components/steps/TokenSalePrice'
 import TokenSaleAmount from '../components/steps/TokenSaleAmount'
 import TokenSaleKyc from '../components/steps/TokenSaleKyc'
 import TokenSaleMinContribution from '../components/steps/TokenSaleMinContribution'
-import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
-import { saveTransaction, saveReceipt } from '../redux/tokenSales'
-import { setStep, reset } from '../redux/addTokenSale'
+import { saveTransaction, saveReceipt, saveAddRCReceipt } from '../redux/tokenSales'
+import { setStep, reset, setTokenSaleAddress } from '../redux/addTokenSale'
 import prepareAddTokenSaleTransaction from '../utils/prepareAddTokenSaleTransaction'
+import prepareAddRCTransaction from '../utils/prepareAddRCTransaction'
 
 import './AddTokenSaleAdvanced.css'
 import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
@@ -27,23 +27,37 @@ class AddTokenSaleAdvanced extends Component {
       validPrice: false,
       validAmount: false,
       validMinContribution: false,
-      validFundOwner: false,
       transaction: ''
     }
   }
 
   componentDidMount = async () => {
-    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
-    if (addTokenSale[tokenId].step === 7) {
-      const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-      const tokenTxId = tokens.receipts[tokenId].transactionHash
-      const tokenDecimals = tokens.transactions[tokenTxId].decimals
-      const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
-      this.setState({
-        transaction,
-        loading: false
-      })
+    const { addTokenSale, tokenId } = this.props
+    let transaction = null
+    if (addTokenSale[tokenId].step === 6) {
+      transaction = await this.createAddTokenSaleTransaction()
+    } else if (addTokenSale[tokenId].step === 7) {
+      transaction = await this.createAddRCTransaction()
     }
+    this.setState({
+      transaction
+    })
+  }
+
+  createAddTokenSaleTransaction = async () => {
+    const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const tokenTxId = tokens.receipts[tokenId].transactionHash
+    const tokenDecimals = tokens.transactions[tokenTxId].decimals
+    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    return transaction
+  }
+
+  createAddRCTransaction = async (tokenSaleAddress) => {
+    const { web3, tokenId, mainTokenSales, addTokenSale } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress: tokenSaleAddress || addTokenSale.address })
+    return transaction
   }
 
   // Set validators
@@ -56,23 +70,29 @@ class AddTokenSaleAdvanced extends Component {
   setValidMinContribution = (valid) => {
     this.setState({ validMinContribution: valid })
   }
-  setValidFundOwner = (valid) => {
-    this.setState({ validFundOwner: valid })
-  }
 
   // is Valid function
   isValid = () => {
-    const { validPrice, validAmount, validMinContribution, validFundOwner } = this.state
-    return validPrice && validAmount && validMinContribution && validFundOwner
+    const { validPrice, validAmount, validMinContribution } = this.state
+    return validPrice && validAmount && validMinContribution
+  }
+
+  deployAddRc = async () => {
+    const { tokenId, dispatch } = this.props
+    const transaction = await this.createAddRCTransaction()
+    this.setState({
+      transaction
+    })
+    dispatch(setStep({ tokenAddress: tokenId, step: 7 }))
   }
 
   onReceipt = (receipt) => {
-    const { dispatch, history, tokenId, mainTokenSales } = this.props
+    const { dispatch, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     dispatch(saveReceipt({ mainTokenSaleAddress, receipt }))
     if (receipt.contractAddress) {
-      dispatch(reset({ tokenAddress: tokenId }))
-      history.push(`/token/details/${tokenId}`)
+      dispatch(setTokenSaleAddress({ tokenAddress: tokenId, address: receipt.contractAddress }))
+      this.deployAddRc(receipt.contractAddress)
     }
   }
 
@@ -82,64 +102,73 @@ class AddTokenSaleAdvanced extends Component {
     dispatch(saveTransaction({ mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId] }))
   }
 
-  goToWalletSelection = async () => {
-    const { web3, addTokenSale, tokenId, mainTokenSales, tokens, dispatch } = this.props
+  onReceiptRc = (receipt) => {
+    const { history, dispatch, tokenId, mainTokenSales, addTokenSale } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const tokenTxId = tokens.receipts[tokenId].transactionHash
-    const tokenDecimals = tokens.transactions[tokenTxId].decimals
-    const transaction = await prepareAddTokenSaleTransaction({ web3, tokenSale: addTokenSale[tokenId], mainTokenSaleAddress, tokenDecimals })
+    receipt.contractAddress = addTokenSale[tokenId].address
+    dispatch(saveAddRCReceipt({ mainTokenSaleAddress, receipt }))
+    dispatch(reset({ tokenAddress: tokenId }))
+    history.push(`/token/details/${tokenId}`)
+  }
+
+  onTransactionHashRc = (transactionHash) => {
+    const { addTokenSale, dispatch, tokenId, mainTokenSales } = this.props
+    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
+    dispatch(saveTransaction({ mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId] }))
+  }
+
+  goToWalletSelection = async () => {
+    const { tokenId, dispatch } = this.props
+    const transaction = await this.createAddTokenSaleTransaction()
     this.setState({
       transaction,
       loading: false
     })
-    dispatch(setStep({tokenAddress: tokenId, step: 7}))
+    dispatch(setStep({tokenAddress: tokenId, step: 6}))
   }
 
   render () {
-    const { addTokenSale, preferences, loading, t, tokenId } = this.props
+    const { addTokenSale, preferences, t, tokenId } = this.props
     const { transaction } = this.state
     if (!preferences.terms) {
       return <TermsAndConditions />
     }
 
     const step = addTokenSale[tokenId].step
-    if (step === 7 && loading) {
-      return <Loading />
-    }
+    console.log('STEP', step)
     const valid = this.isValid()
     return (
       <div id='token-sale-advanced' className='pure-u-1'>
-        {step === 7
-          ? <WalletSelection connectorName='addToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
-          : <div className='big-card shadow pure-u-1 d-flex flex-column flex-v-center'>
-            <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSalePrice setValid={this.setValidPrice} tokenId={tokenId} />
+        {step === 6
+          ? <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+          : step === 7
+            ? <WalletSelection connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
+            : <div className='big-card shadow pure-u-1 d-flex flex-column flex-v-center'>
+              <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
+                <div className='pure-u-1 pure-u-md-12-24'>
+                  <TokenSalePrice setValid={this.setValidPrice} tokenId={tokenId} />
+                </div>
+                <div className='pure-u-1 pure-u-md-12-24'>
+                  <TokenSaleAmount setValid={this.setValidAmount} tokenId={tokenId} />
+                </div>
               </div>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleAmount setValid={this.setValidAmount} tokenId={tokenId} />
+              <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
+                <div className='pure-u-1 pure-u-md-12-24'>
+                  <TokenSaleMinContribution setValid={this.setValidMinContribution} tokenId={tokenId} />
+                </div>
+              </div>
+              <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
+                <div className='pure-u-1 pure-u-md-12-24'>
+                  <TokenSaleKyc tokenId={tokenId} />
+                </div>
+                <div className='pure-u-1 pure-u-md-12-24'>
+                  <TokenSaleStartEndTime tokenId={tokenId} />
+                </div>
+              </div>
+              <div className='deploy-container pure-u-1 pure-u-md-12-24'>
+                {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
               </div>
             </div>
-            <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleMinContribution setValid={this.setValidMinContribution} tokenId={tokenId} />
-              </div>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleFundOwner setValid={this.setValidFundOwner} tokenId={tokenId} />
-              </div>
-            </div>
-            <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleKyc tokenId={tokenId} />
-              </div>
-              <div className='pure-u-1 pure-u-md-12-24'>
-                <TokenSaleStartEndTime tokenId={tokenId} />
-              </div>
-            </div>
-            <div className='deploy-container pure-u-1 pure-u-md-12-24'>
-              {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
-            </div>
-          </div>
         }
       </div>)
   }

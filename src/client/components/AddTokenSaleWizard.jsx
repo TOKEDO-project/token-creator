@@ -7,7 +7,6 @@ import TokenSalePrice from '../components/steps/TokenSalePrice'
 import TokenSaleAmount from '../components/steps/TokenSaleAmount'
 import TokenSaleKyc from '../components/steps/TokenSaleKyc'
 import TokenSaleMinContribution from '../components/steps/TokenSaleMinContribution'
-import TokenSaleFundOwner from '../components/steps/TokenSaleFundOwner'
 import WalletSelection from '../components/steps/WalletSelection'
 import TermsAndConditions from '../components/TermsAndConditions'
 import { setStep, reset, setTokenSaleAddress } from '../redux/addTokenSale'
@@ -31,9 +30,9 @@ class AddTokenSaleWizard extends Component {
   componentDidMount = async () => {
     const { addTokenSale, tokenId } = this.props
     let transaction = null
-    if (addTokenSale[tokenId].step === 7) {
+    if (addTokenSale[tokenId].step === 6) {
       transaction = await this.createAddTokenSaleTransaction()
-    } else if (addTokenSale[tokenId].step === 8) {
+    } else if (addTokenSale[tokenId].step === 7) {
       transaction = await this.createAddRCTransaction()
     }
     this.setState({
@@ -65,12 +64,6 @@ class AddTokenSaleWizard extends Component {
     dispatch(setStep({tokenAddress: tokenId, step: 5}))
   }
 
-  goToStep6 = (e) => {
-    e.preventDefault()
-    const { dispatch, tokenId } = this.props
-    dispatch(setStep({ tokenAddress: tokenId, step: 6 }))
-  }
-
   createAddTokenSaleTransaction = async () => {
     const { web3, addTokenSale, tokenId, mainTokenSales, tokens } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
@@ -94,7 +87,7 @@ class AddTokenSaleWizard extends Component {
     this.setState({
       transaction
     })
-    dispatch(setStep({tokenAddress: tokenId, step: 7}))
+    dispatch(setStep({tokenAddress: tokenId, step: 6}))
   }
 
   deployAddRc = async () => {
@@ -103,7 +96,7 @@ class AddTokenSaleWizard extends Component {
     this.setState({
       transaction
     })
-    dispatch(setStep({tokenAddress: tokenId, step: 8}))
+    dispatch(setStep({tokenAddress: tokenId, step: 7}))
   }
 
   onReceipt = (receipt) => {
@@ -148,14 +141,12 @@ class AddTokenSaleWizard extends Component {
       case 3:
         return <TokenSaleMinContribution nextFunction={this.goToStep4} tokenId={tokenId} />
       case 4:
-        return <TokenSaleFundOwner nextFunction={this.goToStep5} tokenId={tokenId} />
+        return <TokenSaleStartEndTime nextFunction={this.goToStep5} tokenId={tokenId} />
       case 5:
-        return <TokenSaleStartEndTime nextFunction={this.goToStep6} tokenId={tokenId} />
-      case 6:
         return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
-      case 7:
+      case 6:
         return <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
-      case 8:
+      case 7:
         return <WalletSelection connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
     }
   }
@@ -169,9 +160,9 @@ class AddTokenSaleWizard extends Component {
     return (
       <div id='token-sale-wizard' className='pure-u-1'>
         <div className='progress-container pure-u-1 d-flex flex-column'>
-          <div className={`progress-title pure-u-${step * 4}-24`}>Step {step}</div>
+          <div className={`progress-title pure-u-${step * 3}-24`}>Step {step}</div>
           <div className='progress-bar shadow'>
-            <div className={`progress-bar-content pure-u-${step * 4}-24`} />
+            <div className={`progress-bar-content pure-u-${step * 3}-24`} />
           </div>
         </div>
         <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>

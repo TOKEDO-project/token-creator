@@ -58,15 +58,6 @@ export const setMinContribution = createAction('TOKEN_SALE_SET_MIN_CONTRIBUTION'
   }
 )
 
-export const setFundOwner = createAction('TOKEN_SALE_SET_OWNER',
-  ({ tokenAddress, owner }) => {
-    return {
-      tokenAddress,
-      owner
-    }
-  }
-)
-
 export const setStartTime = createAction('TOKEN_SALE_SET_START_TIME',
   ({ tokenAddress, startTime }) => {
     return {
@@ -159,16 +150,6 @@ export const addTokenSale = handleActions({
       [payload.tokenAddress]: {
         ...token,
         minContribution: payload.minContribution
-      }
-    }
-  },
-  TOKEN_SALE_SET_OWNER: (state, { payload }) => {
-    const token = state[payload.tokenAddress] || defaultToken
-    return {
-      ...state,
-      [payload.tokenAddress]: {
-        ...token,
-        owner: payload.owner
       }
     }
   },
