@@ -69,7 +69,7 @@ class MainTokenSaleAddAmount extends Component {
     const tokenInfo = getTokenInfo(tokenId, tokens)
     const mainTokenSaleAmount = addMainTokenSale[tokenId].amount
     const remainingTokens = (tokenInfo.supply - mainTokenSaleAmount)
-    const errorMessage = t('Can not be more than') +
+    const errorMessage = t('Cannot be more than') +
       ' ' + remainingTokens + ' ' + t('tokens') +
       ' ' + t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + tokenInfo.decimals
     return (

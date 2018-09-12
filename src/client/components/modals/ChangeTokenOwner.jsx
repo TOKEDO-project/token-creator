@@ -26,7 +26,7 @@ class ChangeTokenOwner extends React.Component {
     const { visible } = this.state
     return (
       <Modal icon={changeOwner} visible={visible} title={t('Change Token Owner')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title={t('WARNING: This action can not be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
+        <WarningMessage title={t('WARNING: This action cannot be undone')} description={t('Double check your new address before sending the transaction')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
         <div className='separator-twentyfive' />
         <EthereumAddress />
         <div className='separator-twentyfive' />

@@ -57,7 +57,7 @@ class TransferTokenAmount extends Component {
     const { valid, amount } = this.state
     const tokenInfo = getTokenInfo(tokenId, tokens)
     const mainTokenSaleAmount = addMainTokenSale[tokenId].amount
-    const errorMessage = t('Can not be more than') +
+    const errorMessage = t('Cannot be more than') +
       ' ' + mainTokenSaleAmount + ' ' + t('tokens') +
       ' ' + t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + tokenInfo.decimals
 

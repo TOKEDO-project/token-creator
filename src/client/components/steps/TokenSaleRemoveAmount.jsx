@@ -66,7 +66,7 @@ class TokenSaleRemoveAmount extends Component {
     const { tokenId, nextFunction, t, tokens, addMainTokenSale } = this.props
     const { valid, tokenRemoveAmountInput } = this.state
     const tokenInfo = getTokenInfo(tokenId, tokens)
-    const errorMessage = t('Can not be more than') +
+    const errorMessage = t('Cannot be more than') +
       ' ' + addMainTokenSale[tokenId].amount + ' ' + t('tokens') +
       ' ' + t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + tokenInfo.decimals
     return (
