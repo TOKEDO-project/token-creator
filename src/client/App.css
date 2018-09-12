@@ -54,7 +54,8 @@ img.shuttle {
   object-fit: contain;
 }
 
-.pure-g, .pure-g [class*=pure-u] {
+.pure-g,
+.pure-g [class*=pure-u] {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -79,31 +80,31 @@ img.shuttle {
 }
 
 .font-size-tiny {
-  font-size: 12px;
+  font-size: 0.98rem;
 }
 
 .font-size-small {
-  font-size: 14px;
+  font-size: 0.99rem;
 }
 
 .font-size-normal {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .font-size-medium {
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 .font-size-large {
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 
 .font-size-big {
-  font-size: 22px;
+  font-size: 1.3rem;
 }
 
 .font-size-huge {
-  font-size: 24px;
+  font-size: 1.4rem;
 }
 
 .separator-fifteen {
@@ -146,4 +147,22 @@ div.progress-bar {
 div.progress-bar-content {
   height: 100%;
   background: linear-gradient(90deg, #FA8100, #fa9e3c);
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1279px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
 }

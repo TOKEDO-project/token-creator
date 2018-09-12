@@ -2,8 +2,6 @@
     background: white;
     padding: 25px 50px;
     border-radius: 5px;
-    overflow-y: scroll;
-    max-height: 500px;
     margin: 20px 0;
     padding: 50px;
     color: #888888;
@@ -14,8 +12,9 @@
 
 .pages h4{
     text-align: center;
-    font-size: 15px;
     font-weight: 600;
     color: #FA8100;
     margin: 0;
+    margin-bottom: 20px;
 }
+

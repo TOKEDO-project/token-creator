@@ -4,7 +4,7 @@
 #home p{
   margin-top: 20px;
   line-height: 30px;
-  font-size: 15px;
+  font-size: 0.99rem;
 }
 
 #home span.message {

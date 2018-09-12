@@ -66,7 +66,7 @@ class MainTokenSaleAddToken extends Component {
           ? <WalletSelection connectorName='mainTokenSaleAddToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
             <StepHeader
               icon={icon}
-              title={t(`Allocate tokes`)}
+              title={t(`Allocate tokens`)}
             >
               {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
             </StepHeader>
@@ -77,9 +77,10 @@ class MainTokenSaleAddToken extends Component {
                     {t('You are adding')}:
                   </span> {amount} {t('tokens for sale')}
                 </p>
-                <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
-                  <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
-                </div>
+              </div>
+
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
               </div>
             </div>
             <div className='separator-twentyfive' />

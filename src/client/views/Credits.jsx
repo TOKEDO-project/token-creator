@@ -13,8 +13,11 @@ class Credits extends React.Component {
     const { t } = this.props
     return (
       <div id='creditsPage' className='pages pure-u-1 d-flex flex-column flex-v-center'>
-        <div className='box shadow pure-u-4-5 pure-u-md-3-5 pure-u-lg-3-5 pure-xl-2-5'>
-          <h4>{t('Credits')}</h4>
+        <div className='box shadow pure-u-1 pure-u-md-3-5 pure-u-lg-2-5 pure-xl-2-5'>
+          <h4 className='font-size-medium'>{t('Credits')}</h4>
+          <span className='font-size-medium'>
+            {t('Copyright')} &copy;2018 {t('Tokedo Ltd')}
+          </span>
           <div className='text'>
             <p className='font-size-small'>
               {t('Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software"\), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions')} :<br />

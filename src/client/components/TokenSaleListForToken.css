@@ -27,14 +27,14 @@
 }
 
 #TokenSaleListForToken h4 {
-  font-size: 13px;
+  font-size: 0.98rem;
   color: #FA8100;
   margin: 0;
   font-weight: 500;
 }
 
 #TokenSaleListForToken p {
-  font-size: 12px;
+  font-size: 0.97rem;
   margin: 5px 0;
   font-weight: 400;
   color: #7D7D7D;

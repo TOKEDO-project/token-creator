@@ -55,16 +55,16 @@
 }
 
 #tac span {
- font-size: 16px;
+ font-size: 1rem;
  font-weight: 600;
 }
 
 #tac h3 {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 600;
  }
 
  #tac p {
-  font-size: 15px;
+  font-size: 0.99rem;
   font-weight: 400;
  }

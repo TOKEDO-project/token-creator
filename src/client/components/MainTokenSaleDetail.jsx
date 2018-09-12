@@ -95,7 +95,9 @@ class MainTokenSaleDetail extends React.Component {
               </button>
             </div>
           </div>
-          : <Loading size='24' /> }
+          : <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
+            <Loading size='24' />
+          </div> }
       </div>
     )
   }
