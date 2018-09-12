@@ -92,7 +92,7 @@ class AuthorizeTransfer extends React.Component {
           : <div className='d-flex flex-row'>
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
 
-            {validAddress ? <button className='btnNext next shadow pure-u-7-24' >{t('Next')}</button> : null}
+            {validAddress ? <button onClick={this.prepareTransaction} className='btnNext next shadow pure-u-7-24' >{t('Next')}</button> : null}
           </div>
         }
         <div className='separator-twentyfive' />
