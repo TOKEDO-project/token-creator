@@ -18,6 +18,18 @@ export const setWeb3 = (web3) => async (dispatch, getState) => {
   if (typeof web3 !== 'undefined') {
     if (web3.currentProvider.isMetaMask === true) {
       web3 = new Web3(window.web3.currentProvider)
+      setTimeout(() => {
+        web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER + (process.env.INFURA_TOKEN ? process.env.INFURA_TOKEN : '')))
+        return dispatch({
+          type: 'SET_WEB3',
+          payload: {
+            ...web3,
+            gasPrice,
+            address,
+            metamaskStatus: MetamaskStatus.NOT_INSTALLED
+          }
+        })
+      }, 5000)
       const accounts = await web3.eth.getAccounts()
       if (accounts.length === 0) {
         // there is no active accounts in MetaMask
@@ -64,8 +76,7 @@ export const web3 = handleActions({
     }
   }
 }, {
-  web3: null,
-  metamaskStatus: '',
+  metamaskStatus: MetamaskStatus.NOT_INSTALLED,
   address: '',
   loading: true
 })

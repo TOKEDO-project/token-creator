@@ -89,7 +89,7 @@ class App extends React.Component {
   }
 
   startIntervalMetamask (web3, dispatch) {
-    if (!web3.loading && web3.eth) {
+    if (!web3.loading && web3.eth && web3.metamaskStatus !== MetamaskStatus.NOT_INSTALLED) {
       this.timer = setInterval(async () => {
         const accounts = await web3.eth.getAccounts()
         // Detect address change
