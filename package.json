@@ -11,7 +11,7 @@
     "build": "webpack -p --config ./webpack/webpack.prod.js --progress",
     "start:client": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
     "start:server": "node ./src/server/index.js",
-    "start:serverdev": "nodemon ./src/server/index.js & npx ganache-cli --account=\"$PRIVATE_KEY, 100000000000000000000\"",
+    "start:serverdev": "nodemon ./src/server/index.js & npx ganache-cli --account=\"$PRIVATE_KEY, 100000000000000000000\" --db ./ganache_db",
     "dev": "nf start -j Procfile.dev",
     "prod": "npm run build && npm run start:server",
     "lint": "standard",
