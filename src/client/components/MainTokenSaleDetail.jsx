@@ -57,7 +57,7 @@ class MainTokenSaleDetail extends React.Component {
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addSaleInfo ? <div className='shadow infoBox'>
-                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
+                <p>{t('Create one or more token sale contracts to sell your tokens.')}</p>
               </div> : null}
               <button className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center' onClick={this.addTokenSale}>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
@@ -70,7 +70,7 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addTokenInfo ? <div className='shadow infoBox'>
-                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
+                <p>{t('Add more tokens to the Token Sale Manager to sell them in new sales. Note: when adding tokens you cannot exceed the total supply.')}</p>
               </div> : null }
               <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
@@ -83,7 +83,7 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { removeTokenInfo ? <div className='shadow infoBox'>
-                <p>{t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus, erat quis feugiat vehicula, quam justo rhoncus justo, eu ornare nulla felis nec mauris. ')}</p>
+                <p>{t('You can only remove tokens that have not been sold already.')}</p>
               </div> : null}
               <button onClick={() => this.redirectTo(`/token/details/${tokenId}/remove-token`)} className='shadow blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
