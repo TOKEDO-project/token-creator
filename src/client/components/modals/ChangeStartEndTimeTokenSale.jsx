@@ -10,6 +10,9 @@ import { saveSetTimeTokenSaleTransaction, saveSetTimeTokenSaleReceipt } from '..
 import { getTokenSalesTransactions, getTokenSaleTimes } from '../../utils/tokenSales'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import '../steps/Step.css'
+import '../steps/StepDateField.css'
+import '../MainTokenSaleAddToken.css'
 import prepareSetTimeTransaction from '../../utils/prepareSetTimeTransaction'
 import { pushStartDate } from '../../redux/tokenSales'
 
@@ -105,7 +108,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
     const differentEndTime = !moment(newEndTime, 'x').isSame(moment(endTime, 'x'), 'day')
 
     return (
-      <Modal icon={transferToken} visible={visible} title={t('Transfer Tokens')} toggleVisibility={this.toggleVisibility}>
+      <Modal icon={transferToken} visible={visible} title={t('Modify Date')} toggleVisibility={this.toggleVisibility}>
         {transaction
           ? <WalletSelection connectorName='changeDatesTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
             <div className='top d-flex flex-row flex-h-start flex-v-center'>
@@ -117,30 +120,58 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                 <span className='description font-size-tiny'>
                   {t(`You need to make the transaction to change the dates of the token sale.`)}
                 </span>
+
+              </div>
+
+            </div>
+            <div className='groupBottom pure-u-1 d-flex flex-v-center'>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
-                  {t('New Start Date')}: {moment(newStartTime, 'x').format('DD/MM/YYYY')} - {t('New End Date')}: {moment(newEndTime, 'x').format('DD/MM/YYYY')}  <button onClick={this.changeDates}><i className='fas fa-undo-alt' /> Change the dates</button>
+                  <span className='font-weight-bold'>{t('New Start Date')} : </span>
+                  {moment(newStartTime, 'x').format('DD/MM/YYYY')}
                 </p>
+                <p>
+                  <span className='font-weight-bold'> {t('New End Date')} : </span>
+                  {moment(newEndTime, 'x').format('DD/MM/YYYY')}
+                </p>
+              </div>
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
+                <button className='btnChange' onClick={this.changeDates}><i className='fas fa-undo-alt' /> {t('Change the dates')}</button>
               </div>
             </div>
           </WalletSelection>
-          : <div>
-            Current Start Time: {moment(startTime, 'x').format('DD/MM/YYYY')}
-            <br />
-            Start Time:
-            <DatePicker
-              selected={moment(newStartTime, 'x')}
-              onChange={this.onChangeStartTime}
-              dateFormat='DD/MM/YYYY'
-            />
-            Current End Time: {moment(endTime, 'x').format('DD/MM/YYYY')}
-            <br />
-            End Time:
-            <DatePicker
-              selected={moment(newEndTime, 'x')}
-              onChange={this.onChangeEndTime}
-              dateFormat='DD/MM/YYYY'
-            />
-            {differentStartTime || differentEndTime ? <button className='next shadow pure-u-7-24' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
+          : <div className='modifyDate'>
+            <div>
+              <form className='d-flex flex-row flex-h-center flex-v-center'>
+                <div className={`date-pickers d-flex flex-column pure-u-16-24`}>
+                  <div className='date-picker pure-u-1 d-flex flex-column flex-v-center'>
+                    <div>
+                      <p>{t('Current Start Time')}: {moment(startTime, 'x').format('DD/MM/YYYY')}</p>
+                      <span className='date-picker-title'>{t('Start Time')} : </span>
+                      <DatePicker
+                        selected={moment(newStartTime, 'x')}
+                        onChange={this.onChangeStartTime}
+                        dateFormat='DD/MM/YYYY'
+                      />
+                    </div>
+                  </div>
+                  <div className='date-picker pure-u-1 d-flex flex-column flex-v-center'>
+                    <div>
+                      <p>{t('Current End Time')}: {moment(endTime, 'x').format('DD/MM/YYYY')}</p>
+                      <span className='date-picker-title'>{t('End Time')} : </span>
+                      <DatePicker
+                        selected={moment(newEndTime, 'x')}
+                        onChange={this.onChangeEndTime}
+                        dateFormat='DD/MM/YYYY'
+                      />
+                    </div>
+
+                  </div>
+                  {differentStartTime || differentEndTime ? <button className='nextBtn shadow' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
+                </div>
+
+              </form>
+            </div>
           </div>
         }
         <div className='separator-twentyfive' />

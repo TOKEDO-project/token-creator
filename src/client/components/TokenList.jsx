@@ -12,7 +12,7 @@ const TokenList = (props) => {
   console.log(tokens, 'tokens')
   return (
     <div id='tokenList' className='d-flex flex-h-center pure-u-1'>
-      <div className='maxWidth pure-u-22-24 pure-u-md-18-24 pure-u-sm-20-24'>
+      <div className='maxWidth pure-u-22-24 pure-u-sm-22-24 pure-u-md-22-24 pure-u-lg-20-24 pure-u-xl-20-24'>
 
         <div className='flexWrap flexWrapSm'>
           <div className='flexCenter pure-u-sm-1'>

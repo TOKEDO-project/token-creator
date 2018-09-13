@@ -94,33 +94,36 @@ class TokenSaleListForToken extends React.Component {
                           </span>
                         </div>
 
-                        <div className='pure-u-20-24'>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-3-24 pure-u-xl-3-24 borderRight heightBox centerTextResponsive'>
-                            <h4>{t('Token Price')}:</h4>
-                            <p className='breakWord'>{t(tokenSale.price)}</p>
+                        <div className='pure-u-21-24'>
+                          <div className='marginTopSmall pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-6-24 pure-u-xl-6-24 borderRight centerTextResponsive'>
+                              <div className='heightBox'><h4>{t('Token Price')}:</h4></div>
+                              <div className='heightBox'> <p className='breakWord'>{t(tokenSale.price)}</p></div>
+                            </div>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-9-24 pure-u-xl-9-24 borderRight centerTxt'>
+                              <div className='heightBox'><h4>{t('Token For Sale')}:</h4></div>
+                              <div className='heightBox'><p className='breakWord'>{t(tokenSale.amount)}</p></div>
+                            </div>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-9-24 pure-u-xl-9-24 borderRight centerTxt'>
+                              <div className='heightBox'><h4>{t('Token Sold')}:</h4></div>
+                              <div className='heightBox'><p className='breakWord'>{t('0')}</p></div>
+                            </div>
                           </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-5-24 pure-u-xl-5-24 borderRight heightBox centerTxt'>
-                            <h4>{t('Token For Sale')}:</h4>
-                            <p className='breakWord'>{t(tokenSale.amount)}</p>
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 borderRight heightBox centerTxt'>
-                            <h4>{t('Token Sold')}:</h4>
-                            <p className='breakWord'>{t('0')}</p>
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 borderRight heightBox centerTxt'>
-                            <h4>{t('Remaining Token')}:</h4>
-                            <p className='breakWord'>{t('0')}</p>
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24borderRight heightBox centerTxt'>
-                            <h4>{t('Min Contribution')}:</h4>
-                            <p className='breakWord'>{t(tokenSale.minContribution)}</p>
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-4-24 pure-u-xl-4-24 heightBox centerTxt'>
-                            <h4>{t('ETH collected')}:</h4>
-                            <p className='breakWord'> {t('ETH')} 0</p>
+                          <div className='marginTopSmall pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 borderRight centerTxt'>
+                              <div className='heightBox'><h4>{t('Remaining Token')}:</h4></div>
+                              <div className='heightBox'><p className='breakWord'>{t('0')}</p></div>
+                            </div>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 borderRight centerTxt'>
+                              <div className='heightBox'><h4>{t('Min Contribution')}:</h4></div>
+                              <div className='heightBox'><p className='breakWord'>{t(tokenSale.minContribution)}</p></div>
+                            </div>
+                            <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 centerTxt'>
+                              <div className='heightBox'><h4>{t('ETH collected')}:</h4></div>
+                              <div className='heightBox'><p className='breakWord'> {t('ETH')} 0</p></div>
+                            </div>
                           </div>
                         </div>
-
                       </div>
 
                       <div className='pure-u-1'>
@@ -132,37 +135,40 @@ class TokenSaleListForToken extends React.Component {
                             {tokenSale.kyc === 'true' ? t('Yes') : t('No')}
                           </span>
                         </div>
+                        <div className='pure-u-21-24 borderTop paddingTop'>
+                          <div className=''>
+                            <div className='centerResponsive pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
+                              <div className='pure-u-1 borderRight'>
+                                <div className='heightBox'> <h4>{t('Token Sale Address')}:</h4></div>
+                                <div className='heightBox'> <p className='breakWord'>{tokenSale.contractAddress}</p></div>
 
-                        <div className='pure-u-20-24 borderTop paddingTop'>
-                          <div className='centerResponsive pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
-                            <div className='pure-u-1 borderRight heightBox '>
-                              <h4>{t('Token Sale Address')}:</h4>
-                              <p className='breakWord'>{tokenSale.contractAddress}</p>
+                              </div>
+                              <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
                             </div>
-                            <TokenSaleContractAddressClipboard address={tokenSale.contractAddress} />
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
-                            <div className='pure-u-1 borderRight heightBox'>
-                              <h4>{t('Start Time')}:</h4>
-                              <p className='breakWord'>{moment(startTime, 'x').format('DD/MM/YYYY')}</p>
+                            <div className='marginTopSmall pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
+                              <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-8-24 pure-u-xl-8-24 centerTxt'>
+                                <div className='pure-u-1 borderRight '>
+                                  <div className='heightBox'><h4>{t('Start Time')}:</h4></div>
+                                  <div className='heightBox'><p className='breakWord'>{moment(startTime, 'x').format('DD/MM/YYYY')}</p></div>
+                                </div>
+                                <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
+                                  <span className='fa fa-pencil-square-o' />
+                                  <span>{t('Modify')}</span>
+                                </button>
+                              </div>
+                              <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-8-24 pure-u-xl-8-24 centerTxt'>
+                                <div className='pure-u-1'>
+                                  <div className='heightBox'><h4>{t('End Time')}:</h4></div>
+                                  <div className='heightBox'><p className='breakWord'>{moment(endTime, 'x').format('DD/MM/YYYY')}</p></div>
+                                </div>
+                                <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
+                                  <span className='fa fa-pencil-square-o' />
+                                  <span>{t('Modify')}</span>
+                                </button>
+                              </div>
                             </div>
-                            <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
-                              <span className='fa fa-pencil-square-o' />
-                              <span className='font-size-tiny'>{t('Modify')}</span>
-                            </button>
-                          </div>
-                          <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-4-24 pure-u-xl-4-24 centerTxt'>
-                            <div className='pure-u-1 heightBox'>
-                              <h4>{t('End Time')}:</h4>
-                              <p className='breakWord'>{moment(endTime, 'x').format('DD/MM/YYYY')}</p>
-                            </div>
-                            <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
-                              <span className='fa fa-pencil-square-o' />
-                              <span className='font-size-tiny'>{t('Modify')}</span>
-                            </button>
                           </div>
                         </div>
-
                       </div>
                     </div>
                   )

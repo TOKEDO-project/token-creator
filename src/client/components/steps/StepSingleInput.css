@@ -8,6 +8,11 @@ div.step form.bottom button.next,
   color: white;
 }
 
+.modifyDate .nextBtn {
+  margin-top: 20px;
+  width: 200px;
+}
+
 div.step form.bottom input.text {
   width: 100%;
   padding: 0 10px;
@@ -20,12 +25,14 @@ div.step form.bottom input.text::placeholder {
   font-style: italic;
   color: #888888;
 }
+
 .nextBtn {
   background: #FA8100;
   color: white;
   position: relative;
   margin: 0 auto;
 }
+
 div.step form.bottom button.next,
 .btnNext {
   background: #FA8100;

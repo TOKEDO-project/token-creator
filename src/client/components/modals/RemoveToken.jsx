@@ -82,9 +82,8 @@ class RemoveToken extends React.Component {
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
-                  <span>
-                    {t('You are removing')}:
-                  </span> {amount} <br /> {t('tokens from sale')}
+                  <span className='font-weight-bold'>{t('You are removing')}: </span>
+                  {amount} {t('tokens from sale')}
                 </p>
               </div>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>

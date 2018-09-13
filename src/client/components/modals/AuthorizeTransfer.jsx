@@ -73,7 +73,7 @@ class AuthorizeTransfer extends React.Component {
     const { visible, transaction, validAddress } = this.state
     return (
       <Modal icon={authorize} visible={visible} title={t('Authorize Transfer')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title={t('WARNING: This action cannot be undone')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
+        <WarningMessage title={t('WARNING: This action cannot be undone.')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='authorizeTransferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
@@ -88,6 +88,7 @@ class AuthorizeTransfer extends React.Component {
                 </span>
               </div>
             </div>
+            <div className='separator-twentyfive' />
           </WalletSelection>
           : <div className='d-flex flex-row'>
             <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />

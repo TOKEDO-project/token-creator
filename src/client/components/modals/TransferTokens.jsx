@@ -119,9 +119,9 @@ class TransferTokens extends React.Component {
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
-                  <span>
-                    {t('You are sending')}:
-                  </span> {amount} <br /> {t('to')}: {address}
+                  <span className='font-weight-bold'>{t('You are sending')}: </span>{amount}
+                  <br />
+                  <span className='font-weight-bold'>{t('to')}: </span>{address}
                 </p>
               </div>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>

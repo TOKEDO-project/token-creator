@@ -81,9 +81,8 @@ class AddMoreToken extends React.Component {
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
-                  <span>
-                    {t('You are adding')}:
-                  </span> {amount} {t('tokens for sale')}
+                  <span className='font-weight-bold'>{t('You are adding')}: </span>
+                  {amount} {t('tokens for sale')}
                 </p>
               </div>
 

@@ -20,21 +20,20 @@
 }
 
 #TokenSaleListForToken .heightBox {
-  height: 50px;
-  max-height: 150px;
+  height: 30px;
   padding: 0px 5px;
   margin-top: 10px;
 }
 
 #TokenSaleListForToken h4 {
-  font-size: 0.98rem;
+  font-size: 14px;
   color: #FA8100;
   margin: 0;
   font-weight: 500;
 }
 
 #TokenSaleListForToken p {
-  font-size: 0.97rem;
+  font-size: 14px;
   margin: 5px 0;
   font-weight: 400;
   color: #7D7D7D;
@@ -75,8 +74,11 @@
   border: none;
   border-radius: 5px;
   margin-top: 10px;
+  font-size: 12px!important;
 }
-
+#TokenSaleListForToken button.copy span {
+  font-size: 12px!important;
+}
 #TokenSaleListForToken button.copy:hover {
   background-color: #6e6e6e;
 }
@@ -100,6 +102,7 @@
   flex-direction: row;
   justify-content: center;
   margin: 10px auto 0;
+  font-size: 12px;
 }
 
 #TokenSaleListForToken button.modify:hover {
@@ -125,6 +128,9 @@
   }
 .centerTextResponsive{
   text-align: center;
+}
+.marginTopSmall{
+  margin-top: 10px;
 }
 }
 

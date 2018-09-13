@@ -6,11 +6,11 @@ import './Menu.css'
 import home from '../assets/images/home.svg'
 import faq from '../assets/images/faq.svg'
 import credits from '../assets/images/credits.svg'
-import help from '../assets/images/helpMenu.svg'
+// import help from '../assets/images/helpMenu.svg'
 import homeActive from '../assets/images/homeActive.svg'
 import faqActive from '../assets/images/faqActive.svg'
 import creditsActive from '../assets/images/creditsActive.svg'
-import helpActive from '../assets/images/helpMenuActive.svg'
+// import helpActive from '../assets/images/helpMenuActive.svg'
 class Menu extends Component {
   constructor (props) {
     super(props)

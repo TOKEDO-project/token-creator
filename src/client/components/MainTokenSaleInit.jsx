@@ -54,7 +54,7 @@ class MainTokenSaleInit extends Component {
           icon={icon}
           title={t(`Initialization`)}
         >
-          {t(`To add token sale you need to peerform 3 transaction for initialization. This is the first transaction.`)}
+          {t(`To add token sale you need to perform 3 transaction for initialization. This is the first transaction.`)}
         </StepHeader>
         <div className='separator-twentyfive' />
       </WalletSelection>

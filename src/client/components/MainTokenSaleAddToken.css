@@ -19,25 +19,25 @@
   margin: 40px 0px;
 }
 
-#MainTokenSaleAddToken .btnChange:hover {
+#MainTokenSaleAddToken .btnChange:hover, .btnChange:hover {
   background: #b8b8b8;
 }
 
 @media (min-width: 600px) {
-  #MainTokenSaleAddToken .groupBottom {
+  #MainTokenSaleAddToken .groupBottom, .groupBottom {
     padding-left: 63px;
   }
 
-  #MainTokenSaleAddToken .groupBottom {
+  #MainTokenSaleAddToken .groupBottom, .groupBottom {
     flex-direction: row;
   }
 }
 @media (max-width: 599px) {
 
-    #MainTokenSaleAddToken .groupBottom {
+    #MainTokenSaleAddToken .groupBottom, .groupBottom {
       flex-direction: column;
     }
-    #MainTokenSaleAddToken .groupBottom div {
+    #MainTokenSaleAddToken .groupBottom div, .groupBottom div{
       display: flex;
       align-content: center;
       justify-content: center;

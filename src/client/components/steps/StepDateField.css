@@ -1,4 +1,5 @@
-div.step form.bottom div.date-picker input {
+div.step form.bottom div.date-picker input,
+.modifyDate form div.date-picker input {
  width: 100%;
  height: 40px;
  padding: 0 10px;
@@ -8,15 +9,22 @@ div.step form.bottom div.date-picker input {
  margin-top: 5px;
 }
 
-div.step form.bottom div.date-picker input::placeholder {
+div.step form.bottom div.date-picker input::placeholder,
+.modifyDate form div.date-picker input::placeholder {
  font-style: italic;
  color: #888888;
 }
 
-div.step form.bottom span.date-picker-title {
+div.step form.bottom span.date-picker-title,
+.modifyDate form span.date-picker-title{
  color: #FA8100;
 }
 
-div.step form.bottom div.date-picker {
+div.step form.bottom div.date-picker,
+.modifyDate form div.date-picker {
  margin-top: 5px;
 }
+
+.modifyDate form div.date-picker p{
+    color:#888888;
+   }

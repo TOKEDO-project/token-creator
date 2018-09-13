@@ -53,7 +53,7 @@
 }
 
 #MainTokenSaleDetail button span {
-  font-size: 0.97rem;
+  font-size: 12px;
   font-weight: 700;
   color: white;
   font-family: 'Montserrat', sans-serif;
@@ -63,11 +63,11 @@
 #MainTokenSaleDetail button i.fa-minus {
   border-radius: 100%;
   border: 2px solid white;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   margin-right: 5px;
   color: white;
-  font-size: 0.99rem;
+  font-size: 12px;
 }
 
 #MainTokenSaleDetail button i.fa-question {
@@ -110,7 +110,7 @@
 }
 
 #MainTokenSaleDetail .infoBox p {
-  font-size: 0.96rem;
+  font-size: 12px;
   color: white;
   margin: 0px;
 }
