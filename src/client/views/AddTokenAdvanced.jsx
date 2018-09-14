@@ -124,7 +124,7 @@ class AddTokenAdvanced extends React.Component {
                 <TokenType />
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
-                {this.isValid() ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
+                {this.isValid() ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Deploy the token')}</button> : null}
               </div>
             </div>
           </div>

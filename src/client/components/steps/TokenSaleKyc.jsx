@@ -35,15 +35,15 @@ class TokenSaleKyc extends Component {
             icon={icon}
             title={t(`KYC`)}
           >
-            {t(`You can add our KYC system on this token sale.`)} <Link to={{ pathname: '/faq', hash: '#Unlock' }} target='_blank'>{t(`Read more about`)}</Link>
+            {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/faq', hash: '#Unlock' }} target='_blank'>{t(`here`)}</Link>
           </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) => {
               const KYCValue = type === 'kyc-yes'
               const kycActive = (type === 'kyc-yes' && kyc === 'true') || (type === 'kyc-no' && kyc === 'false')
               return <button key={index} value={KYCValue} onClick={this.onChange} type='button' className={`radio-box ${kycActive ? 'active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-row flex-h-center flex-v-center`}>
-                {type === 'kyc-yes' ? t('KYC yes') : null}
-                {type === 'kyc-no' ? t('KYC no') : null}
+                {type === 'kyc-yes' ? t('YES add KYC ') : null}
+                {type === 'kyc-no' ? t('NO proceed without KYC') : null}
                 <div className={`radio-button ${kycActive ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                   <div className='radio-button-dot' />
                 </div>

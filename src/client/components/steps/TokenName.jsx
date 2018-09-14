@@ -47,13 +47,13 @@ class TokenName extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the name of your token`)}
+          title={t(`Name`)}
         >
-          {t(`The name of your token. Like 'Ethereum'`)}
+          {t(`Choose a unique name that represents your project, e.g. “Ethereum”, “Bitcoin”.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the name`)} className='token-name text shadow pure-u-1' value={addToken.name} onChange={this.onChangeText} />
+            <input placeholder={t(`Insert name`)} className='token-name text shadow pure-u-1' value={addToken.name} onChange={this.onChangeText} />
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
           Next

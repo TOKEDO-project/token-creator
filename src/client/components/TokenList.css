@@ -70,6 +70,7 @@
 
 .cards h4 {
   text-align: center;
+  font-size: 15px;
   font-weight: 600;
   color: #FA8100;
   margin: 0;
@@ -77,6 +78,7 @@
 
 .cards p {
   text-align: center;
+  font-size: 16px;
   margin: 0;
   font-weight: 500;
 }
@@ -92,12 +94,15 @@
 }
 .cards a button p, button p{
   font-weight: 500;
+  font-size: 18px;
   margin-left: 0;
 }
 p.marginTxt{
   margin-left: 10px;
 }
 .cards a button span{
+font-size: 14px;
+margin-top: 10px;
 }
 .cards a button:hover {
   background: #69A4F9;

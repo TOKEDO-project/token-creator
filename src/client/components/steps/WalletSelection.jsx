@@ -35,9 +35,10 @@ class WalletSelection extends Component {
         {this.props.children}
         <StepHeader
           icon={icon}
-          title={t(`Select the wallet`)}
+          title={t(`Choose a wallet`)}
         >
-          {t(`To deploy the smart contract of your token you need an Ethereum address with a little balance of ETH. This address`)}
+          {t('Remember')}:
+          {t(` to send the transaction you need an Ethereum address with at least some ETH in the balance to pay for the fees of the Ethereum Network.`)}
         </StepHeader>
         <form className='bottom d-flex flex-column flex-v-center'>
           <div className='pure-u-1 pure-u-lg-4-5 d-flex flex-row flex-h-between flex-wrap'>

@@ -42,7 +42,7 @@ class TokenAddress extends Component {
             icon={icon}
             title={t(`Your token is now live!`)}
           >
-            {t(`Congratulation, your token is now on the ethereum blockchain`)}
+            {t(`Congratulation, your token is now on the ethereum blockchain.`)}
           </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between'>
             <div className={`clipboard-field shadow ${addressCopied ? 'copied' : ''} pure-u-1`}>
@@ -59,9 +59,9 @@ class TokenAddress extends Component {
           </form>
         </div>
         <div className='pure-u-1 d-flex flex-row flex-h-between'>
-          <button onClick={() => this.redirectTo(`/`)} className='close pure-u-11-24 font-weight-bold' type='button'>Close</button>
+          <button onClick={() => this.redirectTo(`/`)} className='close pure-u-11-24 font-weight-bold' type='button'>{t('See Your Tokens')}</button>
           {/* <a className='pure-u-11-24' href={`/token/details/${tokenId}`}> */}
-          <button onClick={() => this.redirectToTokenSale(`/token/details/${tokenId}`, `${tokenId}`)} className='deploy pure-u-11-24 font-weight-bold' type='button'>Deploy the Token Sale</button>
+          <button onClick={() => this.redirectToTokenSale(`/token/details/${tokenId}`, `${tokenId}`)} className='deploy pure-u-11-24 font-weight-bold' type='button'>{t('Create Your Token Sale')}</button>
           {/* </a> */}
         </div>
       </div>

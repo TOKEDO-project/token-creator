@@ -57,14 +57,17 @@ class TokenDecimals extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the decimals of your token`)}
+          title={t(`Decimals`)}
         >
-          {t(`You can choose the decimal after the 0. Max length is 18.`)}<br />{t(`Ethereum has 18 decimals and bitcoin has only 8.`)}
+          {t(`Choose the number of digits shown after the decimal separator (the dot).`)}<br />
+          {t(`Max length is 18.`)}<br />
+          {t(`Ethereum has 18 decimals and Bitcoin has only 8.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <input placeholder={t(`Insert the decimals`)} className='token-decimals text shadow pure-u-1' value={addToken.decimals} onChange={this.onChangeText} />
-            {!valid && addToken.decimals.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{t(`The decimals number must be between 0 and 18`)}</div> : null}
+            {!valid && addToken.decimals.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />
+              {t(`The numbers after the decimal separator can’t exceed 18 digits.`)}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
           Next

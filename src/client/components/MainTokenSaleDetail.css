@@ -7,6 +7,7 @@
 }
 
 #MainTokenSaleDetail p {
+  font-size: 15px;
   margin: 5px 0;
   font-weight: 400;
   color: #7D7D7D;
@@ -14,11 +15,13 @@
 
 #MainTokenSaleDetail h2 {
   color: #343434;
+  font-size: 15px;
   font-weight: 400;
   margin: 0 10px 0;
 }
 
 #MainTokenSaleDetail h4 {
+  font-size: 15px;
   color: #FA8100;
   margin: 0;
   font-weight: 500;

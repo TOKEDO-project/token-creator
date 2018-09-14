@@ -102,7 +102,7 @@ class FaqPage extends React.Component {
           <p>{t('You can only remove or add tokens from or to the contract of the Project, and not from or to a single token sale. If you want to sell more tokens than the amount that is available for sale at a given moment, you can add more tokens to the Project from your dashboard and then create more token sales. Remember, you cannot exceed the amount of the total supply. The maximum amount of tokens that you can add for sale can never exceed the total supply, minus the tokens that have already been sold.')}</p>
 
           <p>{t('When removing tokens from the Project of course you can only remove tokens that have not been sold already.')}</p>
-          <h3>{t('KYC')}</h3>
+          <h3 id='kycFaq'>{t('KYC')}</h3>
           <p><span>{t('What is KYC?')}</span></p>
           <p>{t('KYC stands for Know Your Customer. Token sales and companies alike are required to screen their buyers to be compliant with the current legislation in most countries. Tokedo Token Creator provides token sales and companies with a service to screen their users and be KYC-compliant.')}</p>
         </div>

@@ -104,7 +104,7 @@ class AddTokenWizard extends Component {
               icon={icon}
               title={t(`Deploy the token`)}
             >
-              {t(`Now everything is ready, you need to send the transaction to deploy the token.`)}
+              {t(`All set. Now send the required transaction to deploy the token.`)}
             </StepHeader>
             <div className='separator-twentyfive' />
           </WalletSelection>

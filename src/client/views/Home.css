@@ -1,4 +1,8 @@
 #home {
+  min-height: calc(100vh - 90px);
+  background: white;
+}
+#home .homeBg{
   background-image: url("../assets/images/homeBg.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;

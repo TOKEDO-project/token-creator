@@ -17,7 +17,7 @@ const TokenList = (props) => {
         <div className='flexWrap flexWrapSm'>
           <div className='flexCenter pure-u-sm-1'>
             <img src={icon} />
-            <h1>{t('List of the Token you have created')}</h1>
+            <h1>{t('Your Tokens')}</h1>
           </div>
           <div className='btn flexCenter pure-u-sm-1'>
             <Link to='/token/add/wizard'>
@@ -45,7 +45,7 @@ const TokenList = (props) => {
                     <div className='border pure-u-1-3'>
                       <div className='partCard d-flex flex-h-center flex-column'>
                         <h4>
-                          {t('Token Name')}
+                          {t('Name')}
                         </h4>
                         <p>{transaction.name}</p>
                       </div>
@@ -53,7 +53,7 @@ const TokenList = (props) => {
                     <div className='partCard border pure-u-1-3'>
                       <div className='partCard d-flex flex-h-center flex-column'>
                         <h4>
-                          {t('Token Symbol')}
+                          {t('Ticker')}
                         </h4>
                         <p>{transaction.symbol}</p>
                       </div>
@@ -61,7 +61,7 @@ const TokenList = (props) => {
                     <div className='partCard border pure-u-1-3'>
                       <div className='partCard d-flex flex-h-center flex-column'>
                         <h4>
-                          {t('Token Decimal')}
+                          {t('Decimals')}
 
                         </h4>
                         <p>{transaction.decimals}</p>
@@ -72,7 +72,7 @@ const TokenList = (props) => {
                   <div className='pure-u-md-1-4 pure-u-sm-1 partCard'>
                     <div className='partCard d-flex flex-h-center flex-column'>
                       <h4>
-                        {t('Token Supply')}
+                        {t('Total Supply')}
                       </h4>
                       <p>{transaction.supply}</p>
                     </div>
@@ -80,8 +80,8 @@ const TokenList = (props) => {
                   <div className='pure-u-md-1-4 pure-u-sm-1' >
                     <Link to={`/token/details/${receipt.contractAddress}`}>
                       <button className='shadow'>
-                        <p>{t('Manage Token')} &#38; {t('Token Sale')}</p>
-                        {mainTokenSale ? <span>{t('Token for Sale')}: {mainTokenSale.amount}</span> : null }
+                        <p>{t('Manage Token')} &#38; {t('Sale')}</p>
+                        {mainTokenSale ? <span>{t('Tokens for Sale')}: {mainTokenSale.amount}</span> : null }
                       </button>
                     </Link>
                   </div>

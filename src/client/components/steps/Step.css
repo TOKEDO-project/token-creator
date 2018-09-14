@@ -29,6 +29,10 @@ div.step form.bottom {
 .react-datepicker__input-container{
   width:100%;
 }
+#token-type .fixedHeight{
+  min-height: 200px;
+  padding-top: 20px;
+}
 .inputBox {
   width: 100%;
   height: 40px;

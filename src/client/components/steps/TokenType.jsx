@@ -36,32 +36,35 @@ class TokenType extends Component {
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
           <StepHeader
             icon={icon}
-            title={t(`Select the Token type`)}
+            title={t(`Token type`)}
           >
-            {t(`We offer different versions of token.`)}
+            {t(`Choose one of the three options.`)}
           </StepHeader>
-          <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
-            {types.map((type, index) =>
-              <button
-                onMouseEnter={() => this.setState({ hover: index })}
-                onMouseLeave={() => this.setState({ hover: null })}
-                key={index}
-                value={type}
-                onClick={this.onChange}
-                type='button'
-                className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}
-              >
-                {type === 'startable-burnable' ? t('Startable Burnable') : null}
-                {type === 'startable' ? t('Startable') : null}
-                {type === 'simple' ? t('Simple') : null}
-                <div className={`radio-button ${addToken.type === type ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
-                  <div className='radio-button-dot' />
-                </div>
-              </button>
-            )}
-            <div className={`tooltip ${typeof hover === 'number' ? '' : 'hidden'} pure-u-1 font-size-tiny`}>
-              {descriptions[hover]}
+          <form className='fixedHeight'>
+            <div className='bottom d-flex flex-row flex-h-between flex-wrap'>
+              {types.map((type, index) =>
+                <button
+                  onMouseEnter={() => this.setState({ hover: index })}
+                  onMouseLeave={() => this.setState({ hover: null })}
+                  key={index}
+                  value={type}
+                  onClick={this.onChange}
+                  type='button'
+                  className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}
+                >
+                  {type === 'startable-burnable' ? t('Startable Burnable') : null}
+                  {type === 'startable' ? t('Startable') : null}
+                  {type === 'simple' ? t('Simple') : null}
+                  <div className={`radio-button ${addToken.type === type ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
+                    <div className='radio-button-dot' />
+                  </div>
+                </button>
+              )}
+              <div className={`tooltip ${typeof hover === 'number' ? '' : 'hidden'} pure-u-1 font-size-tiny`}>
+                {descriptions[hover]}
+              </div>
             </div>
+
           </form>
         </div>
         {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >{t('Deploy the Token')}</button> : null}

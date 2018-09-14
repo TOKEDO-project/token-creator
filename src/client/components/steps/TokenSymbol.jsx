@@ -49,14 +49,15 @@ class TokenSymbol extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the symbol of your token`)}
+          title={t(`Ticker`)}
         >
-          {t(`Symbol of the token. Like ETH for Ethereum. Max 3 or 4 characters.`)}<br />
-          <span className='tips'>{t('TIPS')}: {t('Take a look on')}<a href='https://coinmarketcap.com/' target='_blank'> CoinMarketCap.com </a>{t(`in the token section to find out existent symbols.`)}</span>
+
+          {t(`Choose the ticker (symbol) of your token, 3 or 4 characters MAX, all capitalized . E.g. “ETH” for Ethereum, “BTC” for Bitcoin, ecc.`)}<br />
+          {t('Take a look at ')}<a href='https://coinmarketcap.com/' target='_blank'>CoinMarketCap</a>{t(` page, in the token section, to find out if a ticker is already taken.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the symbol`)} className='token-symbol text shadow pure-u-1' value={addToken.symbol} onChange={this.onChangeText} />
+            <input placeholder={t(`Insert ticker`)} className='token-symbol text shadow pure-u-1' value={addToken.symbol} onChange={this.onChangeText} />
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
           Next

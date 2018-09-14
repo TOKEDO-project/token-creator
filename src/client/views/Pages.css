@@ -16,7 +16,11 @@
   color: #FA8100;
   margin: 0;
   margin-bottom: 20px;
+<<<<<<< HEAD
   font-size: 18px;
+=======
+  font-size: 16px;
+>>>>>>> Changed texts and small changes in ui, fixed graphics
 }
 
 #faqPage {
@@ -36,17 +40,19 @@
 }
 
 #faqPage span {
+  font-size: 16px;
   font-weight: 600;
 }
 
 #faqPage h3 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   margin: 40px 0 20px 0;
   text-align: left;
 }
 
 #faqPage p {
+  font-size: 15px;
   font-weight: 400;
   text-align: left;
 }
