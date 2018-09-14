@@ -16,7 +16,7 @@ div.step form.bottom {
 }
 .dateWrap{
   position: relative;
-  width: 227px;
+  width: 100%;
 }
 .dateWrap img{
   position: absolute;
@@ -24,6 +24,10 @@ div.step form.bottom {
   z-index: 10;
   top: 13px;
     right: 10px;
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container{
+  width:100%;
 }
 .inputBox {
   width: 100%;

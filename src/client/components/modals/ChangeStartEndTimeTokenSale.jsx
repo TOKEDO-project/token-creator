@@ -141,57 +141,53 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               </div>
             </div>
           </WalletSelection>
-          : <div className='modifyDate'>
-            <div>
-              <form className='d-flex flex-row flex-h-center flex-v-center'>
-                <div className={`date-pickers d-flex flex-column pure-u-16-24`}>
+          : <div className='modifyDate d-flex flex-column flex-h-center flex-v-center'>
+            <form className='date-pickers pure-u-1'>
 
-                  <div className='date-picker pure-u-1 d-flex flex-row flex-v-center flex-h-between'>
-                    <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
-                      <span className='date-picker-title'>{t('Current Start Time')} : </span>
-                      <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('DD/MM/YYYY')}</div>
+              <div className='date-picker pure-u-1 d-flex flex-v-center flex-h-between'>
+                <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
+                  <span className='date-picker-title'>{t('Current Start Time')} : </span>
+                  <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('DD/MM/YYYY')}</div>
 
-                    </div>
-
-                    <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
-                      <span className='date-picker-title'>{t('Start Time')} : </span>
-                      <div className='dateWrap'>
-                        <img src={calendar} />
-                        <DatePicker
-                          selected={moment(newStartTime, 'x')}
-                          onChange={this.onChangeStartTime}
-                          dateFormat='DD/MM/YYYY'
-                        />
-                      </div>
-
-                    </div>
-                  </div>
-                  <div className='date-picker pure-u-1 d-flex flex-row flex-v-center  flex-h-between'>
-                    <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
-                      <span className='date-picker-title'>{t('Current End Time')} : </span>
-                      <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('DD/MM/YYYY')}</div>
-
-                    </div>
-
-                    <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
-                      <span className='date-picker-title'>{t('End Time')} : </span>
-                      <div className='dateWrap'>
-                        <img src={calendar} />
-                        <DatePicker
-                          selected={moment(newEndTime, 'x')}
-                          onChange={this.onChangeEndTime}
-                          dateFormat='DD/MM/YYYY'
-                        />
-                      </div>
-
-                    </div>
-                  </div>
-
-                  {differentStartTime || differentEndTime ? <button className='nextBtn shadow' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
                 </div>
 
-              </form>
-            </div>
+                <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
+                  <span className='date-picker-title'>{t('Start Time')} : </span>
+                  <div className='dateWrap'>
+                    <img src={calendar} />
+                    <DatePicker
+                      selected={moment(newStartTime, 'x')}
+                      onChange={this.onChangeStartTime}
+                      dateFormat='DD/MM/YYYY'
+                    />
+                  </div>
+
+                </div>
+              </div>
+              <div className='date-picker pure-u-1 d-flex flex-v-center  flex-h-between'>
+                <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
+                  <span className='date-picker-title'>{t('Current End Time')} : </span>
+                  <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('DD/MM/YYYY')}</div>
+
+                </div>
+
+                <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
+                  <span className='date-picker-title'>{t('End Time')} : </span>
+                  <div className='dateWrap'>
+                    <img src={calendar} />
+                    <DatePicker
+                      selected={moment(newEndTime, 'x')}
+                      onChange={this.onChangeEndTime}
+                      dateFormat='DD/MM/YYYY'
+                    />
+                  </div>
+
+                </div>
+              </div>
+
+              {differentStartTime || differentEndTime ? <button className='nextBtn shadow' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
+
+            </form>
           </div>
         }
         <div className='separator-twentyfive' />

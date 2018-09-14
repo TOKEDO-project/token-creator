@@ -46,6 +46,7 @@ class TokenSaleStartEndTime extends Component {
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between flex-v-end'>
           <div className={`date-pickers d-flex flex-column pure-u-16-24`}>
+
             <div className='date-picker pure-u-1 d-flex flex-column'>
               <span className='date-picker-title'>Start Time:</span>
               <div className='dateWrap'>
@@ -57,6 +58,7 @@ class TokenSaleStartEndTime extends Component {
               </div>
 
             </div>
+
             <div className='date-picker pure-u-1 d-flex flex-column'>
               <span className='date-picker-title'>End Time:</span>
               <div className='dateWrap'>
@@ -67,6 +69,7 @@ class TokenSaleStartEndTime extends Component {
                 />
               </div>
             </div>
+
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' onClick={nextFunction} >
             {t('Next')}

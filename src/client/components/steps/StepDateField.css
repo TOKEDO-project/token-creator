@@ -1,32 +1,47 @@
 div.step form.bottom div.date-picker input,
 .modifyDate form div.date-picker input {
- width: 100%;
- height: 40px;
- padding: 0 10px;
- border: 1px solid #B8B8B8;
- border-radius: 5px;
- color: #888888;
- margin-top: 5px;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #B8B8B8;
+  border-radius: 5px;
+  color: #888888;
+  margin-top: 5px;
 }
-.modifyDate{
-    min-height:400px;
+
+.modifyDate {
+  min-height: 400px;
 }
+
 div.step form.bottom div.date-picker input::placeholder,
 .modifyDate form div.date-picker input::placeholder {
- font-style: italic;
- color: #888888;
+  font-style: italic;
+  color: #888888;
 }
 
 div.step form.bottom span.date-picker-title,
-.modifyDate form span.date-picker-title{
- color: #FA8100;
+.modifyDate form span.date-picker-title {
+  color: #FA8100;
 }
 
 div.step form.bottom div.date-picker,
 .modifyDate form div.date-picker {
- margin-top: 5px;
+  margin-top: 5px;
 }
 
-.modifyDate form div.date-picker p{
-    color:#888888;
-   }
+.modifyDate form div.date-picker p {
+  color: #888888;
+}
+
+
+@media (max-width: 767px) {
+  .date-picker {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .date-picker {
+    flex-direction: row;
+  }
+}
