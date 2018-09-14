@@ -27,9 +27,9 @@ class TokenType extends Component {
     const { valid, hover } = this.state
     const types = ['startable-burnable', 'startable', 'simple']
     const descriptions = [
-      `The burnable feature makes it possible to burn the token and reduce the total supply, giving you the possibility to affect the price of the token.`,
-      `Adding the startable feature gives you the advantage to decide when to unlock the token. Usually you might want to keep it locked during the sale and make it possible to sell and transfer it once the token sale is concluded.`,
-      `It’s a token that is very easy to use, without any kind of extra functionality. `
+      `In addition to the functionalities of the startable token, the burnable feature makes it possible to buy-back and burn the token and reduce the total supply.`,
+      `The startable feature gives you the advantage to decide when to unlock the token. Usually you might want to keep it locked during the sale, and make it possible to sell and transfer it once the token sale is concluded.`,
+      `It’s a token that is very easy to use, without any kind of extra functionality.`
     ]
     return (
       <div id='token-type' className='pure-u-1'>
@@ -59,9 +59,9 @@ class TokenType extends Component {
                 </div>
               </button>
             )}
-            {typeof hover === 'number' ? <div className='tooltip pure-u-1 font-size-tiny'>
+            <div className={`tooltip ${typeof hover === 'number' ? '' : 'hidden'} pure-u-1 font-size-tiny`}>
               {descriptions[hover]}
-            </div> : null}
+            </div>
           </form>
         </div>
         {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >{t('Deploy the Token')}</button> : null}

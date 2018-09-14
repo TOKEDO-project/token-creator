@@ -1,6 +1,6 @@
 div.step {
   box-shadow: none;
-  /*min-height: 100%;*/
+  min-height: 100%;
   padding: 5%;
 }
 
@@ -76,11 +76,16 @@ div.step div.tooltip {
   background-color: black;
   border-radius: 5px;
   overflow: visible;
-  padding: 10px;
   color: white;
   margin-top: 10px;
   text-align: center;
   font-size: 12px;
+  padding: 10px;
+}
+
+div.step div.tooltip.hidden {
+  max-height: 0;
+  overflow: hidden;
 }
 
 div.step div.tooltip div.triangle {
