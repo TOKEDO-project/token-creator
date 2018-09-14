@@ -149,3 +149,7 @@ div.progress-bar-content {
 .font-size-huge {
   font-size: 24px;
 }
+
+.react-datepicker__time-list {
+  padding: 0;
+}
