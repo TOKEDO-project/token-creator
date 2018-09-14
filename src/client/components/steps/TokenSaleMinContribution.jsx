@@ -4,6 +4,7 @@ import { setMinContribution } from '../../redux/addTokenSale'
 import icon from '../../assets/images/token-sale-min-contribution.svg'
 import './Step.css'
 import './StepSingleInput.css'
+import './StepDropdown.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
 import { StepHeader } from './parts/StepHeader'
@@ -55,8 +56,14 @@ class TokenSaleMinContribution extends Component {
           {t(`Set the minimum value to accept for each contribution.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
-          <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />
+          <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
+            <div className='pure-u-1 d-flex flex-row'>
+              <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />
+              <select>
+                <option value=''>ETH</option>
+                <option value='usd'>USD</option>
+              </select>
+            </div>
             {!valid && minContribution.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >

@@ -156,11 +156,11 @@ class AddTokenSaleAdvanced extends Component {
                 <div className='pure-u-1 pure-u-md-12-24'>
                   <TokenSaleMinContribution setValid={this.setValidMinContribution} tokenId={tokenId} />
                 </div>
-              </div>
-              <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
                 <div className='pure-u-1 pure-u-md-12-24'>
                   <TokenSaleKyc tokenId={tokenId} />
                 </div>
+              </div>
+              <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
                 <div className='pure-u-1 pure-u-md-12-24'>
                   <TokenSaleStartEndTime tokenId={tokenId} />
                 </div>
