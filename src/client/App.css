@@ -8,6 +8,7 @@
 
 html {
   font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 body {
@@ -80,11 +81,11 @@ img.shuttle {
 }
 
 .font-size-tiny {
-  font-size: 0.98rem;
+  font-size: 0.8rem;
 }
 
 .font-size-small {
-  font-size: 0.99rem;
+  font-size: 0.9rem;
 }
 
 .font-size-normal {
@@ -149,19 +150,13 @@ div.progress-bar-content {
   background: linear-gradient(90deg, #FA8100, #fa9e3c);
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 1279px) {
+@media (min-width: 1280px) {
   html {
     font-size: 16px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 2560px) {
   html {
     font-size: 18px;
   }

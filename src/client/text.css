@@ -22,9 +22,6 @@
  .text-sm-right {
   text-align: right;
  }
- html{
-    font-size: 14px;   
-   }
 }
 
 @media (min-width: 768px) {
@@ -37,9 +34,6 @@
  .text-md-right {
   text-align: right;
  }
- html{
-    font-size: 14px;   
-   }
 }
 
 @media (min-width: 1024px) {
@@ -52,9 +46,6 @@
  .text-lg-right {
   text-align: right;
  }
- html{
-    font-size: 16px;   
-   }
 }
 
 @media (min-width: 1280px) {
@@ -67,7 +58,4 @@
  .text-xl-right {
   text-align: right;
  }
- html{
- font-size: 18px;   
-}
 }

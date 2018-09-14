@@ -24,8 +24,13 @@ class TokenType extends Component {
 
   render () {
     const { addToken, nextFunction, t } = this.props
-    const { valid } = this.state
+    const { valid, hover } = this.state
     const types = ['startable-burnable', 'startable', 'simple']
+    const descriptions = [
+      `The burnable feature makes it possible to burn the token and reduce the total supply, giving you the possibility to affect the price of the token.`,
+      `Adding the startable feature gives you the advantage to decide when to unlock the token. Usually you might want to keep it locked during the sale and make it possible to sell and transfer it once the token sale is concluded.`,
+      `It’s a token that is very easy to use, without any kind of extra functionality. `
+    ]
     return (
       <div id='token-type' className='pure-u-1'>
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
@@ -37,7 +42,15 @@ class TokenType extends Component {
           </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) =>
-              <button key={index} value={type} onClick={this.onChange} type='button' className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}>
+              <button
+                onMouseEnter={() => this.setState({ hover: index })}
+                onMouseLeave={() => this.setState({ hover: null })}
+                key={index}
+                value={type}
+                onClick={this.onChange}
+                type='button'
+                className={`radio-box ${addToken.type === type ? 'active' : ''} shadow pure-u-1 ${nextFunction ? 'pure-u-sm-7-24' : 'pure-u-lg-7-24'} d-flex flex-row flex-h-center flex-v-center`}
+              >
                 {type === 'startable-burnable' ? t('Startable Burnable') : null}
                 {type === 'startable' ? t('Startable') : null}
                 {type === 'simple' ? t('Simple') : null}
@@ -46,6 +59,9 @@ class TokenType extends Component {
                 </div>
               </button>
             )}
+            {typeof hover === 'number' ? <div className='tooltip pure-u-1 font-size-tiny'>
+              {descriptions[hover]}
+            </div> : null}
           </form>
         </div>
         {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >{t('Deploy the Token')}</button> : null}
