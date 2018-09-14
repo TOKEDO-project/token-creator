@@ -23,13 +23,13 @@ class TokenDetailsTopBar extends React.Component {
           </div>
           <div className='pure-u-lg-3-24 pure-u-md-1-4 pure-u-1-4 textCenter'>
             <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-              <h4>{t('Token Name')}:</h4>
+              <h4>{t('Token')}:</h4>
               <p className='breakWord'>{tokenDetails.name}</p>
             </div>
           </div>
           <div className='lg-2l-24 pure-u-md-1-4 pure-u-1-4  textCenter'>
             <div className='d-flex flex-column flex-h-center heightBox borderRight'>
-              <h4>{t('Token Symbol')}:</h4>
+              <h4>{t('Ticker')}:</h4>
               <p className='breakWord'>{tokenDetails.symbol}</p>
             </div>
           </div>
