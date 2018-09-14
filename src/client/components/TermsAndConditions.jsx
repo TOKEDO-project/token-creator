@@ -10,7 +10,7 @@ const TermsAndConditions = ({dispatch, t}) => {
     <div id='tac' className='pure-u-1 d-flex flex-column flex-v-center'>
       <img className='shuttle' src={shuttle} alt='Shuttle' />
       <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-22-24 pure-u-lg-15-24 pure-xl-15-24'>
-        <h2 className='centerTxt'>{t('Terms and Conditions')}</h2>
+        <h2 className='centerTxt font-size-medium'>{t('Terms and Conditions')}</h2>
 
         <div className='text'>
           <p><span >{t('ATTENTION')}: </span>{t('PLEASE READ CAREFULLY THESE TERMS AND CONDITIONS AS THEY AFFECT YOUR OBLIGATIONS AND LEGAL RIGHTS, INCLUDING, BUT NOT LIMITED TO WAIVERS OF RIGHTS AND LIMITATION OF LIABILITY. IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS DO NOT PROCEED WITH USING THE TOKEDO TOKEN CREATOR.')}</p>
