@@ -13,6 +13,7 @@ import trasferTokens from '../assets/images/transfer-token-gray.svg'
 import { setState } from '../redux/addMainTokenSale'
 import { setTokenMenu } from '../redux/preferences'
 import './Menu.css'
+import { getTokenInfo } from '../utils/tokens'
 class TokenDetailsMenu extends React.Component {
   constructor (props) {
     super(props)
@@ -47,9 +48,11 @@ class TokenDetailsMenu extends React.Component {
   }
   render () {
     const { addToggle, unlockToggle, changeToggle, authorizeToggle, transferToggle } = this.state
-    const { t, tokenId, preferences, mainTokenSales, location: { pathname } } = this.props
+    const { t, tokenId, preferences, mainTokenSales, location: { pathname }, tokens } = this.props
     const showMenu = preferences.showMenu
     const mainTokenSalesById = mainTokenSales[tokenId]
+    const tokenInfo = getTokenInfo(tokenId, tokens)
+    console.log('TOKEN MENU', tokenInfo)
     // const { showMenu } = this.state
     let includedStringPath = pathname.includes('unlock') || pathname.includes('change') || pathname.includes('authorize') || pathname.includes('tokens')
     return (
@@ -75,14 +78,18 @@ class TokenDetailsMenu extends React.Component {
                 {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Create Token Sale')}</p> : null}
               </button>
             }
-            <button
-              onMouseEnter={() => { if (!showMenu) { this.setState({ unlockToggle: true }) } }}
-              onMouseLeave={() => this.setState({ unlockToggle: false })}
-              onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)}
-              className={` ${pathname.includes('unlock') && !showMenu ? 'active flex-h-center' : pathname.includes('unlock') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img className={pathname.includes('unlock') ? '' : 'grayFilter'} src={padlockIcon} />
-              {showMenu || unlockToggle ? <p className={` ${unlockToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Unlock The Token')}</p> : null}
-            </button>
+
+            {tokenInfo.type !== 'simple'
+              ? <button
+                onMouseEnter={() => { if (!showMenu) { this.setState({ unlockToggle: true }) } }}
+                onMouseLeave={() => this.setState({ unlockToggle: false })}
+                onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)}
+                className={` ${pathname.includes('unlock') && !showMenu ? 'active flex-h-center' : pathname.includes('unlock') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+                <img className={pathname.includes('unlock') ? '' : 'grayFilter'} src={padlockIcon} />
+                {showMenu || unlockToggle ? <p className={` ${unlockToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Unlock The Token')}</p> : null}
+              </button>
+              : null
+            }
 
             <button
               onMouseEnter={() => { if (!showMenu) { this.setState({ changeToggle: true }) } }}
@@ -93,15 +100,17 @@ class TokenDetailsMenu extends React.Component {
               {showMenu || changeToggle ? <p className={` ${changeToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Change Token Owner')}</p> : null}
             </button>
 
-            <button
-              onMouseEnter={() => { if (!showMenu) { this.setState({ authorizeToggle: true }) } }}
-              onMouseLeave={() => this.setState({ authorizeToggle: false })}
-              onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)}
-              className={` ${pathname.includes('authorize') && !showMenu ? 'active flex-h-center' : pathname.includes('authorize') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
-              <img className={pathname.includes('authorize') ? '' : 'grayFilter'} src={shieldIcon} />
-              {showMenu || authorizeToggle ? <p className={` ${authorizeToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Authorize Transfer')}</p> : null}
-            </button>
-
+            {tokenInfo.type !== 'simple'
+              ? <button
+                onMouseEnter={() => { if (!showMenu) { this.setState({ authorizeToggle: true }) } }}
+                onMouseLeave={() => this.setState({ authorizeToggle: false })}
+                onClick={() => this.redirectTo(`/token/details/${tokenId}/authorize-transfer`)}
+                className={` ${pathname.includes('authorize') && !showMenu ? 'active flex-h-center' : pathname.includes('authorize') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
+                <img className={pathname.includes('authorize') ? '' : 'grayFilter'} src={shieldIcon} />
+                {showMenu || authorizeToggle ? <p className={` ${authorizeToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Authorize Transfer')}</p> : null}
+              </button>
+              : null
+            }
             <button
               onMouseEnter={() => { if (!showMenu) { this.setState({ transferToggle: true }) } }}
               onMouseLeave={() => this.setState({ transferToggle: false })}
