@@ -52,7 +52,6 @@ class TokenDetailsMenu extends React.Component {
     const showMenu = preferences.showMenu
     const mainTokenSalesById = mainTokenSales[tokenId]
     const tokenInfo = getTokenInfo(tokenId, tokens)
-    console.log('TOKEN MENU', tokenInfo)
     // const { showMenu } = this.state
     let includedStringPath = pathname.includes('unlock') || pathname.includes('change') || pathname.includes('authorize') || pathname.includes('tokens')
     return (
@@ -65,7 +64,7 @@ class TokenDetailsMenu extends React.Component {
             <i className={`fas fa-${showMenu ? 'close' : 'angle-right'}`} />
           </div>
           <div className={` ${showMenu ? '' : 'hideMenuResponsive'}`}>
-            {(mainTokenSalesById && isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+            {(mainTokenSalesById && (isEmpty(mainTokenSalesById.setAuthorizedReceipt) && tokenInfo.type !== 'simple'))
               ? <button className={` ${showMenu ? 'borderBtn' : 'flex-h-center'}`}><div style={{ width: '21px', marginRight: '9px' }}>
                 <Loading size='21' color='#ffffff' /></div><p className='marginTxt'>{showMenu ? t('Waiting...') : null}</p>
               </button>

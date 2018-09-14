@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash'
 import { setState } from '../redux/addMainTokenSale'
 import './TokenDetailsTutorial.css'
 import { YoutubeVideo } from './YoutubeVideo'
+import { getTokenInfo } from '../utils/tokens'
 
 class TokenDetailsTutorial extends React.Component {
   addTokenSale = () => {
@@ -20,14 +21,14 @@ class TokenDetailsTutorial extends React.Component {
   }
 
   render () {
-    const { t, tokenId, mainTokenSales } = this.props
+    const { t, tokenId, mainTokenSales, tokens } = this.props
     const mainTokenSalesById = mainTokenSales[tokenId]
-
+    const tokenInfo = getTokenInfo(tokenId, tokens)
     return (
       <div id='TokenDetailsTutorial' className='pure-u-1'>
         <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1' />
         <div className='d-flex flex-v-center flex-h-center'>
-          {(mainTokenSalesById && isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+          {(mainTokenSalesById && (isEmpty(mainTokenSalesById.setAuthorizedReceipt) && tokenInfo.type !== 'simple'))
             ? null
             : <button onClick={this.addTokenSale}>{t('Add Token Sale')}</button> }
         </div>

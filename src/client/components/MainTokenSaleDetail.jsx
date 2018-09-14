@@ -6,6 +6,7 @@ import { isEmpty } from 'lodash'
 import './MainTokenSaleDetail.css'
 import iconToken from '../assets/images/token-name.svg'
 import Loading from '../components/Loading'
+import { getTokenInfo } from '../utils/tokens'
 
 class MainTokenSaleDetail extends React.Component {
   constructor (props) {
@@ -28,8 +29,9 @@ class MainTokenSaleDetail extends React.Component {
   }
 
   render () {
-    const { addMainTokenSale, t, mainTokenSales, tokenId } = this.props
+    const { addMainTokenSale, t, mainTokenSales, tokenId, tokens } = this.props
     const { addSaleInfo, addTokenInfo, removeTokenInfo } = this.state
+    const tokenInfo = getTokenInfo(tokenId, tokens)
     const addMainTokenSaleById = addMainTokenSale[tokenId]
     const mainTokenSalesById = mainTokenSales[tokenId]
     let waiting = t('Waiting...')
@@ -53,7 +55,7 @@ class MainTokenSaleDetail extends React.Component {
           </div>
         </div>
 
-        {(!isEmpty(mainTokenSalesById.setAuthorizedReceipt))
+        {(!isEmpty(mainTokenSalesById.setAuthorizedReceipt) || tokenInfo.type === 'simple')
           ? <div className=' btnGroup d-flex flex-v-center flex-h-between pure-u-lg-14-24 pure-u-md-1 pure-u-sm-1 pure-u-1'>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addSaleInfo ? <div className='shadow infoBox'>

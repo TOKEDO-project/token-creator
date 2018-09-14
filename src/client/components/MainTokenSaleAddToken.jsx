@@ -34,9 +34,9 @@ class MainTokenSaleAddToken extends Component {
   }
 
   onTransactionHash = (transactionHash) => {
-    const { dispatch, web3, tokenId } = this.props
-    console.log('OTH:', web3.address, tokenId)
-    dispatch(setState({ state: 'token-transferred', tokenAddress: tokenId }))
+    const { dispatch, web3, tokenId, tokens } = this.props
+    const tokenInfo = getTokenInfo(tokenId, tokens)
+    dispatch(setState({ state: tokenInfo.type === 'simple' ? 'authorized' : 'token-transferred', tokenAddress: tokenId }))
     dispatch(saveTransaction(tokenId, transactionHash, { userAddress: web3.address, tokenAddress: tokenId }))
   }
 
