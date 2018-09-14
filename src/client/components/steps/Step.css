@@ -1,6 +1,6 @@
 div.step {
  box-shadow: none;
- min-height: 100%;
+ /*min-height: 100%;*/
  padding: 5%;
 }
 
@@ -37,32 +37,10 @@ div.step div.top div.left img.icon {
 div.step div.top div.right span.title {
  color: #FA8100;
 }
-
-div.step div.top div.right span.description {
- color: #B8B8B8;
- margin-top: 5px;
-}
-
-div.step form.bottom div.tooltip {
- position: relative;
- background-color: black;
- border-radius: 5px;
- overflow: visible;
- padding: 10px;
- color: white;
- margin-top: 10px;
- text-align: center;
- font-size: 12px;
-}
-
-div.step form.bottom div.tooltip div.triangle {
- width: 0;
- height: 0;
- border-left: 5px solid transparent;
- border-right: 5px solid transparent;
- border-bottom: 5px solid black;
- position: absolute;
- top: -5px;
- left: 50%;
- transform: translateX(-50%);
-}
+.step a {
+    text-decoration: underline;
+    color: #3583f3;
+  }
+  .step .tips{
+      font-size: 12px;
+  }

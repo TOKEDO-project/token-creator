@@ -51,7 +51,8 @@ class TokenSymbol extends Component {
           icon={icon}
           title={t(`Insert the symbol of your token`)}
         >
-          {t(`Symbol of the token. Like ETH for Ethereum. Max 3 or 4 characters.`)}<br />{t(`TIPS: Take a look on CoinMarketCap.com in the token section to find out existent symbols.`)}
+          {t(`Symbol of the token. Like ETH for Ethereum. Max 3 or 4 characters.`)}<br />
+          <span className='tips'>{t('TIPS')}: {t('Take a look on')}<a href='https://coinmarketcap.com/' target='_blank'> CoinMarketCap.com </a>{t(`in the token section to find out existent symbols.`)}</span>
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>

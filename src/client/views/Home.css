@@ -1,24 +1,29 @@
 #home {
-  padding: 50px 5%;
+  background-image: url("../assets/images/homeBg.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  min-height: calc(100vh - 90px);
 }
-#home p{
+
+#home p {
   margin-top: 20px;
   line-height: 30px;
-  font-size: 0.96rem;
+  font-size: 16px;
+  color: #888;
+}
+
+#home .spanText {
+  color: #FA8100;
+  font-style: italic;
 }
 
 #home h1.message {
-  color: #24242a;
-  margin: 50px 0;
-}
-
-#home .homeText {
   color: #888;
-  text-align: center;
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 50px;
+  margin: 0px;
+  font-weight:600;
 }
 
 #home button.start-now {
@@ -34,4 +39,47 @@
 #home button.start-now:hover {
   background: #FFAA00;
 
+}
+#home .marginTop{
+  margin-top: 100px;
+}
+@media (min-width: 768px) {
+  #home {
+    flex-direction: row;
+  }
+
+  #home .textHome {
+    text-align: right;
+    padding-right: 5%;
+  }
+
+  #home p {
+    font-size: 18px;
+  }
+  #home h1.message {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  #home {
+    flex-direction: column;
+  }
+
+  #home .textHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #home p {
+    font-size: 16px;
+  }
+
+  #home h1.message {
+    font-size: 30px;
+
+  }
 }

@@ -23,38 +23,42 @@ class Home extends Component {
 
     if (!tokens || Object.keys(tokens.receipts).length === 0) {
       return (
-        <div id='home' className='pure-u-1 d-flex flex-column flex-h-center flex-v-center'>
-          <img className='shuttle' src={shuttle} alt='Home' />
-          <h1 className='message font-size-huge'>{t('Your Token Sale in 5 Minutes')}</h1>
-          <div className='font-size-tiny pure-u-1 pure-u-sm-1 pure-u-md-22-24 pure-u-lg-10-24 pure-xl-10-24 homeText shadow'>
-            <p>
-              {t('It’s quick, it’s easy. Tokenize your company')}
-              <br />
-              {t('with just a few clicks!')}
-            </p>
-            <p>
-              {t('Access the perks of the tokenized economy')}
-              <br />
-              {t('without wasting time on the technological subtleties.')}
-            </p>
-            <p>
-              {t('Follow the step-by-step procedure and create')}
-              <br />
-              {t('your token sale instantly.')}
-            </p>
-            <p>
-              {t('With the Tokedo Token Creator you can')}
-              <br />
-              {t('generate the smart contracts of your token and')}
-              <br />
-              {t('of your token sale in a matter of minutes.')}
-            </p>
+        <div id='home' className='pure-u-1 d-flex'>
+          <div className='separator pure-u-1 pure-u-sm-1 pure-u-md-6-24 pure-u-lg-6-24 pure-u-xl-1-2' />
+
+          <div className='textHome pure-u-1 pure-u-sm-1 pure-u-md-18-24 pure-u-lg-18-24 pure-u-xl-1-2'>
+            <div className='marginTop'>
+              <h1 className='message font-size-huge'>{t('YOUR TOKEN SALE NOW!')}</h1>
+            </div>
+
+            <div className='marginTop'>
+              <p>
+                {t('It’s ')}
+                <span className='spanText'>{t('quick')}</span>,
+                {t(' it’s ')}
+                <span className='spanText'>{t('easy')}</span>.
+              </p>
+
+              <p>
+                {t('Generate your ')}<span className='spanText'>{t('token')}</span>{t(' and your ')}
+                <span className='spanText'>{t('token sale')}</span> now,<br />
+
+                <span className='spanText'>{t('no technical skill')}</span>{t(' needed')}!
+              </p>
+              <p>
+                {t('Tokenize your company with just a few clicks! ')}
+              </p>
+
+            </div>
+            <div className='marginTop' >
+              <a href='/token/add/wizard'>
+                <button type='button' className='start-now'>
+                  {t('START NOW!')}
+                </button>
+              </a>
+            </div>
           </div>
-          <a href='/token/add/wizard'>
-            <button type='button' className='start-now'>
-              {t('START NOW!')}
-            </button>
-          </a>
+
         </div>
       )
     }
