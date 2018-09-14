@@ -14,7 +14,27 @@ div.step.alone {
 div.step form.bottom {
   margin-top: 25px;
 }
-
+.dateWrap{
+  position: relative;
+  width: 227px;
+}
+.dateWrap img{
+  position: absolute;
+  width: 20px;
+  z-index: 10;
+  top: 13px;
+    right: 10px;
+}
+.inputBox {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #B8B8B8;
+  border-radius: 5px;
+  color: #888888;
+  margin-top: 5px;
+  background: rgba(184, 184, 184, 0.281);
+}
 @media (min-width: 568px) {
   div.step form.bottom {
     padding-left: 63px;

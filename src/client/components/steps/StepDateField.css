@@ -8,7 +8,9 @@ div.step form.bottom div.date-picker input,
  color: #888888;
  margin-top: 5px;
 }
-
+.modifyDate{
+    min-height:400px;
+}
 div.step form.bottom div.date-picker input::placeholder,
 .modifyDate form div.date-picker input::placeholder {
  font-style: italic;
