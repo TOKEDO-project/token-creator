@@ -37,7 +37,7 @@ class AddTokenSaleAdvanced extends Component {
     if (addTokenSale[tokenId].step === 6) {
       transaction = await this.createAddTokenSaleTransaction()
     } else if (addTokenSale[tokenId].step === 7) {
-      transaction = await this.createAddRCTransaction()
+      transaction = await this.createAddRCTransaction(addTokenSale.address)
     }
     this.setState({
       transaction
@@ -54,9 +54,9 @@ class AddTokenSaleAdvanced extends Component {
   }
 
   createAddRCTransaction = async (tokenSaleAddress) => {
-    const { web3, tokenId, mainTokenSales, addTokenSale } = this.props
+    const { web3, tokenId, mainTokenSales } = this.props
     const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
-    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress: tokenSaleAddress || addTokenSale.address })
+    const transaction = await prepareAddRCTransaction({ web3, mainTokenSaleAddress, tokenSaleAddress })
     return transaction
   }
 
@@ -77,9 +77,9 @@ class AddTokenSaleAdvanced extends Component {
     return validPrice && validAmount && validMinContribution
   }
 
-  deployAddRc = async () => {
+  deployAddRc = async (tokenSaleAddress) => {
     const { tokenId, dispatch } = this.props
-    const transaction = await this.createAddRCTransaction()
+    const transaction = await this.createAddRCTransaction(tokenSaleAddress)
     this.setState({
       transaction
     })
