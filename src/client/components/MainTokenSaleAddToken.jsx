@@ -68,7 +68,7 @@ class MainTokenSaleAddToken extends Component {
               icon={icon}
               title={t(`Allocate tokens`)}
             >
-              {t(`This is the second transaction. You need to add the amount of token you want to transfer to this token sale. This is the total amount of token to be sold. You can change this value in the future.`)}
+              {t(`This transaction will move the selected amount of tokens to the smart contract of the Project. Remember, you will be able to add more tokens or remove some of them at a later time.`)}
             </StepHeader>
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>

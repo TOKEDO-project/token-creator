@@ -38,7 +38,7 @@ class WalletSelection extends Component {
           title={t(`Choose a wallet`)}
         >
           {t('Remember')}:
-          {t(` to send the transaction you need an Ethereum address with at least some ETH in the balance to pay for the fees of the Ethereum Network.`)}
+          {t(` to send the transaction you need an Ethereum address with at least some ETH in the balance to pay for the fees of the Ethereum Network. After sending it, wait for the transaction to be mined.`)}
         </StepHeader>
         <form className='bottom d-flex flex-column flex-v-center'>
           <div className='pure-u-1 pure-u-lg-4-5 d-flex flex-row flex-h-between flex-wrap'>

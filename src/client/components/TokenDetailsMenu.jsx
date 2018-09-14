@@ -74,7 +74,7 @@ class TokenDetailsMenu extends React.Component {
                 onClick={this.addTokenSale}
                 className={` ${!includedStringPath && !showMenu ? 'active flex-h-center' : !includedStringPath ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
                 <img className={includedStringPath ? 'grayFilter' : ''} src={addIcon} />
-                {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Create Token Sale')}</p> : null}
+                {showMenu || addToggle ? <p className={` ${addToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Add Token Sale')}</p> : null}
               </button>
             }
 
@@ -85,7 +85,7 @@ class TokenDetailsMenu extends React.Component {
                 onClick={() => this.redirectTo(`/token/details/${tokenId}/unlock-the-token`)}
                 className={` ${pathname.includes('unlock') && !showMenu ? 'active flex-h-center' : pathname.includes('unlock') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
                 <img className={pathname.includes('unlock') ? '' : 'grayFilter'} src={padlockIcon} />
-                {showMenu || unlockToggle ? <p className={` ${unlockToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Unlock The Token')}</p> : null}
+                {showMenu || unlockToggle ? <p className={` ${unlockToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Unlock Token')}</p> : null}
               </button>
               : null
             }

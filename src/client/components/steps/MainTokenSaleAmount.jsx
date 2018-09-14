@@ -67,14 +67,15 @@ class MainTokenSaleAmount extends Component {
       <div className='step alone pure-u-1'>
         <StepHeader
           icon={icon}
-          title={t(`Insert the token amount`)}
+          title={t(`Token supply of the Project `)}
         >
-          {t(`Insert the total amount of token to be sold. After make the transaction.`)}
+          {t(`Specify the total amount of tokens you intend to allocate for sale. This includes all the token sale contracts you will eventually create. You will be able to change this quantity at a later time.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className='input-box pure-u-16-24 d-flex flex-column flex-v-center'>
-            <input type='text' placeholder={t(`Insert the token amount`)} className='token-supply text shadow pure-u-1' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
-            {!valid ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />{t(`Amount must be less than or equal to the Token supply. And must be only number. And must use only dot for decimal separator`)}</div> : null}
+            <input type='text' placeholder={t(`Insert amount`)} className='token-supply text shadow pure-u-1' value={addMainTokenSale[tokenId].amount} onChange={this.onChangeText} />
+            {!valid ? <div className='tooltip d-flex flex-row flex-v-center'><div className='triangle' />
+              {t(`Amount must be less than or equal to the total supply and it must be only a number. The decimal separator is a dot.`)}</div> : null}
           </div>
           {valid ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
         </form>

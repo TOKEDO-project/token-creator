@@ -54,19 +54,19 @@ class TokenSalePrice extends Component {
     const { valid } = this.state
     const price = addTokenSale[tokenId].price
     const priceCurrency = addTokenSale[tokenId].priceCurrency
-    const errorMessage = t(`Decimal must be separated by ' . ' and decimals lenght not more than 18`)
+    const errorMessage = t(`The numbers after the decimal separator can’t exceed 18 digits.`)
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the price for one token`)}
+          title={t(`Token Price`)}
         >
-          {t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}
+          {t(`You can sell your token at a different price in each sale. Here you are required to define the price of ONE token for this specific token sale.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <div className='pure-u-1 d-flex flex-row'>
-              <input placeholder={t(`Insert the price`)} className='token-name text shadow pure-u-1' value={price} onChange={this.onChangeText} />
+              <input placeholder={t(`Insert the price of your token`)} className='token-name text shadow pure-u-1' value={price} onChange={this.onChangeText} />
               <select value={priceCurrency} onChange={this.onChangePriceSelect}>
                 <option value=''>ETH</option>
                 <option value='usd'>USD</option>

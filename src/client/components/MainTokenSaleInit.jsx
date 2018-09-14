@@ -21,7 +21,7 @@ class MainTokenSaleInit extends Component {
 
   async componentDidMount () {
     const { web3, tokenId } = this.props
-    const transaction = await prepareCreateMainTokenSaleTransaction({web3, addMainTokenSale: {userAddress: web3.address, tokenAddress: tokenId}})
+    const transaction = await prepareCreateMainTokenSaleTransaction({ web3, addMainTokenSale: { userAddress: web3.address, tokenAddress: tokenId } })
     this.setState({
       transaction,
       loading: false
@@ -42,7 +42,7 @@ class MainTokenSaleInit extends Component {
 
   render () {
     const { t } = this.props
-    const {transaction, loading} = this.state
+    const { transaction, loading } = this.state
 
     if (loading) {
       return <Loading />
@@ -52,9 +52,10 @@ class MainTokenSaleInit extends Component {
       <WalletSelection connectorName='mainTokenSaleDeploy' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
         <StepHeader
           icon={icon}
-          title={t(`Initialization`)}
+          title={t(`Create Your Project`)}
         >
-          {t(`To add token sale you need to perform 3 transaction for initialization. This is the first transaction.`)}
+          {t('In order to launch your token sale, first you need to create a Project. It’s a quick preliminary action that only requires you to complete some transactions.')}<br />
+          {t(`This first transaction will deploy the smart contract of the Project.`)}
         </StepHeader>
         <div className='separator-twentyfive' />
       </WalletSelection>

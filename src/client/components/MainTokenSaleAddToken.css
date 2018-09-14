@@ -7,16 +7,15 @@
 #MainTokenSaleAddToken .btnChange, .btnChange {
   background: #7d7d7d;
   color: white;
-  height: 35px;
   font-size: 15px;
-  padding: 0 10px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   max-width: 200px;
 }
 
 #MainTokenSaleAddToken .groupBottom, .groupBottom {
-  margin: 40px 0px;
+  margin: 20px 0px;
 }
 
 #MainTokenSaleAddToken .btnChange:hover, .btnChange:hover {

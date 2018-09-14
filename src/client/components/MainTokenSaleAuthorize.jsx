@@ -54,9 +54,9 @@ class MainTokenSaleAuthorize extends Component {
         <WalletSelection connectorName='mainTokenSaleAuthorize' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
           <StepHeader
             icon={icon}
-            title={t(`Authorization`)}
+            title={t(`Authorize the creation of token sales`)}
           >
-            {t(`This is the final transaction. You need to authorize this token sale to move the token.`)}
+            {t(`This is the last transaction required. With this transaction you allow the contract of the Project to transfer the tokens.`)}
           </StepHeader>
           <div className='separator-twentyfive' />
         </WalletSelection>

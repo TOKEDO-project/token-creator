@@ -44,10 +44,10 @@ class MainTokenSaleDetail extends React.Component {
           </div>
           <div className='pure-u-1 d-flex flex-row flex-v-center '>
             <div className='pure-u-lg-10-24 pure-u-md-8-24 pure-u-sm-7-24'>
-              <h2>{t('Token Sale')}</h2>
+              <h2>{t('Your project')}</h2>
             </div>
             <div className='pure-u-lg-14-24 pure-u-md-16-24 pure-u-sm-17-24 d-flex flex-column'>
-              <h4>{t('Token for Sale')}</h4>
+              <h4>{t('Tokens For Sale')}</h4>
               <p> {(!isEmpty(mainTokenSalesById.transferReceipt))
                 ? addMainTokenSaleById.amount
                 : waiting}</p>
@@ -77,7 +77,7 @@ class MainTokenSaleDetail extends React.Component {
               <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />
                 <span>
-                  {t('Add More Token')}
+                  {t('Add More Tokens')}
                 </span>
                 <i onClick={(e) => { e.stopPropagation(); this.setState({addTokenInfo: !addTokenInfo, addSaleInfo: false, removeTokenInfo: false}) }}
                   className='fa fa-question d-flex flex-h-center flex-v-center' />
@@ -90,7 +90,7 @@ class MainTokenSaleDetail extends React.Component {
               <button onClick={() => this.redirectTo(`/token/details/${tokenId}/remove-token`)} className='shadow blue pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-minus d-flex flex-h-center flex-v-center' />
                 <span>
-                  {t('Remove token')}
+                  {t('Remove tokens')}
                 </span>
                 <i onClick={(e) => { e.stopPropagation(); this.setState({removeTokenInfo: !removeTokenInfo, addSaleInfo: false, addTokenInfo: false}) }}
                   className='fa fa-question d-flex flex-h-center flex-v-center' />

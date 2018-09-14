@@ -51,14 +51,14 @@ class TokenSaleMinContribution extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the Minimum Contribution`)}
+          title={t(`Minimum Contribution`)}
         >
-          {t(`Set the minimum value to accept for each contribution.`)}
+          {t(`Specify the minimum amount of Ether that your buyers are required to send in order to participate.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box fake-dropdown ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
             <div className='pure-u-1 d-flex flex-row'>
-              <input placeholder={t(`Insert the minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />
+              <input placeholder={t(`Insert minimum contribution`)} className='token-name text shadow pure-u-1' value={minContribution} onChange={this.onChangeText} />
               <div className='fake d-flex flex-row flex-h-center flex-v-center'>
                 ETH
               </div>

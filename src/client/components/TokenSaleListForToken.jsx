@@ -97,29 +97,29 @@ class TokenSaleListForToken extends React.Component {
                         <div className='pure-u-21-24'>
                           <div className='marginTopSmall pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-6-24 pure-u-xl-6-24 borderRight centerTextResponsive'>
-                              <div className='heightBox'><h4>{t('Token Price')}:</h4></div>
+                              <div className='heightBox'><h4>{t('Price')}</h4></div>
                               <div className='heightBox'> <p className='breakWord'>{t(tokenSale.price)}</p></div>
                             </div>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-9-24 pure-u-xl-9-24 borderRight centerTxt'>
-                              <div className='heightBox'><h4>{t('Token For Sale')}:</h4></div>
+                              <div className='heightBox'><h4>{t('Tokens For Sale')}</h4></div>
                               <div className='heightBox'><p className='breakWord'>{t(tokenSale.amount)}</p></div>
                             </div>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-9-24 pure-u-xl-9-24 borderRight centerTxt'>
-                              <div className='heightBox'><h4>{t('Token Sold')}:</h4></div>
+                              <div className='heightBox'><h4>{t('Tokens Sold')}</h4></div>
                               <div className='heightBox'><p className='breakWord'>{t('0')}</p></div>
                             </div>
                           </div>
                           <div className='marginTopSmall pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-12-24 pure-u-xl-12-24'>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 borderRight centerTxt'>
-                              <div className='heightBox'><h4>{t('Remaining Token')}:</h4></div>
+                              <div className='heightBox'><h4>{t('Remaining Tokens')}</h4></div>
                               <div className='heightBox'><p className='breakWord'>{t('0')}</p></div>
                             </div>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 borderRight centerTxt'>
-                              <div className='heightBox'><h4>{t('Min Contribution')}:</h4></div>
+                              <div className='heightBox'><h4>{t('Min Contribution')}</h4></div>
                               <div className='heightBox'><p className='breakWord'>{t(tokenSale.minContribution)}</p></div>
                             </div>
                             <div className='pure-u-1-2 pure-u-sm-1-3 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-3 centerTxt'>
-                              <div className='heightBox'><h4>{t('ETH collected')}:</h4></div>
+                              <div className='heightBox'><h4>{t('ETH collected')}</h4></div>
                               <div className='heightBox'><p className='breakWord'> {t('ETH')} 0</p></div>
                             </div>
                           </div>

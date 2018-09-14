@@ -40,15 +40,15 @@ class TokenSaleStartEndTime extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Choose the start and end time`)}
+          title={t(`Choose start and end time`)}
         >
-          {t(`Each token sale can have different price. Here you must set the current price of this token sale smart contract. The price must be in ETH.`)}
+          {t(`Input the start and end date to define the period of time during which the smart contract of this specific token sale can accept a transaction.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between flex-v-end'>
           <div className={`date-pickers d-flex flex-column pure-u-1`}>
 
             <div className='date-picker pure-u-1 d-flex flex-column'>
-              <span className='date-picker-title'>Start Time:</span>
+              <span className='date-picker-title'>Start Time</span>
               <div className='dateWrap'>
                 <img src={calendar} />
                 <DatePicker
@@ -66,7 +66,7 @@ class TokenSaleStartEndTime extends Component {
             </div>
 
             <div className='date-picker pure-u-1 d-flex flex-column'>
-              <span className='date-picker-title'>End Time:</span>
+              <span className='date-picker-title'>End Time</span>
               <div className='dateWrap'>
                 <img src={calendar} />
                 <DatePicker

@@ -50,18 +50,18 @@ class TokenSaleAmount extends Component {
     const { valid } = this.state
     const amount = addTokenSale[tokenId].amount
     const token = getTokenInfo(tokenId, tokens)
-    const errorMessage = t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + token.decimals
+    const errorMessage = t(`The numbers after the decimal separator can’t exceed`) + ' ' + token.decimals + t(` digits. The decimal separator has to be a dot.`)
     return (
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Insert the Token Amount`)}
+          title={t(`Tokens For Sale`)}
         >
-          {t(`Add the quantity of the token for this smart contract. You can add many token sale, each smart contract can have different amount.`)}
+          {t(`Indicate the total amount of tokens allocated for this specific sale. Remember you can add different token sales, and you can allocate a different amount of tokens to each of them.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>
           <div className={`input-box ${nextFunction ? 'pure-u-16-24' : 'pure-u-1'} d-flex flex-column flex-v-center`}>
-            <input placeholder={t(`Insert the amount`)} className='token-name text shadow pure-u-1' value={amount} onChange={this.onChangeText} />
+            <input placeholder={t(`Insert total supply of the token sale`)} className='token-name text shadow pure-u-1' value={amount} onChange={this.onChangeText} />
             {!valid && amount.length > 0 ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {nextFunction ? <button className='next shadow pure-u-7-24' disabled={!valid} onClick={nextFunction} >
