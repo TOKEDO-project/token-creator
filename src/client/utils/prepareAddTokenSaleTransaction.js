@@ -24,8 +24,8 @@ export default async ({ web3, tokenSale, mainTokenSaleAddress, tokenDecimals }) 
     priceCurrency,
     bnUtils.times(tokenSale.amount, bnUtils.pow(10, tokenDecimals)),
     web3.utils.toWei(tokenSale.minContribution),
-    tokenSale.startTime,
-    tokenSale.endTime
+    Math.round(tokenSale.startTime / 1000),
+    Math.round(tokenSale.endTime / 1000)
   ]
   const data = '0x' + bytecode.object
   const tx = contract.deploy({

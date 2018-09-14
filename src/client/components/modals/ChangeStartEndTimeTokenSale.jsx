@@ -64,7 +64,6 @@ class ChangeStartEndTimeTokenSale extends React.Component {
     e.preventDefault()
     const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
-    console.log('CHANGE DATES', tokenSale)
     const transaction = await prepareSetTimeTransaction({ web3, tokenSaleAddress: tokenSale.contractAddress, hasKYC: tokenSale.kyc, startTime: newStartTime, endTime: newEndTime })
     this.setState({
       transaction,
@@ -129,11 +128,11 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
                   <span className='font-weight-bold'>{t('New Start Date')} : </span>
-                  {moment(newStartTime, 'x').format('DD/MM/YYYY')}
+                  {moment(newStartTime, 'x').format('LLL')}
                 </p>
                 <p>
                   <span className='font-weight-bold'> {t('New End Date')} : </span>
-                  {moment(newEndTime, 'x').format('DD/MM/YYYY')}
+                  {moment(newEndTime, 'x').format('LLL')}
                 </p>
               </div>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
@@ -147,7 +146,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='date-picker pure-u-1 d-flex flex-v-center flex-h-between'>
                 <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
                   <span className='date-picker-title'>{t('Current Start Time')} : </span>
-                  <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('DD/MM/YYYY')}</div>
+                  <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('LLL')}</div>
 
                 </div>
 
@@ -157,8 +156,13 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                     <img src={calendar} />
                     <DatePicker
                       selected={moment(newStartTime, 'x')}
+                      minDate={moment()}
+                      showTimeSelect
+                      timeFormat='HH:mm'
+                      timeIntervals={1}
+                      dateFormat='LLL'
+                      timeCaption='time'
                       onChange={this.onChangeStartTime}
-                      dateFormat='DD/MM/YYYY'
                     />
                   </div>
 
@@ -167,7 +171,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='date-picker pure-u-1 d-flex flex-v-center  flex-h-between'>
                 <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
                   <span className='date-picker-title'>{t('Current End Time')} : </span>
-                  <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('DD/MM/YYYY')}</div>
+                  <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('LLL')}</div>
 
                 </div>
 
@@ -177,8 +181,13 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                     <img src={calendar} />
                     <DatePicker
                       selected={moment(newEndTime, 'x')}
+                      minDate={moment()}
+                      showTimeSelect
+                      timeFormat='HH:mm'
+                      timeIntervals={1}
+                      dateFormat='LLL'
+                      timeCaption='time'
                       onChange={this.onChangeEndTime}
-                      dateFormat='DD/MM/YYYY'
                     />
                   </div>
 

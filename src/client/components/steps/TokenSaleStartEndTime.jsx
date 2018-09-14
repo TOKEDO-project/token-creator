@@ -53,6 +53,12 @@ class TokenSaleStartEndTime extends Component {
                 <img src={calendar} />
                 <DatePicker
                   selected={moment(startTime, 'x')}
+                  minDate={moment()}
+                  showTimeSelect
+                  timeFormat='HH:mm'
+                  timeIntervals={1}
+                  dateFormat='LLL'
+                  timeCaption='time'
                   onChange={this.onChangeStartTime}
                 />
               </div>
@@ -65,6 +71,12 @@ class TokenSaleStartEndTime extends Component {
                 <img src={calendar} />
                 <DatePicker
                   selected={moment(endTime, 'x')}
+                  minDate={moment()}
+                  showTimeSelect
+                  timeFormat='HH:mm'
+                  timeIntervals={1}
+                  dateFormat='LLL'
+                  timeCaption='time'
                   onChange={this.onChangeEndTime}
                 />
               </div>

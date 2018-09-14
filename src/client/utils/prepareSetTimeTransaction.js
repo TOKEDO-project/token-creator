@@ -10,7 +10,7 @@ export default async ({ web3, hasKYC, tokenSaleAddress, startTime, endTime }) =>
   }
 
   const contract = new web3.eth.Contract(abi, tokenSaleAddress)
-  const tx = await contract.methods.setTime(startTime, endTime)
+  const tx = await contract.methods.setTime(Math.round(startTime / 1000), Math.round(endTime / 1000))
   const gasPrice = await web3.eth.getGasPrice()
   let options = { from: web3.address, gasPrice }
   await tx.estimateGas(options)
