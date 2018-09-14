@@ -44,3 +44,27 @@ div.step div.top div.right span.title {
   .step .tips{
       font-size: 12px;
   }
+
+  div.step div.tooltip {
+    position: relative;
+    background-color: black;
+    border-radius: 5px;
+    overflow: visible;
+    padding: 10px;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+   }
+   
+   div.step div.tooltip div.triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+   }
