@@ -36,12 +36,12 @@ class AuthorizeTransfer extends React.Component {
   }
 
   prepareTransaction = async (e) => {
-    const { web3, mainTokenSales, tokenId, tokens } = this.props
+    const { web3, tokenId, tokens } = this.props
+    const { address } = this.state
     e.preventDefault()
-    const mainTokenSaleAddress = mainTokenSales[tokenId].receipt.contractAddress
     const transactionHash = tokens.receipts[tokenId].transactionHash
     const tokenType = tokens.transactions[transactionHash].type
-    const transaction = await prepareSetAuthorizedTransaction({ web3, tokenType, tokenAddress: tokenId, authorizedAddress: mainTokenSaleAddress })
+    const transaction = await prepareSetAuthorizedTransaction({ web3, tokenType, tokenAddress: tokenId, authorizedAddress: address })
     this.setState({
       transaction,
       loading: false
