@@ -78,7 +78,6 @@
 
 .cards p {
   text-align: center;
-  font-size: 1rem;
   margin: 0;
   font-weight: 500;
 }
@@ -94,7 +93,6 @@
 }
 .cards a button p, button p{
   font-weight: 500;
-  font-size: 1rem;
   margin-left: 0;
 }
 p.marginTxt{

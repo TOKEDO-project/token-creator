@@ -16,7 +16,7 @@
   color: #FA8100;
   margin: 0;
   margin-bottom: 20px;
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
 #faqPage {
@@ -36,19 +36,17 @@
 }
 
 #faqPage span {
-  font-size: 1rem;
   font-weight: 600;
 }
 
 #faqPage h3 {
-  font-size: 1.5rem;
+  font-size: 22px;
   font-weight: 500;
   margin: 40px 0 20px 0;
   text-align: left;
 }
 
 #faqPage p {
-  font-size: 0.99rem;
   font-weight: 400;
   text-align: left;
 }
