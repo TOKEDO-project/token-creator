@@ -8,7 +8,6 @@
 
 html {
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
 }
 
 body {
@@ -121,4 +120,32 @@ div.progress-bar {
 div.progress-bar-content {
   height: 100%;
   background: linear-gradient(90deg, #FA8100, #fa9e3c);
+}
+
+.font-size-tiny {
+  font-size: 12px;
+}
+
+.font-size-small {
+  font-size: 14px;
+}
+
+.font-size-normal {
+  font-size: 16px;
+}
+
+.font-size-medium {
+  font-size: 18px;
+}
+
+.font-size-large {
+  font-size: 20px;
+}
+
+.font-size-big {
+  font-size: 22px;
+}
+
+.font-size-huge {
+  font-size: 24px;
 }

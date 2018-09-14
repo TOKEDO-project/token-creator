@@ -9,6 +9,14 @@ class FaqPage extends React.Component {
     }
   }
 
+  componentDidMount () {
+    const { location: { hash } } = this.props
+    if (typeof hash === 'string' && hash.length > 0) {
+      const targetForScroll = document.getElementById(hash.substring(1, hash.length))
+      window.scrollTo(0, targetForScroll.offsetTop)
+    }
+  }
+
   render () {
     const { t } = this.props
     return (

@@ -7,6 +7,7 @@ import './StepRadioButtons.css'
 import './TokenType.css'
 import { translate } from 'react-i18next'
 import { StepHeader } from './parts/StepHeader'
+import { Link } from 'react-router-dom'
 
 class TokenSaleKyc extends Component {
   constructor (props) {
@@ -19,7 +20,7 @@ class TokenSaleKyc extends Component {
 
   onChange = (e) => {
     const { dispatch, tokenId } = this.props
-    dispatch(setKYC({tokenAddress: tokenId, kyc: e.target.value}))
+    dispatch(setKYC({ tokenAddress: tokenId, kyc: e.target.value }))
   }
 
   render () {
@@ -34,7 +35,7 @@ class TokenSaleKyc extends Component {
             icon={icon}
             title={t(`KYC`)}
           >
-            {t(`You can add our KYC system on this token sale.`)} <a href='' target='_blank'>{t(`Read more about`)}</a>
+            {t(`You can add our KYC system on this token sale.`)} <Link to={{ pathname: '/faq', hash: '#Unlock' }} target='_blank'>{t(`Read more about`)}</Link>
           </StepHeader>
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             {types.map((type, index) => {
