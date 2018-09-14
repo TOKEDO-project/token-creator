@@ -90,14 +90,14 @@ class TokenDetailsMenu extends React.Component {
               : null
             }
 
-            <button
+            {/* <button
               onMouseEnter={() => { if (!showMenu) { this.setState({ changeToggle: true }) } }}
               onMouseLeave={() => this.setState({ changeToggle: false })}
               onClick={() => this.redirectTo(`/token/details/${tokenId}/change-token-owner`)}
               className={` ${pathname.includes('change') && !showMenu ? 'active flex-h-center' : pathname.includes('change') ? 'active' : showMenu ? 'borderBtn' : 'flex-h-center'}`}>
               <img className={pathname.includes('change') ? '' : 'grayFilter'} src={groupIcon} />
               {showMenu || changeToggle ? <p className={` ${changeToggle ? 'hoverTxt' : 'marginTxt'}`}>{t('Change Token Owner')}</p> : null}
-            </button>
+            </button> */}
 
             {tokenInfo.type !== 'simple'
               ? <button
