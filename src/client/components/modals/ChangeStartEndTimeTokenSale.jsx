@@ -111,6 +111,17 @@ class ChangeStartEndTimeTokenSale extends React.Component {
       <Modal icon={saleDate} visible={visible} title={t('Change Date')} toggleVisibility={this.toggleVisibility}>
         {transaction
           ? <WalletSelection connectorName='changeDatesTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+            <div className='top d-flex flex-row flex-h-start flex-v-center'>
+              <div className='left'>
+                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+              </div>
+              <div className='right d-flex flex-column flex-h-center'>
+                <span className='title'>{t(`Change Dates`)}:</span>
+                <span className='description font-size-tiny'>
+                  {t(`You need to make the transaction to change the dates of the token sale.`)}
+                </span>
+              </div>
+            </div>
             <div className='groupBottom pure-u-1 d-flex flex-v-center'>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                 <p>
