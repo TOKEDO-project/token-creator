@@ -1,15 +1,10 @@
 #home {
-  min-height: calc(100vh - 90px);
   background: white;
 }
-#home .homeBg{
+
+#home .homeBg {
   background-image: url("../assets/images/homeBg.svg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  min-height: calc(100vh - 90px);
 }
 
 #home p {
@@ -27,7 +22,7 @@
 #home h1.message {
   color: #888;
   margin: 0px;
-  font-weight:600;
+  font-weight: 600;
 }
 
 #home button.start-now {
@@ -44,9 +39,31 @@
   background: #FFAA00;
 
 }
-#home .marginTop{
-  margin-top: 100px;
+
+@media (min-width: 1025px) {
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: cover;
+    min-height: calc(100vh - 90px);
+  }
+  #home .marginTop {
+    margin-top: 100px;
+  }
 }
+
+@media (max-width: 1024px) {
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 100%;
+    min-height: calc(100vh - 90px);
+  }
+  #home .marginTop {
+    margin-top: 70px;
+  }
+}
+
 @media (min-width: 768px) {
   #home {
     flex-direction: row;
@@ -60,14 +77,22 @@
   #home p {
     font-size: 18px;
   }
+
   #home h1.message {
     font-size: 35px;
   }
 }
 
+
 @media (max-width: 767px) {
   #home {
     flex-direction: column;
+  }
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 120%;
+    min-height: calc(100vh + 100px);
   }
 
   #home .textHome {
@@ -76,6 +101,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    padding: 5%;
   }
 
   #home p {
@@ -85,5 +111,27 @@
   #home h1.message {
     font-size: 30px;
 
+  }
+}
+@media (max-width: 600px) {
+
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 170%;
+    min-height: calc(100vh + 100px);
+  }
+  #home .homeBg {
+    padding-top: 300px;
+  }
+
+  #home .textHome {
+    margin-top: -300px;
+  }
+  #home h1.message {
+    font-size: 25px;
+  }
+  #home .marginTop {
+    margin-top: 50px;
   }
 }
