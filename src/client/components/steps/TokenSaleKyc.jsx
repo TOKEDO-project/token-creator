@@ -42,8 +42,8 @@ class TokenSaleKyc extends Component {
               const KYCValue = type === 'kyc-yes'
               const kycActive = (type === 'kyc-yes' && kyc === 'true') || (type === 'kyc-no' && kyc === 'false')
               return <button key={index} value={KYCValue} onClick={this.onChange} type='button' className={`radio-box ${kycActive ? 'active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-row flex-h-center flex-v-center`}>
-                {type === 'kyc-yes' ? t('YES add KYC ') : null}
-                {type === 'kyc-no' ? t('NO proceed without KYC') : null}
+                {type === 'kyc-yes' ? <p>{t('YES')} <br />{ t('add KYC')}</p> : null}
+                {type === 'kyc-no' ? <p>{t('NO')} <br />{ t(' proceed without KYC')}</p> : null}
                 <div className={`radio-button ${kycActive ? 'active' : ''} d-flex flex-row flex-h-center flex-v-center`}>
                   <div className='radio-button-dot' />
                 </div>

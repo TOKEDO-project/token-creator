@@ -131,7 +131,7 @@ class AddTokenSaleWizard extends Component {
   }
 
   renderStep (step) {
-    const { tokenId } = this.props
+    const { tokenId, t } = this.props
     const { transaction } = this.state
     switch (step) {
       case 1:
@@ -145,9 +145,9 @@ class AddTokenSaleWizard extends Component {
       case 5:
         return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
       case 6:
-        return <WalletSelection connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+        return <WalletSelection progressTitle={t('Send transaction 1/2')} progressMsg={t('Send the first transaction.')} connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
       case 7:
-        return <WalletSelection connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
+        return <WalletSelection progressTitle={t('Send transaction 2/2')} progressMsg={t('Send the second transaction.')} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
     }
   }
 
