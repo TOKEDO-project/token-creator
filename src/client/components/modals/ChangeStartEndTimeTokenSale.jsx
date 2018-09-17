@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import saleDate from '../../assets/images/token-sale-date.svg'
 import calendar from '../../assets/images/calendarInput.svg'
+import changeSettings from '../../assets/images/Change_Settings.svg'
 import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
 import { saveSetTimeTokenSaleTransaction, saveSetTimeTokenSaleReceipt } from '../../redux/actions'
@@ -119,23 +120,21 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='top d-flex flex-row flex-h-start flex-v-center'>
 
                 <div className='left'>
-                  <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+                  <img src={changeSettings} />
                 </div>
                 <div className='right d-flex flex-column flex-h-center'>
-                  <span className='title'>{t(`New Change Settings`)}:</span>
-                  <span className='description font-size-tiny'>
-                    {t(`You need to make the transaction to change the dates of the token sale.`)}
-                  </span>
+                  <span className='title'>{t(`New Settings`)}:</span>
+
                 </div>
               </div>
               <div className='groupBottom pure-u-1 d-flex flex-v-center'>
                 <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
                   <p>
-                    <span className='font-weight-bold'>{t('New Start Time')} : </span>
+                    <span className='font-weight-bold'>{t('Start Time')} : </span>
                     {moment(newStartTime, 'x').format('LLL')}
                   </p>
                   <p>
-                    <span className='font-weight-bold'> {t('New End Time')} : </span>
+                    <span className='font-weight-bold'> {t('End Time')} : </span>
                     {moment(newEndTime, 'x').format('LLL')}
                   </p>
                   <p>
@@ -146,7 +145,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
 
             </WalletSelection>
           </div>
-          : <div className='modifyDate d-flex flex-column flex-h-center flex-v-center'>
+          : <div className='modifyDate d-flex flex-column flex-v-center'>
             <form className='date-pickers pure-u-1'>
 
               <div className='date-picker pure-u-1 d-flex flex-v-center flex-h-between'>

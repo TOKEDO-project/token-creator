@@ -13,6 +13,7 @@ div.step form.bottom div.date-picker input,
 }
 .modifyDate {
   min-height: 400px;
+  margin-top:10%;
 }
 .paddingLeft{
   padding-left: 63px;
@@ -24,6 +25,7 @@ div.step form.bottom div.date-picker input,
   background: none;
   margin-bottom: 10px;
 }
+
 
 div.step form.bottom div.date-picker input::placeholder,
 .modifyDate form div.date-picker input::placeholder {

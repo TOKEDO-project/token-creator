@@ -23,7 +23,7 @@ div.step form.bottom {
   width: 20px;
   z-index: 10;
   top: 13px;
-    right: 10px;
+  right: 10px;
 }
 .react-datepicker-wrapper,
 .react-datepicker__input-container{

@@ -17,6 +17,12 @@
 #MainTokenSaleAddToken .groupBottom, .groupBottom {
   margin: 20px 0px;
 }
+.groupBottom {
+  margin: 10px 0px 20px;
+}
+.left img{
+  width:48px;
+}
 
 #MainTokenSaleAddToken .btnChange:hover, .btnChange:hover {
   background: #b8b8b8;
