@@ -130,6 +130,13 @@ class AddTokenSaleWizard extends Component {
     dispatch(saveTransaction({mainTokenSaleAddress, txId: transactionHash, tokenSale: addTokenSale[tokenId]}))
   }
 
+  onClickBack = (e) => {
+    const { dispatch, addTokenSale, tokenId } = this.props
+    e.preventDefault()
+    const step = addTokenSale[tokenId].step
+    dispatch(setStep({tokenAddress: tokenId, step: step - 1}))
+  }
+
   renderStep (step) {
     const { tokenId, t } = this.props
     const { transaction } = this.state
@@ -160,6 +167,7 @@ class AddTokenSaleWizard extends Component {
     return (
       <div id='token-sale-wizard' className='pure-u-1'>
         <div className='progress-container pure-u-1 d-flex flex-column'>
+          {step > 1 ? <button onClick={this.onClickBack}>Back</button> : null}
           <div className={`progress-title pure-u-${step * 3}-24`}>Step {step}</div>
           <div className='progress-bar shadow'>
             <div className={`progress-bar-content pure-u-${step * 3}-24`} />

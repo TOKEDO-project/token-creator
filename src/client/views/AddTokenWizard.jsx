@@ -83,6 +83,12 @@ class AddTokenWizard extends Component {
     dispatch(saveTransaction(transactionHash, { name, symbol, decimals, supply, type }))
   }
 
+  onClickBack = (e) => {
+    const { dispatch, addToken: { step } } = this.props
+    e.preventDefault()
+    dispatch(setStep(step - 1))
+  }
+
   renderStep (step) {
     const { transaction } = this.state
     const { t } = this.props
@@ -125,6 +131,7 @@ class AddTokenWizard extends Component {
       <div id='token-wizard' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24 d-flex flex-column flex-v-center'>
         <img className='shuttle' src={shuttle} alt='Shuttle' />
         <div className='progress-container pure-u-1 d-flex flex-column'>
+          {addToken.step > 1 ? <button onClick={this.onClickBack}>Back</button> : null}
           <div className={`progress-title pure-u-${addToken.step * 4}-24`}>Step {addToken.step}</div>
           <div className='progress-bar shadow'>
             <div className={`progress-bar-content pure-u-${addToken.step * 4}-24`} />
