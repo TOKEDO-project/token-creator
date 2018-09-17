@@ -6,7 +6,6 @@ import { isEmpty } from 'lodash'
 
 import Loading from './Loading'
 import padlockIcon from '../assets/images/padlock.svg'
-import groupIcon from '../assets/images/groupIcon.svg'
 import shieldIcon from '../assets/images/secure-shield.svg'
 import addIcon from '../assets/images/addIcon.svg'
 import trasferTokens from '../assets/images/transfer-token-gray.svg'
@@ -47,7 +46,7 @@ class TokenDetailsMenu extends React.Component {
     history.push(href)
   }
   render () {
-    const { addToggle, unlockToggle, changeToggle, authorizeToggle, transferToggle } = this.state
+    const { addToggle, unlockToggle, authorizeToggle, transferToggle } = this.state
     const { t, tokenId, preferences, mainTokenSales, location: { pathname }, tokens } = this.props
     const showMenu = preferences.showMenu
     const mainTokenSalesById = mainTokenSales[tokenId]

@@ -9,7 +9,7 @@ import MainTokenSaleAmount from './steps/MainTokenSaleAmount'
 import { saveTransaction, saveTransferReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 import prepareTransferTokenTransaction from '../utils/prepareTransferTokenTransaction'
-import { StepHeader } from './steps/parts/StepHeader'
+import StepHeader from './steps/parts/StepHeader'
 import icon from '../assets/images/help.svg'
 import { getTokenInfo } from '../utils/tokens'
 

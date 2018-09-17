@@ -6,7 +6,7 @@ import { isEmpty } from 'lodash'
 
 import { setState } from '../redux/addMainTokenSale'
 import './TokenDetailsTutorial.css'
-import { YoutubeVideo } from './YoutubeVideo'
+import YoutubeVideo from './YoutubeVideo'
 import { getTokenInfo } from '../utils/tokens'
 
 class TokenDetailsTutorial extends React.Component {

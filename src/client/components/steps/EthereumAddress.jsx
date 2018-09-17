@@ -4,7 +4,7 @@ import icon from '../../assets/images/token-name.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class EthereumAddress extends Component {
   constructor (props) {

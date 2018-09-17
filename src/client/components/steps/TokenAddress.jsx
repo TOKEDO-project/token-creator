@@ -8,7 +8,7 @@ import { translate } from 'react-i18next'
 import './TokenAddress.css'
 import Clipboard from 'react-clipboard.js'
 import { setState } from '../../redux/addMainTokenSale'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenAddress extends Component {
   constructor (props) {

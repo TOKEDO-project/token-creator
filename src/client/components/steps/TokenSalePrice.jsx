@@ -7,7 +7,7 @@ import './StepSingleInput.css'
 import './StepDropdown.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenSalePrice extends Component {
   constructor (props) {

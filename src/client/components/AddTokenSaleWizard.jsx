@@ -17,7 +17,7 @@ import { saveTransaction, saveReceipt, saveAddRCReceipt } from '../redux/tokenSa
 
 import './AddTokenSaleWizard.css'
 import TokenSaleStartEndTime from './steps/TokenSaleStartEndTime'
-import { YoutubeVideo } from './YoutubeVideo'
+import YoutubeVideo from './YoutubeVideo'
 
 class AddTokenSaleWizard extends Component {
   constructor (props) {

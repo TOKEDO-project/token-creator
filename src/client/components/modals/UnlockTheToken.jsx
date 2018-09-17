@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import unlock from '../../assets/images/unlock.svg'
 import Modal from '../Modal'
 import WalletSelection from '../steps/WalletSelection'
-import { WarningMessage } from '../WarningMessage'
+import WarningMessage from '../WarningMessage'
 import prepareUnlockTokenTransaction from '../../utils/prepareUnlockTokenTransaction'
 import { saveUnlockTokenTransaction, saveUnlockTokenReceipt } from '../../redux/actions'
 

@@ -2,13 +2,6 @@ import React from 'react'
 import { translate } from 'react-i18next'
 import './Pages.css'
 class FaqPage extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      loading: true
-    }
-  }
-
   componentDidMount () {
     const { location: { hash } } = this.props
     if (typeof hash === 'string' && hash.length > 0) {

@@ -6,7 +6,7 @@ import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'
 import { translate } from 'react-i18next'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenType extends Component {
   constructor (props) {

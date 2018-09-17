@@ -10,7 +10,7 @@ import './Step.css'
 import './StepDateField.css'
 import { translate } from 'react-i18next'
 import moment from 'moment'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenSaleStartEndTime extends Component {
   constructor (props) {

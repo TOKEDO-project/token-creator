@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 import changeOwner from '../../assets/images/change-owner.svg'
 import Modal from '../Modal'
-import { WarningMessage } from '../WarningMessage'
+import WarningMessage from '../WarningMessage'
 import EthereumAddress from '../steps/EthereumAddress'
 import WalletSelection from '../steps/WalletSelection'
 

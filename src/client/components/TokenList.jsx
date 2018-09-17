@@ -4,7 +4,7 @@ import { translate } from 'react-i18next'
 import { map } from 'lodash'
 import icon from '../assets/images/token-name.svg'
 import './TokenList.css'
-import { YoutubeVideo } from './YoutubeVideo'
+import YoutubeVideo from './YoutubeVideo'
 import { Link } from 'react-router-dom'
 
 const TokenList = (props) => {

@@ -6,7 +6,7 @@ import WalletSelection from './steps/WalletSelection'
 import { saveTransaction, saveSetAuthorizedReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
 import prepareSetAuthorized from '../utils/prepareSetAuthorizedTransaction'
-import { StepHeader } from './steps/parts/StepHeader'
+import StepHeader from './steps/parts/StepHeader'
 import icon from '../assets/images/help.svg'
 
 class MainTokenSaleAuthorize extends Component {

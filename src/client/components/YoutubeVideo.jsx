@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './YoutubeVideo.css'
 
-export class YoutubeVideo extends Component {
+class YoutubeVideo extends Component {
   constructor (props) {
     super(props)
 

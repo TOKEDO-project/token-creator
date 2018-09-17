@@ -5,7 +5,7 @@ import icon from '../../assets/images/token-sale-fund-owner.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenSaleFundOwner extends Component {
   constructor (props) {

@@ -5,7 +5,7 @@ import icon from '../../assets/images/token-decimals.svg'
 import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenDecimals extends Component {
   constructor (props) {

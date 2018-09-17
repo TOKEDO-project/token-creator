@@ -6,7 +6,7 @@ import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 import { getTokenInfo } from '../../utils/tokens'
 import bnUtils from '../../../../bnUtils'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenSaleRemoveAmount extends Component {
   constructor (props) {

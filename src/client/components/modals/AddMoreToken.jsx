@@ -10,7 +10,7 @@ import prepareTransferTokenTransaction from '../../utils/prepareTransferTokenTra
 import { saveAddMoreTokenTransaction, saveAddMoreTokenReceipt } from '../../redux/actions'
 import { setAmount } from '../../redux/addMainTokenSale'
 import bnUtils from '../../../../bnUtils'
-import { StepHeader } from '../steps/parts/StepHeader'
+import StepHeader from '../steps/parts/StepHeader'
 import icon from '../../assets/images/help.svg'
 import { getTokenInfo } from '../../utils/tokens'
 

@@ -13,7 +13,7 @@ import './StepRadioButtons.css'
 import icon from '../../assets/images/wallet-selection.svg'
 import metamask from '../../assets/images/metamask.svg'
 import atomax from '../../assets/images/atomax.svg'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 // TODO: this can be stateless
 class WalletSelection extends Component {

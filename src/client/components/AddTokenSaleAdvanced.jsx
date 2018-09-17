@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
-import Loading from '../components/Loading'
 import TokenSalePrice from '../components/steps/TokenSalePrice'
 import TokenSaleAmount from '../components/steps/TokenSaleAmount'
 import TokenSaleKyc from '../components/steps/TokenSaleKyc'

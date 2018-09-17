@@ -7,7 +7,7 @@ import WalletSelection from './steps/WalletSelection'
 import prepareCreateMainTokenSaleTransaction from '../utils/prepareCreateMainTokenSaleTransaction'
 import { saveTransaction, saveReceipt } from '../redux/mainTokenSales'
 import { setState } from '../redux/addMainTokenSale'
-import { StepHeader } from './steps/parts/StepHeader'
+import StepHeader from './steps/parts/StepHeader'
 import icon from '../assets/images/help.svg'
 
 class MainTokenSaleInit extends Component {

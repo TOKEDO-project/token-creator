@@ -6,7 +6,7 @@ import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'
 import { translate } from 'react-i18next'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 import { Link } from 'react-router-dom'
 
 class TokenSaleKyc extends Component {

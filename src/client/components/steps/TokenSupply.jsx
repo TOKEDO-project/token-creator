@@ -6,7 +6,7 @@ import './Step.css'
 import './StepSingleInput.css'
 import { translate } from 'react-i18next'
 import bnUtils from '../../../../bnUtils'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class TokenSupply extends Component {
   constructor (props) {

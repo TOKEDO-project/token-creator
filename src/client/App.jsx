@@ -22,19 +22,9 @@ import i18n from './i18n'
 import Loading from './components/Loading'
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      loading: true
-    }
-  }
-
   async componentDidMount () {
     const { dispatch } = this.props
     await dispatch(setWeb3(window.web3))
-    this.setState({
-      loading: false
-    })
     this.startRecoveryTransactions()
   }
 

@@ -7,7 +7,7 @@ import bnUtils from '../../../../bnUtils'
 import icon from '../../assets/images/token-supply.svg'
 import './Step.css'
 import './StepSingleInput.css'
-import { StepHeader } from './parts/StepHeader'
+import StepHeader from './parts/StepHeader'
 
 class MainTokenSaleAmount extends Component {
   constructor (props) {

@@ -15,8 +15,8 @@ import prepareAddTokenTransaction from '../utils/prepareAddTokenTransaction'
 import './AddTokenWizard.css'
 import shuttle from '../assets/images/shuttle.svg'
 import { translate } from 'react-i18next'
-import { YoutubeVideo } from '../components/YoutubeVideo'
-import { StepHeader } from '../components/steps/parts/StepHeader'
+import YoutubeVideo from '../components/YoutubeVideo'
+import StepHeader from '../components/steps/parts/StepHeader'
 import icon from '../assets/images/help.svg'
 
 class AddTokenWizard extends Component {
