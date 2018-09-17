@@ -20,7 +20,6 @@ import './text.css'
 
 import i18n from './i18n'
 import Loading from './components/Loading'
-import Modal from './components/Modal'
 import SwitchNetwork from './components/modals/SwitchNetwork'
 
 class App extends React.Component {
