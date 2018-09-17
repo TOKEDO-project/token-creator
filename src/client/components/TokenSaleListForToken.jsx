@@ -149,7 +149,7 @@ class TokenSaleListForToken extends React.Component {
                               <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-8-24 pure-u-xl-8-24 centerTxt'>
                                 <div className='pure-u-1 borderRight '>
                                   <div className='heightBox'><h4>{t('Start Time')}:</h4></div>
-                                  <div className='heightBox'><p className='breakWord'>{moment(startTime, 'x').format('DD/MM/YYYY')}</p></div>
+                                  <div className='heightBox'><p className='breakWord'>{moment(startTime, 'x').format('YYYY-MM-DD HH:mm')}<br /> UTC {moment(startTime, 'x').format('Z')}</p></div>
                                 </div>
                                 <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
                                   <span className='fa fa-pencil-square-o' />
@@ -159,7 +159,7 @@ class TokenSaleListForToken extends React.Component {
                               <div className='pure-u-1-2 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-8-24 pure-u-xl-8-24 centerTxt'>
                                 <div className='pure-u-1'>
                                   <div className='heightBox'><h4>{t('End Time')}:</h4></div>
-                                  <div className='heightBox'><p className='breakWord'>{moment(endTime, 'x').format('DD/MM/YYYY')}</p></div>
+                                  <div className='heightBox'><p className='breakWord'>{moment(endTime, 'x').format('YYYY-MM-DD HH:mm')}<br /> UTC {moment(endTime, 'x').format('Z')}</p></div>
                                 </div>
                                 <button onClick={(e) => this.onClickChangeDates(e, receipt.transactionHash)} className='modify shadow' type='button'>
                                   <span className='fa fa-pencil-square-o' />
