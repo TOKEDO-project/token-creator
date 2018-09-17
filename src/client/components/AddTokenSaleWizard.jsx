@@ -145,9 +145,9 @@ class AddTokenSaleWizard extends Component {
       case 5:
         return <TokenSaleKyc nextFunction={this.deployTokenSale} tokenId={tokenId} />
       case 6:
-        return <WalletSelection progressTitle={t('Send transaction 1/2')} progressMsg={t('Send the first transaction.')} connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+        return <WalletSelection progressTitle={t('Send transaction 1/2')} progressMsg={<span>{t('To ultimate your token sale you are required to send two transactions.')}<br />{t('This is the first transaction.')}</span>} connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
       case 7:
-        return <WalletSelection progressTitle={t('Send transaction 2/2')} progressMsg={t('Send the second transaction.')} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
+        return <WalletSelection progressTitle={t('Send transaction 2/2')} progressMsg={<span>{t('To ultimate your token sale you are required to send two transactions.')}<br />{t('This is the second transaction.')}</span>} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
     }
   }
 

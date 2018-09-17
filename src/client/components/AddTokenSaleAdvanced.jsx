@@ -140,9 +140,11 @@ class AddTokenSaleAdvanced extends Component {
     return (
       <div id='token-sale-advanced' className='pure-u-1'>
         {step === 6
-          ? <WalletSelection progressTitle={t('Send transaction 1/2')} progressMsg={t('Send the first transaction.')} connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
+          ? <WalletSelection progressTitle={t('Send transaction 1/2')}
+            progressMsg={<span>{t('To ultimate your token sale you are required to send two transactions.')}<br />{t('This is the first transaction.')}</span>} connectorName='addTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt} tokenId={tokenId} />
           : step === 7
-            ? <WalletSelection progressTitle={t('Send transaction 2/2')} progressMsg={t('Send the second transaction.')} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
+            ? <WalletSelection progressTitle={t('Send transaction 2/2')}
+              progressMsg={<span>{t('To ultimate your token sale you are required to send two transactions.')}<br />{t('This is the second transaction.')}</span>} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
             : <div className='big-card shadow pure-u-1 d-flex flex-column flex-v-center'>
               <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
                 <div className='pure-u-1 pure-u-md-12-24'>
