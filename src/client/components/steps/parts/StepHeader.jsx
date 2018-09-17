@@ -10,7 +10,7 @@ export class StepHeader extends Component {
           <img className='icon' src={icon} alt='Icon' />
         </div>
         <div className='right d-flex flex-column flex-h-center'>
-          <span className='title text-center text-sm-left'>{title}:</span>
+          <span className='title text-center text-sm-left'>{title}</span>
           <span className='description font-size-tiny text-center text-sm-left'>{this.props.children}</span>
         </div>
       </div>

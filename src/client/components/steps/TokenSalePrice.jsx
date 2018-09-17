@@ -59,7 +59,7 @@ class TokenSalePrice extends Component {
       <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
         <StepHeader
           icon={icon}
-          title={t(`Token Price`)}
+          title={t(`Price`)}
         >
           {t(`You can sell your token at a different price in each sale. Here you are required to define the price of ONE token for this specific token sale.`)}
         </StepHeader>
