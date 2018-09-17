@@ -131,7 +131,7 @@ class AddTokenWizard extends Component {
       <div id='token-wizard' className='pure-u-22-24 pure-u-sm-20-24 pure-md-18-24 d-flex flex-column flex-v-center'>
         <img className='shuttle' src={shuttle} alt='Shuttle' />
         <div className='progress-container pure-u-1 d-flex flex-column'>
-          {addToken.step > 1 ? <button onClick={this.onClickBack}>Back</button> : null}
+
           <div className={`progress-title pure-u-${addToken.step * 4}-24`}>Step {addToken.step}</div>
           <div className='progress-bar shadow'>
             <div className={`progress-bar-content pure-u-${addToken.step * 4}-24`} />
@@ -142,6 +142,7 @@ class AddTokenWizard extends Component {
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(addToken.step)}
             <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a>
+            {addToken.step > 1 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}
           </div>
         </div>
       </div>

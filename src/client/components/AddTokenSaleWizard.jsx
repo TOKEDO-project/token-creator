@@ -159,7 +159,7 @@ class AddTokenSaleWizard extends Component {
   }
 
   render () {
-    const { addTokenSale, preferences, tokenId } = this.props
+    const { addTokenSale, preferences, tokenId, t } = this.props
     const step = addTokenSale[tokenId].step
     if (!preferences.terms) {
       return <TermsAndConditions />
@@ -167,8 +167,8 @@ class AddTokenSaleWizard extends Component {
     return (
       <div id='token-sale-wizard' className='pure-u-1'>
         <div className='progress-container pure-u-1 d-flex flex-column'>
-          {step > 1 ? <button onClick={this.onClickBack}>Back</button> : null}
-          <div className={`progress-title pure-u-${step * 3}-24`}>Step {step}</div>
+
+          <div className={`progress-title pure-u-${step * 3}-24`}>{t('Step')} {step}</div>
           <div className='progress-bar shadow'>
             <div className={`progress-bar-content pure-u-${step * 3}-24`} />
           </div>
@@ -178,6 +178,7 @@ class AddTokenSaleWizard extends Component {
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(step)}
             {this.props.children}
+            {step > 1 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}
           </div>
         </div>
       </div>

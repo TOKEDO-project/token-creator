@@ -10,7 +10,13 @@
  margin-bottom: 15px;
  height: 220px;
 }
-
+#token-wizard .goBackBtn {
+    color: #888888;
+    text-decoration: underline;
+    border: none;
+    background: none;
+    margin-top: 15px;
+  }
 @media (min-width: 768px) {
  #token-wizard div.video-placeholder {
   margin-bottom: 0;

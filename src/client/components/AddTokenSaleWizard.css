@@ -9,7 +9,14 @@
  margin-bottom: 15px;
  height: 220px;
 }
-
+#token-sale-wizard .goBackBtn {
+    color: #888888;
+    text-decoration: underline;
+    border: none;
+    background: none;
+    margin-top: 10px;
+  }
+  
 @media (min-width: 768px) {
  #token-sale-wizard div.video-placeholder {
   margin-bottom: 0;
