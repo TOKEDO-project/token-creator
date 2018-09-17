@@ -12,10 +12,12 @@ const Modal = ({ visible, toggleVisibility, title, icon, children }) => {
               <img className='icon' src={icon} alt='Icon' />
               <span className='title font-weight-medium font-size-huge'>{title}</span>
             </div>
-            <button onClick={toggleVisibility} type='button' className='right d-flex flex-row flex-v-center'>
-              <span className='text hideTxt'>Close</span>
-              <span className='fa fa-times' />
-            </button>
+            {toggleVisibility
+              ? <button onClick={toggleVisibility} type='button' className='right d-flex flex-row flex-v-center'>
+                <span className='text hideTxt'>Close</span>
+                <span className='fa fa-times' />
+              </button> : null
+            }
           </div>
           <div className='children pure-u-1'>
             {children}

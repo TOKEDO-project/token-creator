@@ -20,6 +20,8 @@ import './text.css'
 
 import i18n from './i18n'
 import Loading from './components/Loading'
+import Modal from './components/Modal'
+import SwitchNetwork from './components/modals/SwitchNetwork'
 
 class App extends React.Component {
   async componentDidMount () {
@@ -113,6 +115,7 @@ class App extends React.Component {
           <div className='pure-u-1'>
             <Header />
             {web3.loading ? <Loading isView /> : <Routes />}
+            {web3.metamaskNet !== process.env.NET && process.env.NODE_ENV !== 'development' ? <SwitchNetwork /> : null}
             <Footer />
           </div>
         </Router>

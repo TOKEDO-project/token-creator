@@ -7,6 +7,12 @@ export const MetamaskStatus = {
   UNLOCKED: 2
 }
 
+export const MetamaskNet = {
+  MAINNET: 'main',
+  ROPSTEN: 'ropsten',
+  PRIVATE: 'private'
+}
+
 export const setMetamaskStatus = createAction('SET_METAMASK_STATUS',
   (status) => {
     return status
@@ -15,11 +21,12 @@ export const setMetamaskStatus = createAction('SET_METAMASK_STATUS',
 
 export const setWeb3 = (web3) => async (dispatch, getState) => {
   let metamaskStatus, address, gasPrice
+  const infuraProvider = new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER + (process.env.INFURA_TOKEN ? process.env.INFURA_TOKEN : ''))
   if (typeof web3 !== 'undefined') {
     if (web3.currentProvider.isMetaMask === true) {
       web3 = new Web3(window.web3.currentProvider)
       setTimeout(() => {
-        web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER + (process.env.INFURA_TOKEN ? process.env.INFURA_TOKEN : '')))
+        web3 = new Web3(infuraProvider)
         if (metamaskStatus === MetamaskStatus.NOT_INSTALLED) {
           return dispatch({
             type: 'SET_WEB3',
@@ -44,14 +51,16 @@ export const setWeb3 = (web3) => async (dispatch, getState) => {
     } else {
       // Another web3 provider
       metamaskStatus = MetamaskStatus.NOT_INSTALLED
-      web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER + (process.env.INFURA_TOKEN ? process.env.INFURA_TOKEN : '')))
+      web3 = new Web3(infuraProvider)
     }
     gasPrice = await web3.eth.getGasPrice()
   } else {
     // No web 3 provider
     metamaskStatus = MetamaskStatus.NOT_INSTALLED
-    web3 = new Web3(new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER + (process.env.INFURA_TOKEN ? process.env.INFURA_TOKEN : '')))
+    web3 = new Web3(infuraProvider)
   }
+
+  const metamaskNet = await web3.eth.net.getNetworkType()
 
   return dispatch({
     type: 'SET_WEB3',
@@ -59,7 +68,8 @@ export const setWeb3 = (web3) => async (dispatch, getState) => {
       ...web3,
       gasPrice,
       address,
-      metamaskStatus
+      metamaskStatus,
+      metamaskNet
     }
   })
 }
@@ -78,6 +88,7 @@ export const web3 = handleActions({
     }
   }
 }, {
+  metamaskNet: MetamaskNet.ROPSTEN,
   metamaskStatus: MetamaskStatus.NOT_INSTALLED,
   address: '',
   loading: true
