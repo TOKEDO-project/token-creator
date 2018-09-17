@@ -1,7 +1,12 @@
-#MainTokenSaleAddToken p, .groupBottom p {
+#MainTokenSaleAddToken p{
   font-size: 15px;
   color: #b8b8b8;
   margin-right: 20px;
+}
+.groupBottom p {
+  font-size: 15px;
+  color: #b8b8b8;
+  margin: 10px;
 }
 
 #MainTokenSaleAddToken .btnChange, .btnChange {

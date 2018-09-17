@@ -25,7 +25,9 @@ div.step form.bottom div.date-picker input,
   background: none;
   margin-bottom: 10px;
 }
-
+.marginTop{
+  margin-top: 10px;
+}
 
 div.step form.bottom div.date-picker input::placeholder,
 .modifyDate form div.date-picker input::placeholder {

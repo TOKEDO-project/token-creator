@@ -117,18 +117,18 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <button className='goBackBtn' onClick={this.changeDates}><span className=''>{`< `} {t('Go back and redefine the dates')}</span></button>
             </div>
             <WalletSelection connectorName='changeDatesTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-              <div className='top d-flex flex-row flex-h-start flex-v-center'>
+              <div className='top d-flex flex-row flex-h-start'>
 
                 <div className='left'>
                   <img src={changeSettings} />
                 </div>
-                <div className='right d-flex flex-column flex-h-center'>
+                <div className='right'>
                   <span className='title'>{t(`New Settings`)}:</span>
 
                 </div>
               </div>
               <div className='groupBottom pure-u-1 d-flex flex-v-center'>
-                <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                <div className='pure-u-1'>
                   <p>
                     <span className='font-weight-bold'>{t('Start Time')} : </span>
                     {moment(newStartTime, 'x').format('LLL')}
@@ -137,7 +137,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                     <span className='font-weight-bold'> {t('End Time')} : </span>
                     {moment(newEndTime, 'x').format('LLL')}
                   </p>
-                  <p>
+                  <p className='marginTop'>
                     <span className='font-weight-bold'> {t(`Send the transaction to confirm the new settings.`)}</span>
                   </p>
                 </div>
