@@ -8,9 +8,21 @@ div.step form.bottom div.date-picker input,
   color: #888888;
   margin-top: 5px;
 }
-
+.floatRight{
+  float: right;
+}
 .modifyDate {
   min-height: 400px;
+}
+.paddingLeft{
+  padding-left: 63px;
+}
+.goBackBtn {
+  color: #888888;
+  text-decoration: underline;
+  border: none;
+  background: none;
+  margin-bottom: 10px;
 }
 
 div.step form.bottom div.date-picker input::placeholder,

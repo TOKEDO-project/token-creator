@@ -74,7 +74,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
   onTransactionHash = (transactionHash) => {
     const { dispatch, tokenId, tokenSaleTransactionId, tokenSales, mainTokenSales } = this.props
     const { newStartTime, newEndTime } = this.state
-    const tokenSaleTransactions = getTokenSalesTransactions({tokenId, mainTokenSales, tokenSales})
+    const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
     dispatch(saveSetTimeTokenSaleTransaction({ tokenSaleAddress: tokenSale.contractAddress, txId: transactionHash, startTime: newStartTime, endTime: newEndTime }))
   }
@@ -86,7 +86,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
     const mainTokenSale = mainTokenSales[tokenId]
     const mainTokenSaleAddress = mainTokenSale && mainTokenSale.receipt ? mainTokenSale.receipt.contractAddress : null
-    dispatch(pushStartDate({mainTokenSaleAddress, tokenSaleAddress: tokenSale.contractAddress, startTime: newStartTime, endTime: newEndTime}))
+    dispatch(pushStartDate({ mainTokenSaleAddress, tokenSaleAddress: tokenSale.contractAddress, startTime: newStartTime, endTime: newEndTime }))
     dispatch(saveSetTimeTokenSaleReceipt({ tokenSaleAddress: tokenSale.contractAddress, receipt }))
     history.push(`/token/details/${tokenId}`)
   }
@@ -101,43 +101,51 @@ class ChangeStartEndTimeTokenSale extends React.Component {
   render () {
     const { t, tokenId, tokenSaleTransactionId, tokenSales, mainTokenSales } = this.props
     const { visible, transaction, newStartTime, newEndTime } = this.state
-    const tokenSaleTransactions = getTokenSalesTransactions({tokenId, mainTokenSales, tokenSales})
+    const tokenSaleTransactions = getTokenSalesTransactions({ tokenId, mainTokenSales, tokenSales })
     const tokenSale = tokenSaleTransactions[tokenSaleTransactionId]
     const { startTime, endTime } = getTokenSaleTimes(tokenSale)
     const differentStartTime = !moment(newStartTime, 'x').isSame(moment(startTime, 'x'), 'day')
     const differentEndTime = !moment(newEndTime, 'x').isSame(moment(endTime, 'x'), 'day')
 
     return (
-      <Modal icon={saleDate} visible={visible} title={t('Change Date')} toggleVisibility={this.toggleVisibility}>
+      <Modal icon={saleDate} visible={visible} title={t('Change Time Settings')} toggleVisibility={this.toggleVisibility}>
+
         {transaction
-          ? <WalletSelection connectorName='changeDatesTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
-            <div className='top d-flex flex-row flex-h-start flex-v-center'>
-              <div className='left'>
-                <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
-              </div>
-              <div className='right d-flex flex-column flex-h-center'>
-                <span className='title'>{t(`Change Dates`)}:</span>
-                <span className='description font-size-tiny'>
-                  {t(`You need to make the transaction to change the dates of the token sale.`)}
-                </span>
-              </div>
+          ? <div>
+            <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5 '>
+              <button className='goBackBtn' onClick={this.changeDates}><span className=''>{`< `} {t('Go back and redefine the dates')}</span></button>
             </div>
-            <div className='groupBottom pure-u-1 d-flex flex-v-center'>
-              <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
-                <p>
-                  <span className='font-weight-bold'>{t('New Start Time')} : </span>
-                  {moment(newStartTime, 'x').format('LLL')}
-                </p>
-                <p>
-                  <span className='font-weight-bold'> {t('New End Time')} : </span>
-                  {moment(newEndTime, 'x').format('LLL')}
-                </p>
+            <WalletSelection connectorName='changeDatesTokenSale' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
+              <div className='top d-flex flex-row flex-h-start flex-v-center'>
+
+                <div className='left'>
+                  <i className='far fa-question-circle' style={{ fontSize: '50px', color: 'grey' }} />
+                </div>
+                <div className='right d-flex flex-column flex-h-center'>
+                  <span className='title'>{t(`New Change Settings`)}:</span>
+                  <span className='description font-size-tiny'>
+                    {t(`You need to make the transaction to change the dates of the token sale.`)}
+                  </span>
+                </div>
               </div>
-              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
-                <button className='btnChange' onClick={this.changeDates}><i className='fas fa-undo-alt' /> {t('Go back and redefine the dates')}</button>
+              <div className='groupBottom pure-u-1 d-flex flex-v-center'>
+                <div className='pure-u-1 pure-u-sm-1 pure-u-md-2-3 pure-u-lg-3-5 pure-u-xl-3-5'>
+                  <p>
+                    <span className='font-weight-bold'>{t('New Start Time')} : </span>
+                    {moment(newStartTime, 'x').format('LLL')}
+                  </p>
+                  <p>
+                    <span className='font-weight-bold'> {t('New End Time')} : </span>
+                    {moment(newEndTime, 'x').format('LLL')}
+                  </p>
+                  <p>
+                    <span className='font-weight-bold'> {t(`Send the transaction to confirm the new settings.`)}</span>
+                  </p>
+                </div>
               </div>
-            </div>
-          </WalletSelection>
+
+            </WalletSelection>
+          </div>
           : <div className='modifyDate d-flex flex-column flex-h-center flex-v-center'>
             <form className='date-pickers pure-u-1'>
 
@@ -191,8 +199,10 @@ class ChangeStartEndTimeTokenSale extends React.Component {
 
                 </div>
               </div>
+              <div className='pure-u-1 flex-d flex-h-end '>
+                {differentStartTime || differentEndTime ? <button className='nextBtn shadow floatRight' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
 
-              {differentStartTime || differentEndTime ? <button className='nextBtn shadow' onClick={this.prepareTransaction}>{t('Next')}</button> : null}
+              </div>
 
             </form>
           </div>
