@@ -41,14 +41,19 @@
 }
 
 @media (min-width: 1025px) {
+
   #home .homeBg {
     height: 100%;
     background-position: left bottom;
-    background-size: cover;
-    min-height: calc(100vh - 90px);
+    background-size: 100%;
+    min-height: calc(100vh);
+  }
+
+  #home h1.message {
+    font-size: 35px;
   }
   #home .marginTop {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 }
 
@@ -91,7 +96,7 @@
   #home .homeBg {
     height: 100%;
     background-position: left bottom;
-    background-size: 120%;
+    background-size: 140%;
     min-height: calc(100vh + 100px);
   }
 
@@ -119,19 +124,13 @@
     height: 100%;
     background-position: left bottom;
     background-size: 170%;
-    min-height: calc(100vh + 100px);
-  }
-  #home .homeBg {
-    padding-top: 300px;
+    min-height: calc(100vh + 250px);
   }
 
-  #home .textHome {
-    margin-top: -300px;
-  }
   #home h1.message {
     font-size: 25px;
   }
   #home .marginTop {
-    margin-top: 50px;
+    margin-top: 20px;
   }
 }
