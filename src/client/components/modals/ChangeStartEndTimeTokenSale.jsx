@@ -17,6 +17,7 @@ import '../steps/StepDateField.css'
 import '../MainTokenSaleAddToken.css'
 import prepareSetTimeTransaction from '../../utils/prepareSetTimeTransaction'
 import { pushStartDate } from '../../redux/tokenSales'
+import DateInput from '../DateInput'
 
 class ChangeStartEndTimeTokenSale extends React.Component {
   constructor (props) {
@@ -160,6 +161,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                   <div className='dateWrap'>
                     <img src={calendar} />
                     <DatePicker
+                      customInput={<DateInput />}
                       selected={moment(newStartTime, 'x')}
                       minDate={moment()}
                       showTimeSelect
@@ -185,6 +187,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                   <div className='dateWrap'>
                     <img src={calendar} />
                     <DatePicker
+                      customInput={<DateInput />}
                       selected={moment(newEndTime, 'x')}
                       minDate={moment()}
                       showTimeSelect

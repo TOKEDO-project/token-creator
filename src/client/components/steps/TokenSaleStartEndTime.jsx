@@ -11,6 +11,7 @@ import './StepDateField.css'
 import { translate } from 'react-i18next'
 import moment from 'moment'
 import StepHeader from './parts/StepHeader'
+import DateInput from '../DateInput'
 
 class TokenSaleStartEndTime extends Component {
   constructor (props) {
@@ -52,6 +53,7 @@ class TokenSaleStartEndTime extends Component {
               <div className='dateWrap'>
                 <img src={calendar} />
                 <DatePicker
+                  customInput={<DateInput />}
                   selected={moment(startTime, 'x')}
                   minDate={moment()}
                   showTimeSelect
@@ -70,6 +72,7 @@ class TokenSaleStartEndTime extends Component {
               <div className='dateWrap'>
                 <img src={calendar} />
                 <DatePicker
+                  customInput={<DateInput />}
                   selected={moment(endTime, 'x')}
                   minDate={moment()}
                   showTimeSelect
