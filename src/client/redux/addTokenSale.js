@@ -7,10 +7,9 @@ const defaultToken = {
   priceCurrency: '',
   amount: '',
   minContribution: '',
-  owner: '',
   startTime: moment().valueOf() + '',
   endTime: moment().add(1, 'month').valueOf() + '',
-  kyc: 'true'
+  kyc: ''
 }
 
 export const setStep = createAction('TOKEN_SALE_SET_STEP',

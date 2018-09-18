@@ -134,6 +134,7 @@ class AddTokenSaleAdvanced extends Component {
     }
 
     const step = addTokenSale[tokenId].step
+    const kyc = addTokenSale[tokenId].kyc
     console.log('STEP', step)
     const valid = this.isValid()
     return (
@@ -167,7 +168,7 @@ class AddTokenSaleAdvanced extends Component {
                 </div>
               </div>
               <div className='deploy-container pure-u-1 pure-u-md-12-24'>
-                {valid ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
+                {valid && kyc !== '' ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
               </div>
             </div>
         }
