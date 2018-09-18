@@ -178,7 +178,7 @@ class AddTokenSaleWizard extends Component {
           <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(step)}
             {this.props.children}
-            {step > 1 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}
+            {step > 1 && step < 7 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}
           </div>
         </div>
       </div>
