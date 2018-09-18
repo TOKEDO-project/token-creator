@@ -72,7 +72,7 @@ class MainTokenSaleDetail extends React.Component {
             </div>
             <div className='relative d-flex flex-h-center pure-u-lg-1-3 pure-u-md-1-3 pure-u-sm-1 pure-u-1'>
               { addTokenInfo ? <div className='shadow infoBox'>
-                <p>{t('Add more tokens to the Token Sale Manager to sell them in new sales.')} NOTE: {t('when adding tokens you cannot exceed the total supply.')}</p>
+                <p>{t('Add more tokens to the Token Sale Manager to sell them in new sales.')} {t('NOTE')}: {t('when adding tokens you cannot exceed the total supply.')}</p>
               </div> : null }
               <button onClick={() => this.redirectTo(`/token/details/${tokenId}/add-more-token`)} className='shadow orange pure-u-23-24 flex-row d-flex flex-h-center flex-v-center'>
                 <i className='fa fa-plus d-flex flex-h-center flex-v-center' />

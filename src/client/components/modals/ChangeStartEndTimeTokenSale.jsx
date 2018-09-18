@@ -132,11 +132,11 @@ class ChangeStartEndTimeTokenSale extends React.Component {
                 <div className='pure-u-1'>
                   <p>
                     <span className='font-weight-bold'>{t('Start Time')} : </span>
-                    {moment(newStartTime, 'x').format('LLL')}
+                    {moment(newStartTime, 'x').format('YYYY-MM-DD HH:mm')} (UTC {moment(newStartTime, 'x').format('Z')})
                   </p>
                   <p>
                     <span className='font-weight-bold'> {t('End Time')} : </span>
-                    {moment(newEndTime, 'x').format('LLL')}
+                    {moment(newEndTime, 'x').format('YYYY-MM-DD HH:mm')} (UTC {moment(newEndTime, 'x').format('Z')})
                   </p>
                   <p className='marginTop'>
                     <span className='font-weight-bold'> {t(`Send the transaction to confirm the new settings.`)}</span>
@@ -152,7 +152,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='date-picker pure-u-1 d-flex flex-v-center flex-h-between'>
                 <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
                   <span className='date-picker-title'>{t('Current Start Time')}</span>
-                  <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('LLL')}</div>
+                  <div className='inputBox d-flex flex-v-center'>{moment(startTime, 'x').format('YYYY-MM-DD HH:mm')} (UTC {moment(startTime, 'x').format('Z')})</div>
 
                 </div>
 
@@ -178,7 +178,7 @@ class ChangeStartEndTimeTokenSale extends React.Component {
               <div className='date-picker pure-u-1 d-flex flex-v-center  flex-h-between'>
                 <div className='pure-u-1 pure-u-sm-10-24 pure-u-md-10-24 pure-u-lg-10-24 pure-u-xl-10-24'>
                   <span className='date-picker-title'>{t('Current End Time')}</span>
-                  <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('LLL')}</div>
+                  <div className='inputBox d-flex flex-v-center'>{moment(endTime, 'x').format('YYYY-MM-DD HH:mm')} (UTC {moment(endTime, 'x').format('Z')})</div>
 
                 </div>
 
