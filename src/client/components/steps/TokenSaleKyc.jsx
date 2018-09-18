@@ -55,12 +55,13 @@ class TokenSaleKyc extends Component {
     })
   }
 
-  toggleVisibilityYes = (tosAccepted) => {
-    const { dispatch, tokenId } = this.props
+  toggleVisibilityYes = (e, newTosAccepted) => {
+    const { dispatch, tokenId, addTokenSale } = this.props
+    const { tosAccepted } = addTokenSale[tokenId]
     this.setState({
       showYesKycPopup: false
     })
-    if (!tosAccepted) {
+    if (!tosAccepted && !newTosAccepted) {
       dispatch(setKYC({ tokenAddress: tokenId, kyc: '' }))
     }
   }
@@ -79,7 +80,7 @@ class TokenSaleKyc extends Component {
           >
             {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/help', hash: '#kycSection' }} target='_blank'>{t(`here`)}</Link>
           </StepHeader>
-          {showYesKycPopup ? <KycYes tokenId={tokenId} toggleVisibility={(tosAccepted) => this.toggleVisibilityYes(tosAccepted)} /> : null}
+          {showYesKycPopup ? <KycYes tokenId={tokenId} toggleVisibility={(e, tosAccepted) => this.toggleVisibilityYes(e, tosAccepted)} /> : null}
           {showNoKycPopup ? <KycNo tokenId={tokenId} toggleVisibility={this.toggleVisibilityNo} /> : null}
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             <button onClick={(e) => this.onChange(e, 'true')} type='button' className={`radio-box ${kyc === 'true' ? 'active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-row flex-h-center flex-v-center`}>

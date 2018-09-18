@@ -25,7 +25,7 @@ class KycYes extends Component {
     e.preventDefault()
     if (checked && status === 'success') {
       dispatch(setTosAccepted({ tokenAddress: tokenId, tosAccepted: true }))
-      toggleVisibility(true)
+      toggleVisibility(e, true)
     }
   }
 
