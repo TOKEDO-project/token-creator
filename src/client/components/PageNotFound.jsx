@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom'
 import planet from '../assets/images/Planet_1.svg'
 import rocket from '../assets/images/Rocket.svg'
 import planetRing from '../assets/images/Planet_2.svg'
+import { translate } from 'react-i18next'
 
-const PageNotFound = ({ history }) => {
+const PageNotFound = ({ history, t }) => {
   return (
     <div id='notFound' className='d-flex flex-h-center pure-u-1'>
 
@@ -15,13 +16,13 @@ const PageNotFound = ({ history }) => {
             <div className='pure-u-1-3 pure-u-md-6-24 d-flex flex-h-center flex-v-end'><img src={planet} /></div>
             <div className='pure-u-1-3 pure-u-md-12-24 pure-u-sm-1 d-flex flex-h-center flex-v-center flex-column'>
               <img className='rocket' src={rocket} />
-              <h1>Page not found</h1>
+              <h1>{t('Page not found')}</h1>
             </div>
             <div className='pure-u-1-3 pure-u-md-6-24 d-flex flex-h-center flex-v-start'><img src={planetRing} /></div>
 
           </div>
         </div>
-        <button type='button' onClick={() => history.push('/')}>Home Page</button>
+        <button type='button' onClick={() => history.push('/')}>{t('Home Page')}</button>
 
       </div>
 
@@ -29,4 +30,4 @@ const PageNotFound = ({ history }) => {
   )
 }
 
-export default withRouter(PageNotFound)
+export default withRouter(translate('translations')(PageNotFound))

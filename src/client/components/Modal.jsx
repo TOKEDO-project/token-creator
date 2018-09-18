@@ -1,7 +1,8 @@
 import React from 'react'
 import './Modal.css'
+import { translate } from 'react-i18next'
 
-const Modal = ({ visible, toggleVisibility, title, icon, children }) => {
+const Modal = ({ visible, toggleVisibility, title, icon, children, t }) => {
   return (
     <div className={`modal ${visible ? 'visible' : ''} pure-u-1`}>
       <div className='background pure-u-1' />
@@ -14,7 +15,7 @@ const Modal = ({ visible, toggleVisibility, title, icon, children }) => {
             </div>
             {toggleVisibility
               ? <button onClick={toggleVisibility} type='button' className='right d-flex flex-row flex-v-center'>
-                <span className='text hideTxt'>Close</span>
+                <span className='text hideTxt'>{t('Close')}</span>
                 <span className='fa fa-times' />
               </button> : null
             }
@@ -28,4 +29,4 @@ const Modal = ({ visible, toggleVisibility, title, icon, children }) => {
   )
 }
 
-export default Modal
+export default translate('translations')(Modal)

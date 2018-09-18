@@ -87,7 +87,7 @@ class RemoveToken extends React.Component {
                 </p>
               </div>
               <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-2-5 pure-u-xl-2-5'>
-                <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' /> Change the amount</button>
+                <button className='btnChange' onClick={this.changeAmount}><i className='fas fa-undo-alt' />{t('Change the amount')}</button>
               </div>
             </div>
           </WalletSelection>
