@@ -1,0 +1,15 @@
+.network p {
+  color: #888;
+  font-size: 16px;
+  font-weight: 400;
+}
+.network {
+    margin: 3% 0 8%;
+  }
+@media (max-width: 767px){
+    .network p {
+        text-align: center;
+        font-size: 15px;
+      }
+   
+}
