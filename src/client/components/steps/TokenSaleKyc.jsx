@@ -58,7 +58,7 @@ class TokenSaleKyc extends Component {
             icon={icon}
             title={t(`KYC`)}
           >
-            {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/faq', hash: '#Unlock' }} target='_blank'>{t(`here`)}</Link>
+            {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/help', hash: '#kycSection' }} target='_blank'>{t(`here`)}</Link>
           </StepHeader>
           {showYesKycPopup ? <KycYes toggleVisibility={this.toggleVisibility} /> : null}
           {showNoKycPopup ? <KycNo toggleVisibility={this.toggleVisibility} /> : null}

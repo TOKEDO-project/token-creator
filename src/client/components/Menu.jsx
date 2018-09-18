@@ -4,13 +4,13 @@ import { translate } from 'react-i18next'
 import './Menu.css'
 
 import home from '../assets/images/home.svg'
-import faq from '../assets/images/faq.svg'
+// import faq from '../assets/images/faq.svg'
 import credits from '../assets/images/credits.svg'
-// import help from '../assets/images/helpMenu.svg'
+import help from '../assets/images/helpMenu.svg'
 import homeActive from '../assets/images/homeActive.svg'
-import faqActive from '../assets/images/faqActive.svg'
+// import faqActive from '../assets/images/faqActive.svg'
 import creditsActive from '../assets/images/creditsActive.svg'
-// import helpActive from '../assets/images/helpMenuActive.svg'
+import helpActive from '../assets/images/helpMenuActive.svg'
 class Menu extends Component {
   constructor (props) {
     super(props)
@@ -28,8 +28,8 @@ class Menu extends Component {
     const { open } = this.state
     const routes = [
       {name: t('Home'), route: '/', img: home, imgActive: homeActive},
-      {name: t('FAQ'), route: '/faq', img: faq, imgActive: faqActive},
-      // {name: t('Help'), route: '/help', img: help, imgActive: helpActive},
+      // {name: t('FAQ'), route: '/faq', img: faq, imgActive: faqActive},
+      {name: t('Help'), route: '/help', img: help, imgActive: helpActive},
       {name: t('Credits'), route: '/credits', img: credits, imgActive: creditsActive}
     ]
     return (

@@ -19,48 +19,48 @@
   font-size: 16px;
 }
 
-#faqPage {
+#helpPage {
   padding: 50px 5%;
 }
 
-#faqPage .centerTxt {
+#helpPage .centerTxt {
   text-align: center;
 }
 
-#faqPage .leftTxt {
+#helpPage .leftTxt {
   text-align: left;
 }
 
-#faqPage span.marginLeft {
+#helpPage span.marginLeft {
   margin-left: 15px;
 }
 
-#faqPage span {
+#helpPage span {
   font-size: 16px;
   font-weight: 600;
 }
 
-#faqPage h3 {
+#helpPage h3 {
   font-size: 18px;
   font-weight: 500;
   margin: 40px 0 20px 0;
   text-align: left;
 }
 
-#faqPage p {
+#helpPage p {
   font-size: 15px;
   font-weight: 400;
   text-align: left;
 }
 
 
-#faqPage ul li {
+#helpPage ul li {
   text-decoration: none;
   text-align: left;
   font-weight: 400;
 }
 
-#faqPage a {
+#helpPage a {
   text-decoration: underline;
   color: #3583f3;
 }
