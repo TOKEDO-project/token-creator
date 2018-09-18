@@ -86,7 +86,7 @@ class HelpPage extends React.Component {
           <ul>
             <li><span>{t('Minimum contribution. ')}</span>{t('The minimum amount of Ether required to participate. By specifying a minimum contribution you will avoid transactions below a certain amount. For example, you can set the minimum contribution to 0.1 ETH. This means that the smart contract will not accept transactions below 0.1 ETH.')}</li>
             <li><span>{t('Fund owner. ')}</span>{t('The Ethereum address where all the Ether of the token sale is collected. By default the Token Creator will use the same address that you used to deploy the token and that is the owner of the all the smart contracts. But you can specify another address. Please double check your address in order to be sure that it is correct. If you input a wrong address you will lose all the Ether collected by this smart contract.')}</li>
-            <li><span>{t('KYC. ')}</span>{t('Choose whether to use Atomax KYC for your buyers or not.')}</li>
+            <li><span>{t('KYC. ')}</span>{t('Choose whether to add the KYC premium feature or not.')}</li>
             <li><span>{t('Start and end date. ')}</span>{t('You can choose the period of time during which that specific token sale smart contract can accept a transaction. So when the date is due, that precise smart contract will not accept transactions anymore. You have the possibility to open a token sale again, by changing the ending date. Remember you can have different token sales over different periods of time.')}</li>
           </ul>
           <p><span>{t('How can I change the settings of my token sale?')}</span></p>
@@ -103,7 +103,7 @@ class HelpPage extends React.Component {
           <p>{t('When removing tokens from the Project of course you can only remove tokens that have not been sold already.')}</p>
           <h3 id='kycSection'>{t('KYC')}</h3>
           <p><span>{t('What is KYC?')}</span></p>
-          <p>{t('KYC stands for Know Your Customer. Token sales and companies alike are required to screen their buyers to be compliant with the current legislation in most countries. Tokedo Token Creator provides token sales and companies with a service to screen their users and be KYC-compliant.')}</p>
+          <p>{t('KYC stands for Know Your Customer. Token sales and companies alike are required to screen their buyers for AML. Tokedo Token Creator provides token sales and companies with a KYC service to screen their buyers.')}</p>
         </div>
         <ScrollButton scrollStepInPx='50' delayInMs='16.66' />
       </div>
