@@ -21,6 +21,6 @@ module.exports = merge(common, {
       'process.env.WEB3_PROVIDER': JSON.stringify('https://mainnet.infura.io/'),
       'process.env.ETHERSCAN_URI': JSON.stringify('https://etherscan.io/')
     }),
-    new webpack.EnvironmentPlugin([])
+    new webpack.EnvironmentPlugin(['NET'])
   ]
 })
