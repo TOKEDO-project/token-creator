@@ -26,6 +26,11 @@ a {
   text-decoration: none;
 }
 
+.link {
+  text-decoration: underline;
+  color: #3583f3;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -152,4 +157,8 @@ div.progress-bar-content {
 
 .react-datepicker__time-list {
   padding: 0;
+}
+
+.white-bg {
+  background: #FFF
 }
