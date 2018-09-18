@@ -9,7 +9,8 @@ const defaultToken = {
   minContribution: '',
   startTime: moment().valueOf() + '',
   endTime: moment().add(1, 'month').valueOf() + '',
-  kyc: ''
+  kyc: '',
+  tosAccepted: false
 }
 
 export const setStep = createAction('TOKEN_SALE_SET_STEP',
@@ -89,6 +90,15 @@ export const setTokenSaleAddress = createAction('TOKEN_SALE_SET_ADDRESS',
     return {
       tokenAddress,
       address
+    }
+  }
+)
+
+export const setTosAccepted = createAction('TOKEN_SALE_SET_TOS_ACCEPTED',
+  ({ tokenAddress, tosAccepted }) => {
+    return {
+      tokenAddress,
+      tosAccepted
     }
   }
 )
@@ -189,6 +199,16 @@ export const addTokenSale = handleActions({
       [payload.tokenAddress]: {
         ...token,
         address: payload.address
+      }
+    }
+  },
+  TOKEN_SALE_SET_TOS_ACCEPTED: (state, { payload }) => {
+    const token = state[payload.tokenAddress] || defaultToken
+    return {
+      ...state,
+      [payload.tokenAddress]: {
+        ...token,
+        tosAccepted: payload.tosAccepted
       }
     }
   },

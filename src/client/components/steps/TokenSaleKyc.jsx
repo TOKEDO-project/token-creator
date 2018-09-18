@@ -16,9 +16,18 @@ class TokenSaleKyc extends Component {
     super(props)
 
     this.state = {
-      valid: true,
       showYesKycPopup: false,
       showNoKycPopup: false
+    }
+  }
+
+  componentWillMount () {
+    const { addTokenSale, tokenId } = this.props
+    const { kyc, tosAccepted } = addTokenSale[tokenId]
+    if (kyc === 'true' && !tosAccepted) {
+      this.setState({showYesKycPopup: true})
+    } else if (kyc === 'false') {
+      this.setState({showNoKycPopup: true})
     }
   }
 
@@ -40,17 +49,27 @@ class TokenSaleKyc extends Component {
     dispatch(setKYC({ tokenAddress: tokenId, kyc: value }))
   }
 
-  toggleVisibility = () => {
+  toggleVisibilityNo = () => {
     this.setState({
-      showYesKycPopup: false,
       showNoKycPopup: false
     })
   }
 
+  toggleVisibilityYes = (tosAccepted) => {
+    const { dispatch, tokenId } = this.props
+    this.setState({
+      showYesKycPopup: false
+    })
+    if (!tosAccepted) {
+      dispatch(setKYC({ tokenAddress: tokenId, kyc: '' }))
+    }
+  }
+
   render () {
     const { addTokenSale, nextFunction, t, tokenId } = this.props
-    const { valid, showYesKycPopup, showNoKycPopup } = this.state
-    const kyc = addTokenSale[tokenId].kyc
+    const { showYesKycPopup, showNoKycPopup } = this.state
+    const { kyc, tosAccepted } = addTokenSale[tokenId]
+    const valid = kyc === 'false' || (kyc === 'true' && tosAccepted)
     return (
       <div id='token-type' className='step-container pure-u-1'>
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
@@ -60,8 +79,8 @@ class TokenSaleKyc extends Component {
           >
             {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/help', hash: '#kycSection' }} target='_blank'>{t(`here`)}</Link>
           </StepHeader>
-          {showYesKycPopup ? <KycYes toggleVisibility={this.toggleVisibility} /> : null}
-          {showNoKycPopup ? <KycNo toggleVisibility={this.toggleVisibility} /> : null}
+          {showYesKycPopup ? <KycYes tokenId={tokenId} toggleVisibility={(tosAccepted) => this.toggleVisibilityYes(tosAccepted)} /> : null}
+          {showNoKycPopup ? <KycNo tokenId={tokenId} toggleVisibility={this.toggleVisibilityNo} /> : null}
           <form className='bottom d-flex flex-row flex-h-between flex-wrap'>
             <button onClick={(e) => this.onChange(e, 'true')} type='button' className={`radio-box ${kyc === 'true' ? 'active' : ''} shadow pure-u-1 pure-u-sm-11-24 d-flex flex-row flex-h-center flex-v-center`}>
               <p>{t('YES')} <br />{t('add KYC')}</p>
@@ -77,7 +96,7 @@ class TokenSaleKyc extends Component {
             </button>
           </form>
         </div>
-        {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid || kyc === ''} onClick={nextFunction} >{t('Deploy the Token Sale')}</button> : null}
+        {nextFunction ? <button className='deploy shadow pure-u-1' disabled={!valid} onClick={nextFunction} >{t('Deploy the Token Sale')}</button> : null}
       </div>
     )
   }
