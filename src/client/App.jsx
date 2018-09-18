@@ -107,7 +107,6 @@ class App extends React.Component {
     if (!this.timer && web3 !== null) {
       this.startIntervalMetamask(web3, dispatch)
     }
-    console.log(web3.metamaskNet, process.env.NET)
 
     return (
       <div className='pure-g'>
