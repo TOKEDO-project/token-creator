@@ -37,7 +37,6 @@
 
 #home button.start-now:hover {
   background: #FFAA00;
-
 }
 
 @media (min-width: 1025px) {
@@ -46,7 +45,8 @@
     height: 100%;
     background-position: left bottom;
     background-size: 100%;
-    min-height: calc(100vh);
+    height: calc(100vh);
+    min-height: 1000px;
   }
 
   #home h1.message {
