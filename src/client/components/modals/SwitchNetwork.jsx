@@ -4,10 +4,10 @@ import { translate } from 'react-i18next'
 import metamask from '../../assets/images/metamask.svg'
 import './SwitchNetwork.css'
 
-const SwitchNetwork = ({ t }) => {
+const SwitchNetwork = ({ t, metamaskNet }) => {
   return (
     <Modal icon={metamask} title={t('Oops! Something\'s wrong.')} visible>
-      {process.env.NET === 'ropsten'
+      {metamaskNet === 'ropsten'
         ? <div className='pure-u-1 network'>
           <p>
             {t('Your Metamask wallet is currently operating in Ropsten Test Net.')}
