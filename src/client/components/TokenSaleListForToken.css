@@ -112,7 +112,14 @@
 #TokenSaleListForToken button.modify span.fa {
   margin-right: 5px;
 }
-
+@media (max-width: 1366px){
+  #TokenSaleListForToken button.modify {
+    margin: 40px auto 0;
+  }
+  #TokenSaleListForToken button.copy {
+    margin-top: 40px;
+  }
+}
 @media (min-width: 1024px){
   #TokenSaleListForToken .borderTop {
     border-top: 1px solid #d4d4d4;
@@ -133,7 +140,14 @@
   margin-top: 10px;
 }
 }
-
+@media (max-width: 767px){
+  #TokenSaleListForToken button.modify {
+    margin: 20px auto 0;
+  }
+  #TokenSaleListForToken button.copy {
+    margin-top: 20px;
+  }
+}
 @media (min-width: 400px){
   #TokenSaleListForToken img.status {
     width: 40px;
