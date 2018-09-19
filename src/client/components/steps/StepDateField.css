@@ -48,15 +48,27 @@ div.step form.bottom div.date-picker,
 .modifyDate form div.date-picker p {
   color: #888888;
 }
+.react-datepicker{
+  z-index: 10;
+  
+}
+@media (max-width: 500px) {
+  .react-datepicker__month-container
+  {
+    width: 227px;
+  }
+  .react-datepicker{
+    width: 300px;
 
-
-@media (max-width: 767px) {
+  }
+}
+@media (max-width: 1024px) {
   .date-picker {
     flex-direction: column;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .date-picker {
     flex-direction: row;
   }

@@ -54,9 +54,7 @@
   word-break: break-all;
 }
 
-#TokenSaleListForToken .borderRight {
-  border-right: 1px solid #d4d4d4;
-}
+
 
 #TokenSaleListForToken .greenTxt {
   color: #33BE24;
@@ -146,6 +144,16 @@
   }
   #TokenSaleListForToken button.copy {
     margin-top: 20px;
+  }
+}
+@media (min-width: 512px){
+  #TokenSaleListForToken .borderRight {
+    border-right: 1px solid #d4d4d4;
+  }
+}
+@media (max-width: 511px){
+  #TokenSaleListForToken .borderRight {
+    border-right: none;
   }
 }
 @media (min-width: 400px){

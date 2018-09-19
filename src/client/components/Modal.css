@@ -38,6 +38,7 @@ div.modal div.content {
   background-color: white;
   border-radius: 5px;
   max-height: 90%;
+  max-width: 1280px;
 }
 
 div.modal div.content div.header {
@@ -74,7 +75,7 @@ div.modal div.children {
   /* Calc padding by left original padding + icon size + icon margin
   padding: 25px calc(25px + 32px + 25px); */
   padding: 50px;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 
 @media (max-width: 1024px) {
@@ -93,6 +94,10 @@ div.modal div.children {
       }
   }
   @media (max-width: 400px) {
+    div.modal div.children,
+    div.modal div.content div.header {
+        padding: 1%;
+      }
       div.modal div.content div.header div.left span.title {
         font-size: 14px;
       }
