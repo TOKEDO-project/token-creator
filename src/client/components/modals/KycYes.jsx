@@ -87,16 +87,16 @@ class KycYes extends Component {
               <input type='text' name='email' hidden /> <br />
               <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
                 <label>{t('Email')}</label>
-                <input className='token-name text shadow pure-u-2' type='text' name='email2' value={email2} onChange={this.onChangeText} />
+                <input className='token-name text shadow pure-u-1' type='text' name='email2' value={email2} onChange={this.onChangeText} />
               </div>
 
               <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
                 <label>{t('Name')}</label>
-                <input className='token-name text shadow pure-u-2' type='text' name='name' value={name} onChange={this.onChangeText} />
+                <input className='token-name text shadow pure-u-1' type='text' name='name' value={name} onChange={this.onChangeText} />
               </div>
               <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
                 <label>{t('Message')}</label>
-                <input className='token-name text shadow pure-u-2' type='text' name='message' value={message} onChange={this.onChangeText} />
+                <input className='token-name text shadow pure-u-1' type='text' name='message' value={message} onChange={this.onChangeText} />
               </div>
               <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
                 <button className='nextBtn shadow pure-u-1' onClick={this.onClickForm}>{t('Send Form')}</button>

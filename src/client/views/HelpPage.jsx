@@ -1,6 +1,6 @@
 import React from 'react'
 import { translate } from 'react-i18next'
-
+import './Pages.css'
 class HelpPage extends React.Component {
   constructor (props) {
     super(props)
