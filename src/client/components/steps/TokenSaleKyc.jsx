@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { setKYC } from '../../redux/addTokenSale'
 import KycYes from '../modals/KycYes'
 import KycNo from '../modals/KycNo'
-import icon from '../../assets/images/token-sale-kyc-yes.svg'
+import KYC from '../../assets/images/lock-KYC.svg'
 import './Step.css'
 import './StepRadioButtons.css'
 import './TokenType.css'
@@ -75,7 +75,7 @@ class TokenSaleKyc extends Component {
       <div id='token-type' className='step-container pure-u-1'>
         <div className={`step ${nextFunction ? 'alone' : ''} pure-u-1 d-flex flex-column flex-h-between`}>
           <StepHeader
-            icon={icon}
+            icon={KYC}
             title={t(`KYC`)}
           >
             {t(`You can add our KYC system to this token sale. Read more `)} <Link to={{ pathname: '/help', hash: '#kycSection' }} target='_blank'>{t(`here`)}</Link>

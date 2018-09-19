@@ -5,6 +5,7 @@ import axios from 'axios'
 import qs from 'qs'
 import Modal from '../Modal'
 import { setTosAccepted } from '../../redux/addTokenSale'
+import KYC from '../../assets/images/lock-KYC.svg'
 
 class KycYes extends Component {
   constructor (props) {
@@ -75,7 +76,7 @@ class KycYes extends Component {
     const { visible, checked, email2, name, message, status } = this.state
     const { tosAccepted } = addTokenSale[tokenId]
     return (
-      <Modal title={t('With KYC')} visible={visible} toggleVisibility={toggleVisibility}>
+      <Modal title={t('With KYC')} icon={KYC} visible={visible} toggleVisibility={toggleVisibility}>
         <div className='pure-u-1'>
           {t('this is our kyc')}
         </div>
