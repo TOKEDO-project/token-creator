@@ -6,6 +6,7 @@ import qs from 'qs'
 import Modal from '../Modal'
 import { setTosAccepted } from '../../redux/addTokenSale'
 import KYC from '../../assets/images/lock-KYC.svg'
+import './KycYesNo.css'
 
 class KycYes extends Component {
   constructor (props) {
@@ -77,27 +78,43 @@ class KycYes extends Component {
     const { tosAccepted } = addTokenSale[tokenId]
     return (
       <Modal title={t('With KYC')} icon={KYC} visible={visible} toggleVisibility={toggleVisibility}>
-        <div className='pure-u-1'>
-          {t('this is our kyc')}
+        <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+          <p>{t('this is our kyc')}</p>
         </div>
         {!tosAccepted
-          ? <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onClickForm}>
+          ? <form className='kycModal bottom d-flex flex-row flex-h-between' onSubmit={this.onClickForm}>
             <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
               <input type='text' name='email' hidden /> <br />
-              <label>{t('Email')}</label>
-              <input className='token-name text shadow pure-u-2' type='text' name='email2' value={email2} onChange={this.onChangeText} /> <br />
-              <label>{t('Name')}</label>
-              <input className='token-name text shadow pure-u-2' type='text' name='name' value={name} onChange={this.onChangeText} /><br />
-              <label>{t('Message')}</label>
-              <input className='token-name text shadow pure-u-2' type='text' name='message' value={message} onChange={this.onChangeText} /><br />
-              <button className='nextBtn next shadow pure-u-7-24' onClick={this.onClickForm}>{t('Send Form')}</button>
-              <div className='pure-u-1'>
-                {status === 'success' ? t('Email sent') : null}
-                {status === 'error' ? t('Error') : null}
-                {status === 'missing' ? t('Missing parameters') : null}
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <label>{t('Email')}</label>
+                <input className='token-name text shadow pure-u-2' type='text' name='email2' value={email2} onChange={this.onChangeText} />
               </div>
-              <input type='checkbox' checked={checked} onChange={this.toggleCheckbox} value='terms' />{t('Accept all')}<br />
-              <button className='nextBtn next shadow pure-u-7-24' disabled={!checked || status !== 'success'} onClick={this.onClick}>{t('OK')}</button>
+
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <label>{t('Name')}</label>
+                <input className='token-name text shadow pure-u-2' type='text' name='name' value={name} onChange={this.onChangeText} />
+              </div>
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <label>{t('Message')}</label>
+                <input className='token-name text shadow pure-u-2' type='text' name='message' value={message} onChange={this.onChangeText} />
+              </div>
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <button className='nextBtn shadow pure-u-1' onClick={this.onClickForm}>{t('Send Form')}</button>
+              </div>
+
+              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <p className='formMsg'>
+                  {status === 'success' ? t('Email sent') : null}
+                  {status === 'error' ? t('Error') : null}
+                  {status === 'missing' ? t('Missing parameters') : null}
+                </p>
+              </div>
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <input className='' type='checkbox' checked={checked} onChange={this.toggleCheckbox} value='terms' />{t('Accept all')}<br />
+              </div>
+              <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>
+                <button className='nextBtn  shadow pure-u-1' disabled={!checked || status !== 'success'} onClick={this.onClick}>{t('OK')}</button>
+              </div>
             </div>
           </form>
           : null

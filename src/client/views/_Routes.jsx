@@ -9,6 +9,7 @@ import FaqPage from '../views/FaqPage'
 import HelpPage from '../views/HelpPage'
 import Credits from '../views/Credits'
 import AboutPage from '../views/AboutPage'
+import KYCpage from '../views/KYCpage'
 
 import {
   Route,
@@ -38,6 +39,7 @@ const AppRouter = () => {
         <Route exact path='/help' component={HelpPage} />
         <Route exact path='/credits' component={Credits} />
         <Route exact path='/about' component={AboutPage} />
+        <Route exact path='/kyc' component={KYCpage} />
         <Route render={() => <PageNotFound />} />
       </Switch>
     </main>

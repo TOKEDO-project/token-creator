@@ -1,0 +1,23 @@
+.kycModal p {
+  color: #888;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.kycModal {
+  margin: 0 0 8%;
+}
+.kycModal .nextBtn{
+    margin: 0px;
+}
+.kycModal label{
+    color: #FA8100;
+}
+
+@media (max-width: 767px) {
+  .kycModal p {
+    text-align: center;
+    font-size: 15px;
+  }
+
+}

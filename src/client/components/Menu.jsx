@@ -8,9 +8,11 @@ import home from '../assets/images/home.svg'
 import credits from '../assets/images/credits.svg'
 import help from '../assets/images/helpMenu.svg'
 import homeActive from '../assets/images/homeActive.svg'
+import kyc from '../assets/images/userKYCme.svg'
 // import faqActive from '../assets/images/faqActive.svg'
 import creditsActive from '../assets/images/creditsActive.svg'
 import helpActive from '../assets/images/helpMenuActive.svg'
+import kycActive from '../assets/images/userKYCmeActive.svg'
 class Menu extends Component {
   constructor (props) {
     super(props)
@@ -27,10 +29,11 @@ class Menu extends Component {
     const { t, location: { pathname } } = this.props
     const { open } = this.state
     const routes = [
-      {name: t('Home'), route: '/', img: home, imgActive: homeActive},
+      { name: t('Home'), route: '/', img: home, imgActive: homeActive },
       // {name: t('FAQ'), route: '/faq', img: faq, imgActive: faqActive},
-      {name: t('Help'), route: '/help', img: help, imgActive: helpActive},
-      {name: t('Credits'), route: '/credits', img: credits, imgActive: creditsActive}
+      { name: t('Help'), route: '/help', img: help, imgActive: helpActive },
+      { name: t('Credits'), route: '/credits', img: credits, imgActive: creditsActive },
+      { name: t('KYC'), route: '/kyc', img: kyc, imgActive: kycActive }
     ]
     return (
       <div>
@@ -39,7 +42,7 @@ class Menu extends Component {
           <div className='item title d-flex flex-row flex-h-between flex-v-center'>
             &nbsp;
           </div>
-          {routes.map(({name, route, img, imgActive}, index) =>
+          {routes.map(({ name, route, img, imgActive }, index) =>
             <Link key={index} to={route} onClick={this.toggleMenu} className={`item ${pathname === route ? 'active' : ''} d-flex flex-row flex-v-center`}>
               <img className='mainMenuImg' src={pathname === route ? imgActive : img} /><span>{name}</span>
             </Link>
