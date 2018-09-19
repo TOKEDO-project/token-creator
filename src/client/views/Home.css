@@ -39,14 +39,13 @@
   background: #FFAA00;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1367px) {
 
   #home .homeBg {
     height: 100%;
     background-position: left bottom;
-    background-size: 100%;
+    background-size: 120%;
     height: calc(100vh);
-    min-height: 1000px;
   }
 
   #home h1.message {
@@ -55,25 +54,30 @@
   #home .marginTop {
     margin-top: 50px;
   }
-}
-
-@media (max-width: 1024px) {
-  #home .homeBg {
-    height: 100%;
-    background-position: left bottom;
-    background-size: 100%;
-    min-height: calc(100vh - 90px);
-  }
-  #home .marginTop {
-    margin-top: 70px;
+  #home .textHome {
+    text-align: right;
+    padding-right: 5%;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1366px) {
   #home {
     flex-direction: row;
   }
 
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 120%;
+    height: calc(100vh);
+  }
+
+  #home h1.message {
+    font-size: 35px;
+  }
+  #home .marginTop {
+    margin-top: 50px;
+  }
   #home .textHome {
     text-align: right;
     padding-right: 5%;
@@ -88,6 +92,17 @@
   }
 }
 
+@media (max-width: 1024px) {
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 100%;
+    min-height: calc(100vh - 90px);
+  }
+  #home .marginTop {
+    margin-top: 70px;
+  }
+}
 
 @media (max-width: 767px) {
   #home {
@@ -124,7 +139,7 @@
     height: 100%;
     background-position: left bottom;
     background-size: 170%;
-    min-height: calc(100vh + 250px);
+    min-height: calc(100vh + 120px);
   }
 
   #home h1.message {
@@ -132,5 +147,21 @@
   }
   #home .marginTop {
     margin-top: 20px;
+  }
+}
+@media (max-width: 400px) {
+
+  #home .homeBg {
+    height: 100%;
+    background-position: left bottom;
+    background-size: 170%;
+    min-height: calc(100vh + 230px);
+  }
+
+  #home h1.message {
+    font-size: 25px;
+  }
+  #home .marginTop {
+    margin-top: 10px;
   }
 }
