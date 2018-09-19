@@ -139,7 +139,7 @@ class AddTokenWizard extends Component {
         </div>
         <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>
           <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-md-8-24' />
-          <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
+          <div className='step-container pure-u-1 pure-u-lg-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(addToken.step)}
             <a className='advanced' href='/token/add/advanced'>{t('Advanced Mode (show all fields)')}</a>
             {addToken.step > 1 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}

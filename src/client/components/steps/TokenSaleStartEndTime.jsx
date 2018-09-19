@@ -45,7 +45,7 @@ class TokenSaleStartEndTime extends Component {
         >
           {t(`Input the start and end date to define the period of time during which the smart contract of this specific token sale can accept a transaction.`)}
         </StepHeader>
-        <form className='bottom d-flex flex-row flex-h-between flex-v-end'>
+        <form className='bottom d-flex flex-column flex-h-between flex-v-end'>
           <div className={`date-pickers d-flex flex-column pure-u-1`}>
 
             <div className='date-picker pure-u-1 d-flex flex-column'>
@@ -86,7 +86,7 @@ class TokenSaleStartEndTime extends Component {
             </div>
 
           </div>
-          {nextFunction ? <button className='next shadow pure-u-7-24' onClick={nextFunction} >
+          {nextFunction ? <button className='next shadow pure-u-1 marginTop' onClick={nextFunction} >
             {t('Next')}
           </button> : null}
         </form>

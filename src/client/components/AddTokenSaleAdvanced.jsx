@@ -147,27 +147,27 @@ class AddTokenSaleAdvanced extends Component {
               progressMsg={<span>{t('To ultimate your token sale you are required to send two transactions.')}<br />{t('This is the second transaction.')}</span>} connectorName='addRc' transaction={transaction} onTransactionHash={this.onTransactionHashRc} onReceipt={this.onReceiptRc} tokenId={tokenId} />
             : <div className='big-card shadow pure-u-1 d-flex flex-column flex-v-center'>
               <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
-                <div className='pure-u-1 pure-u-md-12-24'>
+                <div className='pure-u-1 pure-u-lg-12-24'>
                   <TokenSalePrice setValid={this.setValidPrice} tokenId={tokenId} />
                 </div>
-                <div className='pure-u-1 pure-u-md-12-24'>
+                <div className='pure-u-1 pure-u-lg-12-24'>
                   <TokenSaleAmount setValid={this.setValidAmount} tokenId={tokenId} />
                 </div>
               </div>
               <div className='pure-u-1 d-flex flex-row flex-h-between flex-wrap'>
-                <div className='pure-u-1 pure-u-md-12-24'>
+                <div className='pure-u-1 pure-u-lg-12-24'>
                   <TokenSaleMinContribution setValid={this.setValidMinContribution} tokenId={tokenId} />
                 </div>
-                <div className='pure-u-1 pure-u-md-12-24'>
+                <div className='pure-u-1 pure-u-lg-12-24'>
                   <TokenSaleKyc tokenId={tokenId} />
                 </div>
               </div>
               <div className='pure-u-1 d-flex flex-row flex-h-between flex-v-end flex-wrap'>
-                <div className='pure-u-1 pure-u-md-12-24'>
+                <div className='pure-u-1 pure-u-lg-12-24'>
                   <TokenSaleStartEndTime tokenId={tokenId} />
                 </div>
               </div>
-              <div className='deploy-container pure-u-1 pure-u-md-12-24'>
+              <div className='deploy-container pure-u-1 pure-u-lg-12-24'>
                 {valid && kyc !== '' ? <button className='deploy pure-u-1 font-weight-bold' onClick={this.goToWalletSelection} >{t('Select the wallet')}</button> : null}
               </div>
             </div>

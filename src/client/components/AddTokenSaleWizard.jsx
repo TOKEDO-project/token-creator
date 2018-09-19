@@ -173,9 +173,9 @@ class AddTokenSaleWizard extends Component {
             <div className={`progress-bar-content pure-u-${step * 3}-24`} />
           </div>
         </div>
-        <div className='content pure-u-1 d-flex flex-column flex-md-row flex-h-between'>
-          <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-md-8-24' />
-          <div className='step-container pure-u-1 pure-u-md-15-24 d-flex flex-column flex-v-center'>
+        <div className='content pure-u-1 d-flex flex-column flex-lg-row flex-h-between'>
+          <YoutubeVideo id='cqZhNzZoMh8' shadow className='pure-u-1 pure-u-lg-8-24' />
+          <div className='step-container pure-u-1 pure-u-lg-15-24 d-flex flex-column flex-v-center'>
             {this.renderStep(step)}
             {this.props.children}
             {step > 1 && step < 7 ? <button className='goBackBtn' onClick={this.onClickBack}>{'<'} {t('Go Back')}</button> : null}
