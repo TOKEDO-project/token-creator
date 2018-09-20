@@ -19,57 +19,54 @@
   font-size: 16px;
 }
 
-#helpPage,
-#kycPage {
+#helpPage {
   padding: 50px 5%;
 }
 
 #helpPage .centerTxt,
-#kycPage .centerTxt {
+.kycPage .centerTxt {
   text-align: center;
 }
 
 #helpPage .leftTxt,
-#kycPage .leftTxt {
+.kycPage .leftTxt {
   text-align: left;
 }
 
 #helpPage span.marginLeft,
-#kycPage span.marginLeft {
+.kycPage span.marginLeft {
   margin-left: 15px;
 }
 
 #helpPage span,
-#kycPage span {
+.kycPage span {
   font-size: 16px;
   font-weight: 600;
 }
 
 #helpPage h3,
-#kycPage h3 {
+.kycPage h3 {
   font-size: 18px;
   font-weight: 500;
   margin: 40px 0 20px 0;
   text-align: left;
 }
 
-#helpPage p,
-#kycPage p {
+#helpPage p{
   font-size: 15px;
   font-weight: 400;
   text-align: left;
 }
 
 
-#helpPage ul li,
-#kycPage ul li {
-  text-decoration: none;
+#helpPage ul li {
   text-align: left;
   font-weight: 400;
 }
 
+
 #helpPage a,
-#kycPage a {
+.kycPage a {
   text-decoration: underline;
   color: #3583f3;
 }
@@ -93,42 +90,10 @@ span.fa-chevron-up {
   color: #8888;
 }
 
-#kycPage .titleTableBox {
-  height: 100px;
-  border: 1px solid gray;
-  text-align: center;
-}
-#kycPage .titleTableBox p{
-  text-align: center;
-}
-
-#kycPage .bodyTableBox {
-  height: 400px;
-  border: 1px solid gray;
-  padding-left:5%;
-}
-
-#kycPage .footerTableBox {
-  height: 100px;
-  border: 1px solid gray;
-}
-#kycPage .footerTableBox p{
-  text-align: center;
-}
-#kycPage input {
-  border-radius: 5px;
-
-}
-#kycPage .kycModal label {
-  text-align: left;
-}
-#kycPage form.kycModal {
-  padding: 0px;
-}
 
 
 @media (min-width: 768px) {
-  #kycPage .kycTable {
+  .kycPage .kycTable {
     display: flex;
     flex-direction: row;
   }
@@ -136,7 +101,7 @@ span.fa-chevron-up {
 }
 
 @media (max-width: 767px) {
-  #kycPage .kycTable {
+  .kycPage .kycTable {
     display: flex;
     flex-direction: column;
   }

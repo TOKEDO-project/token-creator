@@ -6,7 +6,7 @@ class KYCpage extends React.Component {
   render () {
     const { t } = this.props
     return (
-      <div id='kycPage' className='step pure-u-1 d-flex flex-column flex-v-center pages'>
+      <div className='kycPage step pure-u-1 d-flex flex-column flex-v-center pages'>
         <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
           <h4 className='centerTxt'>{t('KYC Service')}</h4>
           <p>{t('Token sales and companies alike are required to screen their buyers for AML (Anti Money Laundering).')}</p>
@@ -18,7 +18,7 @@ class KYCpage extends React.Component {
 
           <h3>{t('How it works')}</h3>
           <p>{t('Your token sale contracts work already and you can use them to sell your tokens. The completion of KYC is necessary to the release of the coins for both parts')}:</p>
-          <ul>
+          <ul className='numberList'>
             <li>1. {t('Buyers send their Ether to your token sale.')}</li>
             <li>2. {t('After sending his ETH, the buyer must verify his identity and upload the required documents through the Atomax Wallet app.')}</li>
             <li>3. {t('Once his identity has been verified, he can send the transaction that will unlock both his tokens and the funds he sent to the project.')}</li>
@@ -26,98 +26,17 @@ class KYCpage extends React.Component {
           </ul>
 
           <h3>{t('Prices and tiers')}</h3>
-          <p>{t('While 50% of the estimated token sale buyers are to pay upfront, any money that will not be used for KYC will be returned to you. Each user will be assigned a tier, and then verified according to the requirements of that tier. The tier is determined by the threshold the user falls in, depending on the amount sent to your token sale. The more it is, the higher the tier.')}</p>
+          <p>{t('While 50% of the estimated token sale buyers are to pay upfront, any money that will not be used for KYC will be returned to you. Each user will be assigned a tier, and then verified according to the requirements of that tier. The tier is determined by the threshold* the user falls in, depending on the amount sent to your token sale. The more it is, the higher the tier.')}</p>
+          <p><span>{t('Tier 1, 2 and 3')}</span><br />{t('KYC cost: $3 per user.')}</p>
+          <p><span>{t('Tier 4')}</span><br />{t('KYC cost: $45 per user.')}</p>
           <p>{t('The KYC Service is provided by ')}<a href='https://trustlesslabs.com/'>{t('Trustless Labs Ltd.')}</a></p>
+          <p className='note'>*{t('These thresholds can be customized depending on the specific needs of your token sale (e.g. the legal framework of your country).')}</p>
 
-          <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1 pure-u-xl-1 kycTable'>
-            <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-5 pure-u-xl-1-5'>
-              <div className='pure-u-1 d-flex flex-column'>
-                <div className='titleTableBox'>
-                  <p><span>{t('Payment Threshold')}</span></p>
-                </div>
-                <div className='bodyTableBox'>
-                  <p><span>{t('Tier')}</span></p>
+          <div className='marginTop'>
+            <h3 className='textCenter'><span>{t('Leave your contact information to find out more about our KYC service.')}</span></h3>
 
-                </div>
-                <div className='footerTableBox'>
-                  <p><span>{t('Cost')}</span></p>
-                </div>
-              </div>
-            </div>
-            <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-3-5 pure-u-xl-3-5'>
-              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-3 pure-u-xl-1-3'>
-                <div className='titleTableBox'>
-                  <p><span>{t('From €0 to €999')}</span></p>
-                </div>
-                <div className='bodyTableBox'>
-                  <p><span>{t('Tier 1')}</span></p>
-                  <p>{t('Tier 1 only requires to provide an email address and confirm it.')}</p>
+            <form className='kycForm bottom d-flex flex-row flex-h-between'>
 
-                </div>
-
-              </div>
-              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-3 pure-u-xl-1-3'>
-                <div className='titleTableBox'>
-                  <p><span>{t('From €1,000 to €19,999')}</span></p>
-                </div>
-                <div className='bodyTableBox'>
-                  <p><span>{t('Tier 2')}</span></p>
-                  <p>{t('Level 2 requires')}:</p>
-                  <ul>
-                    <li>{t('Verified email address')}</li>
-                    <li>{t('Personal information')}</li>
-                    <li>{t('One identity document')}</li>
-                    <li>{t('Phone number verification')}</li>
-                  </ul>
-                </div>
-
-              </div>
-              <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-3 pure-u-xl-1-3'>
-                <div className='titleTableBox'>
-                  <p><span>{t('From €20,000 to €99,999')}</span></p>
-                </div>
-                <div className='bodyTableBox'>
-                  <p><span>{t('Tier 3')}</span></p>
-                  <p>{t('Level 3 includes:')}</p>
-                  <ul>
-                    <li>{t('Verified email address')}</li>
-                    <li>{t('Personal information')}</li>
-                    <li>{t('One identity document')}</li>
-                    <li>{t('Phone number verification')}</li>
-                    <li>{t('Proof of address')}</li>
-                  </ul>
-                </div>
-
-              </div>
-              <div className='pure-u-1 footerTableBox'>
-                <p><span>{t('$3 per user')}</span></p>
-              </div>
-            </div>
-            <div className='pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-1-5 pure-u-xl-1-5'>
-              <div className='pure-u-1'>
-                <div className='titleTableBox'>
-                  <p><span>{t('More than €100,000')}</span></p>
-                </div>
-                <div className='bodyTableBox'>
-                  <p><span>{t('Tier 4')}</span></p>
-                  <p>{t('Level 4 includes:')}</p>
-                  <ul>
-                    <li>{t('Verified email address')}</li>
-                    <li>{t('Personal information')}</li>
-                    <li>{t('One identity document')}</li>
-                    <li>{t('Phone number verification')}</li>
-                    <li>{t('Proof of address')}</li>
-                    <li>{t('Proof of funds')}</li>
-                  </ul>
-                </div>
-                <div className='footerTableBox'>
-                  <p><span>{t('$45 per user')}</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <form className='kycModal bottom d-flex flex-row flex-h-between'>
               <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
                 <input type='text' name='email' hidden /> <br />
                 <div className='marginTop pure-u-1 pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-2 pure-u-xl-1-3'>

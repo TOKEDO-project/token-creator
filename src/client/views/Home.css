@@ -44,7 +44,7 @@
   #home .homeBg {
     height: 100%;
     background-position: left bottom;
-    background-size: 120%;
+    background-size: 90%;
     height: calc(100vh);
   }
 
@@ -68,7 +68,7 @@
   #home .homeBg {
     height: 100%;
     background-position: left bottom;
-    background-size: 120%;
+    background-size: 100%;
     height: calc(100vh);
   }
 

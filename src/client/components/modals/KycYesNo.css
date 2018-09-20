@@ -5,13 +5,167 @@
 }
 
 .kycModal {
-  margin: 0 0 8%;
+  padding: 20px 5px;
 }
-.kycModal .nextBtn{
-    margin: 0px;
+
+.kycModal .nextBtn {
+  margin: 0px;
 }
-.kycModal label{
-    color: #FA8100;
+
+.kycModal label,
+.kycForm label {
+  color: #FA8100;
+}
+
+.pages .box {
+  background: white;
+  padding: 25px 50px;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 50px;
+  color: #888888;
+  margin: 50px 0;
+  word-spacing: 2px;
+  text-align: center;
+}
+
+.pages h4 {
+  text-align: center;
+  font-weight: 600;
+  color: #FA8100;
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+
+.kycPage .centerTxt {
+  text-align: center;
+}
+
+.kycPage .leftTxt {
+  text-align: left;
+}
+
+.kycPage span.marginLeft {
+  margin-left: 15px;
+}
+
+.kycPage span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.kycPage h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 40px 0 20px 0;
+  text-align: left;
+}
+
+.kycPage p,
+.kycPage ul li {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+  color: #888;
+}
+
+.kycPage ul li {
+  text-decoration: none;
+  text-align: left;
+  font-weight: 400;
+}
+
+.kycPage ul.numberList li {
+  list-style: none;
+}
+
+.kycPage a {
+  text-decoration: underline;
+  color: #3583f3;
+}
+
+.kycPage .note {
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.kycPage .textCenter {
+  text-align: center;
+}
+
+.scroll {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+scroll:active {
+  transform: translateY(5px);
+}
+
+span.fa-chevron-up {
+  color: #8888;
+}
+
+.kycPage input {
+  border-radius: 5px;
+
+}
+
+.kycPage .kycModal label {
+  text-align: left;
+}
+
+.kycPage form.kycModal {
+  padding: 0px;
+}
+
+.kycModal {
+  max-height: 500px;
+  overflow-y: scroll;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+div.step form.kycForm.bottom div.input-box,
+div.step form.kycForm.bottom {
+  padding: 0px;
+}
+
+#kycNo .kycModal{
+  padding-bottom: 50px;
+}
+#kycNo .nextBtn{
+  height: 70px;
+}
+#kycNo .kycModal {
+  height: 100%;
+  overflow-y: auto;
+  border: none;
+}
+@media (min-width: 768px) {
+  .kycPage .kycTable {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .kycPage .kycTable {
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 @media (max-width: 767px) {

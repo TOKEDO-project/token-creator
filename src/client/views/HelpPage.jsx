@@ -20,7 +20,7 @@ class HelpPage extends React.Component {
     const { t } = this.props
     return (
       <div id='helpPage' className='pure-u-1 d-flex flex-column flex-v-center pages'>
-        <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-22-24 pure-u-lg-15-24 pure-xl-15-24'>
+        <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
           <h4 className='centerTxt'>{t('Help')}</h4>
           <h3>{t('Getting Started')}</h3>
           <p><span>{t('What is the Tokedo Token Creator?')}</span></p>
@@ -50,8 +50,8 @@ class HelpPage extends React.Component {
           <p>{t('The token creator gives you the possibility to choose among three token options:')}</p>
           <ul>
             <li><span>{t('Simple')}</span><br />{t('It’s a token that is very easy to use, without any kind of extra functionality.')}</li>
-            <li><span>{t('Startable')}</span><br />{t('Adding the startable features gives you the advantage to decide when to unlock the token. Usually you might want to keep it locked during the sale and make it possible to sell and transfer it once the token sale is concluded. See how to unlock the token ')}<a href='#unlockSection'>{t('here')}</a>.</li>
-            <li><span>{t('Startable and Burnable')}</span><br />{t('The burnable feature makes it possible to burn the token and reduce the total supply, giving you the possibility to affect the price of the token.')}</li>
+            <li><span>{t('Startable')}</span><br />{t('The startable feature gives you the advantage to decide when to unlock the token. Usually you might want to keep it locked during the sale, and make it possible to sell and transfer it once the token sale is concluded. See how to unlock the token ')}<a href='#unlockSection'>{t('here')}</a>.</li>
+            <li><span>{t('Startable and Burnable')}</span><br />{t('In addition to the functionalities of the startable token, the burnable feature makes it possible to buy-back and burn the token and reduce the total supply.')}</li>
           </ul>
 
           <p><span>{t('Which wallets work with the Token Creator?')}</span></p>
