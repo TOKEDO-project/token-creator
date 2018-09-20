@@ -104,6 +104,7 @@ class HelpPage extends React.Component {
           <h3 id='kycSection'>{t('KYC')}</h3>
           <p><span>{t('What is KYC?')}</span></p>
           <p>{t('KYC stands for Know Your Customer. Token sales and companies alike are required to screen their buyers for AML. Tokedo Token Creator provides token sales and companies with a KYC service to screen their buyers.')}</p>
+          <p>{t('You can find the information in the ')}<a href='/kyc' target='_blank'>{t('KYC section')}</a></p>
         </div>
         <ScrollButton scrollStepInPx='50' delayInMs='16.66' />
       </div>
