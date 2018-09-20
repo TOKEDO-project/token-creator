@@ -102,7 +102,7 @@ class KycYes extends Component {
             <p>{t('While 50% of the estimated token sale buyers are to pay upfront, any money that will not be used for KYC will be returned to you. Each user will be assigned a tier, and then verified according to the requirements of that tier. The tier is determined by the threshold the user falls in, depending on the amount sent to your token sale. The more it is, the higher the tier.')}</p>
             <p><span>{t('Tier 1, 2 and 3')}</span><br />{t('KYC cost: $3 per user.')}</p>
             <p><span>{t('Tier 4')}</span><br />{t('KYC cost: $45 per user.')}</p>
-            <p>{t('The KYC Service is provided by ')}<a href='https://trustlesslabs.com/'>{t('Trustless Labs Ltd.')}</a></p>
+            <p>{t('The KYC Service is provided by ')}<a href='https://trustlesslabs.com/' target='_blank'>{t('Trustless Labs Ltd.')}</a></p>
             <p className='note'>*{t('These thresholds can be customized depending on the specific needs of your token sale (e.g. the legal framework of your country).')}</p>
             <div>
               <h3>{t('How to apply')}</h3>
