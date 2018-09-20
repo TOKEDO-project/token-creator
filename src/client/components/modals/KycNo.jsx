@@ -16,7 +16,7 @@ const KycNo = ({ t, toggleVisibility }) => {
           <p>{t('We advise you to add KYC verification to your token sale for AML purposes.')}</p>
           <p>{t('Tokedo is not responsible for any legal consequence you might face for not performing KYC on your buyers.')}</p>
           <div className='d-flex flex-row pure-u-1 flex-h-center flex-v-center marginTop'>
-            <button className='marginTop nextBtn shadow pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-4'>{t('I acknowledge this and I want to proceed anyway')}</button>
+            <button onClick={toggleVisibility} className='marginTop nextBtn shadow pure-u-1 pure-u-sm-1 pure-u-md-1-3 pure-u-lg-1-3 pure-u-xl-1-4'>{t('I acknowledge this and I want to proceed anyway')}</button>
           </div>
 
         </div>
