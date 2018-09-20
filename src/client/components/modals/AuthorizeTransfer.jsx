@@ -73,7 +73,8 @@ class AuthorizeTransfer extends React.Component {
     const { visible, transaction, validAddress } = this.state
     return (
       <Modal icon={authorize} visible={visible} title={t('Authorize Transfer')} toggleVisibility={this.toggleVisibility}>
-        <WarningMessage title={t('WARNING: This action cannot be undone.')} description={t('Be careful, if you confirm this you are going to delete your token.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
+        <WarningMessage title={t('WARNING: This action cannot be undone.')}
+          description={t('Be careful, you are authorizing an address to transfer the tokens located on that address.')} backgroundColor='#D93D3D' icon='exclamation-triangle' shadow />
         <div className='separator-twentyfive' />
         {transaction
           ? <WalletSelection connectorName='authorizeTransferToken' transaction={transaction} onTransactionHash={this.onTransactionHash} onReceipt={this.onReceipt}>
@@ -91,7 +92,10 @@ class AuthorizeTransfer extends React.Component {
             <div className='separator-twentyfive' />
           </WalletSelection>
           : <div className='d-flex flex-row'>
-            <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
+            <EthereumAddress
+              title={t(`Insert address`)}
+              description={t(`Insert the Ethereum address you want to authorize to transfer the tokens located on that address.`)}
+              onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
 
             {validAddress ? <button onClick={this.prepareTransaction} className='btnNext next shadow pure-u-7-24' >{t('Next')}</button> : null}
           </div>

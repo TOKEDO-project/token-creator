@@ -130,7 +130,10 @@ class TransferTokens extends React.Component {
             </div>
           </WalletSelection>
           : <div>
-            <EthereumAddress onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
+            <EthereumAddress
+              title={t(`Insert address`)}
+              description={t(`Insert the Ethereum address you want the tokens to be transfered to.`)}
+              onChangeAddress={this.onChangeAddress} onValidAddress={this.onValidAddress} tokenId={tokenId} hideNextButton />
             <div className='separator-twentyfive' />
             <TransferTokenAmount onChangeAmount={this.onChangeAmount} onValidAmount={this.onValidAmount} tokenId={tokenId} hideNextButton />
             <div className='pure-u-1 d-flex flex-v-center'>

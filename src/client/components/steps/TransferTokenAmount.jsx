@@ -57,21 +57,21 @@ class TransferTokenAmount extends Component {
     const { valid, amount } = this.state
     const tokenInfo = getTokenInfo(tokenId, tokens)
     const mainTokenSaleAmount = addMainTokenSale[tokenId].amount
-    const errorMessage = t('Cannot be more than') +
-      ' ' + mainTokenSaleAmount + ' ' + t('tokens') +
-      ' ' + t(`Decimal must be separated by ' . ' and decimals lenght not more than `) + ' ' + tokenInfo.decimals
+    const errorMessage = t('It cannot be more than') +
+      ' ' + mainTokenSaleAmount + ' ' + t('tokens.') +
+      ' ' + t(`Decimals must be separated by ' . ' and the numbers after the decimal separator can't exceed `) + ' ' + tokenInfo.decimals + t(' digits.')
 
     return (
       <div className='step pure-u-1 d-flex flex-column flex-h-between'>
         <StepHeader
           icon={icon}
-          title={t(`Insert an amount of token to transfer`)}
+          title={t(`Specify amount`)}
         >
-          {t(`Insert amount of token `)}
+          {t(`Insert the amount of tokens you intend to transfer. `)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onSubmit}>
           <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
-            <input placeholder={t(`Insert amount of token`)} className='token-name text shadow pure-u-1' value={amount} onChange={this.onChangeText} />
+            <input placeholder={t(`Insert amount`)} className='token-name text shadow pure-u-1' value={amount} onChange={this.onChangeText} />
             {!valid ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {valid && !hideNextButton ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }

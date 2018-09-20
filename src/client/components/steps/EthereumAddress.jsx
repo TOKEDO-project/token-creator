@@ -60,7 +60,7 @@ class EthereumAddress extends Component {
     }
   }
   render () {
-    const { t, title = t(`Insert your ethereum address`), description = t(`Insert your ethereum address`), hideNextButton } = this.props
+    const { t, title, description, hideNextButton } = this.props
 
     const { valid, address } = this.state
     const errorMessage = t('Must be a valid Ethereum address')
@@ -74,7 +74,7 @@ class EthereumAddress extends Component {
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between' onSubmit={this.onSubmit}>
           <div className='input-box pure-u-1 d-flex flex-column flex-v-center'>
-            <input placeholder={t(`Insert ethereum address`)} className='token-name text shadow pure-u-1' value={address} onChange={this.onChangeText} />
+            <input placeholder={t(`Insert Ethereum address`)} className='token-name text shadow pure-u-1' value={address} onChange={this.onChangeText} />
             {!valid ? <div className='tooltip font-size-tiny pure-u-1 d-flex flex-row flex-v-center'><div className='triangle' />{errorMessage}</div> : null}
           </div>
           {valid && !hideNextButton ? <button className='next shadow pure-u-7-24' onClick={this.onClickNext}>{t('Next')}</button> : null }
