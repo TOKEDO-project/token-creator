@@ -83,7 +83,7 @@ class AuthorizeTransfer extends React.Component {
               </div>
               <div className='right d-flex flex-column flex-h-center'>
                 <span className='title'>{t(`Authorize Transfer`)}:</span>
-                <span className='description font-size-tiny'>
+                <span className='description font-size-small'>
                   {t(`You need to make the transaction to authorize the transfer of the tokens.`)}
                 </span>
               </div>

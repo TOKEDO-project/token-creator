@@ -9,7 +9,7 @@ const StepHeader = ({ icon, title, children }) => {
       </div>
       <div className='right d-flex flex-column flex-h-center'>
         <span className='title text-center text-sm-left'>{title}</span>
-        <span className='description font-size-tiny text-center text-sm-left'>{children}</span>
+        <span className='description font-size-small text-center text-sm-left'>{children}</span>
       </div>
     </div>
   )

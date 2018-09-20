@@ -8,7 +8,7 @@ const WarningMessage = ({ title, description, icon, backgroundColor, shadow }) =
         <span className={`fa fa-${icon}`} />
         <span className='title'>{title}</span>
       </div>
-      <span className='description font-size-tiny'>{description}</span>
+      <span className='description font-size-small'>{description}</span>
     </div>
   )
 }

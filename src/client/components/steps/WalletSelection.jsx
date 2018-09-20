@@ -34,7 +34,7 @@ class WalletSelection extends Component {
       <div id='wallet-selection' className='step alone pure-u-1 d-flex flex-column flex-h-between'>
         <div className='progressSelectionMsg'>
           <span className='title text-center text-sm-left'>{progressTitle}</span><br />
-          <span className='description font-size-tiny text-center text-sm-left text-sm-left'>{progressMsg}</span>
+          <span className='description font-size-small text-center text-sm-left text-sm-left'>{progressMsg}</span>
         </div>
         {this.props.children}
         <StepHeader
