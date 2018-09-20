@@ -20,7 +20,7 @@ class HelpPage extends React.Component {
     const { t } = this.props
     return (
       <div id='helpPage' className='pure-u-1 d-flex flex-column flex-v-center pages'>
-        <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
+        <div className='maxWidth box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
           <h4 className='centerTxt'>{t('Help')}</h4>
           <h3>{t('Getting Started')}</h3>
           <p><span>{t('What is the Tokedo Token Creator?')}</span></p>

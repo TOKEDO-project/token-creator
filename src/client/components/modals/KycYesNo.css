@@ -11,7 +11,9 @@
 .kycModal .nextBtn {
   margin: 0px;
 }
-
+.kycForm {
+  text-align: left;
+}
 .kycModal label,
 .kycForm label {
   color: #FA8100;

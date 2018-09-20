@@ -7,7 +7,7 @@ class KYCpage extends React.Component {
     const { t } = this.props
     return (
       <div className='kycPage step pure-u-1 d-flex flex-column flex-v-center pages'>
-        <div className='box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
+        <div className='maxWidth box shadow pure-u-1 pure-u-sm-1 pure-u-md-1 pure-u-lg-22-24 pure-xl-15-24'>
           <h4 className='centerTxt'>{t('KYC Service')}</h4>
           <p>{t('Token sales and companies alike are required to screen their buyers for AML (Anti Money Laundering).')}</p>
           <p>{t('The KYC (Know Your Customer) service we provide meets this need with an optimal solution. ')}</p>

@@ -5,7 +5,7 @@ import './Pages.css'
 const Credits = ({ t }) => {
   return (
     <div id='creditsPage' className='pages pure-u-1 d-flex flex-column flex-v-center'>
-      <div className='box shadow pure-u-1 pure-u-md-3-5 pure-u-lg-2-5 pure-xl-2-5'>
+      <div className='maxWidth box shadow pure-u-1 pure-u-md-3-5 pure-u-lg-2-5 pure-xl-2-5'>
         <h4 className='font-size-medium'>{t('Credits')}</h4>
         <span className='font-size-medium'>
           {t('Copyright')} &copy;2018 {t('Tokedo Ltd')}

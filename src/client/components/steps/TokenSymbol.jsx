@@ -52,7 +52,7 @@ class TokenSymbol extends Component {
           title={t(`Ticker`)}
         >
 
-          {t(`Choose the ticker (symbol) of your token, 3 or 4 characters MAX, all capitalized . E.g. “ETH” for Ethereum, “BTC” for Bitcoin, ecc.`)}<br />
+          {t(`Choose the ticker (symbol) of your token. We recomment 3 or 4 characters. E.g. “ETH” for Ethereum, “BTC” for Bitcoin, ecc.`)}<br />
           {t('Take a look at ')}<a href='https://coinmarketcap.com/' target='_blank'>CoinMarketCap</a>{t(` page, in the token section, to find out if a ticker is already taken.`)}
         </StepHeader>
         <form className='bottom d-flex flex-row flex-h-between'>

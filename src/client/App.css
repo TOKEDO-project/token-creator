@@ -30,7 +30,9 @@ a {
   text-decoration: underline;
   color: #3583f3;
 }
-
+.maxWidth{
+  max-width: 1280px;
+}
 a:hover {
   text-decoration: underline;
 }
