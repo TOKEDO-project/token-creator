@@ -24,10 +24,10 @@ class KYCpage extends React.Component {
         status: ''
       })
       try {
-        await axios.post('https://atomax.io/email/', qs.stringify({
-          email: email2,
-          name,
-          msg: message
+        await axios.post('https://tokedo.io/contactForm', qs.stringify({
+          email2: email2,
+          message: `${name}\n\n${message}`,
+          department: 'tokedo'
         }))
         this.setState({
           status: 'success'
