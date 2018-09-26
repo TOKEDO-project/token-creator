@@ -24,11 +24,11 @@ class KYCpage extends React.Component {
         status: ''
       })
       try {
-        await axios.post('https://tokedo.io/contactForm', JSON.stringify({
+        await axios.post('https://tokedo.io/contactForm', {
           email2: email2,
           message: `${name}\n\n${message}`,
           department: 'tokedo'
-        }))
+        })
         this.setState({
           status: 'success'
         })
