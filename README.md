@@ -134,7 +134,7 @@ NET=main
 ⚠️ Install metamask in your browser or download Atomax wallet for <a href="https://itunes.apple.com/us/app/atomax-wallet-lite/id1415885195" target="_blank">ios</a> or 
 <a href="https://play.google.com/store/apps/details?id=com.atomax_wallet" target="_blank">android</a>. ⚠️
 
-For more details please visit our <a href="https://github.com/TOKEDO-project/token-creator/edit/master/README_Help.md" target="_blank">help page</a> .
+For more details please visit our <a href="https://github.com/TOKEDO-project/token-creator/blob/master/README_Help.md" target="_blank">help page</a> .
 
 
 ## Maintainers
