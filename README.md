@@ -143,7 +143,7 @@ For more details please visit our <a href="https://github.com/TOKEDO-project/tok
 - <a href="https://github.com/giuliodisano" target="_blank">Giulio Di Sano</a>
 - <a href="https://github.com/ado-ado" target="_blank">Adolfini Asmani</a>
 - <a href="https://github.com/Loller79" target="_blank">Dario Secchi</a>
-- <a href="https://github.com/Mikepicker" target="_blank">MIchele Rullo</a>
+- <a href="https://github.com/Mikepicker" target="_blank">Michele Rullo</a>
 - <a href="https://github.com/linosorice" target="_blank">Pasqualino Sorice</a>
 
 
