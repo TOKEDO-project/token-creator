@@ -114,7 +114,7 @@ class App extends React.Component {
           <div className='pure-u-1'>
             <Header />
             {web3.loading ? <Loading isView /> : <Routes />}
-            {web3.metamaskNet !== process.env.NET && process.env.NODE_ENV !== 'development' ? <SwitchNetwork metamaskNet={web3.metamaskNet} /> : null}
+            {!web3.loading && web3.metamaskNet !== process.env.NET && process.env.NODE_ENV !== 'development' ? <SwitchNetwork metamaskNet={web3.metamaskNet} /> : null}
             <Footer />
           </div>
         </Router>
