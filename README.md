@@ -14,9 +14,7 @@ The Tokedo Token Creator is a standalone client application that allows you to b
 <br/>
 From the issuance of an ERC20/ERC223 standard token to the launch of an ICO, our software has got you covered.
 <br/>
-You don’t need to know how to program a smart contract to create your token and token sales.
-<br/> 
-The Token Creator takes care of all the technical subtleties, leaving you the possibility to customize your token and your token sales as you please.
+You don’t need to know how to program a smart contract. The Token Creator takes care of all the technical subtleties, leaving you the possibility to customize your token and  token sales as you please.
 </p>
 
 
