@@ -10,7 +10,7 @@ const SwitchNetwork = ({ t, metamaskNet }) => {
       {metamaskNet === 'ropsten'
         ? <div className='pure-u-1 network'>
           <p>
-            {t('Your Metamask wallet is currently operating in Ropsten Test Net.')}
+            {t('You are in Test Network.')}
           </p>
           <p>
             {t('If you want to keep using the Token Creator and generate your contracts please switch to the Main Ethereum Network.')}
