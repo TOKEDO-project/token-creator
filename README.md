@@ -158,6 +158,7 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 
 ## Donate to support the project
 BTC: 1GErahqriaJuin4yK87SXdeZipKFVDSqA3
+
 ETH: 0x4c192975263c0054F04279Ac9b9f58095F3E2456
 
 ## Social
