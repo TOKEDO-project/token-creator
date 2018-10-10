@@ -156,6 +156,8 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 
 <a href="https://t.me/tokedoproject" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/0/avatar.svg"></a>
 
+## Donate to support the project
+ETH: 0x4c192975263c0054F04279Ac9b9f58095F3E2456
 
 ## Social
 
