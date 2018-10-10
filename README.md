@@ -165,7 +165,7 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 <a href="https://t.me/tokedoproject" target="_blank">
   <img width="57px" src="./src/client/assets/images/ReadmeGithubIcons/Telegram-icon.png">
   </a>
-<a href="https://twitter.com/tokedoproject" target="_blank">
+<a href="https://twitter.com/@TokedoCommunity/" target="_blank">
   <img width="50px" style="margin-left: 5px"  src="./src/client/assets/images/ReadmeGithubIcons/Twitter-icon.png">
   </a>
  <a href="https://www.facebook.com/tokedoproject/" target="_blank">
