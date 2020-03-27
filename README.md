@@ -10,11 +10,13 @@
 
 <br>
 <p align="center">
-The Tokedo Token Creator is a standalone client application that allows you to build all the smart contracts required for a token sale, even without knowing anything about smart contract development.
+  The <a href="https://creator.tokedo.io/" target="_blank">Tokedo Token Creator</a> is a standalone client application that allows you to build all the smart contracts required for a token sale, even without knowing anything about smart contract development.
 <br/>
 From the issuance of an ERC20/ERC223 standard token to the launch of an ICO, our software has got you covered.
 <br/>
 You don’t need to know how to program a smart contract. The Token Creator takes care of all the technical subtleties, leaving you the possibility to customize your token and  token sales as you please.
+ <br/><br/>
+ Visit the DAPP online at: <a href="https://creator.tokedo.io/" target="_blank">creator.tokedo.io</a>
 </p>
 
 
@@ -156,6 +158,10 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 
 <a href="https://t.me/tokedoproject" target="_blank"><img src="https://opencollective.com/electron-react-boilerplate/sponsor/0/avatar.svg"></a>
 
+## Donate to support the project
+BTC: 1GErahqriaJuin4yK87SXdeZipKFVDSqA3
+
+ETH: 0x4c192975263c0054F04279Ac9b9f58095F3E2456
 
 ## Social
 
@@ -165,7 +171,7 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 <a href="https://t.me/tokedoproject" target="_blank">
   <img width="57px" src="./src/client/assets/images/ReadmeGithubIcons/Telegram-icon.png">
   </a>
-<a href="https://twitter.com/tokedoproject" target="_blank">
+<a href="https://twitter.com/@TokedoCommunity/" target="_blank">
   <img width="50px" style="margin-left: 5px"  src="./src/client/assets/images/ReadmeGithubIcons/Twitter-icon.png">
   </a>
  <a href="https://www.facebook.com/tokedoproject/" target="_blank">
