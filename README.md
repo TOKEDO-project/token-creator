@@ -115,16 +115,16 @@ PRIVATE_KEY=0x...
 
 Insert in which network you want to use the project:
 
-You can select <a href="http://ethdocs.org/en/latest/network/connecting-to-the-network.html#the-ethereum-network" target="_blank">Ropsten</a> Network
+You can select <a href="http://ethdocs.org/en/latest/network/connecting-to-the-network.html#the-ethereum-network" target="_blank">Rinkeby</a> Network
 ```bash
-NET=ropsten
+NET=rinkeby
 ```
 
 or <a href="http://ethdocs.org/en/latest/network/connecting-to-the-network.html#the-ethereum-network" target="_blank">Mainnet</a> Network
 ```bash
 NET=main
 ```
-:bulb: Use Ropsten for testing
+:bulb: Use Rinkeby for testing
 
 
 ## How to use Token Creator

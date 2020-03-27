@@ -9,7 +9,7 @@ export const MetamaskStatus = {
 
 export const MetamaskNet = {
   MAINNET: 'main',
-  ROPSTEN: 'ropsten',
+  RINKEBY: 'rinkeby',
   PRIVATE: 'private'
 }
 
@@ -88,7 +88,7 @@ export const web3 = handleActions({
     }
   }
 }, {
-  metamaskNet: MetamaskNet.ROPSTEN,
+  metamaskNet: MetamaskNet.RINKEBY,
   metamaskStatus: MetamaskStatus.NOT_INSTALLED,
   address: '',
   loading: true

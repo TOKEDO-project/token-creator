@@ -78,7 +78,7 @@ class Atomax extends Component {
             <span className='text'>{t(`Scan the QrCode`)} <br />{t(`with ATOMAX wallet`)}</span>
             <QRCode fgColor='#24242A' value={data} />
             <span className='text'>{t(`and send the Transaction`)}</span>
-            {process.env.NET === 'ropsten' ? <div>{t('This is a test environment. Be careful and make sure to send the transaction from a Ropsten account.')}
+            {process.env.NET === 'rinkeby' ? <div>{t('This is a test environment. Be careful and make sure to send the transaction from a Rinkeby account.')}
             </div> : null}
             {address && address !== '' ? <div className='address pure-u-1 d-flex flex-column flex-v-center'>
               <span className='title'>{t(`1. Check your ATOMAX address`)}</span>

@@ -7,7 +7,7 @@ import './SwitchNetwork.css'
 const SwitchNetwork = ({ t, metamaskNet }) => {
   return (
     <Modal icon={metamask} title={t('Oops! Something\'s wrong.')} visible>
-      {metamaskNet === 'ropsten'
+      {metamaskNet === 'rinkeby'
         ? <div className='pure-u-1 network'>
           <p>
             {t('You are in Test Network.')}
@@ -26,7 +26,7 @@ const SwitchNetwork = ({ t, metamaskNet }) => {
           </p>
 
           <p>
-            {t('If you want to run some tests you need to switch your wallet to the Ropsten Test Net.')}
+            {t('If you want to run some tests you need to switch your wallet to the Rinkeby Test Net.')}
           </p>
           <p>
             {t('If you want to use the Token Creator to generate your contracts instead, please visit ')}
