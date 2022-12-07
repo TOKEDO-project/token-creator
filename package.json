@@ -35,7 +35,7 @@
     "nodemon": "^1.18.3",
     "purecss": "^1.0.0",
     "qrcode.react": "^0.8.0",
-    "qs": "^6.5.2",
+    "qs": "^6.5.3",
     "react": "^16.4.2",
     "react-clipboard.js": "^2.0.0",
     "react-datepicker": "^1.6.0",
